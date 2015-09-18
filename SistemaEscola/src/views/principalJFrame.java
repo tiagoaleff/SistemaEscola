@@ -9,7 +9,7 @@ package views;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Leandro Justin Vieira
  */
 public class principalJFrame extends javax.swing.JFrame {
 
@@ -20,17 +20,15 @@ public class principalJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    testeJInternalFrame teste;
-    
       public void criarJanelaInternalFrame(){
-        
+        /*
         if(teste == null){
             teste = new testeJInternalFrame();    
         }
         
         jDesktopPane1.add(teste);
         teste.setVisible(true);
-        
+        */
         
         
     }

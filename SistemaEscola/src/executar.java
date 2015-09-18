@@ -1,4 +1,4 @@
-package controller;
+
 
 
 import views.loginJFrame;
@@ -13,7 +13,7 @@ import views.loginJFrame;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Leandro Justin Vieira
  */
 public class executar {
     
