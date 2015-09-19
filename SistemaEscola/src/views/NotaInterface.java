@@ -151,7 +151,8 @@ public class NotaInterface extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-    
+     
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
