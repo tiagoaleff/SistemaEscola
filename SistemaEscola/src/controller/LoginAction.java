@@ -9,7 +9,9 @@ package controller;
 import config.ConfigUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import views.loginJFrame;
 import views.principalJFrame;
 
 /**
@@ -18,45 +20,61 @@ import views.principalJFrame;
  */
 public class LoginAction implements ActionListener{
 
-   private LoginController login;
+   private loginJFrame  loginFrame;
 
-    public void setLogin(LoginController login) {
-        this.login = login;
+    public LoginAction( loginJFrame loginFrame){
+        
+        this.loginFrame = loginFrame;
+        
     }
     
-
-   
     @Override
     public void actionPerformed(ActionEvent evt) {
         
              
-       String action = evt.getActionCommand();
-         
-       if (action.equals("ENTRAR")){
-           
-           verificarConexao(login);
-           
-       }else{
-           JOptionPane.showMessageDialog(null, "Action não informada");
+        String action = evt.getActionCommand();
+        System.out.println(action);
+       switch (action) {
+           case "0":
+               verificarConexao( loginFrame.createLoginController() );
+               break;
+           case "1":
+               help();
+               break;
        }
     }
     
-    private void verificarConexao(LoginController login){
+    private void verificarConexao(LoginController result){
         
-        ConfigUser user = new ConfigUser();
+        ConfigUser config = new ConfigUser();
                                
-        if(!login.getUser().equals(user.getUser())){
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorreta");
+        if(!result.getUser().equals(config.getUser())){
+            JOptionPane.showMessageDialog(loginFrame, "usuário ou senha incorreta");
+             System.out.println("usuario " + result.getUser() + " real" + config.getUser());
             return;
         }
         
-        if(!login.getPassword().equals(user.getPassword())){
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorreta");
+        if(!result.getPassword().equals(config.getPassword())){
+            JOptionPane.showMessageDialog(loginFrame, "Usuário ou senha incorreta");
             return;
         }        
         
-        login.getLogin().dispose();
+        loginFrame.dispose();
         new principalJFrame().setVisible(true);
     }
+    
+    private void help(){
+        
+        String mensagem = 
+                " A aplicação tem como funcionalidar gerir um sistema escolar\n"
+                + "Para fazer login no programa deve-se informar o nome do usuario"
+                + " e sua respectiva senha, nos campos correspondentes\n"
+                + "Usuario Admin Senha 1234 (padrão)\n"
+                + "Desenvolvedores: Leandro, Tiago e Kadson";
+        
+        
+        JOptionPane.showMessageDialog(loginFrame, mensagem);
+    }
+    
     
 }
