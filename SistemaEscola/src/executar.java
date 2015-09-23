@@ -1,6 +1,7 @@
 
 
 
+import java.awt.Color;
 import views.loginJFrame;
 
 /*
@@ -21,7 +22,7 @@ public class executar {
         
         loginJFrame login = new loginJFrame();
         login.setVisible(true);
-         
+        login.getContentPane().setBackground(Color.white);
     }
 
 }

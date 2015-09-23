@@ -18,17 +18,24 @@ import views.principalJFrame;
  */
 public class LoginAction implements ActionListener{
 
-    @Override
+   private LoginController login;
+
+    public void setLogin(LoginController login) {
+        this.login = login;
+    }
     
+
+   
+    @Override
     public void actionPerformed(ActionEvent evt) {
         
-        
-       LoginController login = (LoginController) evt.getSource();       
-       
+             
        String action = evt.getActionCommand();
          
        if (action.equals("ENTRAR")){
+           
            verificarConexao(login);
+           
        }else{
            JOptionPane.showMessageDialog(null, "Action não informada");
        }
