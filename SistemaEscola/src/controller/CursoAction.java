@@ -8,6 +8,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import views.CursoJInternalFrame;
 
 /**
  * 
@@ -15,9 +16,15 @@ import java.awt.event.ActionListener;
  */
 public class CursoAction implements ActionListener{
 
+    private CursoJInternalFrame frame;
+
+    public CursoAction(CursoJInternalFrame frame) {
+        this.frame = frame;
+    }
+
     @Override
     public void actionPerformed(ActionEvent evt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }
