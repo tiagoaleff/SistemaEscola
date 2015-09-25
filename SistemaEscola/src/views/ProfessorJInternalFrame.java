@@ -182,7 +182,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("*Celular:");
+        jLabel5.setText("Celular:");
 
         jLabel6.setText("Telefone:");
 
@@ -223,11 +223,11 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
-        jLabel2.setText("*Rua:");
+        jLabel2.setText("Rua:");
 
-        jLabel3.setText("*Cidade:");
+        jLabel3.setText("Cidade:");
 
-        jLabel7.setText("*Estado:");
+        jLabel7.setText("Estado:");
 
         estadoJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
 
@@ -274,13 +274,13 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ruaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(estadoJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numeroJTextField))
@@ -305,7 +305,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(bairroJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jButton3.setText("Salvar");
