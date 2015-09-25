@@ -25,8 +25,7 @@ public class loginJFrame extends javax.swing.JFrame {
     }
        
     LoginAction action = new LoginAction(this);
-    
-    
+        
     public LoginController createLoginController(){
         
         String user = userJTextField.getText();
