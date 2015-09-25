@@ -98,8 +98,12 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         noturnoJCheckBox.setText("Noturno");
 
         searchNomeJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        searchNomeJButton.addActionListener(action);
+        searchNomeJButton.setActionCommand("pesquisarNome");
 
         searchProfessorJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        searchProfessorJButton.addActionListener(action);
+        searchProfessorJButton.setActionCommand("pesquisarProfessor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,10 +184,17 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         );
 
         salvarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
+        salvarJButton.addActionListener(action);
+        salvarJButton.setActionCommand("salvar");
 
         limparJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear.png"))); // NOI18N
+        limparJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        limparJButton.addActionListener(action);
+        limparJButton.setActionCommand("limpar");
 
         cancelarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        cancelarJButton.addActionListener(action);
+        cancelarJButton.setActionCommand("cancelar");
 
         idJLabel.setText("ID");
 
@@ -275,7 +286,10 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel1.getAccessibleContext().setAccessibleDescription("");
         jPanel2.getAccessibleContext().setAccessibleName("");
-        searchIdJButton.getAccessibleContext().setAccessibleDescription("Procure por cursos  com o respectivo id");
+        limparJButton.getAccessibleContext().setAccessibleDescription("");
+        searchIdJButton.addActionListener(action);
+        searchIdJButton.setActionCommand("pesquisarId");
+        searchIdJButton.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

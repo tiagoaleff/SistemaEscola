@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JScrollBar" name="jScrollBar1">
     </Component>
@@ -237,6 +237,9 @@
               <Image iconType="3" name="/img/search_black.png"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="searchNomeJButton.addActionListener(action);&#xa;searchNomeJButton.setActionCommand(&quot;pesquisarNome&quot;);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="searchProfessorJButton">
           <Properties>
@@ -244,6 +247,9 @@
               <Image iconType="3" name="/img/search_black.png"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="searchProfessorJButton.addActionListener(action);&#xa;searchProfessorJButton.setActionCommand(&quot;pesquisarProfessor&quot;);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -302,13 +308,25 @@
           <Image iconType="3" name="/img/save_blue.png"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarJButton.addActionListener(action);&#xa;salvarJButton.setActionCommand(&quot;salvar&quot;);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="limparJButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/clear.png"/>
         </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Padr&#xe3;o"/>
+        </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="limparJButton.addActionListener(action);&#xa;limparJButton.setActionCommand(&quot;limpar&quot;);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="cancelarJButton">
       <Properties>
@@ -316,6 +334,9 @@
           <Image iconType="3" name="/img/cancelar.png"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarJButton.addActionListener(action);&#xa;cancelarJButton.setActionCommand(&quot;cancelar&quot;);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="idJLabel">
       <Properties>
@@ -331,8 +352,11 @@
         </Property>
       </Properties>
       <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Procure por cursos  com o respectivo id"/>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="searchIdJButton.addActionListener(action);&#xa;searchIdJButton.setActionCommand(&quot;pesquisarId&quot;);"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel3">
       <Properties>

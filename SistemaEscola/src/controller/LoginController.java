@@ -16,12 +16,9 @@ public class LoginController {
     
     private String password;
     private String user;
-    private JFrame login;
+        
+    public LoginController(String user, String password){
     
-
-    public LoginController(String password, String user, JFrame login){
-    
-        this.login = login;
         this.password = password;
         this.user = user;
     }
@@ -32,10 +29,6 @@ public class LoginController {
 
     public String getUser() {
         return user;
-    }
-
-    public JFrame getLogin() {
-        return login;
     }
     
 }
