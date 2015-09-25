@@ -10,8 +10,6 @@ import views.loginJFrame;
  * and open the template in the editor.
  */
 
-
-
 /**
  * 
  * @author Leandro Justin Vieira

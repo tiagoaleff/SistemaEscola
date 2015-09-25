@@ -9,7 +9,6 @@ package controller;
 import config.ConfigUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import views.loginJFrame;
 import views.principalJFrame;
@@ -35,10 +34,10 @@ public class LoginAction implements ActionListener{
         String action = evt.getActionCommand();
         System.out.println(action);
        switch (action) {
-           case "0":
+           case "entrar":
                verificarConexao( loginFrame.createLoginController() );
                break;
-           case "1":
+           case "help":
                help();
                break;
        }

@@ -24,8 +24,8 @@ public class loginJFrame extends javax.swing.JFrame {
         initComponents();
     }
        
-    LoginAction entrar = new LoginAction(this);
-    LoginAction help   = new LoginAction(this);
+    LoginAction action = new LoginAction(this);
+    
     
     public LoginController createLoginController(){
         
@@ -65,8 +65,8 @@ public class loginJFrame extends javax.swing.JFrame {
         passwordJLabel.setText("Senha:");
 
         loginJButton.setText("entrar");
-        loginJButton.addActionListener(entrar);
-        loginJButton.setActionCommand("0");
+        loginJButton.addActionListener(action);
+        loginJButton.setActionCommand("entrar");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo sistema escola.png"))); // NOI18N
 
@@ -84,19 +84,19 @@ public class loginJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(legalJLabel)
-                .addGap(56, 56, 56))
+                .addGap(54, 54, 54))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(legalJLabel)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         helpJButton.setText("Preciso de ajuda");
-        loginJButton.addActionListener(help);
-        loginJButton.setActionCommand("1");
+        helpJButton.addActionListener(action);
+        helpJButton.setActionCommand("help");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,7 +150,7 @@ public class loginJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(loginJButton)
                             .addComponent(helpJButton))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

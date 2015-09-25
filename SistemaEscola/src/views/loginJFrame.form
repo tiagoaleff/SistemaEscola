@@ -90,7 +90,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -123,7 +123,7 @@
         <Property name="text" type="java.lang.String" value="entrar"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="loginJButton.addActionListener(entrar);&#xa;loginJButton.setActionCommand(&quot;0&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="loginJButton.addActionListener(action);&#xa;loginJButton.setActionCommand(&quot;entrar&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordJField">
@@ -153,7 +153,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="legalJLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -162,7 +162,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="legalJLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,7 +183,7 @@
         <Property name="text" type="java.lang.String" value="Preciso de ajuda"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="loginJButton.addActionListener(help);&#xa;loginJButton.setActionCommand(&quot;1&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="helpJButton.addActionListener(action);&#xa;helpJButton.setActionCommand(&quot;help&quot;);"/>
       </AuxValues>
     </Component>
   </SubComponents>
