@@ -5,17 +5,44 @@
  */
 package views;
 
+import controller.CursoAction;
+import controller.CursoController;
+
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Leandro Justin Vieira
  */
 public class CursoJInternalFrame extends javax.swing.JInternalFrame {
-
+    
+    CursoAction action = new CursoAction(this);
+    
 
     public CursoJInternalFrame() {
         initComponents();
     }
-
+  
+    public CursoController atualizarDados (){
+        
+        String nome = nomeJTextField.getText();
+        String professorResponsavel = professorJTextField.getText();
+        String duracao = duracaoJTextField.getText();
+        String descricao = descricaoJTextArea.getText();
+        boolean noturno = noturnoJCheckBox.isSelected();
+        boolean vespertino = vespertinoJCheckBox.isSelected();
+        boolean matutino = matutinoJCheckBox.isSelected();
+               
+        CursoController dados = 
+                new CursoController(nome,
+                                    professorResponsavel,
+                                    duracao,
+                                    descricao,
+                                    noturno,
+                                    vespertino,
+                                    matutino);
+        
+        return dados;
+        
+    }
     
     
     
@@ -253,8 +280,6 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
         
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarJButton;
     private javax.swing.JLabel cursoJLabel;
