@@ -1,6 +1,7 @@
 package views;
 
 import controller.PrincipalAction;
+import javax.swing.JDesktopPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,6 +26,10 @@ public class principalJFrame extends javax.swing.JFrame {
     
     public principalJFrame() {
         initComponents();
+    }
+
+    public JDesktopPane getjDesktopPane1() {
+        return jDesktopPane1;
     }
     
       public void criarJanelaInternalFrame(){

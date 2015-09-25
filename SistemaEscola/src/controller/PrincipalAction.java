@@ -8,8 +8,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import views.CursoJInternalFrame;
 import views.principalJFrame;
 
 /**
@@ -42,7 +42,7 @@ public class PrincipalAction implements ActionListener{
                 JOptionPane.showMessageDialog(frame, "teste de conexão com action do Disciplina");
                 break;
             case "curso":
-                JOptionPane.showMessageDialog(frame, "teste de conexão com action do curso");
+                criarFrameCurso();
                 break;
             case "nota":
                 JOptionPane.showMessageDialog(frame, "teste de conexão com action do nota");
@@ -66,6 +66,11 @@ public class PrincipalAction implements ActionListener{
         jDesktopPane1.add(teste);
         teste.setVisible(true);
         */    
+    }
+    
+    public void criarFrameCurso(){
+        
+        frame.getjDesktopPane1().add(new CursoJInternalFrame()).setVisible(true);
     }
    
 }
