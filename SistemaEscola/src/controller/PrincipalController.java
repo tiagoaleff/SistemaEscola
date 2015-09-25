@@ -22,11 +22,11 @@ import views.principalJFrame;
  * 
  * @author Leandro Justin Vieria
  */
-public class PrincipalAction implements ActionListener{
+public class PrincipalController implements ActionListener{
     
     private principalJFrame frame;
     
-    public PrincipalAction( principalJFrame frame){
+    public PrincipalController( principalJFrame frame){
     
         this.frame = frame;
     }
@@ -62,11 +62,7 @@ public class PrincipalAction implements ActionListener{
             case "gerenciar faltas":
                 criarFrameGerenciarFaltas();
                 break;
-        }
-        
-        
-        
-        
+        } 
     }
        
     public void criarFrameCurso(){
@@ -100,7 +96,5 @@ public class PrincipalAction implements ActionListener{
 
     private void criarFrameAluno() {
         frame.getjDesktopPane1().add(new AlunoInterface()).setVisible(true);
-    }
-   
-    
+    }   
 }

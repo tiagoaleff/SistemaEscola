@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package controller;
+package object;
 
 import javax.swing.JFrame;
 
@@ -12,12 +12,12 @@ import javax.swing.JFrame;
  * 
  * @author Leandro Justin Vieira
  */
-public class LoginController {
+public class Login {
     
     private String password;
     private String user;
         
-    public LoginController(String user, String password){
+    public Login(String user, String password){
     
         this.password = password;
         this.user = user;

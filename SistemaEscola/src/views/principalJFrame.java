@@ -1,6 +1,6 @@
 package views;
 
-import controller.PrincipalAction;
+import controller.PrincipalController;
 import javax.swing.JDesktopPane;
 
 /*
@@ -16,7 +16,7 @@ import javax.swing.JDesktopPane;
  */
 public class principalJFrame extends javax.swing.JFrame {
 
-    PrincipalAction action = new PrincipalAction(this); 
+    PrincipalController action = new PrincipalController(this); 
     
     public principalJFrame() {
         initComponents();

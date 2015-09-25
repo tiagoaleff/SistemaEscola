@@ -8,8 +8,8 @@ package views;
 
 
 
-import controller.LoginAction;
 import controller.LoginController;
+import object.Login;
 /**
  *
  * @author Leandro Justin Vieira
@@ -24,14 +24,14 @@ public class loginJFrame extends javax.swing.JFrame {
         initComponents();
     }
        
-    LoginAction action = new LoginAction(this);
+    LoginController action = new LoginController(this);
         
-    public LoginController createLoginController(){
+    public Login createLoginController(){
         
         String user = userJTextField.getText();
         String password = new String(passwordJField.getPassword());
         
-        LoginController result = new LoginController(user, password);
+        Login result = new Login(user, password);
         
         return result;
     }
