@@ -21,8 +21,7 @@ public class CursoController {
     private boolean vespertino;
     private boolean matutino;
 
-    public CursoController(int id, String nome, String professorResponsavel, String duracao, String descricao, boolean noturno, boolean vespertino, boolean matutino) {
-        this.id = id;
+    public CursoController(String nome, String professorResponsavel, String duracao, String descricao, boolean noturno, boolean vespertino, boolean matutino) {
         this.nome = nome;
         this.professorResponsavel = professorResponsavel;
         this.duracao = duracao;
