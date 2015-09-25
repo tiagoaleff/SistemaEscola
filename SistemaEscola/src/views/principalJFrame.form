@@ -69,7 +69,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="diarioAcademicoJMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Diario academico"/>
           </Properties>

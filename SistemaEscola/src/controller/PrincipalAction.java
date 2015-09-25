@@ -9,7 +9,13 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import views.AlunoInterface;
+import views.CadastrarDisciplinasJInternalFrame;
 import views.CursoJInternalFrame;
+import views.FaltasJInternalFrame;
+import views.GerenciarNotasJInternalFrame;
+import views.NotaInterface;
+import views.ProfessorJInternalFrame;
 import views.principalJFrame;
 
 /**
@@ -33,22 +39,28 @@ public class PrincipalAction implements ActionListener{
         switch(action){
             
             case "aluno":
-                JOptionPane.showMessageDialog(frame, "teste de conexão com action do aluno");
+                criarFrameAluno();
                 break;
             case "professor":
-                JOptionPane.showMessageDialog(frame, "teste de conexão com action do professor");
+                criarFrameProfessor();
                 break;
             case "disciplina":
-                JOptionPane.showMessageDialog(frame, "teste de conexão com action do Disciplina");
+                criarFrameDisciplina();
                 break;
             case "curso":
                 criarFrameCurso();
                 break;
             case "nota":
-                JOptionPane.showMessageDialog(frame, "teste de conexão com action do nota");
+                criarFrameNotas();
                 break;
             case "falta":
-                JOptionPane.showMessageDialog(frame, "teste de conexão com action do falta");
+                criarFrameFaltas();
+                break;
+            case "gerenciar notas":
+                criarFrameGerenciarNotas();
+                break;
+            case "gerenciar faltas":
+                criarFrameGerenciarFaltas();
                 break;
         }
         
@@ -56,21 +68,39 @@ public class PrincipalAction implements ActionListener{
         
         
     }
-    
-    public void criarJanelaInternalFrame(){
-        /*
-        if(teste == null){
-            teste = new testeJInternalFrame();    
-        }
-        
-        jDesktopPane1.add(teste);
-        teste.setVisible(true);
-        */    
-    }
-    
+       
     public void criarFrameCurso(){
         
         frame.getjDesktopPane1().add(new CursoJInternalFrame()).setVisible(true);
     }
+
+    private void criarFrameGerenciarNotas() {
+        frame.getjDesktopPane1().add(new GerenciarNotasJInternalFrame()).setVisible(true);
+    }
+
+    private void criarFrameGerenciarFaltas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void criarFrameFaltas() {
+       frame.getjDesktopPane1().add(new FaltasJInternalFrame()).setVisible(true);
+    }
+
+    private void criarFrameNotas() {
+       frame.getjDesktopPane1().add(new NotaInterface()).setVisible(true);
+    }
+
+    private void criarFrameDisciplina() {
+        frame.getjDesktopPane1().add(new CadastrarDisciplinasJInternalFrame()).setVisible(true);
+    }
+
+    private void criarFrameProfessor() {
+        frame.getjDesktopPane1().add(new ProfessorJInternalFrame()).setVisible(true);
+    }
+
+    private void criarFrameAluno() {
+        frame.getjDesktopPane1().add(new AlunoInterface()).setVisible(true);
+    }
    
+    
 }

@@ -43,7 +43,7 @@ public class principalJFrame extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         notaJMenuItem = new javax.swing.JMenuItem();
         faltaJMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        diarioAcademicoJMenu = new javax.swing.JMenu();
         gerenciarNotasJMenuItem = new javax.swing.JMenuItem();
         gerenciarFaltasJMenuItem = new javax.swing.JMenuItem();
 
@@ -127,19 +127,19 @@ public class principalJFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Diario academico");
+        diarioAcademicoJMenu.setText("Diario academico");
 
         gerenciarNotasJMenuItem.setText("Gerenciar Notas");
         gerenciarNotasJMenuItem.addActionListener(action);
         gerenciarNotasJMenuItem.setActionCommand("gerenciar notas");
-        jMenu2.add(gerenciarNotasJMenuItem);
+        diarioAcademicoJMenu.add(gerenciarNotasJMenuItem);
 
         gerenciarFaltasJMenuItem.setText("Gerenciar Faltas");
         gerenciarFaltasJMenuItem.addActionListener(action);
         gerenciarFaltasJMenuItem.setActionCommand("gerenciar faltas");
-        jMenu2.add(gerenciarFaltasJMenuItem);
+        diarioAcademicoJMenu.add(gerenciarFaltasJMenuItem);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(diarioAcademicoJMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -170,13 +170,13 @@ public class principalJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alunoJMenuItem;
     private javax.swing.JMenuItem cursoJMenuItem;
+    private javax.swing.JMenu diarioAcademicoJMenu;
     private javax.swing.JMenuItem disciplinaJMenuItem;
     private javax.swing.JMenuItem faltaJMenuItem;
     private javax.swing.JMenuItem gerenciarFaltasJMenuItem;
     private javax.swing.JMenuItem gerenciarNotasJMenuItem;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private volatile javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
