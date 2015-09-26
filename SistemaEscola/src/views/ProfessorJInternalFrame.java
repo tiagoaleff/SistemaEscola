@@ -9,22 +9,21 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private ProfessorController professorController = 
             new ProfessorController(this);
     
-    /*public Professor getProfessor(){
+    public Professor getProfessor(){
         
-        Professor r = new Professor(this);                       
-        retorn r;
+        Professor professor = new Professor();                       
+        
+        /*setando informações do professor*/
+        professor.setNomeProfessor(nomeJTextField.getText());
+        /*professor.setCPF(CPF.getName());
+        professor.getNascimento()*/
+        return professor;
     }
-    */
-    
-    
-    
+                 
     public ProfessorJInternalFrame() {
         initComponents();
     }
-    
-    
-    
-    
+          
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,7 +36,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         cpfJTextField = new javax.swing.JTextField();
         rgJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        diaJTextField = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox();
         jTextField8 = new javax.swing.JTextField();
         disciplinaPesquisaJToggleButton = new javax.swing.JToggleButton();
@@ -60,8 +59,8 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         numeroJTextField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         bairroJTextField = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        salvarJButton = new javax.swing.JButton();
+        cancelarJToggleButton = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -100,7 +99,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Nascimento:");
 
-        jTextField4.setText("Dia");
+        diaJTextField.setText("Dia");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro (Jan)", "Fevereiro (Fev)", "Março (Mar)", "Abril (Abr)", "Maio (Mai)", "Junho (Jun)", "Julho (Jul)", "Agosto (Ago)", "Setembro (Set)", "Outubro (Out)", "Novembro (Nov)", "Desembro (Des)" }));
 
@@ -112,11 +111,16 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        /*
         disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disciplinaPesquisaJToggleButtonActionPerformed(evt);
             }
         });
+        */
+
+        disciplinaPesquisaJToggleButton.addActionListener(professorController);
+        disciplinaPesquisaJToggleButton.setActionCommand("pesquisarProfessor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,7 +131,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(diaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -167,7 +171,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(diaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -312,23 +316,27 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jButton3.setText("Salvar");
+        salvarJButton.setText("Salvar");
         /*
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        salvarJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                salvarJButtonActionPerformed(evt);
             }
         });
         */
-        //jButton3.addActionLister();
-        jButton3.setActionCommand("salvar");
+        salvarJButton.addActionListener(professorController);
+        salvarJButton.setActionCommand("salvar");
 
-        jToggleButton1.setText("Cancelar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        cancelarJToggleButton.setText("Cancelar");
+        /*
+        cancelarJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                cancelarJToggleButtonActionPerformed(evt);
             }
         });
+        */
+        cancelarJToggleButton.addActionListener(professorController);
+        cancelarJToggleButton.setActionCommand("cancelar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -439,9 +447,9 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(salvarJButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jToggleButton1))
+                                .addComponent(cancelarJToggleButton))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,8 +486,8 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jToggleButton1))
+                    .addComponent(salvarJButton)
+                    .addComponent(cancelarJToggleButton))
                 .addContainerGap())
         );
 
@@ -506,9 +514,9 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroJTextFieldActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void salvarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_salvarJButtonActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
@@ -522,9 +530,9 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mestradoJTextFieldActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void cancelarJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarJToggleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_cancelarJToggleButtonActionPerformed
 
     private void disciplinaPesquisaJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaPesquisaJToggleButtonActionPerformed
         // TODO add your handling code here:
@@ -535,16 +543,17 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel CPF;
     private javax.swing.JLabel RG;
     private javax.swing.JTextField bairroJTextField;
+    private javax.swing.JToggleButton cancelarJToggleButton;
     private javax.swing.JTextField celularJTextField;
     private javax.swing.JTextField cidadeJTextField;
     private javax.swing.JTextField cpfJTextField;
+    private javax.swing.JTextField diaJTextField;
     private javax.swing.JToggleButton disciplinaPesquisaJToggleButton;
     private javax.swing.JTextField doutoradoJTextField;
     private javax.swing.JTextField emailJTextField;
     private javax.swing.JTextField especializacaoJTextField;
     private javax.swing.JComboBox estadoJComboBox;
     private javax.swing.JComboBox graduacaoComboBox;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -567,9 +576,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField mestradoJTextField;
     private javax.swing.JLabel nome;
     private javax.swing.JTextField nomeJTextField;
@@ -577,6 +584,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JList resultadoList;
     private javax.swing.JTextField rgJTextField;
     private javax.swing.JTextField ruaJTextField;
+    private javax.swing.JButton salvarJButton;
     private javax.swing.JTextField telefoneJTextField;
     // End of variables declaration//GEN-END:variables
 }
