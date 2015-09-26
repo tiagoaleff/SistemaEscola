@@ -8,7 +8,7 @@ package views;
 
 
 
-import controller.LoginController;
+import controller.Login_Controller;
 import object.Login;
 /**
  *
@@ -24,7 +24,7 @@ public class loginJFrame extends javax.swing.JFrame {
         initComponents();
     }
        
-    LoginController action = new LoginController(this);
+    Login_Controller action = new Login_Controller(this);
         
     public Login createLogin(){
         
