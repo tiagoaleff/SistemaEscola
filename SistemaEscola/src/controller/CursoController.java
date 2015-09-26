@@ -6,96 +6,72 @@
 
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import views.CursoJInternalFrame;
+
 /**
  * 
  * @author Leandro Justin Vieira
  */
-public class CursoController {
+public class CursoController implements ActionListener{
 
-    private int id;
-    private String nome;
-    private String professorResponsavel;
-    private String duracao;
-    private String descricao;
-    private boolean noturno;
-    private boolean vespertino;
-    private boolean matutino;
+    private CursoJInternalFrame frame;
 
-    public CursoController(String nome, String professorResponsavel, String duracao, String descricao, boolean noturno, boolean vespertino, boolean matutino) {
-        this.nome = nome;
-        this.professorResponsavel = professorResponsavel;
-        this.duracao = duracao;
-        this.descricao = descricao;
-        this.noturno = noturno;
-        this.vespertino = vespertino;
-        this.matutino = matutino;
+    public CursoController(CursoJInternalFrame frame) {
+        this.frame = frame;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+     
+        String action = evt.getActionCommand();
+        
+        switch(action){
+            
+            case "salvar":
+                salvarDados();
+                break; 
+            case "cancelar":
+                cancelarFechar();
+                break;
+            case "limpar":
+                limparFormulario();
+                break;
+            case "pesquisarNome":
+                pesquisaNome();
+                break;
+            case "pesquisarProfessor":
+                pesquisarProfessor();
+                break;
+            case "pesquisarId":
+                pesquisarId();
+                break;   
+        } 
     }
 
-    public void setId(int id) {
-        this.id = id;
+    private void salvarDados() {
+        JOptionPane.showMessageDialog(frame, "salvarDados");
     }
 
-    public String getNome() {
-        return nome;
+    private void cancelarFechar() {
+        frame.dispose();
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    private void limparFormulario() {
+        JOptionPane.showMessageDialog(frame, "limpar");
     }
 
-    public String getProfessorResponsavel() {
-        return professorResponsavel;
+    private void pesquisaNome() {
+        JOptionPane.showMessageDialog(frame, "pesquisarNome");
     }
 
-    public void setProfessorResponsavel(String professorResponsavel) {
-        this.professorResponsavel = professorResponsavel;
+    private void pesquisarProfessor() {
+        JOptionPane.showMessageDialog(frame, "pesquisarProfessor");
     }
 
-    public String getDuracao() {
-        return duracao;
+    private void pesquisarId() {
+        JOptionPane.showMessageDialog(frame, "pesquisarId");
     }
-
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public boolean isNoturno() {
-        return noturno;
-    }
-
-    public void setNoturno(boolean noturno) {
-        this.noturno = noturno;
-    }
-
-    public boolean isVespertino() {
-        return vespertino;
-    }
-
-    public void setVespertino(boolean vespertino) {
-        this.vespertino = vespertino;
-    }
-
-    public boolean isMatutino() {
-        return matutino;
-    }
-
-    public void setMatutino(boolean matutino) {
-        this.matutino = matutino;
-    }
-    
-    
-    
-    
 }

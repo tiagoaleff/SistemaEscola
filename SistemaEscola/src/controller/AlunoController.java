@@ -5,10 +5,25 @@
  */
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import views.AlunoInterface;
+
+
+
 /**
  *
  * @author comp1
  */
-public class AlunoController {
+public class AlunoController  {
+    private AlunoInterface frame;
+    
+    public AlunoController(AlunoInterface frame){
+        this.frame = frame;
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+    
+    }
     
 }

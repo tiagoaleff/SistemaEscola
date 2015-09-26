@@ -5,8 +5,8 @@
  */
 package views;
 
-import controller.CursoAction;
 import controller.CursoController;
+import object.Curso;
 
 /**
  *
@@ -14,14 +14,14 @@ import controller.CursoController;
  */
 public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     
-    CursoAction action = new CursoAction(this);
+    CursoController action = new CursoController(this);
     
 
     public CursoJInternalFrame() {
         initComponents();
     }
   
-    public CursoController atualizarDados (){
+    public Curso atualizarDados (){
         
         String nome = nomeJTextField.getText();
         String professorResponsavel = professorJTextField.getText();
@@ -31,8 +31,8 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         boolean vespertino = vespertinoJCheckBox.isSelected();
         boolean matutino = matutinoJCheckBox.isSelected();
                
-        CursoController dados = 
-                new CursoController(nome,
+        Curso dados = 
+                new Curso(nome,
                                     professorResponsavel,
                                     duracao,
                                     descricao,
