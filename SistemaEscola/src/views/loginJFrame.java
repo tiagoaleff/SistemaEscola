@@ -8,11 +8,8 @@ package views;
 
 
 
-<<<<<<< HEAD
-import controller.LoginController;
-=======
+
 import controller.Login_Controller;
->>>>>>> origin/master
 import object.Login;
 /**
  *
@@ -28,18 +25,10 @@ public class loginJFrame extends javax.swing.JFrame {
         initComponents();
     }
        
-<<<<<<< HEAD
-    LoginController action = new LoginController(this);
-=======
-    Login_Controller action = new Login_Controller(this);
->>>>>>> origin/master
-        
-<<<<<<< HEAD
-    public Login createLoginController(){
-=======
+
+    Login_Controller action = new Login_Controller(this);  
+
     public Login createLogin(){
->>>>>>> origin/master
-        
         String user = userJTextField.getText();
         String password = new String(passwordJField.getPassword());
         
