@@ -9,12 +9,12 @@ package views;
  *
  * @author Tiago Aleff
  */
-public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFrame {
+public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastrarDisciplinasJInternalFrame
      */
-    public CadastrarDisciplinasJInternalFrame() {
+    public DisciplinasJInternalFrame() {
         initComponents();
     }
 
@@ -38,7 +38,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
         totalAlunosJTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         totalHorasJTextField = new javax.swing.JTextField();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        disciplinaPesquisaJToggleButton = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -49,10 +49,10 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
         especializacaoJTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         rgJTextField = new javax.swing.JTextField();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        professorPesquisaJToggleButton = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaJList = new javax.swing.JList();
+        listaResultadoJList = new javax.swing.JList();
         salvarJToggleButton = new javax.swing.JToggleButton();
         cancelarJToggleButton = new javax.swing.JToggleButton();
 
@@ -92,10 +92,10 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
             }
         });
 
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                disciplinaPesquisaJToggleButtonActionPerformed(evt);
             }
         });
 
@@ -116,7 +116,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(disciplinaPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(codigoJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(creditosJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +133,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(disciplinaPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -152,7 +152,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(totalAlunosJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -174,10 +174,10 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
 
         jLabel11.setText("Especialização:");
 
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        professorPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        professorPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                professorPesquisaJToggleButtonActionPerformed(evt);
             }
         });
 
@@ -201,7 +201,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                             .addComponent(nomeProfessorJTextField)
                             .addComponent(rgJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(professorPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
@@ -212,7 +212,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(nomeProfessorJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(professorPesquisaJToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -228,13 +228,13 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(especializacaoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Procurar"));
 
-        listaJList.setBorder(javax.swing.BorderFactory.createTitledBorder("Clique para Selecionar"));
-        jScrollPane1.setViewportView(listaJList);
+        listaResultadoJList.setBorder(javax.swing.BorderFactory.createTitledBorder("Clique para Selecionar"));
+        jScrollPane1.setViewportView(listaResultadoJList);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -294,9 +294,9 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(23, 23, 23)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(39, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -332,13 +332,13 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarJToggleButtonActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void disciplinaPesquisaJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaPesquisaJToggleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_disciplinaPesquisaJToggleButtonActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void professorPesquisaJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorPesquisaJToggleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_professorPesquisaJToggleButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -346,6 +346,7 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
     private javax.swing.JTextField codigoJTextField1;
     private javax.swing.JTextField cpfJTextField;
     private javax.swing.JTextField creditosJTextField;
+    private javax.swing.JToggleButton disciplinaPesquisaJToggleButton;
     private javax.swing.JTextField especializacaoJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -361,11 +362,10 @@ public class CadastrarDisciplinasJInternalFrame extends javax.swing.JInternalFra
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JList listaJList;
+    private javax.swing.JList listaResultadoJList;
     private javax.swing.JTextField nomeJTextField;
     private javax.swing.JTextField nomeProfessorJTextField;
+    private javax.swing.JToggleButton professorPesquisaJToggleButton;
     private javax.swing.JTextField rgJTextField;
     private javax.swing.JToggleButton salvarJToggleButton;
     private javax.swing.JTextField totalAlunosJTextField;

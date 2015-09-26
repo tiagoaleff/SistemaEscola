@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import views.AlunoInterface;
-import views.CadastrarDisciplinasJInternalFrame;
+import views.DisciplinasJInternalFrame;
 import views.CursoJInternalFrame;
 import views.FaltasJInternalFrame;
 import views.GerenciarNotasJInternalFrame;
@@ -87,7 +87,7 @@ public class PrincipalController implements ActionListener{
     }
 
     private void criarFrameDisciplina() {
-        frame.getjDesktopPane1().add(new CadastrarDisciplinasJInternalFrame()).setVisible(true);
+        frame.getjDesktopPane1().add(new DisciplinasJInternalFrame()).setVisible(true);
     }
 
     private void criarFrameProfessor() {

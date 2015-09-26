@@ -1,14 +1,29 @@
 package views;
 
 import controller.ProfessorController;
+import object.Professor;
 
 public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
+    
+    private ProfessorController professorController = 
+            new ProfessorController(this);
+    
+    public Professor getProfessor(){
+        
+        Professor r = new Professor(this);                       
+        retorn r;
+    }
+    
+    
+    
     public ProfessorJInternalFrame() {
         initComponents();
     }
     
-
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -21,10 +36,10 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         cpfJTextField = new javax.swing.JTextField();
         rgJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox();
         jTextField8 = new javax.swing.JTextField();
+        disciplinaPesquisaJToggleButton = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -84,8 +99,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Nascimento:");
 
-        jButton1.setText("P");
-
         jTextField4.setText("Dia");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro (Jan)", "Fevereiro (Fev)", "Março (Mar)", "Abril (Abr)", "Maio (Mai)", "Junho (Jun)", "Julho (Jul)", "Agosto (Ago)", "Setembro (Set)", "Outubro (Out)", "Novembro (Nov)", "Desembro (Des)" }));
@@ -94,6 +107,13 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
+            }
+        });
+
+        disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disciplinaPesquisaJToggleButtonActionPerformed(evt);
             }
         });
 
@@ -122,26 +142,23 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                             .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rgJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cpfJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(52, 52, 52)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 76, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(disciplinaPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nome)
-                            .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cpfJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CPF)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton1)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nome)
+                        .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(disciplinaPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpfJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CPF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RG)
@@ -295,11 +312,15 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         );
 
         jButton3.setText("Salvar");
+        /*
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        */
+        jButton3.addActionLister();
+        jButton3.setActionCommand("salvar");
 
         jToggleButton1.setText("Cancelar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -504,6 +525,10 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void disciplinaPesquisaJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaPesquisaJToggleButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_disciplinaPesquisaJToggleButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CPF;
@@ -512,12 +537,12 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField celularJTextField;
     private javax.swing.JTextField cidadeJTextField;
     private javax.swing.JTextField cpfJTextField;
+    private javax.swing.JToggleButton disciplinaPesquisaJToggleButton;
     private javax.swing.JTextField doutoradoJTextField;
     private javax.swing.JTextField emailJTextField;
     private javax.swing.JTextField especializacaoJTextField;
     private javax.swing.JComboBox estadoJComboBox;
     private javax.swing.JComboBox graduacaoComboBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
