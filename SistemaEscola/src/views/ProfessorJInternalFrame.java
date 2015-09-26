@@ -9,11 +9,12 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private ProfessorController professorController = 
             new ProfessorController(this);
     
-    public Professor getProfessor(){
+    /*public Professor getProfessor(){
         
         Professor r = new Professor(this);                       
         retorn r;
     }
+    */
     
     
     
@@ -319,7 +320,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
             }
         });
         */
-        jButton3.addActionLister();
+        //jButton3.addActionLister();
         jButton3.setActionCommand("salvar");
 
         jToggleButton1.setText("Cancelar");
