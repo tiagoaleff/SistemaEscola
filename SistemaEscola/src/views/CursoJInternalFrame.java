@@ -78,6 +78,10 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Curso Adicionar Editar");
+
         cursoJLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         cursoJLabel.setText("Curso");
 
@@ -98,10 +102,12 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         noturnoJCheckBox.setText("Noturno");
 
         searchNomeJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        searchNomeJButton.setToolTipText("Insira uma id e click neste botão para pesquisar um curso pelo nome e poder edita-lo");
         searchNomeJButton.addActionListener(action);
         searchNomeJButton.setActionCommand("pesquisarNome");
 
         searchProfessorJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        searchProfessorJButton.setToolTipText("Insira um professor e click neste botão para pesquisar um curso por professor e poder edita-lo");
         searchProfessorJButton.addActionListener(action);
         searchProfessorJButton.setActionCommand("pesquisarProfessor");
 
@@ -184,21 +190,25 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         );
 
         salvarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
+        salvarJButton.setToolTipText("Click aqui para salvar as informações do formulário");
         salvarJButton.addActionListener(action);
         salvarJButton.setActionCommand("salvar");
 
         limparJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear.png"))); // NOI18N
+        limparJButton.setToolTipText("Click aqui para limpar todos os campos do cadastro");
         limparJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limparJButton.addActionListener(action);
         limparJButton.setActionCommand("limpar");
 
         cancelarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        cancelarJButton.setToolTipText("Click aqui para fechar a Janela e cancelar as alterações");
         cancelarJButton.addActionListener(action);
         cancelarJButton.setActionCommand("cancelar");
 
         idJLabel.setText("ID");
 
         searchIdJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        searchIdJButton.setToolTipText("Insira uma id e click neste botão para pesquisar um curso pela id e poder edita-lo");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado da pesquisa"));
 

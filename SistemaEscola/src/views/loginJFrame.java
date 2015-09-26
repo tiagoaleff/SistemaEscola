@@ -8,6 +8,7 @@ package views;
 
 
 
+
 import controller.Login_Controller;
 import object.Login;
 /**
@@ -24,10 +25,10 @@ public class loginJFrame extends javax.swing.JFrame {
         initComponents();
     }
        
-    Login_Controller action = new Login_Controller(this);
-        
+
+    Login_Controller action = new Login_Controller(this);  
+
     public Login createLogin(){
-        
         String user = userJTextField.getText();
         String password = new String(passwordJField.getPassword());
         
@@ -67,7 +68,7 @@ public class loginJFrame extends javax.swing.JFrame {
         loginJButton.addActionListener(action);
         loginJButton.setActionCommand("entrar");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo sistema escola.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo sistema escola- transparente.png"))); // NOI18N
 
         versionJLabel.setText("Version 1.0.0.0.1");
 
@@ -105,14 +106,14 @@ public class loginJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(versionJLabel)
-                                .addGap(137, 137, 137)))
+                                .addGap(147, 147, 147)
+                                .addComponent(versionJLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(userJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordJLabel)
