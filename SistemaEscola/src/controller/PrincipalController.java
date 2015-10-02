@@ -14,7 +14,7 @@ import views.DisciplinasJInternalFrame;
 import views.CursoJInternalFrame;
 import views.FaltasJInternalFrame;
 import views.GerenciarNotasJInternalFrame;
-import views.NotaInterface;
+import views.NotaJInternalFrame;
 import views.ProfessorJInternalFrame;
 import views.principalJFrame;
 
@@ -83,7 +83,7 @@ public class PrincipalController implements ActionListener{
     }
 
     private void criarFrameNotas() {
-       frame.getjDesktopPane1().add(new NotaInterface()).setVisible(true);
+       frame.getjDesktopPane1().add(new NotaJInternalFrame()).setVisible(true);
     }
 
     private void criarFrameDisciplina() {

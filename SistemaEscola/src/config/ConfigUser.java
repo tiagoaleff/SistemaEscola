@@ -12,8 +12,8 @@ package config;
  */
 public class ConfigUser {
 
-    private String user = "Admin";
-    private String password = "1234";
+    private String user = "";
+    private String password = "";
 
     public String getUser() {
         return user;
