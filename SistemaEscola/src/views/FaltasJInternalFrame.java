@@ -71,7 +71,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         cancelarjButton2 = new javax.swing.JButton();
         clearJButton1 = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Faltas"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setClosable(true);
         setTitle("Inserir Faltas");
 
@@ -127,7 +127,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(nomeCursojTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(procurarjToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(146, 146, 146)
@@ -342,7 +342,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

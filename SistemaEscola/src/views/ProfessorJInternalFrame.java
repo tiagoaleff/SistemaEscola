@@ -77,7 +77,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         clearJButton1 = new javax.swing.JButton();
 
         setClosable(true);
-        setResizable(true);
         setTitle("Perfil Professor");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
