@@ -51,7 +51,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         nomeDisciplinajTextField2 = new javax.swing.JTextField();
-        jToggleButton5 = new javax.swing.JToggleButton();
+        procurarDisciplinaToggleButton5 = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         procurarDisciplinajList2 = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -94,11 +94,16 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         procurarjToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        procurarjToggleButton4.addActionListener(faltas);
+        procurarjToggleButton4.setActionCommand("procurarCurso");
+
+        /*
         procurarjToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 procurarjToggleButton4ActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,12 +154,17 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        procurarDisciplinaToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        procurarDisciplinaToggleButton5.addActionListener(falta);
+        procurarDisciplinaToggleButton5.setActionCommand("procurarDisciplina");
+
+        /*
+        procurarDisciplinaToggleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                procurarDisciplinaToggleButton5ActionPerformed(evt);
             }
         });
+        */
 
         procurarDisciplinajList2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jScrollPane2.setViewportView(procurarDisciplinajList2);
@@ -171,7 +181,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                     .addComponent(nomeDisciplinajTextField2))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(procurarDisciplinaToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -179,7 +189,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(procurarDisciplinaToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(nomeDisciplinajTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -231,27 +241,31 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(terceiraAulajCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(159, 159, 159))
-                            .addComponent(segundaAulajCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(quartaAulajCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(primeiraAulajCheckBox1)
-                            .addComponent(diajTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mesesjComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(anojTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(diajTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mesesjComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(anojTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(243, 243, 243))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(primeiraAulajCheckBox1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(segundaAulajCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(quartaAulajCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(terceiraAulajCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,13 +288,21 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         );
 
         salvarjButton1.setText("Salvar");
+        salvarjButton1.addActionListener(faltas);
+        salvarjButton1.setActionCommand("salvar");
+
+        /*
 
         cancelarjButton2.setText("Cancelar");
+        cancelarjButton2.addActionListener(faltas);
+        cancelarjButton2.setActionCommand("cancelar");
+        /*
         cancelarjButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarjButton2ActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,6 +349,8 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        */
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -354,9 +378,9 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_procurarjToggleButton4ActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+    private void procurarDisciplinaToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarDisciplinaToggleButton5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    }//GEN-LAST:event_procurarDisciplinaToggleButton5ActionPerformed
 
     private void quartaAulajCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quartaAulajCheckBox4ActionPerformed
         // TODO add your handling code here:
@@ -383,11 +407,11 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JComboBox mesesjComboBox3;
     private javax.swing.JTextField nomeCursojTextField1;
     private javax.swing.JTextField nomeDisciplinajTextField2;
     private javax.swing.JCheckBox primeiraAulajCheckBox1;
+    private javax.swing.JToggleButton procurarDisciplinaToggleButton5;
     private javax.swing.JList procurarDisciplinajList2;
     private javax.swing.JToggleButton procurarjToggleButton4;
     private javax.swing.JCheckBox quartaAulajCheckBox4;
