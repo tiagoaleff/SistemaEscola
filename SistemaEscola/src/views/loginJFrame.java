@@ -57,6 +57,7 @@ public class loginJFrame extends javax.swing.JFrame {
         setTitle("Login");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         userJLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         userJLabel.setText("Usuário:");
