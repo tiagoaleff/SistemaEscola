@@ -48,6 +48,8 @@ public class principalJFrame extends javax.swing.JFrame {
         gerenciarFaltasJMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Escola");
+        setPreferredSize(getMaximumSize());
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 255));
         jDesktopPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -127,7 +129,7 @@ public class principalJFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        diarioAcademicoJMenu.setText("Diario academico");
+        diarioAcademicoJMenu.setText("Diário acadêmico");
 
         gerenciarNotasJMenuItem.setText("Gerenciar Notas");
         gerenciarNotasJMenuItem.addActionListener(action);
