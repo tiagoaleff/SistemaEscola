@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Faltas {
     
+    
     /*informações do curso*/
     private String cursoNome;
     private ArrayList<String> cursoProcura  = new ArrayList();
