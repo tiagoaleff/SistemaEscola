@@ -32,6 +32,9 @@ public class ProfessorController implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Cancelado com sucesso!!!!");
                 frame.dispose();
                 break;
+            case "clearJButton1":
+                JOptionPane.showMessageDialog(null, "Limpo!!!!");
+                break;
         }
     }
 }

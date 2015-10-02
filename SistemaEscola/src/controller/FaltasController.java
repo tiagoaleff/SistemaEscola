@@ -26,6 +26,7 @@ public class FaltasController implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Disciplina pesquisada com sucesso!");
                 break;
             /* fim -- pesquisar*/
+                
             /*Botoes de Salvar e concelar*/
             case "salvarjButton1":
                 JOptionPane.showMessageDialog(null, "Salva com sucesso!");
@@ -33,6 +34,9 @@ public class FaltasController implements ActionListener {
             case "cancelarjButton2":
                 JOptionPane.showMessageDialog(null, "Cancelado com sucesso!");
                 frame.dispose();
+                break;
+            case "clearJButton1":
+                JOptionPane.showMessageDialog(null, "Limpo!");
                 break;
             /*fim de Salvar e concelar*/
                 

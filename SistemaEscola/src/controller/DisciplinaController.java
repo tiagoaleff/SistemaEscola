@@ -35,6 +35,10 @@ public class DisciplinaController implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Cancelado!!!");
                 frame.dispose();
                 break;
+            case "clearJButton1":
+                JOptionPane.showMessageDialog(null, "Limpado!!!");
+                break;
+                
         }
     }
 }
