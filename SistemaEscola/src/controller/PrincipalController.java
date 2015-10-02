@@ -9,7 +9,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import views.AlunoInterface;
+import views.AlunoJInternalFrame;
 import views.DisciplinasJInternalFrame;
 import views.CursoJInternalFrame;
 import views.FaltasJInternalFrame;
@@ -96,6 +96,6 @@ public class PrincipalController implements ActionListener{
     }
 
     private void criarFrameAluno() {
-        frame.getjDesktopPane1().add(new AlunoInterface()).setVisible(true);
+        frame.getjDesktopPane1().add(new AlunoJInternalFrame()).setVisible(true);
     }   
 }
