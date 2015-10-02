@@ -5,6 +5,9 @@
  */
 package views;
 
+import controller.DisciplinaController;
+import object.Disciplina;
+
 /**
  *
  * @author Tiago Aleff
@@ -14,10 +17,20 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     /**
      * Creates new form CadastrarDisciplinasJInternalFrame
      */
+    
+    private DisciplinaController disciplinas = new DisciplinaController(this);
+    
+    public Disciplina getDisciplina(){
+        
+        Disciplina disciplina = new Disciplina();
+        disciplina.setNomeDisciplina(nomeJTextField.getText());
+        return disciplina;        
+    }
+           
     public DisciplinasJInternalFrame() {
         initComponents();
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,11 +106,16 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        disciplinaPesquisaJToggleButton.addActionListener(disciplinas);
+        disciplinaPesquisaJToggleButton.setActionCommand("pesquisarDisciplina");
+
+        /*
         disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disciplinaPesquisaJToggleButtonActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,11 +193,15 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         jLabel11.setText("Especialização:");
 
         professorPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        professorPesquisaJToggleButton.addActionListener(disciplinas);
+        professorPesquisaJToggleButton.setActionCommand("pesquisarProfessor");
+        /*
         professorPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 professorPesquisaJToggleButtonActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -254,13 +276,19 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         );
 
         salvarJToggleButton.setText("Salvar");
+        salvarJToggleButton.addActionListener(disciplinas);
+        salvarJToggleButton.setActionCommand("salvarDisciplina");
 
         cancelarJToggleButton.setText("Cancelar");
+        cancelarJToggleButton.setActionCommand("cancelarDisciplina");
+        cancelarJToggleButton.addActionListener(disciplinas);
+        /*
         cancelarJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarJToggleButtonActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

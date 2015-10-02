@@ -22,10 +22,8 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     public Faltas getFaltas(){
     
         Faltas faltas = new Faltas();
-        faltas.setCursoNome(faltas.setCursoNome(nomeCursojTextField1));
-        
-        return faltas;
-        
+        faltas.setCursoNome(nomeCursojTextField1.getName());
+        return faltas;        
     }
     
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -207,6 +207,10 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disciplinaPesquisaJToggleButtonActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="disciplinaPesquisaJToggleButton.addActionListener(disciplinas);&#xa;disciplinaPesquisaJToggleButton.setActionCommand(&quot;pesquisarDisciplina&quot;);&#xa;&#xa;/*"/>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -332,6 +336,10 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="professorPesquisaJToggleButtonActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="professorPesquisaJToggleButton.addActionListener(disciplinas);&#xa;professorPesquisaJToggleButton.setActionCommand(&quot;pesquisarProfessor&quot;);&#xa;/*"/>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -392,6 +400,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarJToggleButton.addActionListener(disciplinas);&#xa;salvarJToggleButton.setActionCommand(&quot;salvarDisciplina&quot;);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JToggleButton" name="cancelarJToggleButton">
       <Properties>
@@ -400,6 +411,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarJToggleButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarJToggleButton.setActionCommand(&quot;cancelarDisciplina&quot;);&#xa;cancelarJToggleButton.addActionListener(disciplinas);&#xa;/*"/>
+        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

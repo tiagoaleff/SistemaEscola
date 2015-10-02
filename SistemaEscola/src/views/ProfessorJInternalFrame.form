@@ -516,7 +516,7 @@
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="/*"/>
-        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/&#xa;salvarJButton.addActionListener(professorController);&#xa;salvarJButton.setActionCommand(&quot;salvar&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/&#xa;salvarJButton.addActionListener(professorController);&#xa;salvarJButton.setActionCommand(&quot;salvarProfessor&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JToggleButton" name="cancelarJToggleButton">

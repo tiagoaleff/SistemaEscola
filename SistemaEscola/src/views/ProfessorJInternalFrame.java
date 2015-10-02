@@ -329,7 +329,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         });
         */
         salvarJButton.addActionListener(professorController);
-        salvarJButton.setActionCommand("salvar");
+        salvarJButton.setActionCommand("salvarProfessor");
 
         cancelarJToggleButton.setText("Cancelar");
         /*
