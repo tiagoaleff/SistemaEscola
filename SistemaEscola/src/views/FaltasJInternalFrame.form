@@ -176,6 +176,10 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//cursoProcurajList4.addActionListener(faltas);&#xa;//cursoProcurajList4.setActionCommand(&quot;cursoProcurajList4&quot;);&#xa;/*"/>
+                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -199,7 +203,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="procurarjToggleButton4ActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="procurarjToggleButton4.addActionListener(faltas);&#xa;procurarjToggleButton4.setActionCommand(&quot;procurarCurso&quot;);&#xa;&#xa;&#xa;&#xa;/*"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="procurarjToggleButton4.addActionListener(faltas);&#xa;procurarjToggleButton4.setActionCommand(&quot;procurarjToggleButton4&quot;);&#xa;&#xa;&#xa;&#xa;/*"/>
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
           </AuxValues>
         </Component>
@@ -270,7 +274,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="procurarDisciplinaToggleButton5ActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="procurarDisciplinaToggleButton5.addActionListener(falta);&#xa;procurarDisciplinaToggleButton5.setActionCommand(&quot;procurarDisciplina&quot;);&#xa;&#xa;/*"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="procurarDisciplinaToggleButton5.addActionListener(faltas);&#xa;procurarDisciplinaToggleButton5.setActionCommand(&quot;procurarDisciplinaToggleButton5&quot;);&#xa;&#xa;/*"/>
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
           </AuxValues>
         </Component>
@@ -459,8 +463,7 @@
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="*/"/>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarjButton1.addActionListener(faltas);&#xa;salvarjButton1.setActionCommand(&quot;salvar&quot;);&#xa;&#xa;/*"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarjButton1.addActionListener(faltas);&#xa;salvarjButton1.setActionCommand(&quot;salvarjButton1&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="cancelarjButton2">
@@ -471,7 +474,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarjButton2ActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarjButton2.addActionListener(faltas);&#xa;cancelarjButton2.setActionCommand(&quot;cancelar&quot;);&#xa;/*"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarjButton2.addActionListener(faltas);&#xa;cancelarjButton2.setActionCommand(&quot;cancelarjButton2&quot;);&#xa;/*"/>
         <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
       </AuxValues>
     </Component>

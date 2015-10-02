@@ -208,7 +208,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disciplinaPesquisaJToggleButtonActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="disciplinaPesquisaJToggleButton.addActionListener(disciplinas);&#xa;disciplinaPesquisaJToggleButton.setActionCommand(&quot;pesquisarDisciplina&quot;);&#xa;&#xa;/*"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="disciplinaPesquisaJToggleButton.addActionListener(disciplinas);&#xa;disciplinaPesquisaJToggleButton.setActionCommand(&quot;disciplinaPesquisaJToggleButton&quot;);&#xa;&#xa;/*"/>
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
           </AuxValues>
         </Component>
@@ -337,7 +337,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="professorPesquisaJToggleButtonActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="professorPesquisaJToggleButton.addActionListener(disciplinas);&#xa;professorPesquisaJToggleButton.setActionCommand(&quot;pesquisarProfessor&quot;);&#xa;/*"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="professorPesquisaJToggleButton.addActionListener(disciplinas);&#xa;professorPesquisaJToggleButton.setActionCommand(&quot;professorPesquisaJToggleButton&quot;);&#xa;/*"/>
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
           </AuxValues>
         </Component>
@@ -401,7 +401,7 @@
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarJToggleButton.addActionListener(disciplinas);&#xa;salvarJToggleButton.setActionCommand(&quot;salvarDisciplina&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="salvarJToggleButton.addActionListener(disciplinas);&#xa;salvarJToggleButton.setActionCommand(&quot;salvarJToggleButton&quot;);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JToggleButton" name="cancelarJToggleButton">
@@ -412,7 +412,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarJToggleButtonActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarJToggleButton.setActionCommand(&quot;cancelarDisciplina&quot;);&#xa;cancelarJToggleButton.addActionListener(disciplinas);&#xa;/*"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarJToggleButton.setActionCommand(&quot;cancelarJToggleButton&quot;);&#xa;cancelarJToggleButton.addActionListener(disciplinas);&#xa;/*"/>
         <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>
       </AuxValues>
     </Component>

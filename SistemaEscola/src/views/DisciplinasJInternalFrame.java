@@ -29,6 +29,9 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
            
     public DisciplinasJInternalFrame() {
         initComponents();
+        this.setClosable(true);
+        this.setIconifiable(true);
+        
     }
         
     /**
@@ -107,7 +110,7 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
 
         disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
         disciplinaPesquisaJToggleButton.addActionListener(disciplinas);
-        disciplinaPesquisaJToggleButton.setActionCommand("pesquisarDisciplina");
+        disciplinaPesquisaJToggleButton.setActionCommand("disciplinaPesquisaJToggleButton");
 
         /*
         disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +197,7 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
 
         professorPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
         professorPesquisaJToggleButton.addActionListener(disciplinas);
-        professorPesquisaJToggleButton.setActionCommand("pesquisarProfessor");
+        professorPesquisaJToggleButton.setActionCommand("professorPesquisaJToggleButton");
         /*
         professorPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,10 +280,10 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
 
         salvarJToggleButton.setText("Salvar");
         salvarJToggleButton.addActionListener(disciplinas);
-        salvarJToggleButton.setActionCommand("salvarDisciplina");
+        salvarJToggleButton.setActionCommand("salvarJToggleButton");
 
         cancelarJToggleButton.setText("Cancelar");
-        cancelarJToggleButton.setActionCommand("cancelarDisciplina");
+        cancelarJToggleButton.setActionCommand("cancelarJToggleButton");
         cancelarJToggleButton.addActionListener(disciplinas);
         /*
         cancelarJToggleButton.addActionListener(new java.awt.event.ActionListener() {

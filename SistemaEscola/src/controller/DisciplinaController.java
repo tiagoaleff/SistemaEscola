@@ -10,15 +10,31 @@ import views.DisciplinasJInternalFrame;
  *
  * @author Tiago Aleff
  */
-public class DisciplinaController implements ActionListener{
-    
+public class DisciplinaController implements ActionListener {
+
     private DisciplinasJInternalFrame frame;
-    
-    public DisciplinaController(DisciplinasJInternalFrame frame){
+
+    public DisciplinaController(DisciplinasJInternalFrame frame) {
         this.frame = frame;
     }
+
     @Override
-    public void actionPerformed(ActionEvent e){
-        JOptionPane.showMessageDialog(null, "Entroue");
+    public void actionPerformed(ActionEvent e) {
+        //JOptionPane.showMessageDialog(null, "Entroue");
+        switch (e.getActionCommand()) {
+            case "disciplinaPesquisaJToggleButton":
+                JOptionPane.showMessageDialog(null, "Disciplinas pesquisadas com Sucesso!!!");
+                break;
+            case "professorPesquisaJToggleButton":
+                JOptionPane.showMessageDialog(null, "Professores pesquisados com Sucesso!!!");
+                break;
+            case "salvarJToggleButton":
+                JOptionPane.showMessageDialog(null, "Salva com sucesso!!!");
+                break;
+            case "cancelarJToggleButton":
+                JOptionPane.showMessageDialog(null, "Cancelado!!!");
+                frame.dispose();
+                break;
+        }
     }
 }

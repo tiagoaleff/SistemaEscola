@@ -29,6 +29,8 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     
     public FaltasJInternalFrame() {
         initComponents();
+        this.setClosable(true);
+        this.setIconifiable(true);
     }
 
     /**
@@ -84,6 +86,10 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         cursoProcurajList4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        //cursoProcurajList4.addActionListener(faltas);
+        //cursoProcurajList4.setActionCommand("cursoProcurajList4");
+        /*
+        */
         jScrollPane4.setViewportView(cursoProcurajList4);
 
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
@@ -95,7 +101,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
 
         procurarjToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
         procurarjToggleButton4.addActionListener(faltas);
-        procurarjToggleButton4.setActionCommand("procurarCurso");
+        procurarjToggleButton4.setActionCommand("procurarjToggleButton4");
 
         /*
         procurarjToggleButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -155,8 +161,8 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         procurarDisciplinaToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
-        procurarDisciplinaToggleButton5.addActionListener(falta);
-        procurarDisciplinaToggleButton5.setActionCommand("procurarDisciplina");
+        procurarDisciplinaToggleButton5.addActionListener(faltas);
+        procurarDisciplinaToggleButton5.setActionCommand("procurarDisciplinaToggleButton5");
 
         /*
         procurarDisciplinaToggleButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -289,13 +295,11 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
 
         salvarjButton1.setText("Salvar");
         salvarjButton1.addActionListener(faltas);
-        salvarjButton1.setActionCommand("salvar");
-
-        /*
+        salvarjButton1.setActionCommand("salvarjButton1");
 
         cancelarjButton2.setText("Cancelar");
         cancelarjButton2.addActionListener(faltas);
-        cancelarjButton2.setActionCommand("cancelar");
+        cancelarjButton2.setActionCommand("cancelarjButton2");
         /*
         cancelarjButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,8 +352,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(cancelarjButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        */
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

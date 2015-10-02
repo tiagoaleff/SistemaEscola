@@ -9,21 +9,29 @@ import views.ProfessorJInternalFrame;
  *
  * @author Tiago Aleff
  */
-public class ProfessorController implements ActionListener{
-    
-    
+public class ProfessorController implements ActionListener {
+
     private ProfessorJInternalFrame frame;
-    
-    public ProfessorController(ProfessorJInternalFrame frame){
-        
+
+    public ProfessorController(ProfessorJInternalFrame frame) {
+
         this.frame = frame;
     }
-    
-    
-    @Override
-    public void actionPerformed(ActionEvent e){
 
-        
-        JOptionPane.showMessageDialog(null, "Entrouuu!!!");
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        switch (e.getActionCommand()) {
+            case "disciplinaPesquisaJToggleButton":
+                JOptionPane.showMessageDialog(null, "Pesquisa de disciplina realizada com sucesso!!!!");
+                break;
+            case "salvarJButton":
+                JOptionPane.showMessageDialog(null, "Salva com sucesso!!!!");
+                break;
+            case "cancelarJToggleButton":
+                JOptionPane.showMessageDialog(null, "Cancelado com sucesso!!!!");
+                frame.dispose();
+                break;
+        }
     }
 }

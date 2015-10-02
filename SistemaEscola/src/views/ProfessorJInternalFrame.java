@@ -5,25 +5,26 @@ import object.Professor;
 
 public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
-    
-    private ProfessorController professorController = 
-            new ProfessorController(this);
-    
-    public Professor getProfessor(){
-        
-        Professor professor = new Professor();                       
-        
+    private ProfessorController professorController
+            = new ProfessorController(this);
+
+    public Professor getProfessor() {
+
+        Professor professor = new Professor();
+
         /*setando informações do professor*/
         professor.setNomeProfessor(nomeJTextField.getText());
         /*professor.setCPF(CPF.getName());
-        professor.getNascimento()*/
+         professor.getNascimento()*/
         return professor;
     }
-                 
+
     public ProfessorJInternalFrame() {
         initComponents();
+        this.setClosable(true);
+        this.setIconifiable(true);
     }
-          
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -120,7 +121,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         */
 
         disciplinaPesquisaJToggleButton.addActionListener(professorController);
-        disciplinaPesquisaJToggleButton.setActionCommand("pesquisarProfessor");
+        disciplinaPesquisaJToggleButton.setActionCommand("disciplinaPesquisaJToggleButton");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,7 +169,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RG)
                     .addComponent(rgJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -329,7 +329,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         });
         */
         salvarJButton.addActionListener(professorController);
-        salvarJButton.setActionCommand("salvarProfessor");
+        salvarJButton.setActionCommand("salvarJButton");
 
         cancelarJToggleButton.setText("Cancelar");
         /*
@@ -340,7 +340,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         });
         */
         cancelarJToggleButton.addActionListener(professorController);
-        cancelarJToggleButton.setActionCommand("cancelar");
+        cancelarJToggleButton.setActionCommand("cancelarJToggleButton");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
