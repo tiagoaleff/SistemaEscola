@@ -5,6 +5,9 @@
  */
 package views;
 
+import controller.DisciplinaController;
+import object.Disciplina;
+
 /**
  *
  * @author Tiago Aleff
@@ -14,10 +17,23 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     /**
      * Creates new form CadastrarDisciplinasJInternalFrame
      */
+    
+    private DisciplinaController disciplinas = new DisciplinaController(this);
+    
+    public Disciplina getDisciplina(){
+        
+        Disciplina disciplina = new Disciplina();
+        disciplina.setNomeDisciplina(nomeJTextField.getText());
+        return disciplina;        
+    }
+           
     public DisciplinasJInternalFrame() {
         initComponents();
+        this.setClosable(true);
+        this.setIconifiable(true);
+        
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +71,9 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         listaResultadoJList = new javax.swing.JList();
         salvarJToggleButton = new javax.swing.JToggleButton();
         cancelarJToggleButton = new javax.swing.JToggleButton();
+        clearJButton1 = new javax.swing.JButton();
+
+        setTitle("Disciplina");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações da disciplinas"));
 
@@ -93,11 +112,16 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        disciplinaPesquisaJToggleButton.addActionListener(disciplinas);
+        disciplinaPesquisaJToggleButton.setActionCommand("disciplinaPesquisaJToggleButton");
+
+        /*
         disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disciplinaPesquisaJToggleButtonActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,11 +199,15 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         jLabel11.setText("Especialização:");
 
         professorPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        professorPesquisaJToggleButton.addActionListener(disciplinas);
+        professorPesquisaJToggleButton.setActionCommand("professorPesquisaJToggleButton");
+        /*
         professorPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 professorPesquisaJToggleButtonActionPerformed(evt);
             }
         });
+        */
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -253,14 +281,29 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        salvarJToggleButton.setText("Salvar");
+        salvarJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
+        salvarJToggleButton.addActionListener(disciplinas);
+        salvarJToggleButton.setActionCommand("salvarJToggleButton");
+        salvarJToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarJToggleButtonActionPerformed(evt);
+            }
+        });
 
-        cancelarJToggleButton.setText("Cancelar");
+        cancelarJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        cancelarJToggleButton.setActionCommand("cancelarJToggleButton");
+        cancelarJToggleButton.addActionListener(disciplinas);
+        /*
         cancelarJToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarJToggleButtonActionPerformed(evt);
             }
         });
+        */
+
+        clearJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear.png"))); // NOI18N
+        clearJButton1.addActionListener(disciplinas);
+        clearJButton1.setActionCommand("clearJButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,7 +322,9 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(salvarJToggleButton)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelarJToggleButton)
                         .addGap(29, 29, 29))))
         );
@@ -289,20 +334,26 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(salvarJToggleButton)
                             .addComponent(cancelarJToggleButton))
-                        .addGap(20, 20, 20))))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(15, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(clearJButton1)
+                                .addGap(20, 20, 20))))))
         );
 
         pack();
@@ -340,9 +391,14 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_professorPesquisaJToggleButtonActionPerformed
 
+    private void salvarJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJToggleButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salvarJToggleButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton cancelarJToggleButton;
+    private javax.swing.JButton clearJButton1;
     private javax.swing.JTextField codigoJTextField1;
     private javax.swing.JTextField cpfJTextField;
     private javax.swing.JTextField creditosJTextField;
