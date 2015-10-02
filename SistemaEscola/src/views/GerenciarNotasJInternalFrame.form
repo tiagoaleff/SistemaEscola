@@ -42,8 +42,8 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="buscaridJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="nomeJButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -82,10 +82,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton2" linkSize="2" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="nomeJButton" linkSize="2" min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton1" linkSize="2" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="buscaridJButton" linkSize="2" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -142,21 +142,27 @@
         <Property name="text" type="java.lang.String" value="Insira a id ou o nome do aluno para pesquisar por um aluno, selecione o aluno na se&#xe7;&#xe3;o alunos para consultar suas notas:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="buscaridJButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/search_black.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="click para buscar um aluno pela id"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buscaridJButton.addActionListener(action);&#xa;buscaridJButton.setActionCommand(&quot;buscar_id&quot;);"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="nomeJButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/search_black.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="click para buscar um aluno pelo nome"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="nomeJButton.addActionListener(action);&#xa;nomeJButton.setActionCommand(&quot;buscar_nome&quot;);"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
