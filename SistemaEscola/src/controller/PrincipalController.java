@@ -13,6 +13,7 @@ import views.AlunoInterface;
 import views.DisciplinasJInternalFrame;
 import views.CursoJInternalFrame;
 import views.FaltasJInternalFrame;
+import views.GerenciadorFaltasJInternalFrame;
 import views.GerenciarNotasJInternalFrame;
 import views.NotaJInternalFrame;
 import views.ProfessorJInternalFrame;
@@ -75,7 +76,7 @@ public class PrincipalController implements ActionListener{
     }
 
     private void criarFrameGerenciarFaltas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        frame.getjDesktopPane1().add(new GerenciadorFaltasJInternalFrame()).setVisible(true);
     }
 
     private void criarFrameFaltas() {

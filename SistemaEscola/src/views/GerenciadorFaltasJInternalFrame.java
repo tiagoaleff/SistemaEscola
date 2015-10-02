@@ -9,12 +9,12 @@ package views;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class GerenciadorFaltas extends javax.swing.JInternalFrame {
+public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GerenciadorFaltas
      */
-    public GerenciadorFaltas() {
+    public GerenciadorFaltasJInternalFrame() {
         initComponents();
     }
 
@@ -39,6 +39,9 @@ public class GerenciadorFaltas extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+
+        setClosable(true);
+        setIconifiable(true);
 
         jLabel4.setText("Insira a id ou o nome do aluno para pesquisar por um aluno, selecione o aluno na seção alunos para consultar suas Faltas:");
 
