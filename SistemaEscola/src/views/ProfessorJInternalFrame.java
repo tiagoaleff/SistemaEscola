@@ -542,29 +542,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
     private void salvarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJButtonActionPerformed
 
-        /*        
-         professor professor = new Professor();
-
-        // setando informações pessoais
-        professor.setNomeProfessor(nomeJTextField.getName());
-        professor.setCPF(cpfJTextField.getName());
-        professor.setRG(rgJTextField.getName());
-        professor.setNascimento(diaJTextField.getName());
-
-        // setando informações de contato
-        professor.setEmailContato(emailJTextField.getName());
-        professor.setCelularContato(celularJTextField.getName());
-        professor.setTelefoneContato(telefoneJTextField.getName());
-
-        // setando infações de endereço
-        professor.setBairroEndereco(bairroJTextField.getName());
-        professor.setRuaEndereco(ruaJTextField.getName());
-        professor.setCidadeEndereco(cidadeJTextField.getName());
-        professor.setNumeroEndereco(numeroJTextField.getName());
-        professor.setEstadoEndereco(estadoJComboBox.getName());
-
-        // setando informações do especialização
-        */
     }//GEN-LAST:event_salvarJButtonActionPerformed
 
 
