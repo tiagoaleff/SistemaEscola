@@ -121,7 +121,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="loginJButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="entrar"/>
+        <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="loginJButton.addActionListener(action);&#xa;loginJButton.setActionCommand(&quot;entrar&quot;);"/>

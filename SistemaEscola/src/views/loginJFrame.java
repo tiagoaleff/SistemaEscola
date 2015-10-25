@@ -23,6 +23,9 @@ public class loginJFrame extends javax.swing.JFrame {
      */
     public loginJFrame() {
         initComponents();
+        
+        log.Log.gravarMessagem("Programa aberto com sucesso");
+        
     }
        
 
@@ -65,7 +68,7 @@ public class loginJFrame extends javax.swing.JFrame {
         passwordJLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         passwordJLabel.setText("Senha:");
 
-        loginJButton.setText("entrar");
+        loginJButton.setText("Entrar");
         loginJButton.addActionListener(action);
         loginJButton.setActionCommand("entrar");
 
