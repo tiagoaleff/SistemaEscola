@@ -16,9 +16,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         return professor;        
     }
     
-    public void setProfessor(){
-        
-        JOptionPane.showMessageDialog(null, "entrou no set");
+    public void setProfessor(){                
         
         // setando informações PESSOAIS
         professor.setNomeProfessor(nomeJTextField.getText());

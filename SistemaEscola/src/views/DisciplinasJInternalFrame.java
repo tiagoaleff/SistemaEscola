@@ -23,7 +23,10 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     public Disciplina getDisciplina(){
         
         Disciplina disciplina = new Disciplina();
+        
         disciplina.setNomeDisciplina(nomeJTextField.getText());
+        
+        
         return disciplina;        
     }
            

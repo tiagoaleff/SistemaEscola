@@ -9,13 +9,13 @@ package exception;
  *
  * @author Tiago Aleff
  */
-public class ExceptionProfessor extends Exception{
+public class ExceptionEscola extends Exception{
  
-    public ExceptionProfessor(){
+    public ExceptionEscola(){
         super("Erro desconhecido");
     }
     
-    public ExceptionProfessor(String mensagem){
+    public ExceptionEscola(String mensagem){
         super(mensagem);
     }
 }
