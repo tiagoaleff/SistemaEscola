@@ -45,7 +45,7 @@ public class Login_Controller implements ActionListener {
         
         ConfigUser config = new ConfigUser();
                                
-        if(!result.getUser().equals(config.getUser())){
+        /*if(!result.getUser().equals(config.getUser())){
             JOptionPane.showMessageDialog(loginFrame, "usuário ou senha incorreta");
             return;
         }
@@ -53,7 +53,7 @@ public class Login_Controller implements ActionListener {
         if(!result.getPassword().equals(config.getPassword())){
             return;
         }        
-        
+        */
         loginFrame.dispose();
         new principalJFrame().setVisible(true);
     }

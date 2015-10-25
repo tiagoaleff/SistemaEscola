@@ -1,8 +1,10 @@
 package controller;
 
+import exception.ExceptionProfessor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
 import object.Professor;
 import views.ProfessorJInternalFrame;
@@ -15,6 +17,7 @@ public class ProfessorController implements ActionListener {
 
     private ProfessorJInternalFrame frame;
     private ArrayList<Professor> cadastroProfessor = new ArrayList<Professor>();
+    private Professor professor;
 
     public ProfessorController(ProfessorJInternalFrame frame) {
 
@@ -26,10 +29,10 @@ public class ProfessorController implements ActionListener {
 
         switch (e.getActionCommand()) {
             case "disciplinaPesquisaJToggleButton":
-                adicionar();
                 break;
             case "salvarJButton":
                 JOptionPane.showMessageDialog(null, "Salva com sucesso!!!!");
+                adicionar();
                 break;
             case "cancelarJToggleButton":
                 JOptionPane.showMessageDialog(null, "Cancelado com sucesso!!!!");
@@ -40,126 +43,107 @@ public class ProfessorController implements ActionListener {
                 break;
         }
     }
-    
-    public void adicionar(){
-        
-        Professor professor;        
+
+    public void adicionar() {
+
+        frame.setProfessor();
         professor = frame.getProfessor();
-        
-        
-    }
-    
-    public boolean validarInformacoesPessoais(Professor professor){
-             
-        if(professor.getNomeProfessor().trim().equals("") || professor.getNomeProfessor() == null){
+
+        // este try/catch tem a grande possibilidade de não ficar aqui
+        try {
+            validarInformacoesPessoais(professor);            
+            validarContato(professor);
+            validarEndereco(professor);
+            validacaoEspecializacao(professor);
             
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+            /*
+            aqui vão os futuros metodos responsáveis pela validação dos formatos
+            dos campos.
+            */
+        } catch(ExceptionProfessor e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }        
-        if(professor.getCPF().trim().equals("") || professor.getCPF()== null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        if(professor.getRG().trim().equals("") || professor.getRG() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        if(professor.getNascimento().trim().equals("") || professor.getNascimento() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        return true;
-    }            
-    
-    public boolean validarContato(Professor professor){
-        
-        if(professor.getEmailContato().trim().equals("") || professor.getEmailContato() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        if(professor.getCelularContato().trim().equals("") || professor.getCelularContato() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        if(professor.getTelefoneContato().trim().equals("") || professor.getTelefoneContato() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        return true;
     }
-    
-    public boolean validarEndereco(Professor professor){
-        
-        if(professor.getRuaEndereco().trim().equals("") || professor.getRuaEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+    public void validarInformacoesPessoais(Professor professor) throws ExceptionProfessor{
+
+        if (professor.getNomeProfessor().trim().equals("") || professor.getNomeProfessor() == null) {
+
+            throw new ExceptionProfessor("O campo Nome não pode estar vazio.");
         }
-        
-        if(professor.getCidadeEndereco().trim().equals("") || professor.getCidadeEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+        if (professor.getCPF().trim().equals("") || professor.getCPF() == null) {
+
+            throw new ExceptionProfessor("O campo CPF não pode estar vazio.");
         }
-        
-        if(professor.getBairroEndereco().trim().equals("") || professor.getBairroEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+        if (professor.getRG().trim().equals("") || professor.getRG() == null) {
+
+            throw new ExceptionProfessor("O campo RG não pode estar vazio.");
         }
-        
-        if(professor.getNumeroEndereco().trim().equals("") || professor.getNumeroEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        if(professor.getEstadoEndereco().trim().equals("") || professor.getEstadoEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
-        }
-        
-        return true;
+
+        if (professor.getNascimento().trim().equals("") || professor.getNascimento() == null) {
+
+            throw new ExceptionProfessor("A compo Data de Nascimento não pode estar vazia.");
+        }        
     }
-    
-    public boolean validacaoEspecializacao(Professor professor){
-            
-        if(professor.getCidadeEndereco().trim().equals("") || professor.getCidadeEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+    public void validarContato(Professor professor) throws ExceptionProfessor {
+
+        if (professor.getEmailContato().trim().equals("") || professor.getEmailContato() == null) {
+
+            throw new ExceptionProfessor("O campo E-mail não pode estar vazio");
         }
-        
-        if(professor.getBairroEndereco().trim().equals("") || professor.getBairroEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+        if (professor.getCelularContato().trim().equals("") || professor.getCelularContato() == null) {
+
+            throw new ExceptionProfessor("O campo Celular não pode estar vazio");
         }
-        
-        if(professor.getNumeroEndereco().trim().equals("") || professor.getNumeroEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+        if (professor.getTelefoneContato().trim().equals("") || professor.getTelefoneContato() == null) {
+
+            throw new ExceptionProfessor("O campo Telefone não pode estar vazio");
+        }        
+    }
+
+    public void validarEndereco(Professor professor) throws ExceptionProfessor{
+
+        if (professor.getRuaEndereco().trim().equals("") || professor.getRuaEndereco() == null) {
+
+            throw new ExceptionProfessor("O campo Rua não pode estar vazio");
         }
-        
-        if(professor.getEstadoEndereco().trim().equals("") || professor.getEstadoEndereco() == null){
-            
-            JOptionPane.showMessageDialog(null, "nome incorreto");
-            return false;
+
+        if (professor.getCidadeEndereco().trim().equals("") || professor.getCidadeEndereco() == null) {
+
+            throw new ExceptionProfessor("O campo Cidade não pode estar vazio");
         }
-        
-        return true;
+
+        if (professor.getBairroEndereco().trim().equals("") || professor.getBairroEndereco() == null) {
+
+            throw new ExceptionProfessor("O campo Bairro não pode estar vazio");
+        }
+
+        if (professor.getNumeroEndereco().trim().equals("") || professor.getNumeroEndereco() == null) {
+
+            throw new ExceptionProfessor("O campo Número não pode estar vazio");
+        }
+
+        if (professor.getEstadoEndereco().trim().equals("") || professor.getEstadoEndereco() == null) {
+
+            throw new ExceptionProfessor("O campo Estado não pode estar vazio");
+        }        
+    }
+
+    public void validacaoEspecializacao(Professor professor) throws ExceptionProfessor{
+
+        if (professor.getGraduacaoEspecializacao().trim().equals("") || professor.getGraduacaoEspecializacao() == null) {
+
+            throw new ExceptionProfessor("O campo Graduação não pode estar vazio");
+        }
+
+        if (professor.getEspecializacao().trim().equals("") || professor.getEspecializacao() == null) {
+
+            throw new ExceptionProfessor("Ocampo Especialização não pode estar vazio");
+        }
     }
 }
