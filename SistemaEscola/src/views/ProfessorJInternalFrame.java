@@ -1,22 +1,46 @@
 package views;
 
 import controller.ProfessorController;
+import javax.swing.JOptionPane;
 import object.Professor;
 
 public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
     private ProfessorController professorController
             = new ProfessorController(this);
+    
+    private Professor professor = new Professor();
 
     public Professor getProfessor() {
-
-        Professor professor = new Professor();
-
-        /*setando informações do professor*/
+        
+        return professor;        
+    }
+    
+    public void setProfessor(){                
+        
+        // setando informações PESSOAIS
         professor.setNomeProfessor(nomeJTextField.getText());
-        /*professor.setCPF(CPF.getName());
-         professor.getNascimento()*/
-        return professor;
+        professor.setCPF(cpfJTextField.getText());
+        professor.setRG(rgJTextField.getText());
+        professor.setNascimento(diaJTextField.getText());
+        
+        // setando informações de CONTATO
+        professor.setEmailContato(emailJTextField.getText());
+        professor.setCelularContato(celularJTextField.getText());
+        professor.setTelefoneContato(telefoneJTextField.getText());
+        
+        // setando informações sobre ENDEREÇO
+        professor.setRuaEndereco(ruaJTextField.getText());
+        professor.setCidadeEndereco(cidadeJTextField.getText());
+        professor.setBairroEndereco(bairroJTextField.getText());
+        professor.setNumeroEndereco(numeroJTextField.getText());
+        professor.setEstadoEndereco(especializacaoJTextField.getText());
+        
+        // setando informações ESPECIALIZAÇÃO
+        professor.setGraduacaoEspecializacao(String.valueOf(graduacaoComboBox.getSelectedIndex()));
+        professor.setEspecializacao(especializacaoJTextField.getText());
+        professor.setMestradoEspecializacao(mestradoJTextField.getText());
+        professor.setDoutoradoEspecializacao(doutoradoJTextField.getText());
     }
 
     public ProfessorJInternalFrame() {
@@ -500,10 +524,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroJTextFieldActionPerformed
 
-    private void salvarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salvarJButtonActionPerformed
-
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
@@ -523,6 +543,10 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private void disciplinaPesquisaJToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaPesquisaJToggleButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_disciplinaPesquisaJToggleButtonActionPerformed
+
+    private void salvarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJButtonActionPerformed
+
+    }//GEN-LAST:event_salvarJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
