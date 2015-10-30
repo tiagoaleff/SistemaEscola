@@ -10,6 +10,8 @@ package exception;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class ExceptionAluno {
-
+public class ExceptionAluno extends Exception {
+    public ExceptionAluno(){
+        
+    }
 }
