@@ -6,7 +6,7 @@ import views.loginJFrame;
  * 
  * @author Leandro Justin Vieira
  */
-public class executar {
+public class Executar {
     
     public static void main(String args[]){
         
