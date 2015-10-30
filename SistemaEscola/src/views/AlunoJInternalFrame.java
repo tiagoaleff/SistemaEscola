@@ -591,7 +591,24 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
                 aluno.setRua(ruaTextField.getText());
                 
     }//GEN-LAST:event_salvarJButtonActionPerformed
-
+    public void setAluno(){
+        aluno.setAlunoEmail(emailTextField.getText());
+                aluno.setAlunoCelular(celTextField.getText());
+                aluno.setAlunoTelefone(telTextField.getText());
+                aluno.setBairro(bairroTextField.getText());
+                aluno.setCidade(cidadeTextField.getText());
+                aluno.setCpfAluno(cpfTextField.getText());
+                aluno.setCpfMae(cpfmaeTextField.getText());
+                aluno.setCpfPai(cpfpaiTextField.getText());
+                aluno.setNomeAluno(nomealunoTextField.getText());
+                aluno.setNomePai(nomepaiTextField.getText());
+                aluno.setNomemae(nomemaeTextField.getText());
+                aluno.setNumero(nTextField.getText());
+                aluno.setRgAluno(rgalunoTextField.getText());
+                aluno.setRgMae(rgmaeTextField.getText());
+                aluno.setRgPai(rgpaiTextField.getText());
+                aluno.setRua(ruaTextField.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairroTextField;
