@@ -17,11 +17,11 @@ import br.sistemaescola.views.NotaJInternalFrame;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class gerenciarNotasController implements ActionListener{
+public class GerenciarNotasController implements ActionListener{
 
     private GerenciarNotasJInternalFrame frame;
 
-    public gerenciarNotasController(GerenciarNotasJInternalFrame frame) {
+    public GerenciarNotasController(GerenciarNotasJInternalFrame frame) {
         this.frame = frame;
     }
     

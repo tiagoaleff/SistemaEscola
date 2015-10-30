@@ -5,7 +5,7 @@
  */
 package br.sistemaescola.views;
 
-import br.sistemaescola.controller.gerenciarNotasController;
+import br.sistemaescola.controller.GerenciarNotasController;
 
 /**
  *
@@ -14,7 +14,7 @@ import br.sistemaescola.controller.gerenciarNotasController;
 public class GerenciarNotasJInternalFrame extends javax.swing.JInternalFrame {
 
     
-    gerenciarNotasController action = new gerenciarNotasController(this);
+    GerenciarNotasController action = new GerenciarNotasController(this);
     
     
     /**

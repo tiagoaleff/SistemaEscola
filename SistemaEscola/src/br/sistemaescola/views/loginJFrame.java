@@ -9,7 +9,7 @@ package br.sistemaescola.views;
 
 
 
-import br.sistemaescola.controller.Login_Controller;
+import br.sistemaescola.controller.LoginController;
 import br.sistemaescola.object.Login;
 /**
  *
@@ -29,7 +29,7 @@ public class loginJFrame extends javax.swing.JFrame {
     }
        
 
-    Login_Controller action = new Login_Controller(this);  
+    LoginController action = new LoginController(this);  
 
     public Login createLogin(){
         String user = userJTextField.getText();

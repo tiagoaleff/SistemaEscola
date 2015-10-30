@@ -18,11 +18,11 @@ import br.sistemaescola.views.principalJFrame;
  * 
  * @author Leandro Justin Vieira
  */
-public class Login_Controller implements ActionListener {
+public class LoginController implements ActionListener {
 
     private loginJFrame  loginFrame;
 
-    public Login_Controller(loginJFrame loginFrame) {
+    public LoginController(loginJFrame loginFrame) {
         this.loginFrame = loginFrame;
     }
 
