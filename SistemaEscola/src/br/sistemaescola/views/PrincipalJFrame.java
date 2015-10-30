@@ -14,11 +14,11 @@ import javax.swing.JDesktopPane;
  *
  * @author Leandro Justin Vieira
  */
-public class principalJFrame extends javax.swing.JFrame {
+public class PrincipalJFrame extends javax.swing.JFrame {
 
     PrincipalController action = new PrincipalController(this); 
     
-    public principalJFrame() {
+    public PrincipalJFrame() {
         initComponents();
     }
 

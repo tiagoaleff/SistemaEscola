@@ -1,6 +1,6 @@
 
 import java.awt.Color;
-import br.sistemaescola.views.loginJFrame;
+import br.sistemaescola.views.LoginJFrame;
 
 /**
  * 
@@ -10,7 +10,7 @@ public class Executar {
     
     public static void main(String args[]){
         
-        loginJFrame login = new loginJFrame();
+        LoginJFrame login = new LoginJFrame();
         login.setVisible(true);
         login.getContentPane().setBackground(Color.white);
     }

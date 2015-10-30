@@ -17,7 +17,7 @@ import br.sistemaescola.views.GerenciadorFaltasJInternalFrame;
 import br.sistemaescola.views.GerenciarNotasJInternalFrame;
 import br.sistemaescola.views.NotaJInternalFrame;
 import br.sistemaescola.views.ProfessorJInternalFrame;
-import br.sistemaescola.views.principalJFrame;
+import br.sistemaescola.views.PrincipalJFrame;
 
 /**
  * 
@@ -25,9 +25,9 @@ import br.sistemaescola.views.principalJFrame;
  */
 public class PrincipalController implements ActionListener{
     
-    private principalJFrame frame;
+    private PrincipalJFrame frame;
     
-    public PrincipalController( principalJFrame frame){
+    public PrincipalController( PrincipalJFrame frame){
     
         this.frame = frame;
     }

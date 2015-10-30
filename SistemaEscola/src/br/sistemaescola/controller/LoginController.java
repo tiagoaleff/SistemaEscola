@@ -11,8 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Login;
-import br.sistemaescola.views.loginJFrame;
-import br.sistemaescola.views.principalJFrame;
+import br.sistemaescola.views.LoginJFrame;
+import br.sistemaescola.views.PrincipalJFrame;
 
 /**
  * 
@@ -20,9 +20,9 @@ import br.sistemaescola.views.principalJFrame;
  */
 public class LoginController implements ActionListener {
 
-    private loginJFrame  loginFrame;
+    private LoginJFrame  loginFrame;
 
-    public LoginController(loginJFrame loginFrame) {
+    public LoginController(LoginJFrame loginFrame) {
         this.loginFrame = loginFrame;
     }
 
@@ -58,7 +58,7 @@ public class LoginController implements ActionListener {
         
         loginFrame.dispose();
         br.sistemaescola.log.Log.gravarMessagem( "Usuario " + result.getUser() + " logado na aplicacao");
-        new principalJFrame().setVisible(true);
+        new PrincipalJFrame().setVisible(true);
         
     }
     

@@ -15,13 +15,13 @@ import br.sistemaescola.object.Login;
  *
  * @author Leandro Justin Vieira
  */
-public class loginJFrame extends javax.swing.JFrame {
+public class LoginJFrame extends javax.swing.JFrame {
     
     
     /**
      * Creates new form loginJFrame
      */
-    public loginJFrame() {
+    public LoginJFrame() {
         initComponents();
         
         br.sistemaescola.log.Log.gravarMessagem("Programa aberto com sucesso");
