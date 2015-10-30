@@ -1,6 +1,6 @@
 
 import java.awt.Color;
-import views.loginJFrame;
+import br.sistemaescola.views.loginJFrame;
 
 /**
  * 
