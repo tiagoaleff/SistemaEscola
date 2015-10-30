@@ -6,7 +6,7 @@
 
 package controller;
 
-import config.ConfigUser;
+import br.sistemaescola.config.ConfigUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;

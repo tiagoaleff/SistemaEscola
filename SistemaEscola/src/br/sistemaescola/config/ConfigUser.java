@@ -1,4 +1,4 @@
-package config;
+package br.sistemaescola.config;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
