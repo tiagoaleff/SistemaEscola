@@ -13,5 +13,10 @@ package br.sistemaescola.exception;
 public class ExceptionAluno extends Exception {
     public ExceptionAluno(){
         
+    super("Erro desconhecido");
+    }
+    
+    public ExceptionAluno(String mensagem){
+        super(mensagem);
     }
 }

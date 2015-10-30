@@ -25,6 +25,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         
 
     }
+    
 
   
     @SuppressWarnings("unchecked")
@@ -573,41 +574,31 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_nomealunoTextFieldActionPerformed
 
     private void salvarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJButtonActionPerformed
-                aluno.setAlunoEmail(emailTextField.getText());
-                aluno.setAlunoCelular(celTextField.getText());
-                aluno.setAlunoTelefone(telTextField.getText());
-                aluno.setBairro(bairroTextField.getText());
-                aluno.setCidade(cidadeTextField.getText());
-                aluno.setCpfAluno(cpfTextField.getText());
-                aluno.setCpfMae(cpfmaeTextField.getText());
-                aluno.setCpfPai(cpfpaiTextField.getText());
-                aluno.setNomeAluno(nomealunoTextField.getText());
-                aluno.setNomePai(nomepaiTextField.getText());
-                aluno.setNomemae(nomemaeTextField.getText());
-                aluno.setNumero(nTextField.getText());
-                aluno.setRgAluno(rgalunoTextField.getText());
-                aluno.setRgMae(rgmaeTextField.getText());
-                aluno.setRgPai(rgpaiTextField.getText());
-                aluno.setRua(ruaTextField.getText());
+                
                 
     }//GEN-LAST:event_salvarJButtonActionPerformed
+    
+    public Aluno getAluno(){
+     return aluno;
+    }
+    
     public void setAluno(){
         aluno.setAlunoEmail(emailTextField.getText());
-                aluno.setAlunoCelular(celTextField.getText());
-                aluno.setAlunoTelefone(telTextField.getText());
-                aluno.setBairro(bairroTextField.getText());
-                aluno.setCidade(cidadeTextField.getText());
-                aluno.setCpfAluno(cpfTextField.getText());
-                aluno.setCpfMae(cpfmaeTextField.getText());
-                aluno.setCpfPai(cpfpaiTextField.getText());
-                aluno.setNomeAluno(nomealunoTextField.getText());
-                aluno.setNomePai(nomepaiTextField.getText());
-                aluno.setNomemae(nomemaeTextField.getText());
-                aluno.setNumero(nTextField.getText());
-                aluno.setRgAluno(rgalunoTextField.getText());
-                aluno.setRgMae(rgmaeTextField.getText());
-                aluno.setRgPai(rgpaiTextField.getText());
-                aluno.setRua(ruaTextField.getText());
+        aluno.setAlunoCelular(celTextField.getText());
+        aluno.setAlunoTelefone(telTextField.getText());
+        aluno.setBairro(bairroTextField.getText());
+        aluno.setCidade(cidadeTextField.getText());
+        aluno.setCpfAluno(cpfTextField.getText());
+        aluno.setCpfMae(cpfmaeTextField.getText());
+        aluno.setCpfPai(cpfpaiTextField.getText());
+        aluno.setNomeAluno(nomealunoTextField.getText());
+        aluno.setNomePai(nomepaiTextField.getText());
+        aluno.setNomemae(nomemaeTextField.getText());
+        aluno.setNumero(nTextField.getText());
+        aluno.setRgAluno(rgalunoTextField.getText());
+        aluno.setRgMae(rgmaeTextField.getText());
+        aluno.setRgPai(rgpaiTextField.getText());
+        aluno.setRua(ruaTextField.getText());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

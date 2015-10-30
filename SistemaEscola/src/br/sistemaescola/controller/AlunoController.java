@@ -5,6 +5,7 @@
  */
 package br.sistemaescola.controller;
 
+import br.sistemaescola.exception.ExceptionAluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,11 +34,14 @@ public class AlunoController  implements ActionListener{
         String action = e.getActionCommand();
         
         switch(e.getActionCommand()){
+            case "buscarIdJButton":
+                  break;
             case "salvarJButton":
                 JOptionPane.showMessageDialog(null, "Salva com Sucesso");
                 salvar();
                 break;
-            case "limpar":
+            case "limparJButton":
+                JOptionPane.showMessageDialog(null, "Limpo");
                 limpar();
                 break;
             case "cancelar":
@@ -56,9 +60,12 @@ public class AlunoController  implements ActionListener{
     
     private void salvar(){
         frame.setAluno();
-        JOptionPane.showMessageDialog(frame, "salvar");
+        aluno = frame.getAluno();
+        
+        
     }
     private void limpar(){
+        
         JOptionPane.showMessageDialog(frame, "limpar");
     }
     
@@ -73,4 +80,23 @@ public class AlunoController  implements ActionListener{
         JOptionPane.showMessageDialog(frame, "buscar_nome");
     }
     
+    public void validarInformacoesaluno(Aluno aluno)throws ExceptionAluno{
+        if(aluno.getAlunoCelular().trim().equals("") || aluno.getNomeAluno() == null) {
+
+            throw new ExceptionAluno("O campo Nome não pode estar vazio.");
+        }
+        if(aluno.getAlunoEmail().trim().equals("") || aluno.getAlunoEmail() == null){
+           
+            throw new ExceptionAluno("O campo CPF não pode estar vazio.");
+        }
+        if(aluno.getAlunoTelefone().trim().equals("") || aluno.getAlunoTelefone() == null){
+            
+            throw new ExceptionAluno("O campo Telefone não pode estar vazio.");
+        }
+        if(aluno.getBairro().trim().equals("") || aluno.getBairro() == null){
+            throw new ExceptionAluno("O campo bairro não pode estar vazio");
+        }
+    }
+
+
 }
