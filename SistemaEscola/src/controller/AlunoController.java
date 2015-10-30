@@ -7,7 +7,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import object.Aluno;
+
 import views.AlunoJInternalFrame;
 
 
@@ -18,6 +21,8 @@ import views.AlunoJInternalFrame;
  */
 public class AlunoController  implements ActionListener{
     private AlunoJInternalFrame frame;
+    private ArrayList<Aluno> cadastroProfessor = new ArrayList<Aluno>();
+    private Aluno aluno;
     
     public AlunoController(AlunoJInternalFrame frame){
         this.frame = frame;
@@ -27,8 +32,9 @@ public class AlunoController  implements ActionListener{
         
         String action = e.getActionCommand();
         
-        switch(action){
-            case "salvar":
+        switch(e.getActionCommand()){
+            case "salvarJButton":
+                JOptionPane.showMessageDialog(null, "Salva com Sucesso");
                 salvar();
                 break;
             case "limpar":
@@ -49,6 +55,7 @@ public class AlunoController  implements ActionListener{
     }
     
     private void salvar(){
+        frame.setAluno();
         JOptionPane.showMessageDialog(frame, "salvar");
     }
     private void limpar(){
