@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.ProfessorJInternalFrame;
+import java.awt.Component;
+import javax.swing.JTextField;
 
 /**
  *
@@ -29,6 +31,7 @@ public class ProfessorController implements ActionListener {
 
         switch (e.getActionCommand()) {
             case "disciplinaPesquisaJToggleButton":
+                pesquisar();
                 break;
             case "salvarJButton":
                 JOptionPane.showMessageDialog(null, "Salva com sucesso!!!!");
@@ -40,10 +43,56 @@ public class ProfessorController implements ActionListener {
                 break;
             case "clearJButton1":
                 JOptionPane.showMessageDialog(null, "Limpo!!!!");
+                limpar();
                 break;
         }
     }
 
+    public void limpar(){
+                
+        Component[] comps = frame.getComponents();
+        
+        for(Component c : comps){
+            
+            if (c instanceof JTextField){
+               ((JTextField)c).setText("");
+            }                                        
+        }
+    }
+    
+    /*
+       ESTE MÉTODO NÃO ESTÁ PRONTO, PORQUE NÃO FOI DEFINIDO O MODO QUE SERÁ GRAVADO AS INFORMAÇÕES 
+       NO BANCO DE DADOS. TAMBÉM NÃO FOI DEFINICO COMO A FORMAS DE VALIDAÇÃO
+    */     
+    public void pesquisar(){
+        
+        
+        //alterar a inicialização da variavel professor
+        frame.setProfessor();
+        professor = frame.getProfessor();
+        
+        String name = professor.getNomeProfessor();
+        String cpf = professor.getCPF();
+        String rg = professor.getRG();
+        
+        // receberia os dados
+        // validaria os dados antes da pesquisas        
+        // veria quem esta com os campos corretos
+        
+        if(name == null && name.trim().equals("")){
+            name = null;
+        } 
+        
+        if(cpf == null && cpf.trim().equals("")){
+            cpf = null;
+        }
+        
+        if(rg == null && rg.trim().equals("")){
+            rg = null;
+        }
+                
+        JOptionPane.showMessageDialog(null, "Pesquisando.. Espere alguns segundos, não esqueça de criar aquele método para inserir no banco de dados, aqueles que os valores viram vetores");                
+    }
     public void adicionar() {
 
         frame.setProfessor();
@@ -57,12 +106,15 @@ public class ProfessorController implements ActionListener {
             validarEndereco(professor);
             validacaoEspecializacao(professor);
             
+            cadastroProfessor.add(professor);
+            
             /*
             aqui vão os futuros metodos responsáveis pela validação dos formatos
             dos campos.
-            */
-        
+            
             //validadorDeCampo();        
+            */        
+
         } catch(ExceptionEscola e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }                

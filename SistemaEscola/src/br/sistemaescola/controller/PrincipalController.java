@@ -37,9 +37,12 @@ public class PrincipalController implements ActionListener{
         
         String action = evt.getActionCommand();
         
+        //Boolean teste [] = {false, false, false, false, false, false, false, false};
+        
         switch(action){
             
             case "aluno":
+          //      teste[0] = true;
                 criarFrameAluno();
                 break;
             case "professor":
