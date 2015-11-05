@@ -107,7 +107,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         searchNomeJButton.setActionCommand("pesquisarNome");
 
         searchProfessorJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
-        searchProfessorJButton.setToolTipText("Insira um professor e click neste botão para pesquisar um curso por professor e poder edita-lo");
+        searchProfessorJButton.setToolTipText("procure por professores existentes");
         searchProfessorJButton.addActionListener(action);
         searchProfessorJButton.setActionCommand("pesquisarProfessor");
 
