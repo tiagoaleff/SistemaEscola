@@ -6,10 +6,14 @@
 
 package br.sistemaescola.controller;
 
+import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.object.Curso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.CursoJInternalFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -31,8 +35,14 @@ public class CursoController implements ActionListener{
         switch(action){
             
             case "salvar":
-                salvarDados();
-                break; 
+                
+                try {
+                    salvarDados();
+                } catch (ExceptionEscola ex) {
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao gravar : " + ex.getMessage());
+                }
+                break;  
             case "cancelar":
                 cancelarFechar();
                 break;
@@ -51,8 +61,14 @@ public class CursoController implements ActionListener{
         } 
     }
 
-    private void salvarDados() {
-        JOptionPane.showMessageDialog(frame, "salvarDados");
+    private void salvarDados() throws ExceptionEscola{
+        
+        Curso curso = frame.atualizarDados();
+
+        if(curso.getNome().trim().equals("")){
+            throw new ExceptionEscola("O nome do usuario deve ser informado"); 
+        }
+        
     }
 
     private void cancelarFechar() {
