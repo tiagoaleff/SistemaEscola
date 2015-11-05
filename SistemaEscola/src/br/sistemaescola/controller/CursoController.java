@@ -68,6 +68,9 @@ public class CursoController implements ActionListener{
         if(curso.getNome().trim().equals("")){
             throw new ExceptionEscola("O nome do usuario deve ser informado"); 
         }
+      
+        
+        
         
     }
 
