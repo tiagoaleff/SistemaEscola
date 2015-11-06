@@ -25,5 +25,4 @@ public class NotaList {
         return listNota;
     }
     
-
 }

@@ -17,7 +17,7 @@ public class FaltasList {
 
     private static final ArrayList<Faltas> listFaltas = new ArrayList<>();
    
-    public static void addFlatas(Faltas falta){ 
+    public static void addFaltas(Faltas falta){ 
        listFaltas.add(falta);
     }
     
