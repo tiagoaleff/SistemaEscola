@@ -13,9 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.CursoJInternalFrame;
-import java.awt.Component;
 import javax.swing.DefaultListModel;
-import javax.swing.JTextField;
 
 /**
  * 

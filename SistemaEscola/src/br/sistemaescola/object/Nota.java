@@ -15,10 +15,10 @@ public class Nota {
     private String nome;
     private String professor;
     private String disciplicina;
-    private float peso;
-    private float nota;
+    private String peso;
+    private String nota;
 
-    public Nota(String nome, String professor, String disciplicina, float peso, float nota) {
+    public Nota(String nome, String professor, String disciplicina, String peso, String nota) {
         this.nome = nome;
         this.professor = professor;
         this.disciplicina = disciplicina;
@@ -50,19 +50,20 @@ public class Nota {
         this.disciplicina = disciplicina;
     }
 
-    public float getPeso() {
+    public String getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(String peso) {
         this.peso = peso;
     }
 
-    public float getNota() {
+    public String getNota() {
         return nota;
+        
     }
 
-    public void setNota(float nota) {
+    public void setNota(String nota) {
         this.nota = nota;
     }
 
