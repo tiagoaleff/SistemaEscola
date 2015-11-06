@@ -12,17 +12,35 @@ public class Disciplina {
     private String creditoDisciplina;
     private String totalAlunosDisciplina;
     private String totalHorasDisciplina;
+    private String nomeCurso;
     
     /*dados do professor que irá lecionar a disciplina*/
-    private String nomeProfessor;
-    private String CPF;
-    private String RG;
-    private String especializacao;    
+    private String nomeProfessor;    
 
+    public Disciplina(){}
+    
+    public Disciplina(String nomeDisciplina, String codigoDisciplina, String creditoDisciplina, String totalAlunosDisciplina, String totalHorasDisciplina, String nomeCurso, String nomeProfessor) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.codigoDisciplina = codigoDisciplina;
+        this.creditoDisciplina = creditoDisciplina;
+        this.totalAlunosDisciplina = totalAlunosDisciplina;
+        this.totalHorasDisciplina = totalHorasDisciplina;
+        this.nomeCurso = nomeCurso;
+        this.nomeProfessor = nomeProfessor;
+    }
+    
     public String getNomeDisciplina() {
         return nomeDisciplina;
     }
 
+    public String getNomeCurso() {
+        return nomeCurso;
+    }
+
+    public void setNomeCurso(String nomeCurso) {
+        this.nomeCurso = nomeCurso;
+    }
+    
     public void setNomeDisciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
     }
@@ -66,28 +84,4 @@ public class Disciplina {
     public void setNomeProfessor(String nomeProfessor) {
         this.nomeProfessor = nomeProfessor;
     }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-
-    public String getRG() {
-        return RG;
-    }
-
-    public void setRG(String RG) {
-        this.RG = RG;
-    }
-
-    public String getEspecializacao() {
-        return especializacao;
-    }
-
-    public void setEspecializacao(String especializacao) {
-        this.especializacao = especializacao;
-    }        
 }
