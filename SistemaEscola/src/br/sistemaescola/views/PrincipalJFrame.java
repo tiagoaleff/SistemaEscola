@@ -2,6 +2,7 @@ package br.sistemaescola.views;
 
 import br.sistemaescola.controller.PrincipalController;
 import br.sistemaescola.object.Aluno;
+import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Professor;
 import javax.swing.JDesktopPane;
@@ -38,6 +39,20 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        Disciplina disciplina = new Disciplina();
        disciplina.setNomeDisciplina("Topicos I");
        br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
+       
+       
+       Curso cienciaDaComputacao = new Curso("Ciencia da Computacao",
+                                             "Ana Claudia",
+                                             "78",
+                                             "Graduacao em programacao",
+                                             true, false, false);
+       Curso direito             = new Curso("Direito",
+                                             "Marcelo",
+                                             "78",
+                                             "Graduacao em direito",
+                                             true, false, false);
+       br.sistemaescola.list.CursoList.addCurso(direito);
+       br.sistemaescola.list.CursoList.addCurso(cienciaDaComputacao);
        
        
     }
