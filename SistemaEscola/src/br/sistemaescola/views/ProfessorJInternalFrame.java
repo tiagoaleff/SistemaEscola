@@ -22,7 +22,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         professor.setNomeProfessor(nomeJTextField.getText());
         professor.setCPF(cpfJTextField.getText());
         professor.setRG(rgJTextField.getText());
-        professor.setNascimento(diaJTextField.getText());
+        professor.setNascimento(nascimentoJTextField1.getText());
         
         // setando informações de CONTATO
         professor.setEmailContato(emailJTextField.getText());
@@ -61,10 +61,8 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         cpfJTextField = new javax.swing.JTextField();
         rgJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        diaJTextField = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox();
-        jTextField8 = new javax.swing.JTextField();
         disciplinaPesquisaJToggleButton = new javax.swing.JToggleButton();
+        nascimentoJTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -125,17 +123,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Nascimento:");
 
-        diaJTextField.setText("Dia");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro (Jan)", "Fevereiro (Fev)", "Março (Mar)", "Abril (Abr)", "Maio (Mai)", "Junho (Jun)", "Julho (Jul)", "Agosto (Ago)", "Setembro (Set)", "Outubro (Out)", "Novembro (Nov)", "Desembro (Des)" }));
-
-        jTextField8.setText("ano - 4");
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-
         disciplinaPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
         /*
         disciplinaPesquisaJToggleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -162,18 +149,15 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                             .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(diaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField8))
-                    .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rgJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpfJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(disciplinaPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nomeJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(rgJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(cpfJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(disciplinaPesquisaJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nascimentoJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -193,12 +177,10 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RG)
                     .addComponent(rgJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(diaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nascimentoJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -524,10 +506,6 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroJTextFieldActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
     private void bairroJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroJTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bairroJTextFieldActionPerformed
@@ -558,14 +536,12 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cidadeJTextField;
     private javax.swing.JButton clearJButton1;
     private javax.swing.JTextField cpfJTextField;
-    private javax.swing.JTextField diaJTextField;
     private javax.swing.JToggleButton disciplinaPesquisaJToggleButton;
     private javax.swing.JTextField doutoradoJTextField;
     private javax.swing.JTextField emailJTextField;
     private javax.swing.JTextField especializacaoJTextField;
     private javax.swing.JComboBox estadoJComboBox;
     private javax.swing.JComboBox graduacaoComboBox;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -586,8 +562,8 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField mestradoJTextField;
+    private javax.swing.JTextField nascimentoJTextField1;
     private javax.swing.JLabel nome;
     private javax.swing.JTextField nomeJTextField;
     private javax.swing.JTextField numeroJTextField;
