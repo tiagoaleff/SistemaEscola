@@ -101,16 +101,14 @@ public class ProfessorController implements ActionListener {
         try {
             
             validarInformacoesPessoais(professor);            
-            //validarContato(professor);
-            //validarEndereco(professor);
-            //validacaoEspecializacao(professor);
+            validarContato(professor);
+            validarEndereco(professor);
+            validacaoEspecializacao(professor);
 
             /*
-            aqui vão os futuros metodos responsáveis pela validação dos formatos
-            dos campos.
-            
-            
+            método responsável por validar os campos
             */                                
+            
             validarCampos();        
             br.sistemaescola.list.ProfessorList.addProfessor(professor);
             
@@ -123,7 +121,7 @@ public class ProfessorController implements ActionListener {
         
         
         /* validação de INFORMAÇÕES PESSOAIS do professor*/
-        /*if(! validarNome() ){
+        if(! validarNome() ){
             throw new ExceptionEscola("Insira um nome válido");            
         }        
         if(! validarCPF() ){
@@ -132,10 +130,8 @@ public class ProfessorController implements ActionListener {
         if(! validarRG() ){
             throw new ExceptionEscola("Insira um numero de RG válido");            
         }
-        */        
-                
-        /* validação de CONTATO do professor*/
-        /*
+                        
+        /* validação de CONTATO do professor*/        
         if(! validarEmail()){
             throw new ExceptionEscola("Insira um endereço de e-mail válido");            
         } 
@@ -146,7 +142,6 @@ public class ProfessorController implements ActionListener {
         if(! validarCelular() ){
             throw new ExceptionEscola("Insira um número de celular válido");            
         }
-        */        
     }
     
     public boolean validarNome(){
