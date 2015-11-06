@@ -37,7 +37,7 @@ public class AlunoController  implements ActionListener{
         switch(e.getActionCommand()){
             case "buscarIdJButton":
                   break;
-            case "salvarJButton":
+            case "salvar":
                 try{
                     salvar();    
                 } catch(ExceptionEscola evt){
@@ -93,34 +93,34 @@ public class AlunoController  implements ActionListener{
             throw new ExceptionEscola("O campo Nome não pode estar vazio.");
         }
         if(!validarNome(aluno.getNomeAluno())){
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("Informe um nome válido.");
         }
         
         // validar campo CPF
         if (aluno.getCpfAluno().trim().equals("") || aluno.getCpfAluno() == null) {
             
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo cpf não pode estar vazio.");
         }
         if(!validarCPF(aluno.getCpfAluno())){
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo cpf não pode estar vazio.");
         }
         
         // validar campo RG 
         if (aluno.getRgAluno().trim().equals("") || aluno.getRgAluno() == null) {
             
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo rg não pode estar vazio.");
         }
         if(!validarRG(aluno.getRgAluno())){
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo rg não pode estar vazio.");
         }
         
         // validar campo NASCIMENTO
         if (aluno.getNascimentoAluno().trim().equals("") || aluno.getNascimentoAluno() == null) {
             
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo data de nascimento não pode estar vazio.");
         }
         if(!validarNascimento(aluno.getNascimentoAluno())){
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo data de nascimento não pode estar vazio.");
         }
     }
     
@@ -138,19 +138,19 @@ public class AlunoController  implements ActionListener{
         // validacao do campo CELULAR
         if(aluno.getAlunoCelular().trim().equals("") || aluno.getAlunoCelular() == null) {
 
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo celular não pode estar vazio.");
         }                
         if(! validarTelefone(aluno.getAlunoCelular())){
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+            throw new ExceptionEscola("O campo telefone não pode estar vazio.");
         }
         
         // validação do campo E-MAIL
         if(aluno.getAlunoEmail().trim().equals("") || aluno.getAlunoEmail() == null){
            
-            throw new ExceptionEscola("O campo CPF não pode estar vazio.");
+            throw new ExceptionEscola("O campo email não pode estar vazio.");
         } 
         if(! validarEmail(aluno.getAlunoEmail())){
-            throw new ExceptionEscola("O campo CPF não pode estar vazio.");
+            throw new ExceptionEscola("O campo email não pode estar vazio.");
         }
     }
     
@@ -159,56 +159,56 @@ public class AlunoController  implements ActionListener{
         // validação do campo PAI
         if(aluno.getNomePai().trim().equals("") || aluno.getNomePai() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }
         if(! validarNome(aluno.getNomePai())){
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }
         
         // validação do campo CPF
         if(aluno.getCpfPai().trim().equals("") || aluno.getCpfPai() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo cpf não pode estar vazio.");
         }
         if(!validarCPF(aluno.getCpfPai())){
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo cpf não pode estar vazio.");
         }
         
         // validação do campo RG
         if(aluno.getRgPai().trim().equals("") || aluno.getRgPai() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo rg não pode estar vazio.");
         }   
         if(!validarRG(aluno.getRgPai())){
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo rg não pode estar vazio.");
         }
         
         // validação do campo MAE NOME
         if(aluno.getNomeMae().trim().equals("") || aluno.getNomeMae() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }        
         if(!validarNome(aluno.getNomeMae())){
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }
         
         // validação do campo MAE CPF 
         if(aluno.getCpfMae().trim().equals("") || aluno.getCpfMae() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo cpf não pode estar vazio.");
         }        
         if(!validarCPF(aluno.getCpfMae())){
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo cpf não pode estar vazio.");
         }
         
         
         // validação do campo MAE RG  
         if(aluno.getRgMae().trim().equals("") || aluno.getRgMae()== null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo rg não pode estar vazio.");
         }                        
         if(!validarRG(aluno.getRgMae())){
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo rg não pode estar vazio.");
         }
     }
     
@@ -217,31 +217,46 @@ public class AlunoController  implements ActionListener{
         // validação do campo ESTADO
         if(aluno.getEstado().trim().equals("") || aluno.getEstado() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo estado não pode estar vazio.");
+        }
+        if(! validaEndereco(aluno.getEstado())){
+            throw new ExceptionEscola("O campo endereço não pode estar vazio.");
         }
         
         // validação do campo BAIRRO
         if(aluno.getBairro().trim().equals("") || aluno.getBairro() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo bairro não pode estar vazio.");
+        }
+        if(!validarNome(aluno.getBairro())){
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }
         
         // validação do campo CIDADE
         if(aluno.getCidade().trim().equals("") || aluno.getCidade() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo cidade não pode estar vazio.");
+        }
+        if(!validarNome(aluno.getCidade())){
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }
         
         // validação da compo RUA
         if(aluno.getRua().trim().equals("") || aluno.getRua() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo rua não pode estar vazio.");
+        }
+        if(!validarNome(aluno.getRua())){
+            throw new ExceptionEscola("O campo nome não pode estar vazio.");
         }
         
         // validação da compo NUMERO
         if(aluno.getNumero().trim().equals("") || aluno.getNumero() == null){
             
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio.");
+            throw new ExceptionEscola("O campo numero não pode estar vazio.");
+        }                
+        if(!validarRua(aluno.getNumero())){
+            throw new ExceptionEscola("O campo rua não pode estar vazio.");   
         }
     }
     
@@ -273,6 +288,21 @@ public class AlunoController  implements ActionListener{
     
     public boolean validarEmail(String email){
         boolean validar = email.matches("\\w{5,}@\\w{5,}.\\w{3}");                        
+        return validar;
+    }
+    
+    public boolean validaEndereco(String endereco){
+        
+        if(endereco.equals("Selecionar")){
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public boolean validarRua(String rua){
+        
+        boolean validar = rua.matches("\\d{1,}");
         return validar;
     }
 }

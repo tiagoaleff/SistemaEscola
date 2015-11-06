@@ -445,14 +445,20 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.getAccessibleContext().setAccessibleName("Alunos já cadastrados");
 
         salvarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
+        /*
         salvarJButton.setToolTipText("click aqui para cadastrar ou salvar as alterações feitas em um aluno");
+        */
+
         salvarJButton.addActionListener(action);
         salvarJButton.setActionCommand("salvar");
+
+        /*
         salvarJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarJButtonActionPerformed(evt);
             }
         });
+        */
         getContentPane().add(salvarJButton);
         salvarJButton.setBounds(440, 210, 60, 40);
 
