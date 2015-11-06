@@ -7,6 +7,8 @@ package br.sistemaescola.views;
 
 import br.sistemaescola.controller.CursoController;
 import br.sistemaescola.object.Curso;
+import javax.swing.JList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,11 +16,18 @@ import br.sistemaescola.object.Curso;
  */
 public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     
+    
+    
+    
     CursoController action = new CursoController(this);
     
 
+    
     public CursoJInternalFrame() {
         initComponents();
+        
+        br.sistemaescola.log.Log.gravarMessagem("Aberta a janela de curso");
+        
     }
   
     public Curso atualizarDados (){
@@ -47,6 +56,20 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     public String getProfessorPesquisar(){
         return professorJTextField.getText();      
     }
+
+    public JList getJListResultado() {
+        return jListResultado;
+    }
+
+    public String getCursoPesquisa() {
+        return nomeJTextField.getText();
+    }
+    
+    
+    
+    
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -78,7 +101,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         searchIdJButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListResultado = new javax.swing.JList();
 
         setClosable(true);
         setIconifiable(true);
@@ -214,8 +237,8 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado da pesquisa"));
 
-        jList1.setToolTipText("");
-        jScrollPane2.setViewportView(jList1);
+        jListResultado.setToolTipText("");
+        jScrollPane2.setViewportView(jListResultado);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -314,7 +337,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField duracaoJTextField;
     private javax.swing.JLabel idJLabel;
     private javax.swing.JTextField idJTextField;
-    private javax.swing.JList jList1;
+    private javax.swing.JList jListResultado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

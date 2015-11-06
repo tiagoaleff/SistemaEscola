@@ -17,13 +17,10 @@ public class ProfessorList {
 
     private static final ArrayList<Professor> listProfessor = new ArrayList<>();
    
-    
-    public static void addProfessor(Professor professor){
-        
+    public static void addProfessor(Professor professor){ 
        listProfessor.add(professor);
     }
-
-   
+    
     public static ArrayList<Professor> getListProfessor() {
         return listProfessor;
     }

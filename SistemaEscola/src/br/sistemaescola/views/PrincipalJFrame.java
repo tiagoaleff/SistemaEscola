@@ -1,8 +1,9 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.PrincipalController;
-import br.sistemaescola.list.ProfessorList;
+import br.sistemaescola.object.Professor;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,8 +20,23 @@ public class PrincipalJFrame extends javax.swing.JFrame {
 
     PrincipalController action = new PrincipalController(this); 
    
+    
+  
+    
+    
     public PrincipalJFrame() {
-        initComponents();
+       initComponents();
+        
+       
+       Professor a = new Professor();
+       a.setNomeProfessor("Ana Claudia");    
+       br.sistemaescola.list.ProfessorList.addProfessor(a);
+       
+       Professor p = new Professor();
+       p.setNomeProfessor("Gilberto Vieira");    
+       br.sistemaescola.list.ProfessorList.addProfessor(p); 
+       
+       
     }
 
     public JDesktopPane getjDesktopPane1() {
