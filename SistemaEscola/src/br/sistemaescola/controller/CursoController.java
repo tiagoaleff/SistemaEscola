@@ -21,6 +21,9 @@ import java.util.logging.Logger;
  * 
  * @author Leandro Justin Vieira
  */
+
+
+
 public class CursoController implements ActionListener{
 
     private CursoJInternalFrame frame;
@@ -124,11 +127,15 @@ public class CursoController implements ActionListener{
         /*Busca os professores que combinam com o nome
           informado no formulario e os joga na lista
         */
-        
         String nomeProfesssor = frame.getProfessorPesquisar();
+               
+        Professor Gilberto = new Professor();
+        Gilberto.setNomeProfessor("Gilberto Vieira");
+        br.sistemaescola.list.ProfessorList.addProfessor(Gilberto);
         
-        
-        
+        for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
+            JOptionPane.showMessageDialog(frame, "Exite os professor : " + professor.getNomeProfessor());    
+        }
     }
 
     private void pesquisarId() {

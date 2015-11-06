@@ -1,6 +1,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.PrincipalController;
+import br.sistemaescola.list.ProfessorList;
 import javax.swing.JDesktopPane;
 
 /*
@@ -17,7 +18,7 @@ import javax.swing.JDesktopPane;
 public class PrincipalJFrame extends javax.swing.JFrame {
 
     PrincipalController action = new PrincipalController(this); 
-    
+   
     public PrincipalJFrame() {
         initComponents();
     }

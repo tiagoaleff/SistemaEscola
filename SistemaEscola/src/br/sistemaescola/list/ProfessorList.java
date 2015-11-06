@@ -15,33 +15,16 @@ import java.util.ArrayList;
  */
 public class ProfessorList {
 
-    private ArrayList<Professor> listProfessor = new ArrayList<>();
-
-    /*Defini professores pára teste*/
-    public ProfessorList() {
-       
-        Professor professor  = new Professor();
-        Professor professor1 = new Professor();
-        Professor professor2 = new Professor();
-         
-        professor.setNomeProfessor ("Gilberto Vieira");
-        professor1.setNomeProfessor("Sergio Coral");
-        professor2.setNomeProfessor("Ana Claudia");
-        
-        listProfessor.add(professor);
-        listProfessor.add(professor1);
-        listProfessor.add(professor2);
-        
-    }
+    private static final ArrayList<Professor> listProfessor = new ArrayList<>();
    
     
-    public void addProfessor(Professor professor){
+    public static void addProfessor(Professor professor){
         
        listProfessor.add(professor);
     }
 
    
-    public ArrayList<Professor> getListProfessor() {
+    public static ArrayList<Professor> getListProfessor() {
         return listProfessor;
     }
 }
