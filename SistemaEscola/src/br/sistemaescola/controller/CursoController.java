@@ -13,9 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.CursoJInternalFrame;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  * 
@@ -43,6 +41,8 @@ public class CursoController implements ActionListener{
                 
                 try {
                     salvarDados();
+                    JOptionPane.showMessageDialog(frame, "O curso foi salvo com sucesso");
+                    br.sistemaescola.log.Log.gravarMessagem("Curso salvo com sucesso ");
                 } catch (ExceptionEscola ex) {
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
                     br.sistemaescola.log.Log.gravarMessagem("Erro ao gravar curso : " + ex.getMessage());
@@ -67,23 +67,17 @@ public class CursoController implements ActionListener{
     }
 
     private void salvarDados() throws ExceptionEscola{
-         
-        ArrayList<Professor> professores = new ArrayList<>();
-        
-        Professor gilberto = new Professor();
-        gilberto.setNomeProfessor("gilberto");
-        professores.add(gilberto);
         
         Curso curso = frame.atualizarDados();
         
         /* Verificação do nome do aluno */
         if(curso.getNome().trim().equals("")){
-            throw new ExceptionEscola("O nome do usuario deve ser informado"); 
+            throw new ExceptionEscola("O nome do curso deve ser informado"); 
         }
         
         /* verificar Professor Responsavel*/
         boolean professorValido = false;
-        for( Professor professor : professores){
+        for( Professor professor : br.sistemaescola.list.ProfessorList.getListProfessor()){
             if(professor.getNomeProfessor().equals(curso.getProfessorResponsavel())){
                 professorValido = true;
             }
@@ -106,7 +100,10 @@ public class CursoController implements ActionListener{
         */
         if(!(curso.isMatutino() || curso.isVespertino() || curso.isNoturno())){
             throw new ExceptionEscola("Deve ser  marcado pelo menos um dos turnos para o curso");
-        }   
+        } 
+        
+        br.sistemaescola.list.CursoList.addCurso(curso);
+        
         
     }
 
@@ -115,30 +112,47 @@ public class CursoController implements ActionListener{
     }
 
     private void limparFormulario() {
-        JOptionPane.showMessageDialog(frame, "limpar");
+       
+       JOptionPane.showMessageDialog(frame, "limpar dados do Formulario!");
+       
     }
 
     private void pesquisaNome() {
-        JOptionPane.showMessageDialog(frame, "pesquisarNome");
-    }
+        
+        JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
+                + "nao consegue editar o que voce informou mas nao fique triste "
+                + "pode ver os cursos que você informou até o momento no "
+                + "campo Resultado da pesquisa");
+    
+        String nomeCursoPesquisa = frame.getCursoPesquisa();
+            DefaultListModel dm = new DefaultListModel();
 
+            for( Curso curso :  br.sistemaescola.list.CursoList.getListCurso()){
+                   if(curso.getNome().matches(".*" + nomeCursoPesquisa + ".*")){
+                       dm.addElement(curso.getNome());     
+                   }
+            }       
+        frame.getJListResultado().setModel(dm);       
+    }
+    
     private void pesquisarProfessor() {
         
         /*Busca os professores que combinam com o nome
           informado no formulario e os joga na lista
         */
-        String nomeProfesssor = frame.getProfessorPesquisar();
-               
-        Professor Gilberto = new Professor();
-        Gilberto.setNomeProfessor("Gilberto Vieira");
-        br.sistemaescola.list.ProfessorList.addProfessor(Gilberto);
         
+        String nomeProfessorPesquisa = frame.getProfessorPesquisar(); 
+        DefaultListModel dm = new DefaultListModel();
+   
         for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
-            JOptionPane.showMessageDialog(frame, "Exite os professor : " + professor.getNomeProfessor());    
-        }
+               if(professor.getNomeProfessor().matches(".*" + nomeProfessorPesquisa + ".*")){
+                   dm.addElement(professor.getNomeProfessor());     
+               }
+        }       
+        frame.getJListResultado().setModel(dm);       
     }
 
     private void pesquisarId() {
-        JOptionPane.showMessageDialog(frame, "pesquisarId");
+        JOptionPane.showMessageDialog(frame, "Desculpe ainda não foi implementado essa opção :(");
     }
 }

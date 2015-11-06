@@ -1,15 +1,10 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.PrincipalController;
-import br.sistemaescola.list.ProfessorList;
+import br.sistemaescola.object.Aluno;
+import br.sistemaescola.object.Disciplina;
+import br.sistemaescola.object.Professor;
 import javax.swing.JDesktopPane;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 /**
  *
@@ -19,8 +14,32 @@ public class PrincipalJFrame extends javax.swing.JFrame {
 
     PrincipalController action = new PrincipalController(this); 
    
+    
+  
+    
+    
     public PrincipalJFrame() {
-        initComponents();
+       initComponents();
+        
+       
+       Professor ana = new Professor();
+       ana.setNomeProfessor("Ana Claudia");    
+       br.sistemaescola.list.ProfessorList.addProfessor(ana);
+       
+       Professor p = new Professor();
+       p.setNomeProfessor("Gilberto Vieira");    
+       br.sistemaescola.list.ProfessorList.addProfessor(p); 
+       
+       
+       Aluno aluno = new Aluno();
+       aluno.setNomeAluno("Leandro Justin Vieira");
+       br.sistemaescola.list.AlunoList.addAluno(aluno);
+       
+       Disciplina disciplina = new Disciplina();
+       disciplina.setNomeDisciplina("Topicos I");
+       br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
+       
+       
     }
 
     public JDesktopPane getjDesktopPane1() {
