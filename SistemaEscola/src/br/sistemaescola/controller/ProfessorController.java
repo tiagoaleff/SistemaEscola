@@ -34,7 +34,6 @@ public class ProfessorController implements ActionListener {
                 pesquisar();
                 break;
             case "salvarJButton":
-                JOptionPane.showMessageDialog(null, "Salva com sucesso!!!!");
                 adicionar();
                 break;
             case "cancelarJToggleButton":
@@ -42,22 +41,23 @@ public class ProfessorController implements ActionListener {
                 frame.dispose();
                 break;
             case "clearJButton1":
-                JOptionPane.showMessageDialog(null, "Limpo!!!!");
                 limpar();
                 break;
         }
     }
 
     public void limpar(){
-                
+                                   
         Component[] comps = frame.getComponents();
         
         for(Component c : comps){
-            
-            if (c instanceof JTextField){
+                       
+            if (c instanceof JTextField){                                
                ((JTextField)c).setText("");
             }                                        
         }
+        
+        /* alterar o codigo abaixo para que funcione o acima*/                        
     }
     
     /*
@@ -105,16 +105,15 @@ public class ProfessorController implements ActionListener {
             validarContato(professor);
             validarEndereco(professor);
             validacaoEspecializacao(professor);
-            
-            cadastroProfessor.add(professor);
-            
+
             /*
             aqui vão os futuros metodos responsáveis pela validação dos formatos
             dos campos.
             
             //validadorDeCampo();        
-            */        
-
+            */                    
+            cadastroProfessor.add(professor);
+            
         } catch(ExceptionEscola e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }                
@@ -124,16 +123,14 @@ public class ProfessorController implements ActionListener {
         
         String cpf = professor.getCPF();
         boolean validar = false;
-        String expressaoRegular = null;                        
-        
+        String expressaoRegular = null;                                
     }
     
     public void validarTelefone(){
         
         String cpf = professor.getCPF();
         boolean validar = false;
-        String expressaoRegular = null;                        
-        
+        String expressaoRegular = null;                                
     }
     
     public void validarCelular(){
@@ -157,8 +154,7 @@ public class ProfessorController implements ActionListener {
         
         String cpf = professor.getCPF();
         boolean validar = false;
-        String expressaoRegular = null;                        
-        
+        String expressaoRegular = null;                                
     }
     
     public void validarCPF(){
@@ -243,12 +239,7 @@ public class ProfessorController implements ActionListener {
         if (professor.getNumeroEndereco().trim().equals("") || professor.getNumeroEndereco() == null) {
 
             throw new ExceptionEscola("O campo Número não pode estar vazio");
-        }
-
-        if (professor.getEstadoEndereco().trim().equals("") || professor.getEstadoEndereco() == null) {
-
-            throw new ExceptionEscola("O campo Estado não pode estar vazio");
-        }        
+        }       
     }
 
     public void validacaoEspecializacao(Professor professor) throws ExceptionEscola{
