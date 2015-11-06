@@ -44,7 +44,9 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         
     }
     
-    
+    public String getProfessorPesquisar(){
+        return professorJTextField.getText();      
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

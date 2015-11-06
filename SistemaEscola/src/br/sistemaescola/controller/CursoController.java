@@ -64,14 +64,12 @@ public class CursoController implements ActionListener{
     }
 
     private void salvarDados() throws ExceptionEscola{
-        
-        
+         
         ArrayList<Professor> professores = new ArrayList<>();
         
         Professor gilberto = new Professor();
         gilberto.setNomeProfessor("gilberto");
         professores.add(gilberto);
-        
         
         Curso curso = frame.atualizarDados();
         
@@ -90,30 +88,23 @@ public class CursoController implements ActionListener{
         if(!professorValido){
             throw new ExceptionEscola("O professor informado não existe deve-se informar um professor cadastrado");
         }
-        
-        
         /* verificar a existencia de uma descrição
            caso não exista cria uma descrição padrão 
         */
         if(curso.getDescricao().trim().equals("")){
             curso.setDescricao("Descrição não informada");
         }
-        
         /*verificar a duração do curso*/
         if(!curso.getDuracao().matches("[0-9]+")){
             throw new ExceptionEscola("A duração informada não é valida - somente é aceito numeros");
         }
-        
         /*verificar turnos
           deve ser informado um turno para o curso
         */
         if(!(curso.isMatutino() || curso.isVespertino() || curso.isNoturno())){
             throw new ExceptionEscola("Deve ser  marcado pelo menos um dos turnos para o curso");
-        }
+        }   
         
-        
-        
-     
     }
 
     private void cancelarFechar() {
@@ -129,7 +120,15 @@ public class CursoController implements ActionListener{
     }
 
     private void pesquisarProfessor() {
-        JOptionPane.showMessageDialog(frame, "pesquisarProfessor");
+        
+        /*Busca os professores que combinam com o nome
+          informado no formulario e os joga na lista
+        */
+        
+        String nomeProfesssor = frame.getProfessorPesquisar();
+        
+        
+        
     }
 
     private void pesquisarId() {
