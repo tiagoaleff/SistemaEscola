@@ -118,13 +118,6 @@
                   <Component id="procurarjToggleButton4" min="-2" pref="54" max="-2" attributes="0"/>
                   <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="jToggleButton3" min="-2" pref="54" max="-2" attributes="0"/>
-                      <EmptySpace pref="146" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -141,13 +134,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" pref="71" max="-2" attributes="0"/>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="jToggleButton3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -188,16 +174,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton3">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/search_black.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton3ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JToggleButton" name="procurarjToggleButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

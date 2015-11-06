@@ -48,7 +48,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         nomeCursojTextField1 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         cursoProcurajList4 = new javax.swing.JList();
-        jToggleButton3 = new javax.swing.JToggleButton();
         procurarjToggleButton4 = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -95,13 +94,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         */
         jScrollPane4.setViewportView(cursoProcurajList4);
 
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
-            }
-        });
-
         procurarjToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
         procurarjToggleButton4.addActionListener(faltas);
         procurarjToggleButton4.setActionCommand("procurarjToggleButton4");
@@ -128,11 +120,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(procurarjToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(146, 146, 146)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(146, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,11 +133,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(54, 54, 54)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecione a Disciplina"));
@@ -384,10 +366,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarjButton2ActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
-
     private void procurarjToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarjToggleButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_procurarjToggleButton4ActionPerformed
@@ -421,7 +399,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JComboBox mesesjComboBox3;
     private javax.swing.JTextField nomeCursojTextField1;
     private javax.swing.JTextField nomeDisciplinajTextField2;

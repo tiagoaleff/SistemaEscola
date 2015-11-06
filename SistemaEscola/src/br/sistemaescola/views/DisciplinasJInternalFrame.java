@@ -24,9 +24,19 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         
         Disciplina disciplina = new Disciplina();
         
+        /* setando informações sobre a DISCIPLINA */
         disciplina.setNomeDisciplina(nomeJTextField.getText());
+        disciplina.setCodigoDisciplina(codigoJTextField1.getText());
+        disciplina.setCreditoDisciplina(creditosJTextField.getText());
+        disciplina.setTotalAlunosDisciplina(totalAlunosJTextField.getText());
+        disciplina.setTotalHorasDisciplina(totalHorasJTextField.getText());
         
-        
+        /* setando informações sobre o PROFESSOR DA DISCIPLINA*/
+        disciplina.setNomeProfessor(nomeProfessorJTextField.getText());
+        disciplina.setCPF(cpfJTextField.getText());
+        disciplina.setRG(rgJTextField.getText());
+        disciplina.setEspecializacao(especializacaoJTextField.getText());        
+               
         return disciplina;        
     }
            
