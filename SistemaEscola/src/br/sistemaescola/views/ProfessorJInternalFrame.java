@@ -10,13 +10,8 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
             = new ProfessorController(this);
     
     private Professor professor = new Professor();
-
-    public Professor getProfessor() {
         
-        return professor;        
-    }
-    
-    public void setProfessor(){                
+    public Professor getProfessor(){                
         
         // setando informações PESSOAIS
         professor.setNomeProfessor(nomeJTextField.getText());
@@ -41,6 +36,8 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         professor.setEspecializacao(especializacaoJTextField.getText());
         professor.setMestradoEspecializacao(mestradoJTextField.getText());
         professor.setDoutoradoEspecializacao(doutoradoJTextField.getText());
+        
+        return professor;
     }
 
     public ProfessorJInternalFrame() {

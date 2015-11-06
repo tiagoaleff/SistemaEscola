@@ -51,32 +51,15 @@ public class DisciplinaController implements ActionListener {
     public void adicionar() throws ExceptionEscola{
         disciplina = frame.getDisciplina();        
         validarCamposDeDisciplina();
-        //validarCamposProfessor();
-        validarFormatos();
+        validarCamposProfessor();
+        br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
     }
     
-    /*verificando formatação dos valores dos campos*/
-    public void validarFormatos() throws ExceptionEscola{
+    public boolean validarNomeCurso(){
         
-        /*verificando informações de DISCIPLINAS*/
-        /*if(! validarNomeDisciplina()){
-            throw new ExceptionEscola("Insira um nome válido");            
-        }
-        if(! validarCodigoDisciplina()){
-            throw new ExceptionEscola("Insira um código válido.\nQue seja maior que zero");            
-        }
-        if(! validarTotalDeAlunos()){
-            throw new ExceptionEscola("Insira um código válido.\nQue seja maior que zero");            
-        }        
-        if(! validarTotalDeHoras()){
-            throw new ExceptionEscola("Insira um valor válido.\nMenor ou igual a 70 horas");            
-        }
-        */
-        
-        // parei aqui
-        if(! validarTotalDeAlunos()){
-            throw new ExceptionEscola("Insira um valor válido.\nMaxímo: 22 alunos   Mínimo: 10 alunos");            
-        }
+        String curso = disciplina.getNomeCurso();        
+        boolean validar = curso.matches("\\D{5,}");                
+        return validar;
     }
     
     public boolean validarNomeDisciplina(){
@@ -90,6 +73,13 @@ public class DisciplinaController implements ActionListener {
                 
         String codigo = disciplina.getCodigoDisciplina();                
         boolean validar = codigo.matches("\\d{1,}"); 
+        return validar;
+    }
+    
+    public boolean validarNomeProfessor(){
+        
+        String nome = disciplina.getNomeProfessor();                                
+        boolean validar = nome.matches("\\D{1,25}");                        
         return validar;
     }
     
@@ -113,16 +103,14 @@ public class DisciplinaController implements ActionListener {
     
     public boolean validarTotalDeAlunos(){
         
-        String totalDeAlunos = disciplina.getTotalAlunosDisciplina();                
-        boolean validar = totalDeAlunos.matches("\\d"); 
-        
-        
-        // PAREI AQUI
+        String totalDeAlunos = disciplina.getTotalAlunosDisciplina();                       
+        boolean validar = totalDeAlunos.matches("\\d{2}"); 
+
         if( validar ){
             
             int totalAlunosInteger = Integer.parseInt(totalDeAlunos);
             
-            if(totalAlunosInteger < 11){
+            if(totalAlunosInteger < 10){
                 
                 return false; 
             } else if(totalAlunosInteger > 22){
@@ -134,53 +122,67 @@ public class DisciplinaController implements ActionListener {
         return validar;
     }
     
-    public void validarCamposDeDisciplina() throws ExceptionEscola {
-
+    public void validarCamposDeDisciplina() throws ExceptionEscola {               
+        
+        // validando o campo nome disciplina
         if (disciplina.getNomeDisciplina().trim().equals("") || disciplina.getNomeDisciplina() == null) {
-
+            
             throw new ExceptionEscola("O campo Nome não pode estar vazio.");
         }
-
-        /*if (disciplina.getCodigoDisciplina().trim().equals("") || disciplina.getCodigoDisciplina() == null) {
+        if(! validarNomeDisciplina()){
+            throw new ExceptionEscola("Insira um nome de disciplina válido");            
+        }
+        
+        // validando o campo curso 
+        if (disciplina.getNomeCurso().trim().equals("") || disciplina.getNomeCurso()== null) {
+            
+            throw new ExceptionEscola("O campo Nome do Curso não pode estar vazio.");
+        } 
+        if(! validarNomeCurso()){
+            throw new ExceptionEscola("Insira um nome de disciplina válido");            
+        }
+        
+        // validando campo codigo
+        if (disciplina.getCodigoDisciplina().trim().equals("") || disciplina.getCodigoDisciplina() == null) {
 
             throw new ExceptionEscola("O código da disciplina não pode estar vazio.");
         }
+        if(! validarCodigoDisciplina()){
+            throw new ExceptionEscola("Insira um código válido.\nQue seja maior que zero");            
+        }
+        
+        // validando campo creditos da disciplina
         if (disciplina.getCreditoDisciplina().trim().equals("") || disciplina.getCreditoDisciplina() == null) {
 
             throw new ExceptionEscola("Informe a quantidade de créditos.");
         }
 
+        // validando campo total de horas da disciplina
         if (disciplina.getTotalHorasDisciplina().trim().equals("") || disciplina.getTotalHorasDisciplina() == null) {
 
             throw new ExceptionEscola("Informe a quantidade de horas.");
         }
+        if(! validarTotalDeHoras()){
+            throw new ExceptionEscola("Insira um valor válido.\nMenor ou igual a 70 horas");            
+        }                        
         
+        // validando total de alunos da disciplina
         if (disciplina.getTotalAlunosDisciplina().trim().equals("") || disciplina.getTotalAlunosDisciplina() == null) {
 
             throw new ExceptionEscola("Informe o total de alunos por turma.");
-        }*/
+        }
+        if(! validarTotalDeAlunos()){
+            throw new ExceptionEscola("Insira uma quantidade de alunos válida.\nMaxímo: 22 alunos   Mínimo: 10 alunos");            
+        }                
     }
     
     public void validarCamposProfessor() throws ExceptionEscola{
         
-        if (disciplina.getNomeProfessor().trim().equals("") || disciplina.getNomeProfessor() == null) {
-
+        if (disciplina.getNomeProfessor().trim().equals("") || disciplina.getNomeProfessor() == null) {                                              
             throw new ExceptionEscola("O campo Nome não pode estar vazio.");
         }
-
-        if (disciplina.getCPF().trim().equals("") || disciplina.getCPF() == null) {
-
-            throw new ExceptionEscola("O campo CPF não pode estar vazio.");
+        if(! validarNomeProfessor()){
+            throw new ExceptionEscola("Insira um nome válido para o professor");            
         }
-
-        if (disciplina.getRG().trim().equals("") || disciplina.getRG() == null) {
-
-            throw new ExceptionEscola("O campo RG não pode estar vazio.");
-        }
-
-        if (disciplina.getEspecializacao().trim().equals("") || disciplina.getEspecializacao() == null) {
-
-            throw new ExceptionEscola("Informe a especialização do professor.");
-        }        
     }        
 }

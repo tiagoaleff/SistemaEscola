@@ -67,7 +67,7 @@ public class ProfessorController implements ActionListener {
         
         
         //alterar a inicialização da variavel professor
-        frame.setProfessor();
+        frame.getProfessor();
         professor = frame.getProfessor();
         
         String name = professor.getNomeProfessor();
@@ -93,8 +93,7 @@ public class ProfessorController implements ActionListener {
         JOptionPane.showMessageDialog(null, "Pesquisando.. Espere alguns segundos, não esqueça de criar aquele método para inserir no banco de dados, aqueles que os valores viram vetores");                
     }
     public void adicionar() {
-
-        frame.setProfessor();
+        
         professor = frame.getProfessor();
 
         // este try/catch tem a grande possibilidade de não ficar aqui
@@ -129,6 +128,9 @@ public class ProfessorController implements ActionListener {
         }        
         if(! validarRG() ){
             throw new ExceptionEscola("Insira um numero de RG válido");            
+        }
+        if(! validarNascimento()){
+            throw new ExceptionEscola("Insira uma data de nascimento válida");            
         }
                         
         /* validação de CONTATO do professor*/        
@@ -169,7 +171,7 @@ public class ProfessorController implements ActionListener {
     public boolean validarNascimento(){
         
         String nascimento = professor.getNascimento();        
-        boolean validar = nascimento.matches("\\d{8,9}");
+        boolean validar = nascimento.matches("^\\d{1,2}/?-?\\d{1,2}/?-?\\d{2,4}");
         return validar;
     }
     
@@ -190,13 +192,8 @@ public class ProfessorController implements ActionListener {
     
     public boolean validarEmail(){
         
-        String email = professor.getEmailContato();                
-        
-        boolean validar = email.matches("\\w{5,}@\\w{5,}.\\w{3}");
-        
-        JOptionPane.showMessageDialog(frame, validar);
-        
-        
+        String email = professor.getEmailContato();                        
+        boolean validar = email.matches("\\w{5,}@\\w{5,}.\\w{3}");                        
         return validar;
         
     }
@@ -212,17 +209,17 @@ public class ProfessorController implements ActionListener {
 
         if (professor.getCPF().trim().equals("") || professor.getCPF() == null) {
 
-            // throw new ExceptionEscola("O campo CPF não pode estar vazio.");
+             throw new ExceptionEscola("O campo CPF não pode estar vazio.");
         }
 
         if (professor.getRG().trim().equals("") || professor.getRG() == null) {
 
-            //throw new ExceptionEscola("O campo RG não pode estar vazio.");
+            throw new ExceptionEscola("O campo RG não pode estar vazio.");
         }
 
         if (professor.getNascimento().trim().equals("") || professor.getNascimento() == null) {
 
-            // throw new ExceptionEscola("A compo Data de Nascimento não pode estar vazia.");
+             throw new ExceptionEscola("A compo Data de Nascimento não pode estar vazia.");
         }        
     }
 
