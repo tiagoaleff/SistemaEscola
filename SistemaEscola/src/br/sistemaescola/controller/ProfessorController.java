@@ -3,8 +3,6 @@ package br.sistemaescola.controller;
 import br.sistemaescola.exception.ExceptionEscola;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.ProfessorJInternalFrame;
@@ -18,7 +16,7 @@ import javax.swing.JTextField;
 public class ProfessorController implements ActionListener {
 
     private ProfessorJInternalFrame frame;
-    private ArrayList<Professor> cadastroProfessor = new ArrayList<Professor>();
+    // private ArrayList<Professor> cadastroProfessor = new ArrayList<Professor>();
     private Professor professor;
 
     public ProfessorController(ProfessorJInternalFrame frame) {
@@ -34,6 +32,7 @@ public class ProfessorController implements ActionListener {
                 pesquisar();
                 break;
             case "salvarJButton":
+        
                 adicionar();
                 break;
             case "cancelarJToggleButton":
@@ -102,82 +101,113 @@ public class ProfessorController implements ActionListener {
         try {
             
             validarInformacoesPessoais(professor);            
-            validarContato(professor);
-            validarEndereco(professor);
-            validacaoEspecializacao(professor);
+            //validarContato(professor);
+            //validarEndereco(professor);
+            //validacaoEspecializacao(professor);
 
             /*
             aqui vão os futuros metodos responsáveis pela validação dos formatos
             dos campos.
             
-            //validadorDeCampo();        
-            */                    
-            cadastroProfessor.add(professor);
+            
+            */                                
+            validarCampos();        
+            br.sistemaescola.list.ProfessorList.addProfessor(professor);
             
         } catch(ExceptionEscola e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }                
+    }    
+    
+    public void validarCampos() throws ExceptionEscola{
+        
+        
+        /* validação de INFORMAÇÕES PESSOAIS do professor*/
+        /*if(! validarNome() ){
+            throw new ExceptionEscola("Insira um nome válido");            
+        }        
+        if(! validarCPF() ){
+            throw new ExceptionEscola("Insira um numero de CPF válido");            
+        }        
+        if(! validarRG() ){
+            throw new ExceptionEscola("Insira um numero de RG válido");            
+        }
+        */        
+                
+        /* validação de CONTATO do professor*/
+        /*
+        if(! validarEmail()){
+            throw new ExceptionEscola("Insira um endereço de e-mail válido");            
+        } 
+        if(! validarTelefone() ){
+            throw new ExceptionEscola("Insira um número de telefone válido");            
+        }
+     
+        if(! validarCelular() ){
+            throw new ExceptionEscola("Insira um número de celular válido");            
+        }
+        */        
     }
     
-    public void validar(){
-        
-        String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                                
+    public boolean validarNome(){
+            
+        String nome = professor.getNomeProfessor();                
+        System.out.println(nome);
+        boolean validar = nome.matches("\\D{5,}");
+        return validar;
     }
     
-    public void validarTelefone(){
+    public boolean validarCPF(){
         
         String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                                
+        boolean validar = cpf.matches("^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}");                
+        return validar;                                
+    }
+        
+    public boolean validarRG(){
+        
+        String rg = professor.getRG();
+        boolean validar = rg.matches("^[0-9]{1}.?[0-9]{3}.?[0-9]{3}");                
+        return validar;                                        
     }
     
-    public void validarCelular(){
+    public boolean validarNascimento(){
         
-        String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                        
+        String nascimento = professor.getNascimento();        
+        boolean validar = nascimento.matches("\\d{8,9}");
+        return validar;
+    }
+    
+    public boolean validarTelefone(){
+        
+        String nome = professor.getTelefoneContato();                
+        boolean validar = nome.matches("\\d{8,9}");
+        return validar;
+    }
+    
+    public boolean validarCelular(){
+        
+        String celular = professor.getCelularContato();
+        boolean validar = celular.matches("\\d{8,9}");
+        return validar;
+    }
+    
+    
+    public boolean validarEmail(){
+        
+        String email = professor.getEmailContato();                
+        
+        boolean validar = email.matches("\\w{5,}@\\w{5,}.\\w{3}");
+        
+        JOptionPane.showMessageDialog(frame, validar);
+        
+        
+        return validar;
         
     }
     
     
-    public void validarEmail(){
-        
-        String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                        
-        
-    }
-    
-    public void validarNascimento(){
-        
-        String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                                
-    }
-    
-    public void validarCPF(){
-        
-        String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                        
-        
-    }
-        
-    public void validarRG(){
-        
-        String cpf = professor.getCPF();
-        boolean validar = false;
-        String expressaoRegular = null;                        
-        
-    }
-        
-    // CRIAR UM VALIDADOR DE CPF
-    public void validadorDeCampo() throws ExceptionEscola{
-        
-        throw new ExceptionEscola("CPF incorreto");                
-    }
+   
     public void validarInformacoesPessoais(Professor professor) throws ExceptionEscola{
 
         if (professor.getNomeProfessor().trim().equals("") || professor.getNomeProfessor() == null) {
@@ -187,17 +217,17 @@ public class ProfessorController implements ActionListener {
 
         if (professor.getCPF().trim().equals("") || professor.getCPF() == null) {
 
-            throw new ExceptionEscola("O campo CPF não pode estar vazio.");
+            // throw new ExceptionEscola("O campo CPF não pode estar vazio.");
         }
 
         if (professor.getRG().trim().equals("") || professor.getRG() == null) {
 
-            throw new ExceptionEscola("O campo RG não pode estar vazio.");
+            //throw new ExceptionEscola("O campo RG não pode estar vazio.");
         }
 
         if (professor.getNascimento().trim().equals("") || professor.getNascimento() == null) {
 
-            throw new ExceptionEscola("A compo Data de Nascimento não pode estar vazia.");
+            // throw new ExceptionEscola("A compo Data de Nascimento não pode estar vazia.");
         }        
     }
 

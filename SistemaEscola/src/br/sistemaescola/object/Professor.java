@@ -31,6 +31,31 @@ public class Professor {
     private String mestradoEspecializacao;
     private String doutoradoEspecializacao;
 
+    
+    public Professor(){}
+        
+    public Professor(String nomeProfessor, String CPF, String RG, String nascimento, String emailContato, String celularContato, String telefoneContato, String ruaEndereco, String cidadeEndereco, String bairroEndereco, String numeroEndereco, String estadoEndereco, String graduacaoEspecializacao, String especializacao, String mestradoEspecializacao, String doutoradoEspecializacao) {
+        this.nomeProfessor = nomeProfessor;
+        this.CPF = CPF;
+        this.RG = RG;
+        this.nascimento = nascimento;
+        this.emailContato = emailContato;
+        this.celularContato = celularContato;
+        this.telefoneContato = telefoneContato;
+        this.ruaEndereco = ruaEndereco;
+        this.cidadeEndereco = cidadeEndereco;
+        this.bairroEndereco = bairroEndereco;
+        this.numeroEndereco = numeroEndereco;
+        this.estadoEndereco = estadoEndereco;
+        this.graduacaoEspecializacao = graduacaoEspecializacao;
+        this.especializacao = especializacao;
+        this.mestradoEspecializacao = mestradoEspecializacao;
+        this.doutoradoEspecializacao = doutoradoEspecializacao;
+    }
+
+    
+    
+    
     public String getNomeProfessor() {
         return nomeProfessor;
     }
