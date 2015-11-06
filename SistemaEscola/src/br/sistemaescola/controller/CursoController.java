@@ -60,9 +60,6 @@ public class CursoController implements ActionListener{
             case "pesquisarProfessor":
                 pesquisarProfessor();
                 break;
-            case "pesquisarId":
-                pesquisarId();
-                break;   
         } 
     }
 
@@ -73,6 +70,17 @@ public class CursoController implements ActionListener{
         /* Verificação do nome do aluno */
         if(curso.getNome().trim().equals("")){
             throw new ExceptionEscola("O nome do curso deve ser informado"); 
+        }
+        
+        /*verifica se o Curso já não existe*/
+        boolean cursoIgual = false;
+        for (Curso cursos : br.sistemaescola.list.CursoList.getListCurso()){
+            if(cursos.getNome().equals(curso.getNome())){
+                cursoIgual = true;
+            }
+        }
+        if(cursoIgual){
+            throw new ExceptionEscola("Um curso com o mesmo nome já existe");
         }
         
         /* verificar Professor Responsavel*/
@@ -150,9 +158,5 @@ public class CursoController implements ActionListener{
                }
         }       
         frame.getJListResultado().setModel(dm);       
-    }
-
-    private void pesquisarId() {
-        JOptionPane.showMessageDialog(frame, "Desculpe ainda não foi implementado essa opção :(");
     }
 }

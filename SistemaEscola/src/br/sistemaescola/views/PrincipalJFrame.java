@@ -23,9 +23,6 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        initComponents();
         
        
-       Professor ana = new Professor();
-       ana.setNomeProfessor("Ana Claudia");    
-       br.sistemaescola.list.ProfessorList.addProfessor(ana);
        
        Professor p = new Professor();
        p.setNomeProfessor("Gilberto Vieira");    
@@ -36,18 +33,17 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        aluno.setNomeAluno("Leandro Justin Vieira");
        br.sistemaescola.list.AlunoList.addAluno(aluno);
        
-       Disciplina disciplina = new Disciplina();
-       disciplina.setNomeDisciplina("Topicos I");
+       Disciplina disciplina = new Disciplina("Topicos I", null, "4", "20", "70", "Ciência da Computação", "Gilberto Vieira");
        br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
        
        
-       Curso cienciaDaComputacao = new Curso("Ciencia da Computacao",
-                                             "Ana Claudia",
+       Curso cienciaDaComputacao = new Curso("Ciência da Computação",
+                                             "Gilberto Vieira",
                                              "78",
                                              "Graduacao em programacao",
                                              true, false, false);
        Curso direito             = new Curso("Direito",
-                                             "Marcelo",
+                                             "Professor teste",
                                              "78",
                                              "Graduacao em direito",
                                              true, false, false);

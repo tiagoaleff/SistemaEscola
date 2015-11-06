@@ -154,6 +154,16 @@ public class FaltasController implements ActionListener {
         
         
         /*Verificar se a disciplina pertence ao curso informado*/
+        boolean DisciplinaPertenceCurso = false;
+        for(Disciplina disciplina : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
+            if(disciplina.getNomeDisciplina().equals(falta.getDisciplina()) &&
+                    (disciplina.getNomeCurso().equals(falta.getCurso()))){
+               DisciplinaPertenceCurso = true; 
+            }
+        }
+        if(!DisciplinaPertenceCurso){
+            throw new ExceptionEscola("Disciplina inserida não pertence a esse curso");
+        }
         
         
         /*verificar se o formato do dia é válido*/
