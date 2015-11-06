@@ -7,6 +7,7 @@ package br.sistemaescola.views;
 
 import br.sistemaescola.controller.NotasController;
 import br.sistemaescola.object.Nota;
+import javax.swing.JList;
 
 /**
  *
@@ -28,19 +29,28 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
         return n;
     }
     
-    
-    
-    
-    
-    
-    
-    
+    public String getDisciplinaPesquisa() {    
+         return disciplinaJTextField.getText();
+}  
+
+    public JList getResultJList() {
+        return ResultJList;
+    }
+
+    public String getAlunoPesquisa() {
+        return alunoJTextField.getText();
+    }
+
+    public String getProfessorPesquisa() {
+        return professorJTextField.getText();
+    }
     
     
     
     
     public NotaJInternalFrame() {
         initComponents();
+        br.sistemaescola.log.Log.gravarMessagem("Aberta a janela de Nota");
     }
 
     /**
@@ -338,4 +348,5 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField professorJTextField;
     private javax.swing.JButton salvarJButton;
     // End of variables declaration//GEN-END:variables
+
 }

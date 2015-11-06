@@ -17,7 +17,7 @@ public class AlunoList {
 
     private static final ArrayList<Aluno> listAluno = new ArrayList<>();
    
-    public static void addCurso(Aluno aluno){ 
+    public static void addAluno(Aluno aluno){ 
        listAluno.add(aluno);
     }
     
