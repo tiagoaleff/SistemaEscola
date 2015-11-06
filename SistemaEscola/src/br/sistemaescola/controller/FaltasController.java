@@ -167,6 +167,20 @@ public class FaltasController implements ActionListener {
             throw new ExceptionEscola("O aluno deve ter faltado ao menos um periodo de aula");
         }
         
+        for(Faltas faltas : br.sistemaescola.list.FaltasList.getListFaltas()){
+            if(faltas.getAluno().equals(falta.getAluno())){
+                if(faltas.getDisciplina().equals(falta.getDisciplina())){
+                    if(faltas.getDia().equals(falta.getDia())){
+                        if(faltas.getMes().equals(falta.getMes())){
+                            if(faltas.getAno().equals(falta.getAno())){
+                                throw new ExceptionEscola("O aluno já possui uma falta desta disciplina nesse mesmo dia");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         br.sistemaescola.list.FaltasList.addFaltas(falta);
     }
 
