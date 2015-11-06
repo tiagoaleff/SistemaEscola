@@ -526,6 +526,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         
         
         // setando informaçõesPESSOAIS aluno
+       
         aluno.setNomeAluno(nomealunoTextField.getText());
         aluno.setCpfAluno(cpfTextField.getText());
         aluno.setRgAluno(rgalunoTextField.getText());
