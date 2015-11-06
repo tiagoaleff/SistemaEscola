@@ -151,6 +151,11 @@ public class FaltasController implements ActionListener {
         if(!disciplinaVerificada){
             throw new ExceptionEscola("A disciplina deve ser valido");
         }
+        
+        
+        /*Verificar se a disciplina pertence ao curso informado*/
+        
+        
         /*verificar se o formato do dia é válido*/
         if(!falta.getDia().matches("^\\d\\d$")){
             throw new ExceptionEscola("O formato do dia é invalida");

@@ -1,11 +1,14 @@
 package br.sistemaescola.controller;
 
 import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.object.Curso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Disciplina;
+import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.DisciplinasJInternalFrame;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -23,43 +26,50 @@ public class DisciplinaController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "disciplinaPesquisaJToggleButton":
-                JOptionPane.showMessageDialog(null, "Disciplinas pesquisadas com Sucesso!!!");
+            case "disciplinaPesquisar":
+                pesquisarDisciplinas();
                 break;
-            case "professorPesquisaJToggleButton":
-                JOptionPane.showMessageDialog(null, "Professores pesquisados com Sucesso!!!");
+            case "professorPesquisar":
+                pesquisarProfessor();
                 break;
-            case "salvarJToggleButton":
+            case "cursoPesquisar":
+                pesquisarCursos();
+                break;               
+            case "salvar":
                 try{
-                    adicionar();    
-                } catch(ExceptionEscola evt){
-                    JOptionPane.showMessageDialog(frame, evt.getMessage());
+                    adicionar();
+                    JOptionPane.showMessageDialog(frame, "Disciplina Adicionada com Sucesso");
+                    br.sistemaescola.log.Log.gravarMessagem("Disciplina Adicionada com Sucesso");
+                } catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, "Erro ao Salvar : " + ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
                 }
                 
                 break;
-            case "cancelarJToggleButton":
-                JOptionPane.showMessageDialog(null, "Cancelado!!!");
-                frame.dispose();
+            case "cancelar":
+                cancelar();
                 break;
-            case "clearJButton1":
-                JOptionPane.showMessageDialog(null, "Limpado!!!");
+            case "clear":
+                clear();
                 break;
 
         }
     }
 
     public void adicionar() throws ExceptionEscola{
-        disciplina = frame.getDisciplina();        
+        disciplina = frame.atualizar();        
         validarCamposDeDisciplina();
-        validarCamposProfessor();
         br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
     }
     
     public boolean validarNomeCurso(){
-        
-        String curso = disciplina.getNomeCurso();        
-        boolean validar = curso.matches("\\D{5,}");                
-        return validar;
+               
+        for(Curso curso : br.sistemaescola.list.CursoList.getListCurso()){
+            if(curso.getNome().equals(disciplina.getNomeCurso())){
+                return true;
+            }
+        }
+        return false;
     }
     
     public boolean validarNomeDisciplina(){
@@ -67,6 +77,16 @@ public class DisciplinaController implements ActionListener {
         String nome = disciplina.getNomeDisciplina();        
         boolean validar = nome.matches("\\D{5,}");                
         return validar;
+    }
+    
+    public boolean validarNomeDisciplinaIguais(){
+        
+        for(Disciplina disciplinas : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
+            if(disciplinas.getNomeDisciplina().equals(disciplina.getNomeDisciplina())){
+                return false;
+            }
+        }
+        return true;
     }
     
     public boolean validarCodigoDisciplina(){
@@ -133,23 +153,15 @@ public class DisciplinaController implements ActionListener {
             throw new ExceptionEscola("Insira um nome de disciplina válido");            
         }
         
-        // validando o campo curso 
-        if (disciplina.getNomeCurso().trim().equals("") || disciplina.getNomeCurso()== null) {
-            
-            throw new ExceptionEscola("O campo Nome do Curso não pode estar vazio.");
-        } 
-        if(! validarNomeCurso()){
-            throw new ExceptionEscola("Insira um nome de disciplina válido");            
+        if(!validarNomeDisciplinaIguais()){
+            throw new ExceptionEscola("já existe uma disciplina com esse nome");
         }
         
-        // validando campo codigo
-        if (disciplina.getCodigoDisciplina().trim().equals("") || disciplina.getCodigoDisciplina() == null) {
-
-            throw new ExceptionEscola("O código da disciplina não pode estar vazio.");
+        // validando o campo curso 
+        if(!validarNomeCurso()){
+            throw new ExceptionEscola("O curso não existe, deve-se informar um curso existente");            
         }
-        if(! validarCodigoDisciplina()){
-            throw new ExceptionEscola("Insira um código válido.\nQue seja maior que zero");            
-        }
+        
         
         // validando campo creditos da disciplina
         if (disciplina.getCreditoDisciplina().trim().equals("") || disciplina.getCreditoDisciplina() == null) {
@@ -173,16 +185,84 @@ public class DisciplinaController implements ActionListener {
         }
         if(! validarTotalDeAlunos()){
             throw new ExceptionEscola("Insira uma quantidade de alunos válida.\nMaxímo: 22 alunos   Mínimo: 10 alunos");            
-        }                
+        }    
+        
+        if(!validarCamposProfessor()){
+            throw new ExceptionEscola("O professor não existe deve-se informar um professor existente");
+        }
+        
     }
     
-    public void validarCamposProfessor() throws ExceptionEscola{
+    public boolean validarCamposProfessor(){
         
-        if (disciplina.getNomeProfessor().trim().equals("") || disciplina.getNomeProfessor() == null) {                                              
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+        for(Professor professor : br.sistemaescola.list.ProfessorList.getListProfessor()){
+            if(disciplina.getNomeProfessor().equals(professor.getNomeProfessor())){
+                return true;
+            }     
         }
-        if(! validarNomeProfessor()){
-            throw new ExceptionEscola("Insira um nome válido para o professor");            
-        }
-    }        
+        return false;
+    }       
+
+    private void pesquisarProfessor() {
+        
+         JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
+                + "nao consegue editar o que voce informou mas nao fique triste "
+                + "pode ver os professores que você informou até o momento no "
+                + "campo Resultado da pesquisa");
+    
+        String nomeProfessorPesquisa = frame.getProfessorPesquisar();
+            DefaultListModel dm = new DefaultListModel();
+
+            for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
+                   if(professor.getNomeProfessor().matches(".*" + nomeProfessorPesquisa + ".*")){
+                       dm.addElement(professor.getNomeProfessor());     
+                   }
+            }       
+        frame.getListaResultadoJList().setModel(dm);
+    }
+
+    private void pesquisarCursos() {
+        
+        JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
+                + "nao consegue editar o que voce informou mas nao fique triste "
+                + "pode ver os cursos que você informou até o momento no "
+                + "campo Resultado da pesquisa");
+    
+        String nomeCursoPesquisa = frame.getCursoPesquisar();
+            DefaultListModel dm = new DefaultListModel();
+
+            for( Curso curso :  br.sistemaescola.list.CursoList.getListCurso()){
+                   if(curso.getNome().matches(".*" + nomeCursoPesquisa + ".*")){
+                       dm.addElement(curso.getNome());     
+                   }
+            }       
+        frame.getListaResultadoJList().setModel(dm);
+        
+    }
+
+    private void pesquisarDisciplinas() {
+        
+         JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
+                + "nao consegue editar o que voce informou mas nao fique triste você "
+                + "pode ver as disciplinas que você informou até o momento no "
+                + "campo abaixo");
+    
+        String nomeDisciplinaPesquisa = frame.getdisiciplinaPesquisar();
+            DefaultListModel dm = new DefaultListModel();
+
+            for( Disciplina disciplina :  br.sistemaescola.list.DisciplinaList.getListDisciplina()){
+                   if(disciplina.getNomeDisciplina().matches(".*" + nomeDisciplinaPesquisa + ".*")){
+                       dm.addElement(disciplina.getNomeDisciplina());     
+                   }
+             }       
+         frame.getListaResultadoJList().setModel(dm);
+    }
+    
+     private void cancelar() {
+        frame.dispose();
+    }
+
+    private void clear() {
+        JOptionPane.showMessageDialog(frame, "A função limpar ainda não está implementada :(");
+    }
 }
