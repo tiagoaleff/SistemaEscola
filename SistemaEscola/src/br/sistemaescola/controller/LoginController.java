@@ -48,12 +48,12 @@ public class LoginController implements ActionListener {
         if(!result.getUser().equals(config.getUser())){
             JOptionPane.showMessageDialog(loginFrame, "usuário ou senha incorreta");
             br.sistemaescola.log.Log.gravarMessagem("Falha ao fazer login na Aplicacao, usuario ou senha incorreta");
-//            return;
+            return;
         }
         
         if(!result.getPassword().equals(config.getPassword())){
             br.sistemaescola.log.Log.gravarMessagem("Falha ao fazer login na Aplicacao, usuario ou senha incorreta");
-  //          return;
+            return;
         }        
         
         loginFrame.dispose();
