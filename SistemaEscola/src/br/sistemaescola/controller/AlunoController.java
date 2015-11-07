@@ -67,6 +67,10 @@ public class AlunoController  implements ActionListener{
         
         aluno = frame.getAluno();                
         validarCamposAluno();
+        validarCamposContato();
+        validarCamposFiliacao();
+        validarCamposEndereco();
+        
     }
     
     private void limpar(){
@@ -258,6 +262,8 @@ public class AlunoController  implements ActionListener{
         if(!validarRua(aluno.getNumero())){
             throw new ExceptionEscola("O campo rua não pode estar vazio.");   
         }
+        
+        br.sistemaescola.list.AlunoList.addAluno(aluno);
     }
     
     // os metodos a seguir são referentes a validação valores dos campos 
