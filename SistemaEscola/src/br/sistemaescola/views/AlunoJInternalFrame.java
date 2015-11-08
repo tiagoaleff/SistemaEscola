@@ -16,7 +16,7 @@ import br.sistemaescola.object.Aluno;
  * @author kadson lemuel de farias
  */
 public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
-    Aluno aluno = new Aluno();
+
     AlunoController action = new AlunoController(this);
     
     public AlunoJInternalFrame() {
@@ -71,7 +71,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         cidadeTextField = new javax.swing.JTextField();
         bairroTextField = new javax.swing.JTextField();
         ruaTextField = new javax.swing.JTextField();
-        nTextField = new javax.swing.JTextField();
+        numeroCasaJTextField = new javax.swing.JTextField();
         estadoJComboBox = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -351,9 +351,9 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        nTextField.addActionListener(new java.awt.event.ActionListener() {
+        numeroCasaJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nTextFieldActionPerformed(evt);
+                numeroCasaJTextFieldActionPerformed(evt);
             }
         });
 
@@ -387,7 +387,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(66, 66, 66)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numeroCasaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(212, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -409,7 +409,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ruaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(nTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroCasaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -479,9 +479,9 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nTextFieldActionPerformed
+    private void numeroCasaJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCasaJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nTextFieldActionPerformed
+    }//GEN-LAST:event_numeroCasaJTextFieldActionPerformed
 
     private void cidadeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeTextFieldActionPerformed
         // TODO add your handling code here:
@@ -530,6 +530,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
        
     public Aluno getAluno(){
         
+        Aluno aluno = new Aluno();
         
         // setando informaçõesPESSOAIS aluno       
         aluno.setNomeAluno(nomealunoTextField.getText());
@@ -558,7 +559,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         aluno.setBairro(bairroTextField.getText());
         aluno.setCidade(cidadeTextField.getText());
         aluno.setRua(ruaTextField.getText());
-        aluno.setNumero(ruaTextField.getText());
+        aluno.setNumero(numeroCasaJTextField.getText());
         
         return aluno;
     }
@@ -604,11 +605,11 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton limparJButton;
-    private javax.swing.JTextField nTextField;
     private javax.swing.JTextField nascimentoJTextField1;
     private javax.swing.JTextField nomealunoTextField;
     private javax.swing.JTextField nomemaeTextField;
     private javax.swing.JTextField nomepaiTextField;
+    private javax.swing.JTextField numeroCasaJTextField;
     private javax.swing.JTextField rgalunoTextField;
     private javax.swing.JTextField rgmaeTextField;
     private javax.swing.JTextField rgpaiTextField;

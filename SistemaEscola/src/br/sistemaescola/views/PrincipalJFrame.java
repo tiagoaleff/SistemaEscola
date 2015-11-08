@@ -15,27 +15,32 @@ import javax.swing.JDesktopPane;
 public class PrincipalJFrame extends javax.swing.JFrame {
 
     PrincipalController action = new PrincipalController(this); 
-   
-    
-  
-    
     
     public PrincipalJFrame() {
        initComponents();
-        
-       
-       
+            
        Professor p = new Professor();
        p.setNomeProfessor("Gilberto Vieira");    
+       Professor p1 = new Professor();
+       p1.setNomeProfessor("Paracelsio");
+       br.sistemaescola.list.ProfessorList.addProfessor(p1);
        br.sistemaescola.list.ProfessorList.addProfessor(p); 
        
        
        Aluno aluno = new Aluno();
        aluno.setNomeAluno("Leandro Justin Vieira");
+       Aluno aluno2 = new Aluno();
+       aluno2.setNomeAluno("Tiago Aleff da Silva");
+       Aluno aluno3 = new Aluno();
+       aluno3.setNomeAluno("Kadson Farias");
        br.sistemaescola.list.AlunoList.addAluno(aluno);
+       br.sistemaescola.list.AlunoList.addAluno(aluno2);
+       br.sistemaescola.list.AlunoList.addAluno(aluno3);
        
        Disciplina disciplina = new Disciplina("Topicos I", null, "4", "20", "70", "Ciência da Computação", "Gilberto Vieira");
+       Disciplina disciplina2 = new Disciplina("Banco de Dados I", null, "4", "20", "70", "Ciência da Computação", "Paracelsio");
        br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
+       br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina2);
        
        
        Curso cienciaDaComputacao = new Curso("Ciência da Computação",
@@ -55,23 +60,24 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        Faltas f = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "07", "novembro", "2015", true, true, true, true);
        Faltas f1 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "08", "novembro", "2015", true, true, true, true);
        Faltas f2 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "09", "novembro", "2015", true, true, true, true);
-       
+       Faltas f3 = new Faltas("Ciência da Computação", "Topicos I", "Tiago Aleff da Silva", "09", "novembro", "2015", true, true, true, true);
        br.sistemaescola.list.FaltasList.addFaltas(f);
        br.sistemaescola.list.FaltasList.addFaltas(f1);
        br.sistemaescola.list.FaltasList.addFaltas(f2);
+       br.sistemaescola.list.FaltasList.addFaltas(f3);
        
        
     }
 
     public JDesktopPane getPrincipalFrame() {
-        return jDesktopPane1;
+        return JDesktopPane;
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        JDesktopPane = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         legalJLabel = new javax.swing.JLabel();
@@ -92,29 +98,28 @@ public class PrincipalJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Escola");
 
-        jDesktopPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jDesktopPane1.setForeground(new java.awt.Color(204, 204, 204));
+        JDesktopPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        JDesktopPane.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo sistema escola- transparente.png"))); // NOI18N
 
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        javax.swing.GroupLayout JDesktopPaneLayout = new javax.swing.GroupLayout(JDesktopPane);
+        JDesktopPane.setLayout(JDesktopPaneLayout);
+        JDesktopPaneLayout.setHorizontalGroup(
+            JDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDesktopPaneLayout.createSequentialGroup()
                 .addGap(362, 362, 362)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        JDesktopPaneLayout.setVerticalGroup(
+            JDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JDesktopPaneLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(212, Short.MAX_VALUE))
         );
+        JDesktopPane.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 255));
 
@@ -200,12 +205,12 @@ public class PrincipalJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(JDesktopPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1)
+                .addComponent(JDesktopPane)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -220,6 +225,7 @@ public class PrincipalJFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane JDesktopPane;
     private javax.swing.JMenuItem alunoJMenuItem;
     private javax.swing.JMenuItem cursoJMenuItem;
     private javax.swing.JMenu diarioAcademicoJMenu;
@@ -227,7 +233,6 @@ public class PrincipalJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem faltaJMenuItem;
     private javax.swing.JMenuItem gerenciarFaltasJMenuItem;
     private javax.swing.JMenuItem gerenciarNotasJMenuItem;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private volatile javax.swing.JMenuBar jMenuBar1;

@@ -97,13 +97,22 @@ public class NotasController implements ActionListener{
         boolean disciplinaVerificacao = false;
         for(Disciplina disciplina : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
            if(nota.getDisciplicina().equals(disciplina.getNomeDisciplina())){
+               
                disciplinaVerificacao = true;
+               
+               /*Verificar se o professor é lecionada pelo professor*/
+               if(!nota.getProfessor().equals(disciplina.getNomeProfessor())){
+                   throw new ExceptionEscola("O professor selecionado não leciona essa disciplina");
+               }
+               
            } 
         }
         if(!disciplinaVerificacao){
             throw new ExceptionEscola("A disciplina deve ser valida - você pode usar"
                     + " o botao de pesquisar para procurar a disciplina");
         }
+        
+        
         
         /*verificar se o peso é valido ele deve estar entre 1 e 10*/
         if(nota.getPeso().matches("^\\d*\\d+[\\.]*[\\d]*$")){

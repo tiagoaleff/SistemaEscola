@@ -8,7 +8,6 @@ package br.sistemaescola.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import br.sistemaescola.views.AlunoJInternalFrame;
 import br.sistemaescola.views.DisciplinasJInternalFrame;
 import br.sistemaescola.views.CursoJInternalFrame;
@@ -35,10 +34,7 @@ public class PrincipalController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evt) {
         
-        String action = evt.getActionCommand();
-        
-        //Boolean teste [] = {false, false, false, false, false, false, false, false};
-        
+        String action = evt.getActionCommand();       
         switch(action){
             
             case "aluno":
@@ -70,6 +66,7 @@ public class PrincipalController implements ActionListener{
                 br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Gerenciar Notas");
                 break;
             case "gerenciar faltas":
+                criarFrameGerenciarFaltas();
                 br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Gerenciar Faltas");
                 break;
         } 
