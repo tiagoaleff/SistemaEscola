@@ -8,6 +8,7 @@ package br.sistemaescola.views;
 import br.sistemaescola.controller.GerenciarFaltasController;
 import br.sistemaescola.controller.GerenciarFaltasListController;
 import javax.swing.JList;
+import javax.swing.JTable;
 
 /**
  *
@@ -29,6 +30,10 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
 
     public JList getAlunoJList() {
         return alunoJList;
+    }
+
+    public JTable getTabelaJTable() {
+        return tabelaJTable;
     }
 
    
@@ -59,7 +64,7 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
         nomeJButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaJTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         alunoJList = new javax.swing.JList();
@@ -87,18 +92,23 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado da pesquisa"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Disiciplina", "Dia", "mes", "ano", " Periodo 1", " Periodo 2", " Periodo 3", " Periodo 4"
             }
-        ));
-        jScrollPane3.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabelaJTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -245,8 +255,8 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton nomeJButton;
     private javax.swing.JTextField nomeJTextField;
+    private javax.swing.JTable tabelaJTable;
     // End of variables declaration//GEN-END:variables
 }

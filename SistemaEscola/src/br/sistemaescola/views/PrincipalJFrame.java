@@ -4,6 +4,7 @@ import br.sistemaescola.controller.PrincipalController;
 import br.sistemaescola.object.Aluno;
 import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
+import br.sistemaescola.object.Faltas;
 import br.sistemaescola.object.Professor;
 import javax.swing.JDesktopPane;
 
@@ -51,9 +52,18 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        br.sistemaescola.list.CursoList.addCurso(cienciaDaComputacao);
        
        
+       Faltas f = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "07", "novembro", "2015", true, true, true, true);
+       Faltas f1 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "08", "novembro", "2015", true, true, true, true);
+       Faltas f2 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "09", "novembro", "2015", true, true, true, true);
+       
+       br.sistemaescola.list.FaltasList.addFaltas(f);
+       br.sistemaescola.list.FaltasList.addFaltas(f1);
+       br.sistemaescola.list.FaltasList.addFaltas(f2);
+       
+       
     }
 
-    public JDesktopPane getjDesktopPane1() {
+    public JDesktopPane getPrincipalFrame() {
         return jDesktopPane1;
     }
 
