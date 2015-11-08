@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import br.sistemaescola.object.Aluno;
 
 import br.sistemaescola.views.AlunoJInternalFrame;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -54,10 +55,7 @@ public class AlunoController  implements ActionListener{
             case "cancelar":
                 cancelar();
                 break;
-            case "buscar_id":
-                buscarId();
-                break;
-            case "buscar_nome":
+            case "buscarNome":
                 buscarNome();
                 break;
         }    
@@ -81,12 +79,20 @@ public class AlunoController  implements ActionListener{
     private void cancelar(){
         frame.dispose();
     }
-    private void buscarId(){
-        JOptionPane.showMessageDialog(frame, "Desculpe essa fução ainda não foi implementada :(");
-    }
+
     private void buscarNome(){
-        JOptionPane.showMessageDialog(frame, "sdsds");
+    
+
+            DefaultListModel dm = new DefaultListModel();
+
+            for( Aluno aluno :  br.sistemaescola.list.AlunoList.getListAluno()){
+                   if(aluno.getNomeAluno().matches(".*" + aluno.getNomeAluno() + ".*")){
+                       dm.addElement(aluno.getNomeAluno());     
+                   }
+             }       
+        frame.getjList1().setModel(dm);
     }
+    
     
     public void validarCamposAluno() throws ExceptionEscola{
         
@@ -246,7 +252,7 @@ public class AlunoController  implements ActionListener{
             throw new ExceptionEscola("O RG do mãe do aluno é obrigatório");
         }                        
         if(!validarRG(aluno.getRgMae())){
-            throw new ExceptionEscola("O formato do RG do pai do aluno é invalido, deve ser informado um RG com 9 digítos. EX: 000000000");
+            throw new ExceptionEscola("O formato do RG da mãe do aluno é invalido, deve ser informado um RG com 9 digítos. EX: 000000000");
         }
     }
     
@@ -300,7 +306,7 @@ public class AlunoController  implements ActionListener{
             
             throw new ExceptionEscola("O campo numero da casa é obrigatório");
         }                
-        if(!validarRua(aluno.getNumero())){
+        if(!validarNumeroCasa(aluno.getNumero())){
             throw new ExceptionEscola("O campo numero da casa é inválido por favor insirta um numero válido.");   
         }
         
@@ -339,7 +345,7 @@ public class AlunoController  implements ActionListener{
         return true;
     }
     
-    private boolean validarRua(String rua){        
+    private boolean validarNumeroCasa(String rua){        
         return rua.matches("\\d{1,}");
     }
     

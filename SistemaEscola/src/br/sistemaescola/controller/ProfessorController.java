@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.ProfessorJInternalFrame;
 import java.awt.Component;
+import javax.swing.DefaultListModel;
 import javax.swing.JTextField;
 
 /**
@@ -16,7 +17,6 @@ import javax.swing.JTextField;
 public class ProfessorController implements ActionListener {
 
     private ProfessorJInternalFrame frame;
-    // private ArrayList<Professor> cadastroProfessor = new ArrayList<Professor>();
     private Professor professor;
 
     public ProfessorController(ProfessorJInternalFrame frame) {
@@ -27,23 +27,28 @@ public class ProfessorController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        
+        professor = frame.getProfessor();
+        
+        
         switch (e.getActionCommand()) {
-            case "disciplinaPesquisaJToggleButton":
-                pesquisar();
+            case "pesquisarProfessor":
+                pesquisarProfessor();
                 break;
-            case "salvarJButton":        
+            case "salvar":        
                 
                 try{
                     adicionar();
-                }catch(ExceptionEscola exc){
-                    JOptionPane.showMessageDialog(frame, exc.getMessage());
+                    JOptionPane.showMessageDialog(frame,"Professor cadastrado com sucesso");
+                    br.sistemaescola.log.Log.gravarMessagem("Professor cadastrado com sucesso");
+                }catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
                 }                                            
                 break;
-            case "cancelarJToggleButton":
-                JOptionPane.showMessageDialog(null, "Cancelado com sucesso!!!!");
+            case "cancelar":
                 frame.dispose();
                 break;
-            case "clearJButton1":
+            case "clear":
                 limpar();
                 break;
         }
@@ -62,195 +67,96 @@ public class ProfessorController implements ActionListener {
         
         /* alterar o codigo abaixo para que funcione o acima*/                        
     }
+        
+    public void pesquisarProfessor(){
     
-    /*
-       ESTE MÉTODO NÃO ESTÁ PRONTO, PORQUE NÃO FOI DEFINIDO O MODO QUE SERÁ GRAVADO AS INFORMAÇÕES 
-       NO BANCO DE DADOS. TAMBÉM NÃO FOI DEFINICO COMO A FORMAS DE VALIDAÇÃO
-    */     
-    public void pesquisar(){
+        DefaultListModel dlm = new DefaultListModel();
         
+       for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
+           if(p.getNomeProfessor().matches(".*" + professor.getNomeProfessor() + ".*")){
+               dlm.addElement(p.getNomeProfessor());
+           }   
+       }
+       frame.getResultadoJList().setModel(dlm);
         
-        //alterar a inicialização da variavel professor
-        frame.getProfessor();
-        professor = frame.getProfessor();
-        
-        String name = professor.getNomeProfessor();
-        String cpf = professor.getCPF();
-        String rg = professor.getRG();
-        
-        // receberia os dados
-        // validaria os dados antes da pesquisas        
-        // veria quem esta com os campos corretos
-        
-        if(name == null && name.trim().equals("")){
-            name = null;
-        } 
-        
-        if(cpf == null && cpf.trim().equals("")){
-            cpf = null;
-        }
-        
-        if(rg == null && rg.trim().equals("")){
-            rg = null;
-        }
-                
-        JOptionPane.showMessageDialog(null, "Pesquisando.. Espere alguns segundos, não esqueça de criar aquele método para inserir no banco de dados, aqueles que os valores viram vetores");                
     }
     
     public void adicionar() throws ExceptionEscola{
         
-        professor = frame.getProfessor();
-
-        // este try/catch tem a grande possibilidade de não ficar aqui
-        
-            
         validarInformacoesPessoais(professor);            
         validarContato(professor);
         validarEndereco(professor);
         validacaoEspecializacao(professor);
-
-        /*
-        método responsável por validar os campos
-        */                                
-
-        validarCampos();        
+       
         br.sistemaescola.list.ProfessorList.addProfessor(professor);
-
-
     }    
-    
-    public void validarCampos() throws ExceptionEscola{
-        
-        
-        /* validação de INFORMAÇÕES PESSOAIS do professor*/
-
-        if(! validarCPF(professor.getCPF()) ){
-            throw new ExceptionEscola("Insira um numero de CPF válido");            
-        }        
-        if(! validarRG(professor.getRG()) ){
-            throw new ExceptionEscola("Insira um numero de RG válido");            
-        }
-        if(! validarNascimento(professor.getNascimento())){
-            throw new ExceptionEscola("Insira uma data de nascimento válida");            
-        }
-                        
-        /* validação de CONTATO do professor*/        
-        if(! validarEmail(professor.getEmailContato())){
-            throw new ExceptionEscola("Insira um endereço de e-mail válido");            
-        } 
-        if(! validarTelefone(professor.getTelefoneContato()) ){
-            throw new ExceptionEscola("Insira um número de telefone válido");            
-        }
      
-        if(! validarTelefone(professor.getCelularContato()) ){
-            throw new ExceptionEscola("Insira um número de celular válido");            
-        }
-    }
-    
-    public boolean validarNome(String nome){                            
-        boolean validar = nome.matches("\\D{5,}");
-        return validar;
-    }
-    
-    public boolean validarCPF(String cpf){                
-        boolean validar = cpf.matches("^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}");                
-        return validar;                                
-    }
-        
-    public boolean validarRG(String rg){        
-        boolean validar = rg.matches("^[0-9]{1}.?[0-9]{3}.?[0-9]{3}");                
-        return validar;                                        
-    }
-    
-    public boolean validarNascimento(String nascimento){        
-        boolean validar = nascimento.matches("^\\d{1,2}/?-?\\d{1,2}/?-?\\d{2,4}");
-        return validar;
-    }
-    
-    public boolean validarTelefone(String telefone){
-        boolean validar = telefone.matches("\\d{8,9}");
-        return validar;
-    }
-    
-    /*public boolean validarCelular(){
-        
-        String celular = professor.getCelularContato();
-        boolean validar = celular.matches("\\d{8,9}");
-        return validar;
-    }*/
-    
-    
-    public boolean validarEmail(String email){
-        boolean validar = email.matches("\\w{5,}@\\w{5,}.\\w{3}");                        
-        return validar;
-        
-    }
-    
-    
-   
     public void validarInformacoesPessoais(Professor professor) throws ExceptionEscola{
 
         // verificar o campo NOME 
-        if (professor.getNomeProfessor().trim().equals("") || professor.getNomeProfessor() == null) {
-
-            throw new ExceptionEscola("O campo Nome não pode estar vazio.");
+        if (professor.getNomeProfessor().trim().equals("")) {
+            throw new ExceptionEscola("O nome do professor é obrigatório");
         }
-        if(! validarNome(professor.getNomeProfessor()) ){
-            throw new ExceptionEscola("Insira um nome válido");            
+        if(! validarTamanhoMinimo(professor.getNomeProfessor()) ){
+            throw new ExceptionEscola("O nome do prodfessor é inválido, o nome deve ter ao menos 5 letras");            
         }        
-
-        // validar campo CPF
-        if (professor.getCPF().trim().equals("") || professor.getCPF() == null) {
-
-             throw new ExceptionEscola("O campo CPF não pode estar vazio.");
+        
+        if(nomeProfessorJaExiste(professor.getNomeProfessor())){
+            throw new ExceptionEscola("Já existe um Professor com esse nome");
         }
-        if(! validarCPF(professor.getCPF()) ){
-            throw new ExceptionEscola("Insira um numero de CPF válido");            
+        
+        if (professor.getCPF().trim().equals("")) {
+             throw new ExceptionEscola("O CPF é obrigatório");
+        }
+        
+        if(! validarCPF(professor.getCPF())){
+            throw new ExceptionEscola("O CPF é inválido, deve ser informado um CPF com o seguinte padrão, 000.000.000-00");            
         }        
 
         // validar campo RG
-        if (professor.getRG().trim().equals("") || professor.getRG() == null) {
+        if (professor.getRG().trim().equals("")) {
 
-            throw new ExceptionEscola("O campo RG não pode estar vazio.");
+            throw new ExceptionEscola("O RG é obrigatório");
         }
         if(! validarRG(professor.getRG()) ){
-            throw new ExceptionEscola("Insira um numero de RG válido");            
+            throw new ExceptionEscola("O RG é inválido, deve ser informado um RG com o seguinte padrão, 123456789");            
         }
 
          // validar campo NASCIMENTO
-        if (professor.getNascimento().trim().equals("") || professor.getNascimento() == null) {
-
-             throw new ExceptionEscola("A compo Data de Nascimento não pode estar vazia.");
-        }        
+        if (professor.getNascimento().trim().equals("")) {
+             throw new ExceptionEscola("A data de nascimento é obrigatória");
+        } 
+        if (!validarNascimento(professor.getNascimento())){
+            throw new ExceptionEscola("A data de nascimento é inválida, a data deve seguir o seguinte padrão dd/mm/aaaa");
+        }
     }
 
     public void validarContato(Professor professor) throws ExceptionEscola {
 
         // validar campo E-MAIL
-        if (professor.getEmailContato().trim().equals("") || professor.getEmailContato() == null) {
-
-            throw new ExceptionEscola("O campo E-mail não pode estar vazio");
+        if (professor.getEmailContato().trim().equals("")) {
+            throw new ExceptionEscola("O email é obrigatório");
         }
+        
         if(!validarEmail(professor.getEmailContato())){
-            throw new ExceptionEscola("Insira um campo válido para o E-mail");
+            throw new ExceptionEscola("o email informado é inválido, deve ser uinformado um email válido");
         }
 
         // validar campo CELULAR
-        if (professor.getCelularContato().trim().equals("") || professor.getCelularContato() == null) {
-
-            throw new ExceptionEscola("O campo Celular não pode estar vazio");
+        if (professor.getCelularContato().trim().equals("")) {
+            throw new ExceptionEscola("O Celular é obrigatório");
         }
         if(!validarTelefone(professor.getCelularContato())){
-            throw new ExceptionEscola("Insira um campo válido para o Celular");
+            throw new ExceptionEscola("O celular é inválido, deve ser informado um numero de celular válido EX: 12345678");
         }
 
         // validar campo TELEFONE
-        if (professor.getTelefoneContato().trim().equals("") || professor.getTelefoneContato() == null) {
+        if (professor.getTelefoneContato().trim().equals("")) {
 
-            throw new ExceptionEscola("O campo Telefone não pode estar vazio");
+            throw new ExceptionEscola("O telefone é obrigatório");
         }                
         if(!validarTelefone(professor.getCelularContato())){
-            throw new ExceptionEscola("Insira um campo válido para o Telefone");
+            throw new ExceptionEscola("O telefone é inválido, deve ser informado um telefone válido EX: 12345678 ");
         }
                         
     }
@@ -258,45 +164,82 @@ public class ProfessorController implements ActionListener {
     public void validarEndereco(Professor professor) throws ExceptionEscola{
 
         // validar campo ENDERECO
-        if (professor.getRuaEndereco().trim().equals("") || professor.getRuaEndereco() == null) {
-
-            throw new ExceptionEscola("O campo Rua não pode estar vazio");
+        if (professor.getRuaEndereco().trim().equals("")) {
+            throw new ExceptionEscola("A rua é obrigatória");
         }
-        if(!validarNome(professor.getRuaEndereco())){
-            
+        if(!validarTamanhoMinimo(professor.getRuaEndereco())){
+            throw new ExceptionEscola("A rua é inválida, deve ser informado uma rua com no minímo 5 letras");
         }
         
         // validar campo CIDADE
-        if (professor.getCidadeEndereco().trim().equals("") || professor.getCidadeEndereco() == null) {
-
-            throw new ExceptionEscola("O campo Cidade não pode estar vazio");
+        if (professor.getCidadeEndereco().trim().equals("")) {
+            throw new ExceptionEscola("A cidade é obrigatória");
+        }
+        if(!validarTamanhoMinimo(professor.getCidadeEndereco())){
+            throw new ExceptionEscola("A cidade é inválida, deve ser informado uma cidade com no minino 5 letras");
+        }
+        // validar campo BAIRRO
+        if (professor.getBairroEndereco().trim().equals("")) {
+            throw new ExceptionEscola("O Bairro é obrigatório");
         }
         
-        // validar campo BAIRRO
-        if (professor.getBairroEndereco().trim().equals("") || professor.getBairroEndereco() == null) {
-
-            throw new ExceptionEscola("O campo Bairro não pode estar vazio");
+        if(!validarTamanhoMinimo(professor.getBairroEndereco())){
+            throw new ExceptionEscola("O Bairro é inválido, deve ser informado um bairro com no minimo 5 letras");
         }
 
         // validar campo NUMERO
-        if (professor.getNumeroEndereco().trim().equals("") || professor.getNumeroEndereco() == null) {
-
-            throw new ExceptionEscola("O campo Número não pode estar vazio");
-        }       
-    }
-
-    public void validacaoEspecializacao(Professor professor) throws ExceptionEscola{
-
-        // validar campo GRADUACAO
-        if (professor.getGraduacaoEspecializacao().trim().equals("") || professor.getGraduacaoEspecializacao() == null) {
-
-            throw new ExceptionEscola("O campo Graduação não pode estar vazio");
+        if (professor.getNumeroEndereco().trim().equals("")) {
+            throw new ExceptionEscola("O número da casa é obrigatório");
         }
         
-        // validar campo ESPECIALIZACAO
-        if (professor.getEspecializacao().trim().equals("") || professor.getEspecializacao() == null) {
-
-            throw new ExceptionEscola("Ocampo Especialização não pode estar vazio");
+        if (!validarNumeroCasa(professor.getNumeroEndereco())){
+            throw new ExceptionEscola("O número da casa é inválido, deve ser informado um número válido");
         }
     }
+
+    private void validacaoEspecializacao(Professor professor) throws ExceptionEscola{
+        
+        if (professor.getNivelDeEscolaridade().equals("Selecionar")){
+            throw new ExceptionEscola("Deve ser selecionado o nível de formação");
+        }
+    }
+
+    private boolean validarTamanhoMinimo(String nome){                            
+        return nome.matches("\\D{5,}");
+    }
+    
+    private boolean validarCPF(String cpf){                
+        return cpf.matches("^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}");                                                
+    }
+        
+    private boolean validarNumeroCasa(String rua){        
+        return rua.matches("\\d{1,}");
+    }
+    
+    private boolean validarRG(String rg){        
+        return rg.matches("^[0-9]{1}.?[0-9]{3}.?[0-9]{3}");                                                        
+    }
+    
+    private boolean validarNascimento(String nascimento){        
+        return nascimento.matches("^\\d{2}/?-?\\d{2}/?-?\\d{4}");
+    }
+    
+    private boolean validarTelefone(String telefone){
+        return telefone.matches("\\d{8,9}");
+    }
+    
+    private boolean validarEmail(String email){
+        return email.matches("\\w{5,}@\\w{5,}.\\w{3}");                        
+    }
+    
+    private boolean nomeProfessorJaExiste(String nome){       
+        for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
+            if(p.getNomeProfessor().equals(nome)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
 }

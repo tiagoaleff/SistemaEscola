@@ -26,15 +26,13 @@ public class Professor {
     private String estadoEndereco;
     
     /*informações de especialização*/
-    private String graduacaoEspecializacao;
-    private String especializacao;
-    private String mestradoEspecializacao;
-    private String doutoradoEspecializacao;
+    private String nivelDeEscolaridade;
+
 
     
     public Professor(){}
         
-    public Professor(String nomeProfessor, String CPF, String RG, String nascimento, String emailContato, String celularContato, String telefoneContato, String ruaEndereco, String cidadeEndereco, String bairroEndereco, String numeroEndereco, String estadoEndereco, String graduacaoEspecializacao, String especializacao, String mestradoEspecializacao, String doutoradoEspecializacao) {
+    public Professor(String nomeProfessor, String CPF, String RG, String nascimento, String emailContato, String celularContato, String telefoneContato, String ruaEndereco, String cidadeEndereco, String bairroEndereco, String numeroEndereco, String estadoEndereco, String nivelDeEscolaridade) {
         this.nomeProfessor = nomeProfessor;
         this.CPF = CPF;
         this.RG = RG;
@@ -47,10 +45,15 @@ public class Professor {
         this.bairroEndereco = bairroEndereco;
         this.numeroEndereco = numeroEndereco;
         this.estadoEndereco = estadoEndereco;
-        this.graduacaoEspecializacao = graduacaoEspecializacao;
-        this.especializacao = especializacao;
-        this.mestradoEspecializacao = mestradoEspecializacao;
-        this.doutoradoEspecializacao = doutoradoEspecializacao;
+        this.nivelDeEscolaridade = nivelDeEscolaridade;
+    }
+
+    public String getNivelDeEscolaridade() {
+        return nivelDeEscolaridade;
+    }
+
+    public void setNivelDeEscolaridade(String nivelDeEscolaridade) {
+        this.nivelDeEscolaridade = nivelDeEscolaridade;
     }
 
     
@@ -151,36 +154,5 @@ public class Professor {
     public void setEstadoEndereco(String estadoEndereco) {
         this.estadoEndereco = estadoEndereco;
     }
-
-    public String getGraduacaoEspecializacao() {
-        return graduacaoEspecializacao;
-    }
-
-    public void setGraduacaoEspecializacao(String graduacaoEspecializacao) {
-        this.graduacaoEspecializacao = graduacaoEspecializacao;
-    }
-
-    public String getEspecializacao() {
-        return especializacao;
-    }
-
-    public void setEspecializacao(String especializacao) {
-        this.especializacao = especializacao;
-    }
-
-    public String getMestradoEspecializacao() {
-        return mestradoEspecializacao;
-    }
-
-    public void setMestradoEspecializacao(String mestradoEspecializacao) {
-        this.mestradoEspecializacao = mestradoEspecializacao;
-    }
-
-    public String getDoutoradoEspecializacao() {
-        return doutoradoEspecializacao;
-    }
-
-    public void setDoutoradoEspecializacao(String doutoradoEspecializacao) {
-        this.doutoradoEspecializacao = doutoradoEspecializacao;
-    }            
+           
 }
