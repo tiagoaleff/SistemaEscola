@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import br.sistemaescola.object.Login;
 import br.sistemaescola.views.LoginJFrame;
 import br.sistemaescola.views.PrincipalJFrame;
+import java.io.IOException;
 
 /**
  * 
@@ -59,6 +60,16 @@ public class LoginController implements ActionListener {
         loginFrame.dispose();
         br.sistemaescola.log.Log.gravarMessagem( "Usuario " + result.getUser() + " logado na aplicacao");
         new PrincipalJFrame().setVisible(true);
+        
+        
+        try {
+            loginFrame.getLastlogin().escrever(result);
+            JOptionPane.showMessageDialog(loginFrame, "Login Salvo na aplicação");
+            br.sistemaescola.log.Log.gravarMessagem("Login Salvo na aplicação");
+        } catch (IOException ex) {
+            br.sistemaescola.log.Log.gravarMessagem("Erro ao Salvar o login : " + ex.getMessage());
+            JOptionPane.showMessageDialog(loginFrame, "Erro ao Salvar o login");
+        }
         
     }
     

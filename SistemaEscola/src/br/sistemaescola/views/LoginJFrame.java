@@ -9,6 +9,7 @@ package br.sistemaescola.views;
 
 
 
+import br.sistemaescola.config.CarregarLogin;
 import br.sistemaescola.controller.LoginController;
 import br.sistemaescola.object.Login;
 /**
@@ -18,19 +19,22 @@ import br.sistemaescola.object.Login;
 public class LoginJFrame extends javax.swing.JFrame {
     
     
-    /**
-     * Creates new form loginJFrame
-     */
+    LoginController action = new LoginController(this);
+    CarregarLogin lastlogin;
+    
     public LoginJFrame() {
         initComponents();
         
+        lastlogin = new CarregarLogin();
         br.sistemaescola.log.Log.gravarMessagem("Programa aberto com sucesso");
-        
+        carregarLogin();
     }
-       
-
-    LoginController action = new LoginController(this);  
-
+    
+    private void carregarLogin(){        
+        String lastUser = lastlogin.getLogin().getUser();
+        userJTextField.setText(lastUser);
+    }
+    
     public Login createLogin(){
         String user = userJTextField.getText();
         String password = new String(passwordJField.getPassword());
@@ -39,7 +43,12 @@ public class LoginJFrame extends javax.swing.JFrame {
         
         return result;
     }
+
+    public CarregarLogin getLastlogin() {
+        return lastlogin;
+    }
       
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
