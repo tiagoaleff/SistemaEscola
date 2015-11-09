@@ -52,7 +52,7 @@ public class PrincipalJFrame extends javax.swing.JFrame {
                                              "Professor teste",
                                              "78",
                                              "Graduacao em direito",
-                                             true, false, false);
+                                             true, true, true);
        br.sistemaescola.list.CursoList.addCurso(direito);
        br.sistemaescola.list.CursoList.addCurso(cienciaDaComputacao);
        

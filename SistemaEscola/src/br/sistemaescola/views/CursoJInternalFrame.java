@@ -6,8 +6,11 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.CursoController;
+import br.sistemaescola.controllerlist.CursoListController;
 import br.sistemaescola.object.Curso;
+import javax.swing.JCheckBox;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -17,11 +20,11 @@ import javax.swing.JTextField;
 public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     
     
-    
+    CursoListController cursoListSelectionListener = new CursoListController(this);
     
     CursoController action = new CursoController(this);
     
-
+    private String listaAtual;
     
     public CursoJInternalFrame() {
         initComponents();
@@ -53,10 +56,6 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         
     }
     
-    public String getProfessorPesquisar(){
-        return professorJTextField.getText();      
-    }
-
     public JList getJListResultado() {
         return jListResultado;
     }
@@ -65,6 +64,52 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         return nomeJTextField.getText();
     }
     
+    public String getListaAtual() {
+        return listaAtual;
+    }
+
+    
+    public void setListaAtual(String listaAtual) {
+        this.listaAtual = listaAtual;
+    }
+
+    
+    
+    
+    
+    
+    
+    public JTextArea getDescricaoJTextArea() {
+        return descricaoJTextArea;
+    }
+
+    public JTextField getDuracaoJTextField() {
+        return duracaoJTextField;
+    }
+
+    public JTextField getIdJTextField() {
+        return idJTextField;
+    }
+
+    public JCheckBox getMatutinoJCheckBox() {
+        return matutinoJCheckBox;
+    }
+
+    public JTextField getNomeJTextField() {
+        return nomeJTextField;
+    }
+
+    public JCheckBox getNoturnoJCheckBox() {
+        return noturnoJCheckBox;
+    }
+
+    public JTextField getProfessorJTextField() {
+        return professorJTextField;
+    }
+
+    public JCheckBox getVespertinoJCheckBox() {
+        return vespertinoJCheckBox;
+    }
     
     
     
@@ -236,6 +281,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado da pesquisa"));
 
         jListResultado.setToolTipText("");
+        jListResultado.addListSelectionListener(cursoListSelectionListener);
         jScrollPane2.setViewportView(jListResultado);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

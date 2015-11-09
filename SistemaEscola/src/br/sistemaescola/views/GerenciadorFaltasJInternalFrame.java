@@ -6,7 +6,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.GerenciarFaltasController;
-import br.sistemaescola.controller.GerenciarFaltasListController;
+import br.sistemaescola.controllerlist.GerenciarFaltasListController;
 import javax.swing.JList;
 import javax.swing.JTable;
 

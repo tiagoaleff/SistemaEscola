@@ -20,11 +20,10 @@ import javax.swing.DefaultListModel;
  * @author Leandro Justin Vieira
  */
 
-
-
 public class CursoController implements ActionListener{
 
     private CursoJInternalFrame frame;
+    private Curso curso;
 
     public CursoController(CursoJInternalFrame frame) {
         this.frame = frame;
@@ -33,6 +32,7 @@ public class CursoController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evt) {
      
+        curso = frame.atualizarDados(); 
         String action = evt.getActionCommand();
         
         switch(action){
@@ -40,9 +40,10 @@ public class CursoController implements ActionListener{
             case "salvar":
                 
                 try {
-                    salvarDados();
-                    JOptionPane.showMessageDialog(frame, "O curso foi salvo com sucesso");
+                    verificarDados();
+                    JOptionPane.showMessageDialog(frame, "Curso salvo com sucesso");
                     br.sistemaescola.log.Log.gravarMessagem("Curso salvo com sucesso ");
+                    limparFormulario();
                 } catch (ExceptionEscola ex) {
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
                     br.sistemaescola.log.Log.gravarMessagem("Erro ao gravar curso : " + ex.getMessage());
@@ -63,25 +64,13 @@ public class CursoController implements ActionListener{
         } 
     }
 
-    private void salvarDados() throws ExceptionEscola{
+    private void verificarDados() throws ExceptionEscola{
         
-        Curso curso = frame.atualizarDados();
         
         /* Verificação do nome do aluno */
         if(curso.getNome().trim().equals("")){
             throw new ExceptionEscola("O nome do curso deve ser informado"); 
-        }
-        
-        /*verifica se o Curso já não existe*/
-        boolean cursoIgual = false;
-        for (Curso cursos : br.sistemaescola.list.CursoList.getListCurso()){
-            if(cursos.getNome().equals(curso.getNome())){
-                cursoIgual = true;
-            }
-        }
-        if(cursoIgual){
-            throw new ExceptionEscola("Um curso com o mesmo nome já existe");
-        }
+        }                
         
         /* verificar Professor Responsavel*/
         boolean professorValido = false;
@@ -110,28 +99,46 @@ public class CursoController implements ActionListener{
             throw new ExceptionEscola("Deve ser  marcado pelo menos um dos turnos para o curso");
         } 
         
-        br.sistemaescola.list.CursoList.addCurso(curso);
         
-        
+        /*verifica se o Curso já não existe*/
+        for (Curso cursos : br.sistemaescola.list.CursoList.getListCurso()){
+            if(cursos.getNome().equals(curso.getNome())){
+              
+                int confirma = JOptionPane.showConfirmDialog(frame, "Já existe um curso com esse nome você"
+                        + " deseja sobre escrever o curso?");
+                
+                switch(confirma){
+                    case 0:
+                        edit(cursos);
+                        limparFormulario();
+                        throw new ExceptionEscola("O curso foi editado");
+                    default:
+                        throw new ExceptionEscola("já existe um curso com esse nome troque o nome do "
+                                + "curso ou sobreescreva o mesmo");         
+                }  
+            }
+        }    
+        salvar(curso);   
+          
     }
 
     private void cancelarFechar() {
         frame.dispose();
     }
 
-    private void limparFormulario() {
+    private void limparFormulario() {  
+       frame.getNomeJTextField().setText("");
+       frame.getProfessorJTextField().setText("");
+       frame.getDescricaoJTextArea().setText("");
+       frame.getDuracaoJTextField().setText("");
+       frame.getNoturnoJCheckBox().setSelected(false);
+       frame.getMatutinoJCheckBox().setSelected(false);
+       frame.getVespertinoJCheckBox().setSelected(false);
+       frame.getJListResultado().setModel(new DefaultListModel());
+    }   
        
-       JOptionPane.showMessageDialog(frame, "limpar dados do Formulario!");
-       
-    }
-
     private void pesquisaNome() {
         
-        JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste "
-                + "pode ver os cursos que você informou até o momento no "
-                + "campo Resultado da pesquisa");
-    
         String nomeCursoPesquisa = frame.getCursoPesquisa();
             DefaultListModel dm = new DefaultListModel();
 
@@ -140,23 +147,35 @@ public class CursoController implements ActionListener{
                        dm.addElement(curso.getNome());     
                    }
             }       
-        frame.getJListResultado().setModel(dm);       
+        frame.getJListResultado().setModel(dm);
+        frame.setListaAtual("curso");
+        
     }
     
     private void pesquisarProfessor() {
-        
-        /*Busca os professores que combinam com o nome
-          informado no formulario e os joga na lista
-        */
-        
-        String nomeProfessorPesquisa = frame.getProfessorPesquisar(); 
         DefaultListModel dm = new DefaultListModel();
    
         for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
-               if(professor.getNomeProfessor().matches(".*" + nomeProfessorPesquisa + ".*")){
+               if(professor.getNomeProfessor().matches(".*" + curso.getProfessorResponsavel() + ".*")){
                    dm.addElement(professor.getNomeProfessor());     
                }
         }       
-        frame.getJListResultado().setModel(dm);       
+        frame.getJListResultado().setModel(dm);
+        frame.setListaAtual("professor");
     }
+
+    private void salvar(Curso curso) {
+        br.sistemaescola.list.CursoList.addCurso(curso);
+    }  
+    
+    private void edit(Curso c) {
+       c.setDescricao(curso.getDescricao());
+       c.setDuracao(curso.getDuracao());
+       c.setMatutino(curso.isMatutino());
+       c.setNome(curso.getNome());
+       c.setNoturno(curso.isNoturno());
+       c.setProfessorResponsavel(curso.getProfessorResponsavel());
+       c.setVespertino(curso.isVespertino());
+    }
+   
 }
