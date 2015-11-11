@@ -31,7 +31,6 @@ public class LoginController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evt) {
     String action = evt.getActionCommand();
-        System.out.println(action);
        switch (action) {
            case "entrar":
                verificarConexao( loginFrame.createLogin());
@@ -53,6 +52,7 @@ public class LoginController implements ActionListener {
         }
         
         if(!result.getPassword().equals(config.getPassword())){
+            JOptionPane.showMessageDialog(loginFrame, "usuário ou senha incorreta");
             br.sistemaescola.log.Log.gravarMessagem("Falha ao fazer login na Aplicacao, usuario ou senha incorreta");
             return;
         }        
