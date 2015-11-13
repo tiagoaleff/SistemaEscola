@@ -26,6 +26,7 @@ public class AlunoController  implements ActionListener{
     private ArrayList<Aluno> cadastroProfessor = new ArrayList<Aluno>();
     private Aluno aluno;
     
+    
     public AlunoController(AlunoJInternalFrame frame){
         this.frame = frame;
     }
@@ -82,15 +83,16 @@ public class AlunoController  implements ActionListener{
 
     private void buscarNome(){
     
+        frame.setListaAtual("aluno");
+        
+        DefaultListModel dm = new DefaultListModel();
 
-            DefaultListModel dm = new DefaultListModel();
-
-            for( Aluno aluno :  br.sistemaescola.list.AlunoList.getListAluno()){
-                   if(aluno.getNomeAluno().matches(".*" + aluno.getNomeAluno() + ".*")){
-                       dm.addElement(aluno.getNomeAluno());     
-                   }
-             }       
-        frame.getjList1().setModel(dm);
+        for( Aluno aluno :  br.sistemaescola.list.AlunoList.getListAluno()){
+            if(aluno.getNomeAluno().matches(".*" + aluno.getNomeAluno() + ".*")){
+                dm.addElement(aluno.getNomeAluno());     
+            }
+        }       
+        frame.getResultadoJList().setModel(dm);
     }
     
     

@@ -59,7 +59,7 @@ public class ProfessorController implements ActionListener {
         Component[] comps = frame.getComponents();
         
         for(Component c : comps){
-                       
+            
             if (c instanceof JTextField){                                
                ((JTextField)c).setText("");
             }                                        

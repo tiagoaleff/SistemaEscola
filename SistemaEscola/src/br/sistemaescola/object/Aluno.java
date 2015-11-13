@@ -34,7 +34,7 @@ public class Aluno {
 
     public Aluno(){}
     
-    public Aluno(String nomeAluno, String cpfAluno, String rgAluno, String nascimentoAluno, String alunoTelefone, String alunoCelular, String alunoEmail, String nomePai, String nomeMae, String cpfPai, String cpfMae, String rgPai, String rgMae, String nascimentoPap, String nascimentoMae, String estado, String bairro, String cidade, String rua, String numero) {
+    public Aluno(String nomeAluno, String cpfAluno, String rgAluno, String nascimentoAluno, String alunoTelefone, String alunoCelular, String alunoEmail, String nomePai, String nomeMae, String cpfPai, String cpfMae, String rgPai, String rgMae, String estado, String bairro, String cidade, String rua, String numero) {
         this.nomeAluno = nomeAluno;
         this.cpfAluno = cpfAluno;
         this.rgAluno = rgAluno;
@@ -48,8 +48,6 @@ public class Aluno {
         this.cpfMae = cpfMae;
         this.rgPai = rgPai;
         this.rgMae = rgMae;
-        this.nascimentoPap = nascimentoPap;
-        this.nascimentoMae = nascimentoMae;
         this.estado = estado;
         this.bairro = bairro;
         this.cidade = cidade;

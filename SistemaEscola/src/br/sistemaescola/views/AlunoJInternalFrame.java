@@ -2,9 +2,12 @@ package br.sistemaescola.views;
 
 
 import br.sistemaescola.controller.AlunoController;
+import br.sistemaescola.controllerlist.AlunoListController;
 import javax.swing.JInternalFrame;
 import br.sistemaescola.object.Aluno;
+import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,17 +22,103 @@ import javax.swing.JList;
 public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
     AlunoController action = new AlunoController(this);
+    AlunoListController listAction = new AlunoListController(this);
+    private String listaAtual;
+
+    public JComboBox getEstadoJComboBox() {
+        return estadoJComboBox;
+    }
+
+    public JTextField getNomemaeTextField() {
+        return nomemaeTextField;
+    }
+
+    
     
     public AlunoJInternalFrame() {
         initComponents();                      
     }
 
-    public JList getjList1() {
-        return jList1;
+    public JList getResultadoJList() {
+        return resultadoJList;
+    }
+
+    public String getListaAtual(){
+        return listaAtual;
     }
     
+    public void setListaAtual(String listaAtual){
+        this.listaAtual = listaAtual;
+    }
 
-  
+    public JTextField getBairroTextField() {
+        return bairroTextField;
+    }
+
+    public JTextField getCelTextField() {
+        return celTextField;
+    }
+
+    public JTextField getCidadeTextField() {
+        return cidadeTextField;
+    }
+
+    public JTextField getCpfPaiTextField() {
+        return cpfPaiTextField;
+    }
+
+    public JTextField getCpfTextField() {
+        return cpfTextField;
+    }
+
+    public JTextField getCpfmaeTextField() {
+        return cpfmaeTextField;
+    }
+
+    public JTextField getEmailTextField() {
+        return emailTextField;
+    }
+
+    public JTextField getIdTextField() {
+        return idTextField;
+    }
+
+    public JTextField getNascimentoJTextField1() {
+        return nascimentoJTextField1;
+    }
+
+    public JTextField getNomealunoTextField() {
+        return nomealunoTextField;
+    }
+
+    public JTextField getNomepaiTextField() {
+        return nomepaiTextField;
+    }
+
+    public JTextField getNumeroCasaJTextField() {
+        return numeroCasaJTextField;
+    }
+
+    public JTextField getRgalunoTextField() {
+        return rgalunoTextField;
+    }
+
+    public JTextField getRgmaeTextField() {
+        return rgmaeTextField;
+    }
+
+    public JTextField getRgpaiTextField() {
+        return rgpaiTextField;
+    }
+
+    public JTextField getRuaTextField() {
+        return ruaTextField;
+    }
+
+    public JTextField getTelTextField() {
+        return telTextField;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,7 +170,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        resultadoJList = new javax.swing.JList();
         salvarJButton = new javax.swing.JButton();
         cancelarJButton = new javax.swing.JButton();
         limparJButton = new javax.swing.JButton();
@@ -104,18 +193,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel4.setText("RG:");
 
-        nomealunoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomealunoTextFieldActionPerformed(evt);
-            }
-        });
-
-        rgalunoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rgalunoTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel18.setText("Data de Nascimento:");
 
         buscarNomeJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
@@ -126,12 +203,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         jLabel22.setText("ID");
 
         idTextField.setEditable(false);
-
-        nascimentoJTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nascimentoJTextField1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -144,21 +215,20 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nascimentoJTextField1))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(rgalunoTextField))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(nomealunoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buscarNomeJButton))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rgalunoTextField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomealunoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarNomeJButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,12 +269,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         jLabel20.setText("Celular:");
 
         jLabel21.setText("E-Mail:");
-
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -248,31 +312,13 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Mãe:");
 
-        nomemaeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomemaeTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel12.setText("CPF:");
 
         jLabel13.setText("CPF:");
 
-        rgpaiTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rgpaiTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel14.setText("RG:");
 
         jLabel16.setText("RG:");
-
-        cpfPaiTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfPaiTextFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -346,30 +392,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Nº:");
 
-        cidadeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cidadeTextFieldActionPerformed(evt);
-            }
-        });
-
-        bairroTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bairroTextFieldActionPerformed(evt);
-            }
-        });
-
-        numeroCasaJTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numeroCasaJTextFieldActionPerformed(evt);
-            }
-        });
-
         estadoJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecionar", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
-        estadoJComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoJComboBoxActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Bairro:");
 
@@ -428,7 +451,8 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Alunos ja cadastrados"));
 
-        jScrollPane1.setViewportView(jList1);
+        resultadoJList.addListSelectionListener(listAction);
+        jScrollPane1.setViewportView(resultadoJList);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -460,11 +484,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         salvarJButton.setActionCommand("salvar");
 
         /*
-        salvarJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarJButtonActionPerformed(evt);
-            }
-        });
         */
         getContentPane().add(salvarJButton);
         salvarJButton.setBounds(440, 210, 60, 40);
@@ -485,55 +504,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void numeroCasaJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroCasaJTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numeroCasaJTextFieldActionPerformed
-
-    private void cidadeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cidadeTextFieldActionPerformed
-
-    private void nomemaeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomemaeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomemaeTextFieldActionPerformed
-
-    private void cpfPaiTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfPaiTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpfPaiTextFieldActionPerformed
-
-    private void bairroTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bairroTextFieldActionPerformed
-
-    private void rgpaiTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgpaiTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rgpaiTextFieldActionPerformed
-
-    private void estadoJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoJComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_estadoJComboBoxActionPerformed
-
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
-
-    private void rgalunoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgalunoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rgalunoTextFieldActionPerformed
-
-    private void nomealunoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomealunoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomealunoTextFieldActionPerformed
-
-    private void salvarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarJButtonActionPerformed
-                
-                
-    }//GEN-LAST:event_salvarJButtonActionPerformed
-
-    private void nascimentoJTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nascimentoJTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nascimentoJTextField1ActionPerformed
        
     public Aluno getAluno(){
         
@@ -603,7 +573,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -617,6 +586,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField nomemaeTextField;
     private javax.swing.JTextField nomepaiTextField;
     private javax.swing.JTextField numeroCasaJTextField;
+    private javax.swing.JList resultadoJList;
     private javax.swing.JTextField rgalunoTextField;
     private javax.swing.JTextField rgmaeTextField;
     private javax.swing.JTextField rgpaiTextField;

@@ -10,7 +10,6 @@ import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.DisciplinasJInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 

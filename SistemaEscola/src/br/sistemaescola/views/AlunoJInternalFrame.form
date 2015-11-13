@@ -74,23 +74,21 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="nascimentoJTextField1" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cpfTextField" min="-2" pref="128" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="rgalunoTextField" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="nomealunoTextField" min="-2" pref="244" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="buscarNomeJButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cpfTextField" min="-2" pref="128" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="rgalunoTextField" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="nomealunoTextField" min="-2" pref="244" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="buscarNomeJButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="131" max="32767" attributes="0"/>
@@ -154,16 +152,10 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="nomealunoTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomealunoTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="cpfTextField">
             </Component>
             <Component class="javax.swing.JTextField" name="rgalunoTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rgalunoTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
@@ -192,9 +184,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="nascimentoJTextField1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nascimentoJTextField1ActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -273,9 +262,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="emailTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailTextFieldActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -382,9 +368,6 @@
             <Component class="javax.swing.JTextField" name="nomepaiTextField">
             </Component>
             <Component class="javax.swing.JTextField" name="nomemaeTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomemaeTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
@@ -397,9 +380,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="rgpaiTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rgpaiTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="cpfmaeTextField">
             </Component>
@@ -414,9 +394,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cpfPaiTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfPaiTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="rgmaeTextField">
             </Component>
@@ -512,21 +489,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cidadeTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cidadeTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="bairroTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bairroTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="ruaTextField">
             </Component>
             <Component class="javax.swing.JTextField" name="numeroCasaJTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroCasaJTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="estadoJComboBox">
               <Properties>
@@ -563,9 +531,6 @@
                   </StringArray>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estadoJComboBoxActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -621,12 +586,15 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList1">
+            <Component class="javax.swing.JList" name="resultadoJList">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="resultadoJList.addListSelectionListener(listAction);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -639,9 +607,6 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="click aqui para cadastrar ou salvar as altera&#xe7;&#xf5;es feitas em um aluno"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarJButtonActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="*/&#xa;&#xa;salvarJButton.addActionListener(action);&#xa;salvarJButton.setActionCommand(&quot;salvar&quot;);&#xa;&#xa;&#xa;&#xa;/*"/>
         <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="*/"/>

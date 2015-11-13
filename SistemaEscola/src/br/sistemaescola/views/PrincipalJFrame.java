@@ -27,8 +27,11 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        br.sistemaescola.list.ProfessorList.addProfessor(p); 
        
        
-       Aluno aluno = new Aluno();
-       aluno.setNomeAluno("Leandro Justin Vieira");
+       Aluno aluno = new Aluno("Leandro Justin Vieira", "12312312312", "123456789",
+               "12/12/1234", "98207802", "98207802", "leandrojv83@gmail.com",
+               "Edori vieira", "Nelieite Justin vieira", "78945612312",
+               "12345678945", "123456789", "12345678945", "Rio Grande do Sul (RS)",
+               "centro","Terra de Areia", "Rua Antonio de Lima", "1111");
        Aluno aluno2 = new Aluno();
        aluno2.setNomeAluno("Tiago Aleff da Silva");
        Aluno aluno3 = new Aluno();
