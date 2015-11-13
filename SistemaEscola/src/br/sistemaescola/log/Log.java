@@ -6,12 +6,17 @@
 
 package br.sistemaescola.log;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
   public class Log {
@@ -31,50 +36,23 @@ import java.util.logging.Logger;
             }
         }
     }
-      
+   
     private static void escrever(String mensagem) throws IOException {
-        
-        FileOutputStream escritorArquivos = new FileOutputStream(arquivo);
-        int tamanho = 0;
+        FileWriter fileWriter = new FileWriter(arquivo, true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         String data = (new java.util.Date()).toString();
-        String msg = mensagem + " : " + data + "\n";
-        
-        while (tamanho < msg.length()) {
-            escritorArquivos.write((int)msg.charAt(tamanho++));
-        }
-        escritorArquivos.flush();
-        escritorArquivos.close();
+        String msg = data + " : " + mensagem + "\n";
+        bufferedWriter.write(msg);
+        bufferedWriter.flush();
+        bufferedWriter.close(); 
     }
+ 
     
-    private static String ler(String logFile) throws IOException {
-        FileInputStream leitorArquivos = new FileInputStream(logFile);
+    public static void gravarMessagem(String mensagem){
         
-        int lido = leitorArquivos.read();
-        String conteudoArquivo = "";
-        while (lido != -1) {
-            conteudoArquivo += (char)lido;
-            lido = leitorArquivos.read();
-        }
-        
-        leitorArquivos.close();
-        
-        return conteudoArquivo;
-    }
-    
-    public static void gravarMessagem(String mesagem){
-        
-        arquivoExiste();
-        
-        String conteudo = "";
+        arquivoExiste();             
         try {
-            conteudo = ler(arquivo);
-        } catch (IOException ex) {
-            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        conteudo = conteudo + mesagem;
-        
-        try {
-            escrever(conteudo);
+            escrever(mensagem);
         } catch (IOException ex) {
             Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
         }
