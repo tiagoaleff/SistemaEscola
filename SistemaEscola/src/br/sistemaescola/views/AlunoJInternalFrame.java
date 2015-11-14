@@ -598,6 +598,6 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     
 
 public static void main(String args[]){
-new JInternalFrame().setVisible(true);
-}
+    new JInternalFrame().setVisible(true);
+    }
 }

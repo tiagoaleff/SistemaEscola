@@ -8,7 +8,6 @@ package br.sistemaescola.controllerlist;
 
 import br.sistemaescola.object.Aluno;
 import br.sistemaescola.views.AlunoJInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -32,6 +31,8 @@ public class AlunoListController implements ListSelectionListener{
         if(frame.getListaAtual().equals("aluno")){
             buscarAluno(nomeSelecionado);
         }
+        
+        frame.getResultadoJList().clearSelection();
     }
 
     private void buscarAluno(String nome) {
@@ -64,10 +65,8 @@ public class AlunoListController implements ListSelectionListener{
             frame.getBairroTextField().setText(aluno.getBairro());
             frame.getCidadeTextField().setText(aluno.getCidade());
             frame.getRuaTextField().setText(aluno.getRua());
-            frame.getNumeroCasaJTextField().setText(aluno.getNumero());
-            
-        }
-    
+            frame.getNumeroCasaJTextField().setText(aluno.getNumero()); 
+        }   
     }
     
     

@@ -33,6 +33,8 @@ public class AlunoController  implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {
         
+        aluno = frame.getAluno(); 
+        
         String action = e.getActionCommand();
         
         switch(e.getActionCommand()){
@@ -40,7 +42,7 @@ public class AlunoController  implements ActionListener{
                   break;
             case "salvar":
                 try{
-                    salvar();
+                    verificar();
                     JOptionPane.showMessageDialog(frame, "Aluno cadastrado com sucesso");
                     br.sistemaescola.log.Log.gravarMessagem("Aluno cadastrado com sucesso");
                 } catch(ExceptionEscola ex){
@@ -62,19 +64,37 @@ public class AlunoController  implements ActionListener{
         }    
     }
     
-    private void salvar() throws ExceptionEscola{       
-        
-        aluno = frame.getAluno();                
+    private void verificar() throws ExceptionEscola{       
+                       
         validarCamposAluno();
         validarCamposContato();
         validarCamposFiliacao();
         validarCamposEndereco();
+        nomeDoAlunoJaExiste();
         
     }
     
     private void limpar(){
         
-        JOptionPane.showMessageDialog(frame, "limpar");
+        frame.getNomealunoTextField().setText("");
+        frame.getCpfTextField().setText("");
+        frame.getRgalunoTextField().setText("");
+        frame.getNascimentoJTextField1().setText("");
+        frame.getTelTextField().setText("");
+        frame.getCelTextField().setText("");
+        frame.getEmailTextField().setText("");
+        frame.getNomepaiTextField().setText("");
+        frame.getRgpaiTextField().setText("");
+        frame.getCpfPaiTextField().setText("");
+        frame.getNomemaeTextField().setText("");
+        frame.getRgmaeTextField().setText("");
+        frame.getCpfmaeTextField().setText("");
+        frame.getEstadoJComboBox().getModel().setSelectedItem("Selecionar");
+        frame.getBairroTextField().setText("");
+        frame.getCidadeTextField().setText("");
+        frame.getRuaTextField().setText("");
+        frame.getNumeroCasaJTextField().setText(""); 
+        frame.getResultadoJList().setModel(new DefaultListModel());
     }
     
     private void cancelar(){
@@ -95,8 +115,7 @@ public class AlunoController  implements ActionListener{
         frame.getResultadoJList().setModel(dm);
     }
     
-    
-    public void validarCamposAluno() throws ExceptionEscola{
+    private void validarCamposAluno() throws ExceptionEscola{
         
         /** Validação do nome do aluno
         *  verifica se não é vazio
@@ -108,9 +127,6 @@ public class AlunoController  implements ActionListener{
         }
         if(!nomeMinimo(aluno.getNomeAluno())){
             throw new ExceptionEscola("O nome do Aluno deve ter pelo menos 5 letras");
-        }
-        if(nomeDoAlunoJaExiste(aluno.getNomeAluno())){
-            throw new ExceptionEscola("Já existe um Aluno com esse nome");
         }
         
         /** Validação do numero de CPF do aluno
@@ -147,7 +163,7 @@ public class AlunoController  implements ActionListener{
         }
     }
     
-    public void validarCamposContato() throws ExceptionEscola{
+    private void validarCamposContato() throws ExceptionEscola{
                         
         /** Validação do numero de telefone do aluno
         *  verifica se não é vazio
@@ -183,7 +199,7 @@ public class AlunoController  implements ActionListener{
         }
     }
     
-    public void validarCamposFiliacao() throws ExceptionEscola{
+    private void validarCamposFiliacao() throws ExceptionEscola{
                         
         /** Validação do nome do pai
         *  verifica se não é vazio
@@ -258,7 +274,7 @@ public class AlunoController  implements ActionListener{
         }
     }
     
-    public void validarCamposEndereco() throws ExceptionEscola{
+    private void validarCamposEndereco() throws ExceptionEscola{
                         
         /** Validação da campo Estado
         *  verifica se o estado selecionado no ComboBox não é o selecione, pois se for não foi selecionado um estado valido 
@@ -312,10 +328,30 @@ public class AlunoController  implements ActionListener{
             throw new ExceptionEscola("O campo numero da casa é inválido por favor insirta um numero válido.");   
         }
         
-        br.sistemaescola.list.AlunoList.addAluno(aluno);
     }
     
-    /* Os metodos a seguir são referentes a validação valores dos campos */ 
+    private void nomeDoAlunoJaExiste() throws ExceptionEscola{        
+        for(Aluno a : br.sistemaescola.list.AlunoList.getListAluno()){
+            if(a.getNomeAluno().equals(aluno.getNomeAluno())){
+                int confirma = JOptionPane.showConfirmDialog(frame, "Já existe um curso com esse nome você"
+                        + " deseja sobre escrever o curso?");
+                
+                switch(confirma){
+                    case 0:
+                        edit(a);
+                        limpar();
+                        throw new ExceptionEscola("O Aluno foi editado");
+                    default:
+                        throw new ExceptionEscola("já existe um aluno com esse nome troque o nome do "
+                                + "aluno ou sobreescreva o mesmo");         
+                }
+            }    
+        }            
+        
+        salvar();
+    }
+    
+    /* HELPES */ 
     private boolean nomeMinimo(String nome){        
         return nome.matches("\\D{5,}");                
     }
@@ -350,13 +386,30 @@ public class AlunoController  implements ActionListener{
     private boolean validarNumeroCasa(String rua){        
         return rua.matches("\\d{1,}");
     }
-    
-    private boolean nomeDoAlunoJaExiste(String nome){        
-        for(Aluno a : br.sistemaescola.list.AlunoList.getListAluno()){
-         if(a.getNomeAluno().equals(nome)){
-             return true;
-         }            
-        }
-        return false;
+
+    private void salvar() {
+        br.sistemaescola.list.AlunoList.addAluno(aluno);
     }
+
+    private void edit(Aluno a) {
+        a.setNomeAluno(aluno.getNomeAluno());
+        a.setCpfAluno(aluno.getCpfAluno());
+        a.setRgAluno(aluno.getRgAluno());
+        a.setNascimentoAluno(aluno.getNascimentoAluno());
+        a.setAlunoTelefone(aluno.getAlunoTelefone());
+        a.setAlunoCelular(aluno.getAlunoCelular());
+        a.setAlunoEmail(aluno.getAlunoEmail());
+        a.setNomePai(aluno.getNomePai());
+        a.setRgPai(aluno.getRgPai());
+        a.setCpfPai(aluno.getCpfPai());
+        a.setNomeMae(aluno.getNomeMae());
+        a.setRgMae(aluno.getRgMae());
+        a.setCpfMae(aluno.getCpfMae());
+        a.setEstado(aluno.getEstado());
+        a.setBairro(aluno.getBairro());
+        a.setCidade(aluno.getCidade());
+        a.setRua(aluno.getRua());
+        a.setNumero(aluno.getNumero());
+    }
+    
 }
