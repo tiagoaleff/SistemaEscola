@@ -5,18 +5,16 @@ import br.sistemaescola.object.Aluno;
 import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Faltas;
-import br.sistemaescola.object.Professor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.FaltasJInternalFrame;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 public class FaltasController implements ActionListener {
 
     private final FaltasJInternalFrame frame;
+    Faltas falta = null;
 
     public FaltasController(FaltasJInternalFrame frame) {
         this.frame = frame;
@@ -25,6 +23,9 @@ public class FaltasController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        
+        falta = frame.atualizar();
+        
         switch (e.getActionCommand()) {
 
             /*Botoes de pesquisar*/
@@ -42,7 +43,8 @@ public class FaltasController implements ActionListener {
             /*Botoes de Salvar e concelar*/
             case "salvar":
                 try {
-                    salvar();
+                    verificar();
+                    clear();
                     JOptionPane.showMessageDialog(frame, "Falta salva com sucesso");
                     br.sistemaescola.log.Log.gravarMessagem("Falta salva com sucesso");
                 } catch (ExceptionEscola ex) {
@@ -63,60 +65,46 @@ public class FaltasController implements ActionListener {
     }
 
     private void procurarCursos() {
-         JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste você"
-                + "pode ver os cursos que você informou até o momento no "
-                + "campo abaixo");
-    
-        String nomeCursoPesquisa = frame.getCursoPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+         
+    DefaultListModel dm = new DefaultListModel();
 
             for( Curso curso :  br.sistemaescola.list.CursoList.getListCurso()){
-                   if(curso.getNome().matches(".*" + nomeCursoPesquisa + ".*")){
+                   if(curso.getNome().matches(".*" + falta.getCurso() + ".*")){
                        dm.addElement(curso.getNome());     
                    }
-            }       
-        frame.getCursoResultadoJList().setModel(dm);  
+            }  
+            
+    frame.getResultadoJList().setModel(dm);
+    frame.setListaAtual("curso");
     }
 
     private void procurarDisciplina() {
         
-        JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste você "
-                + "pode ver as disciplinas que você informou até o momento no "
-                + "campo abaixo");
-    
-        String nomeDisciplinaPesquisa = frame.getDisciplinaPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+        DefaultListModel dm = new DefaultListModel();
 
             for( Disciplina disciplina :  br.sistemaescola.list.DisciplinaList.getListDisciplina()){
-                   if(disciplina.getNomeDisciplina().matches(".*" + nomeDisciplinaPesquisa + ".*")){
+                   if(disciplina.getNomeDisciplina().matches(".*" + falta.getDisciplina() + ".*")){
                        dm.addElement(disciplina.getNomeDisciplina());     
                    }
              }       
-         frame.getDisciplinaResultadoJList().setModel(dm);  
+        frame.getResultadoJList().setModel(dm); 
+        frame.setListaAtual("disciplina");
      }
  
     private void procurarAlunos() {
-    JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste "
-                + " você pode ver os alunos que você informou até o momento no "
-                + "campo abaixo");
-    
-        String nomeAlunoPesquisa = frame.getAlunoPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+   
+        DefaultListModel dm = new DefaultListModel();
 
             for( Aluno aluno :  br.sistemaescola.list.AlunoList.getListAluno()){
-                   if(aluno.getNomeAluno().matches(".*" + nomeAlunoPesquisa + ".*")){
+                   if(aluno.getNomeAluno().matches(".*" + falta.getAluno() + ".*")){
                        dm.addElement(aluno.getNomeAluno());     
                    }
              }       
-        frame.getAlunoResultadoJList().setModel(dm);
+        frame.getResultadoJList().setModel(dm);
+        frame.setListaAtual("aluno");
     }
 
-    private void salvar() throws ExceptionEscola{
-       
-        Faltas falta = frame.atualizar();       
+    private void verificar() throws ExceptionEscola{
         
         /*verificar se o aluno é existente*/
         boolean  alunoVerificado = false;
@@ -182,21 +170,32 @@ public class FaltasController implements ActionListener {
             throw new ExceptionEscola("O aluno deve ter faltado ao menos um periodo de aula");
         }
         
-        for(Faltas faltas : br.sistemaescola.list.FaltasList.getListFaltas()){
-            if(faltas.getAluno().equals(falta.getAluno())){
-                if(faltas.getDisciplina().equals(falta.getDisciplina())){
-                    if(faltas.getDia().equals(falta.getDia())){
-                        if(faltas.getMes().equals(falta.getMes())){
-                            if(faltas.getAno().equals(falta.getAno())){
-                                throw new ExceptionEscola("O aluno já possui uma falta desta disciplina nesse mesmo dia");
+        for(Faltas f : br.sistemaescola.list.FaltasList.getListFaltas()){
+            if(f.getAluno().equals(falta.getAluno())){
+                if(f.getDisciplina().equals(falta.getDisciplina())){
+                    if(f.getDia().equals(falta.getDia())){
+                        if(f.getMes().equals(falta.getMes())){
+                            if(f.getAno().equals(falta.getAno())){
+                                int confirma = JOptionPane.showConfirmDialog(frame, "Já existe uma falta nesse data para esse aluno"
+                                + " deseja sobre escrever a falta?");
+                
+                                switch(confirma){
+                                    case 0:
+                                        edit(f);
+                                        clear();
+                                        throw new ExceptionEscola("O falta foi editado");
+                                    default:
+                                        throw new ExceptionEscola("já existe um falta com nessa data para esse aluno nessa materia"
+                                                + " troque as informações ou sobreescreva a falta");         
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        salvar();
         
-        br.sistemaescola.list.FaltasList.addFaltas(falta);
     }
 
     private void cancelar() {
@@ -204,8 +203,37 @@ public class FaltasController implements ActionListener {
     }
 
     private void clear() {
-        JOptionPane.showMessageDialog(frame, "Essa função ainda não foi implementada :(");
+        frame.getAlunoJTextField().setText("");
+        frame.getCursoJTextField().setText("");
+        frame.getDiaJTextField().setText("");
+        frame.getDisciplinaJTextField().setText("");
+        frame.getMesesJComboBox().getModel().setSelectedItem("Janeiro");
+        frame.getAnoJTextField().setText("");
+        frame.getPrimeiraAulaJCheckBox().setSelected(false);
+        frame.getSegundaAulaJCheckBox().setSelected(false);
+        frame.getTerceiraAulajCheckBox().setSelected(false);
+        frame.getQuartaAulaJCheckBox().setSelected(false);
+        frame.getResultadoJList().setModel(new DefaultListModel());
+      
+        
     
     }    
+
+    private void edit(Faltas f) {
+        f.setAluno(falta.getAluno());
+        f.setCurso(falta.getCurso());
+        f.setDisciplina(falta.getDisciplina());
+        f.setDia(falta.getDia());
+        f.setMes(falta.getMes());
+        f.setAno(falta.getAno());
+        f.setPrimeiroPeriodo(falta.isPrimeiroPeriodo());
+        f.setSecundoPeriodo(falta.isSecundoPeriodo());
+        f.setTerceiroPeriodo(falta.isTerceiroPeriodo());
+        f.setQuartoPeriodo(falta.isQuartoPeriodo()); 
+    }
+
+    private void salvar() {
+        br.sistemaescola.list.FaltasList.addFaltas(falta);
+    }
 
 }

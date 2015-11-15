@@ -6,7 +6,10 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.FaltasController;
+import br.sistemaescola.controllerlist.FaltaListController;
 import br.sistemaescola.object.Faltas;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JTextField;
 
@@ -20,6 +23,8 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
      * Creates new form FaltasJInternalFrame
      */
     private FaltasController faltas = new FaltasController(this);
+    private FaltaListController actionList = new FaltaListController(this);
+    private String listaAtual;
     
     public Faltas atualizar(){
     
@@ -37,29 +42,58 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         return falta;        
     }
 
-    public JList getCursoResultadoJList() {
-        return cursoResultadoJList;
+    public JList getResultadoJList() {
+        return resultadoJList;
     }
 
-    public JList getDisciplinaResultadoJList() {
-        return disciplinaResultadoJList;
+    public JTextField getAlunoJTextField() {
+        return alunoJTextField;
     }
 
-    public JList getAlunoResultadoJList() {
-        return resultadoAlunosJList;
+    public JTextField getCursoJTextField() {
+        return cursoJTextField;
     }
 
-    public String getAlunoPesquisa() {
-        return alunoJTextField.getText();
+    public JTextField getDisciplinaJTextField() {
+        return disciplinaJTextField;
     }
 
-    public String getCursoPesquisa() {
-        return cursoJTextField.getText();
+    public JTextField getAnoJTextField() {
+        return anoJTextField;
     }
 
-    public String getDisciplinaPesquisa() {
-        return disciplinaJTextField.getText();
+    public JTextField getDiaJTextField() {
+        return diaJTextField;
     }
+
+    public JComboBox getMesesJComboBox() {
+        return mesesJComboBox;
+    }
+
+    public JCheckBox getPrimeiraAulaJCheckBox() {
+        return primeiraAulaJCheckBox;
+    }
+
+    public JCheckBox getQuartaAulaJCheckBox() {
+        return quartaAulaJCheckBox;
+    }
+
+    public JCheckBox getSegundaAulaJCheckBox() {
+        return segundaAulaJCheckBox;
+    }
+
+    public JCheckBox getTerceiraAulajCheckBox() {
+        return terceiraAulajCheckBox;
+    }
+    
+    public String getListaAtual() {
+        return listaAtual;
+    }
+
+    public void setListaAtual(String listaAtual) {
+        this.listaAtual = listaAtual;
+    }
+    
     
     
     
@@ -83,17 +117,13 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cursoJTextField = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        cursoResultadoJList = new javax.swing.JList();
         procurarjToggleButton4 = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         disciplinaJTextField = new javax.swing.JTextField();
         procurarDisciplinaToggleButton5 = new javax.swing.JToggleButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        disciplinaResultadoJList = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
-        resultadoAlunosJList = new javax.swing.JList();
+        resultadoJList = new javax.swing.JList();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         diaJTextField = new javax.swing.JTextField();
@@ -129,13 +159,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        cursoResultadoJList.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        //cursoProcurajList4.addActionListener(faltas);
-        //cursoProcurajList4.setActionCommand("cursoResultadoJList");
-        /*
-        */
-        jScrollPane4.setViewportView(cursoResultadoJList);
-
         procurarjToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
         procurarjToggleButton4.addActionListener(faltas);
         procurarjToggleButton4.setActionCommand("procurarCursos");
@@ -156,12 +179,9 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cursoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(procurarjToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(cursoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(procurarjToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,9 +193,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addComponent(cursoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(procurarjToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecione a Disciplina"));
@@ -200,9 +218,6 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         });
         */
 
-        disciplinaResultadoJList.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jScrollPane2.setViewportView(disciplinaResultadoJList);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -211,12 +226,10 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(disciplinaJTextField))
+                .addComponent(disciplinaJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(procurarDisciplinaToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,13 +242,13 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        resultadoAlunosJList.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Alunos"));
-        jScrollPane3.setViewportView(resultadoAlunosJList);
+        resultadoJList.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultados da Pesquisa "));
+        resultadoJList.addListSelectionListener(actionList);
+        jScrollPane3.setViewportView(resultadoJList);
+        resultadoJList.getAccessibleContext().setAccessibleName("");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Presença"));
 
@@ -243,7 +256,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
         diaJTextField.setToolTipText("Insira o Dia aqui - somente aceito numeros");
         diaJTextField.setName(""); // NOI18N
 
-        mesesJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro (Jan)", "Fevereiro (Fev)", "Março (Mar)", "Abril (Abr)", "Maio (Mai)", "Junho (Jun)", "Julho (Jul)", "Agosto (Ago)", "Setembro (Set)", "Outubro (Out)", "Novembro (Nov)", "Desembro (Des)" }));
+        mesesJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 
         anoJTextField.setText("Ano");
         anoJTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -357,7 +370,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(alunoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pesquisarAlunoJButton)
@@ -372,7 +385,7 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(alunoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4))
                     .addComponent(pesquisarAlunoJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -381,30 +394,33 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(salvarjButton1)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 8, Short.MAX_VALUE)
-                                .addComponent(salvarjButton1)
-                                .addGap(14, 14, 14)
-                                .addComponent(clearJButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelarjButton2)
-                                .addGap(21, 21, 21))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addComponent(clearJButton1)
+                        .addGap(12, 12, 12)
+                        .addComponent(cancelarjButton2))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,22 +428,23 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(clearJButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cancelarjButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(salvarjButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                            .addComponent(cancelarjButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(salvarjButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel3.getAccessibleContext().setAccessibleName("Presença ");
@@ -470,10 +487,8 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton cancelarjButton2;
     private javax.swing.JButton clearJButton1;
     private javax.swing.JTextField cursoJTextField;
-    private javax.swing.JList cursoResultadoJList;
     private javax.swing.JTextField diaJTextField;
     private javax.swing.JTextField disciplinaJTextField;
-    private javax.swing.JList disciplinaResultadoJList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -484,16 +499,14 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JComboBox mesesJComboBox;
     private javax.swing.JButton pesquisarAlunoJButton;
     private javax.swing.JCheckBox primeiraAulaJCheckBox;
     private javax.swing.JToggleButton procurarDisciplinaToggleButton5;
     private javax.swing.JToggleButton procurarjToggleButton4;
     private javax.swing.JCheckBox quartaAulaJCheckBox;
-    private javax.swing.JList resultadoAlunosJList;
+    private javax.swing.JList resultadoJList;
     private javax.swing.JButton salvarjButton1;
     private javax.swing.JCheckBox segundaAulaJCheckBox;
     private javax.swing.JCheckBox terceiraAulajCheckBox;

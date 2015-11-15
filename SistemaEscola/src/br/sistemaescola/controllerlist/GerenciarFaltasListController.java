@@ -61,13 +61,13 @@ public class GerenciarFaltasListController implements ListSelectionListener{
                 primeiro = "sim";
             }
             if(falta.isSecundoPeriodo()){
-                primeiro = "sim";
+                segundo = "sim";
             }
             if(falta.isTerceiroPeriodo()){
-                primeiro = "sim";
+                terceiro = "sim";
             }
             if(falta.isQuartoPeriodo()){
-                primeiro = "sim";
+                quarto = "sim";
             }    
             dtm.addRow(new Object[]{falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),primeiro,segundo,terceiro,quarto}); 
        } 

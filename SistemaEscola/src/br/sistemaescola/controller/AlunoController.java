@@ -115,6 +115,33 @@ public class AlunoController  implements ActionListener{
         frame.getResultadoJList().setModel(dm);
     }
     
+    private void salvar() {
+        br.sistemaescola.list.AlunoList.addAluno(aluno);
+        limpar();
+    }
+
+    private void edit(Aluno a) {
+        a.setNomeAluno(aluno.getNomeAluno());
+        a.setCpfAluno(aluno.getCpfAluno());
+        a.setRgAluno(aluno.getRgAluno());
+        a.setNascimentoAluno(aluno.getNascimentoAluno());
+        a.setAlunoTelefone(aluno.getAlunoTelefone());
+        a.setAlunoCelular(aluno.getAlunoCelular());
+        a.setAlunoEmail(aluno.getAlunoEmail());
+        a.setNomePai(aluno.getNomePai());
+        a.setRgPai(aluno.getRgPai());
+        a.setCpfPai(aluno.getCpfPai());
+        a.setNomeMae(aluno.getNomeMae());
+        a.setRgMae(aluno.getRgMae());
+        a.setCpfMae(aluno.getCpfMae());
+        a.setEstado(aluno.getEstado());
+        a.setBairro(aluno.getBairro());
+        a.setCidade(aluno.getCidade());
+        a.setRua(aluno.getRua());
+        a.setNumero(aluno.getNumero());
+        limpar();
+    }
+    
     private void validarCamposAluno() throws ExceptionEscola{
         
         /** Validação do nome do aluno
@@ -387,29 +414,4 @@ public class AlunoController  implements ActionListener{
         return rua.matches("\\d{1,}");
     }
 
-    private void salvar() {
-        br.sistemaescola.list.AlunoList.addAluno(aluno);
-    }
-
-    private void edit(Aluno a) {
-        a.setNomeAluno(aluno.getNomeAluno());
-        a.setCpfAluno(aluno.getCpfAluno());
-        a.setRgAluno(aluno.getRgAluno());
-        a.setNascimentoAluno(aluno.getNascimentoAluno());
-        a.setAlunoTelefone(aluno.getAlunoTelefone());
-        a.setAlunoCelular(aluno.getAlunoCelular());
-        a.setAlunoEmail(aluno.getAlunoEmail());
-        a.setNomePai(aluno.getNomePai());
-        a.setRgPai(aluno.getRgPai());
-        a.setCpfPai(aluno.getCpfPai());
-        a.setNomeMae(aluno.getNomeMae());
-        a.setRgMae(aluno.getRgMae());
-        a.setCpfMae(aluno.getCpfMae());
-        a.setEstado(aluno.getEstado());
-        a.setBairro(aluno.getBairro());
-        a.setCidade(aluno.getCidade());
-        a.setRua(aluno.getRua());
-        a.setNumero(aluno.getNumero());
-    }
-    
 }

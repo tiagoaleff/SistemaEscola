@@ -61,10 +61,10 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        br.sistemaescola.list.CursoList.addCurso(cienciaDaComputacao);
        
        
-       Faltas f = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "07", "novembro", "2015", true, true, true, true);
-       Faltas f1 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "08", "novembro", "2015", true, true, true, true);
-       Faltas f2 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "09", "novembro", "2015", true, true, true, true);
-       Faltas f3 = new Faltas("Ciência da Computação", "Topicos I", "Tiago Aleff da Silva", "09", "novembro", "2015", true, true, true, true);
+       Faltas f = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "07", "Novembro", "2015", true, true, true, true);
+       Faltas f1 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "08", "Novembro", "2015", true, true, true, true);
+       Faltas f2 = new Faltas("Ciência da Computação", "Topicos I", "Leandro Justin Vieira", "09", "Novembro", "2015", true, true, true, true);
+       Faltas f3 = new Faltas("Ciência da Computação", "Topicos I", "Tiago Aleff da Silva", "09", "Novembro", "2015", true, true, true, true);
        br.sistemaescola.list.FaltasList.addFaltas(f);
        br.sistemaescola.list.FaltasList.addFaltas(f1);
        br.sistemaescola.list.FaltasList.addFaltas(f2);
