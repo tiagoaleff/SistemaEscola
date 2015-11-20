@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.sistemaescola.conexao;
+
+import br.sistemaescola.exception.ExceptionEscola;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -11,4 +11,17 @@ package br.sistemaescola.conexao;
  */
 public class Conexao {
     
+    public static Connection getConexao() throws ExceptionEscola{
+        Connection conn = null;
+        try{
+            Class.forName("oNrg.hsqldb.jdbcDriver");
+            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/agendadb", "sa", "");            
+        }catch(SQLException ex){
+            throw new ExceptionEscola("Problemas ao conectar ao Banco de Dados");
+        }catch(ClassNotFoundException e){
+            throw new ExceptionEscola("Problemas ao conectar ao Banco de Dados");
+        }
+        return conn;
+    }
 }
+
