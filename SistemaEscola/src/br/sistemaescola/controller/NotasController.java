@@ -25,6 +25,7 @@ import javax.swing.DefaultListModel;
 public class NotasController implements ActionListener{
 
     private NotaJInternalFrame frame;
+    private Nota nota = null;
 
     public NotasController(NotaJInternalFrame frame) {
         this.frame = frame;
@@ -33,6 +34,8 @@ public class NotasController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        nota = frame.atualizar();
+          
         String action = e.getActionCommand();
         
         switch(action){
@@ -53,13 +56,13 @@ public class NotasController implements ActionListener{
                 cancelar();
                 break;
             case "buscar_aluno":
-                buscar_aluno();
+                buscarAluno();
                 break;
             case "buscar_professor":
-                buscar_professor();
+                buscarProfessor();
                 break;
             case "buscar_disciplina":
-                buscar_disciplina();
+                buscarDisciplina();
                 break;
         }
         
@@ -67,12 +70,12 @@ public class NotasController implements ActionListener{
     
     private void salvar() throws ExceptionEscola{
         
-        Nota nota = frame.atualizar();
+        
         
         /*Verificação de aluno é existente*/
         boolean alunoVerificado = false;
-        for(Aluno aluno : br.sistemaescola.list.AlunoList.getListAluno()){
-            if(nota.getNome().equals(aluno.getNomeAluno())){
+        for(Aluno a : br.sistemaescola.list.AlunoList.getListAluno()){
+            if(nota.getNome().equals(a.getNomeAluno())){
                 alunoVerificado = true;
             }
         }
@@ -150,56 +153,43 @@ public class NotasController implements ActionListener{
         
     }
     
-    private void buscar_aluno(){
+    private void buscarAluno(){
         
-                JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste "
-                + "pode ver os alunos que você informou até o momento no "
-                + "campo Resultado da pesquisa");
-    
-        String nomeAlunoPesquisa = frame.getAlunoPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+        DefaultListModel dm = new DefaultListModel();
 
-            for( Aluno aluno :  br.sistemaescola.list.AlunoList.getListAluno()){
-                   if(aluno.getNomeAluno().matches(".*" + nomeAlunoPesquisa + ".*")){
-                       dm.addElement(aluno.getNomeAluno());     
-                   }
-            }       
+        for( Aluno a :  br.sistemaescola.list.AlunoList.getListAluno()){
+               if(a.getNomeAluno().matches(".*" + nota.getNome() + ".*")){
+                   dm.addElement(a.getNomeAluno());     
+               }
+        }       
         frame.getResultJList().setModel(dm); 
+        frame.setListAtual("aluno");
     }
     
-    private void buscar_professor(){
+    private void buscarProfessor(){
         
-        JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste "
-                + "pode ver os professores que você informou até o momento no "
-                + "campo Resultado da pesquisa");
-    
-        String nomeProfessorPesquisa = frame.getProfessorPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+        DefaultListModel dm = new DefaultListModel();
 
-            for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
-                   if(professor.getNomeProfessor().matches(".*" + nomeProfessorPesquisa + ".*")){
-                       dm.addElement(professor.getNomeProfessor());     
-                   }
-            }       
-        frame.getResultJList().setModel(dm);     
+        for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
+               if(professor.getNomeProfessor().matches(".*" + nota.getProfessor() + ".*")){
+                   dm.addElement(professor.getNomeProfessor());     
+               }
+        }       
+        frame.getResultJList().setModel(dm);  
+        frame.setListAtual("professor");
+        
     }
     
-    private void buscar_disciplina(){
-        JOptionPane.showMessageDialog(frame, "A função não está completa você ainda "
-                + "nao consegue editar o que voce informou mas nao fique triste "
-                + "pode ver as Disciplinas que você informou até o momento no "
-                + "campo Resultado da pesquisa");
-    
-        String nomeDisciplinaPesquisa = frame.getDisciplinaPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+    private void buscarDisciplina(){
 
-            for( Disciplina disciplina :  br.sistemaescola.list.DisciplinaList.getListDisciplina()){
-                   if(disciplina.getNomeDisciplina().matches(".*" + nomeDisciplinaPesquisa + ".*")){
-                       dm.addElement(disciplina.getNomeDisciplina());     
-                   }
-            }       
-        frame.getResultJList().setModel(dm);       
+        DefaultListModel dm = new DefaultListModel();
+
+        for( Disciplina disciplina :  br.sistemaescola.list.DisciplinaList.getListDisciplina()){
+               if(disciplina.getNomeDisciplina().matches(".*" + nota.getDisciplicina()+ ".*")){
+                   dm.addElement(disciplina.getNomeDisciplina());     
+               }
+        }       
+        frame.getResultJList().setModel(dm);  
+        frame.setListAtual("disciplina");
     }
 }
