@@ -6,8 +6,10 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.NotasController;
+import br.sistemaescola.controllerlist.NotaListController;
 import br.sistemaescola.object.Nota;
 import javax.swing.JList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,7 +18,16 @@ import javax.swing.JList;
 public class NotaJInternalFrame extends javax.swing.JInternalFrame {
 
     NotasController action = new  NotasController(this);
-    
+    NotaListController actionList = new NotaListController(this);
+    private String listAtual = null;
+
+    public String getListAtual() {
+        return listAtual;
+    }
+
+    public void setListAtual(String listAtual) {
+        this.listAtual = listAtual;
+    }
     
     public Nota atualizar(){
         
@@ -29,20 +40,20 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
         return n;
     }
     
-    public String getDisciplinaPesquisa() {    
-         return disciplinaJTextField.getText();
+    public JTextField getDisciplinaJTextField() {    
+         return disciplinaJTextField;
 }  
 
     public JList getResultJList() {
         return ResultJList;
     }
 
-    public String getAlunoPesquisa() {
-        return alunoJTextField.getText();
+    public JTextField getAlunoJTextField() {
+        return alunoJTextField;
     }
 
-    public String getProfessorPesquisa() {
-        return professorJTextField.getText();
+    public JTextField getProfessorJTextField() {
+        return professorJTextField;
     }
     
     
@@ -152,6 +163,7 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado da Busca"));
 
+        ResultJList.addListSelectionListener(actionList);
         jScrollPane1.setViewportView(ResultJList);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
