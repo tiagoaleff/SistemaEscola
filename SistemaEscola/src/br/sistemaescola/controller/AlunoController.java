@@ -31,7 +31,8 @@ public class AlunoController  implements ActionListener{
         this.frame = frame;
     }
     
-    public void actionPerformed(ActionEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e){
         
         aluno = frame.getAluno(); 
         
@@ -59,7 +60,13 @@ public class AlunoController  implements ActionListener{
                 cancelar();
                 break;
             case "buscarNome":
-                buscarNome();
+                try{
+                    buscarNome();    
+                }catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao buscar alunos:" + ex.getMessage());
+                }
+                
                 break;
         }    
     }
@@ -101,7 +108,7 @@ public class AlunoController  implements ActionListener{
         frame.dispose();
     }
 
-    private void buscarNome(){
+    private void buscarNome() throws ExceptionEscola{
     
         frame.setListaAtual("aluno");
         
