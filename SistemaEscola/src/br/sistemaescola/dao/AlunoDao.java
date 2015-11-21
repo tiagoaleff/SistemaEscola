@@ -2,7 +2,7 @@ package br.sistemaescola.dao;
 
 import br.sistemaescola.conexao.Conexao;
 import br.sistemaescola.exception.ExceptionEscola;
-import br.sistemaescola.object.Professor;
+import br.sistemaescola.object.Aluno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,39 +19,45 @@ public class AlunoDao {
         
         Connection conn = null;
         PreparedStatement ps = null;
-        ArrayList<Professor> resultadoLista = new ArrayList<Professor>();
+        ArrayList<Aluno> resultadoLista = new ArrayList<Aluno>();
         try{
-            Professor professor = new Professor();
+            Aluno aluno;
             conn = Conexao.getConexao();
-            String sql = "SELECT * FROM professores"; // arrumar a string para a instrução sql            
+            String sql = "SELECT * FROM alunos";        
             ps = conn.prepareStatement(sql);
             ps.executeQuery();
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
+                aluno = new Aluno();
                 // informações pessoais
-                professor.setNomeProfessor(rs.getString(1));
-                professor.setCPF(rs.getString(2));
-                professor.setRG(rs.getString(3));
-                professor.setNascimento(rs.getString(4));
+                aluno.setNomeAluno(rs.getString(1));
+                aluno.setCpfAluno(rs.getString(2));
+                aluno.setRgAluno(rs.getString(3));
+                aluno.setNascimentoAluno(rs.getString(4));
                 
-                // infornações de contato
-                professor.setEmailContato(rs.getString(5));
-                professor.setCelularContato(rs.getString(6));
-                professor.setTelefoneContato(rs.getString(7));
+                // informações contato
+                aluno.setAlunoTelefone(rs.getString(5));
+                aluno.setAlunoCelular(rs.getString(6));
+                aluno.setAlunoEmail(rs.getString(7));
                 
-                // informações de endereço
-                professor.setRuaEndereco(rs.getString(8));
-                professor.setCidadeEndereco(rs.getString(9));
-                professor.setBairroEndereco(rs.getString(10));
-                professor.setNumeroEndereco(rs.getString(12));
-                professor.setEstadoEndereco(rs.getString(13));
+                // informações filiação
+                aluno.setNomePai(rs.getString(8));
+                aluno.setCpfPai(rs.getString(9));
+                aluno.setRgPai(rs.getString(10));               
+                aluno.setNomeMae(rs.getString(11));
+                aluno.setCpfMae(rs.getString(12));
+                aluno.setRgMae(rs.getString(13));
                 
-                // informação de especialização
-                professor.setNivelDeEscolaridade(rs.getString(13));                
-                
+                // informação endereço
+                aluno.setEstado(rs.getString(14));
+                aluno.setBairro(rs.getString(15));
+                aluno.setCidade(rs.getString(16));
+                aluno.setRua(rs.getString(17));
+                aluno.setNumero(rs.getString(18));
+                                
                 // configura um novo valor a lista
-                resultadoLista.add(professor);
+                resultadoLista.add(aluno);
             }
             
         }catch(SQLException ex){
