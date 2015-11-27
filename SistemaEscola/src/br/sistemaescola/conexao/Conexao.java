@@ -13,9 +13,9 @@ public class Conexao {
     
     public static Connection getConexao() throws ExceptionEscola{
         Connection conn = null;
-        try{
-            Class.forName("oNrg.hsqldb.jdbcDriver");
-            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/agendadb", "sa", "");            
+        try{            
+            Class.forName("org.hsqldb.jdbcDriver");
+            conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/escoladb", "sa", "");            
         }catch(SQLException ex){
             throw new ExceptionEscola("Problemas ao conectar ao Banco de Dados");
         }catch(ClassNotFoundException e){

@@ -5,6 +5,7 @@
  */
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.AlunoDao;
 import br.sistemaescola.exception.ExceptionEscola;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,13 +26,15 @@ public class AlunoController  implements ActionListener{
     private AlunoJInternalFrame frame;
     private ArrayList<Aluno> cadastroProfessor = new ArrayList<Aluno>();
     private Aluno aluno;
+    private AlunoDao base = new AlunoDao();
     
     
     public AlunoController(AlunoJInternalFrame frame){
         this.frame = frame;
     }
     
-    public void actionPerformed(ActionEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e){
         
         aluno = frame.getAluno(); 
         
@@ -59,17 +62,24 @@ public class AlunoController  implements ActionListener{
                 cancelar();
                 break;
             case "buscarNome":
-                buscarNome();
+                try{
+                    buscarNome();    
+                }catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao buscar alunos:" + ex.getMessage());
+                }
+                
                 break;
         }    
     }
     
     private void verificar() throws ExceptionEscola{       
                        
-        validarCamposAluno();
+       /*validarCamposAluno();
         validarCamposContato();
         validarCamposFiliacao();
         validarCamposEndereco();
+        */
         nomeDoAlunoJaExiste();
         
     }
@@ -101,7 +111,7 @@ public class AlunoController  implements ActionListener{
         frame.dispose();
     }
 
-    private void buscarNome(){
+    private void buscarNome() throws ExceptionEscola{
     
         frame.setListaAtual("aluno");
         
@@ -115,8 +125,9 @@ public class AlunoController  implements ActionListener{
         frame.getResultadoJList().setModel(dm);
     }
     
-    private void salvar() {
-        br.sistemaescola.list.AlunoList.addAluno(aluno);
+    private void salvar() throws ExceptionEscola{
+        // br.sistemaescola.list.AlunoList.addAluno(aluno);
+        base.inserirAluno(aluno);
         limpar();
     }
 
