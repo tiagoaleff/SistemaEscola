@@ -26,7 +26,7 @@ public class AlunoController  implements ActionListener{
     private AlunoJInternalFrame frame;
     private ArrayList<Aluno> cadastroProfessor = new ArrayList<Aluno>();
     private Aluno aluno;
-    private AlunoDao base = new AlunoDao();
+    private AlunoDao alunoDao = new AlunoDao();
     
     
     public AlunoController(AlunoJInternalFrame frame){
@@ -127,7 +127,7 @@ public class AlunoController  implements ActionListener{
     
     private void salvar() throws ExceptionEscola{
         // br.sistemaescola.list.AlunoList.addAluno(aluno);
-        base.inserirAluno(aluno);
+        alunoDao.inserirAluno(aluno);
         limpar();
     }
 
@@ -150,7 +150,11 @@ public class AlunoController  implements ActionListener{
         a.setCidade(aluno.getCidade());
         a.setRua(aluno.getRua());
         a.setNumero(aluno.getNumero());
+        
+        // chamar a função updated
+        alunoDao.atualizarAluno(aluno);
         limpar();
+               
     }
     
     private void validarCamposAluno() throws ExceptionEscola{

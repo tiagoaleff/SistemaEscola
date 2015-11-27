@@ -89,6 +89,34 @@ public class AlunoDao {
         return resultadoLista;
     }
     
+    public void atualizarAluno(Aluno aluno){
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = Conexao.getConexao();
+            String sql = "UPDATE alunos SET "
+                    + "nome,"
+                    + "cpf,"
+                    + "rg,"
+                    + "nascimento,"
+                    + "telefone,"
+                    + "celular,"
+                    + "email,"
+                    + "pai,"
+                    + "cpf_pai,"
+                    + "rg_pai,"
+                    + "mae,"
+                    + "cpf_mae,"
+                    + "rg_mae,"
+                    + "rua,"
+                    + "bairro,"
+                    + "cidade,"
+                    + "estado,"
+                    + "numero";
+        }
+    }
+    
     public static void inserirAluno(Aluno aluno) throws ExceptionEscola{
         
         // inserção do aluno na base.
@@ -170,5 +198,5 @@ public class AlunoDao {
                 }
             }
         }
-    }
+    }        
  }
