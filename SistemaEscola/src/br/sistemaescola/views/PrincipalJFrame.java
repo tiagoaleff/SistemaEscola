@@ -26,21 +26,6 @@ public class PrincipalJFrame extends javax.swing.JFrame {
        br.sistemaescola.list.ProfessorList.addProfessor(p1);
        br.sistemaescola.list.ProfessorList.addProfessor(p); 
        
-       
-       Aluno aluno = new Aluno("Leandro Justin Vieira", "12312312312", "123456789",
-               "12/12/1234", "98207802", "98207802", "leandrojv83@gmail.com",
-               "Edori vieira", "Nelieite Justin vieira", "78945612312",
-               "12345678945", "123456789", "123678945", "Rio Grande do Sul (RS)",
-               "centro","Terra de Areia", "Rua Antonio de Lima", "1111");
-       Aluno aluno2 = new Aluno("Tiago Aleff", "12345678985", "123456789", "12/12/1212",
-               "14725836", "14725898", "tiagoaleff@gmail.com",
-               "nome do pai", "nome da mae", "123415678945", "14785236925",
-               "123456789", "123456789", "Santa Catarina (SC)","centro", "Praia Grande", "nao sei", "123456");
-
-       br.sistemaescola.list.AlunoList.addAluno(aluno);
-       br.sistemaescola.list.AlunoList.addAluno(aluno2);
-
-       
        Disciplina disciplina = new Disciplina("Topicos I", null, "4", "20", "70", "Ciência da Computação", "Gilberto Vieira");
        Disciplina disciplina2 = new Disciplina("Banco de Dados I", null, "4", "20", "70", "Ciência da Computação", "Paracelsio");
        br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);

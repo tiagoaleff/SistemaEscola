@@ -69,6 +69,7 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }
+            throw new ExceptionEscola(ex.getMessage());
         }finally{
             if(conn != null){
                 try{
@@ -107,17 +108,18 @@ public class AlunoDao {
                     + "cpf_pai,"
                     + "rg_pai,"
                     + "mae,"
-                    + "cpf_mae"
-                    + "rg_mae"                                                            
+                    + "cpf_mae,"
+                    + "rg_mae,"                                                            
                     + " rua,"
                     + " bairro,"                    
                     + " cidade,"
                     + " estado,"
-                    + " numero"                                        
+                    + " numero"                                                  
                     + ") VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-                                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
+                                    + "?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
             
             ps = conn.prepareStatement(sql);
+            
             ps.setString(1, aluno.getNomeAluno());
             ps.setString(2, aluno.getCpfAluno());
             ps.setString(3, aluno.getRgAluno());
@@ -149,6 +151,7 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }                
             }
+            throw new ExceptionEscola(ex.getMessage());
         }finally{
             
             if(conn != null){
