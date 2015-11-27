@@ -569,6 +569,9 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="resultadoJList.addListSelectionListener(actionList);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

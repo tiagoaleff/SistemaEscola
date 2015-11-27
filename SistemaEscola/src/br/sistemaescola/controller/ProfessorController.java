@@ -27,9 +27,7 @@ public class ProfessorController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        
         professor = frame.getProfessor();
-        
         
         switch (e.getActionCommand()) {
             case "pesquisarProfessor":
@@ -38,7 +36,7 @@ public class ProfessorController implements ActionListener {
             case "salvar":        
                 
                 try{
-                    adicionar();
+                    verificar();
                     JOptionPane.showMessageDialog(frame,"Professor cadastrado com sucesso");
                     br.sistemaescola.log.Log.gravarMessagem("Professor cadastrado com sucesso");
                 }catch(ExceptionEscola ex){
@@ -78,10 +76,11 @@ public class ProfessorController implements ActionListener {
            }   
        }
        frame.getResultadoJList().setModel(dlm);
+       frame.setListAtual("professor");
         
     }
     
-    public void adicionar() throws ExceptionEscola{
+    public void verificar() throws ExceptionEscola{
         
         validarInformacoesPessoais(professor);            
         validarContato(professor);
