@@ -6,7 +6,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.CursoController;
-import br.sistemaescola.controllerlist.CursoListController;
+import br.sistemaescola.controller.list.CursoListController;
 import br.sistemaescola.object.Curso;
 import javax.swing.JCheckBox;
 import javax.swing.JList;

@@ -6,7 +6,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.FaltasController;
-import br.sistemaescola.controllerlist.FaltaListController;
+import br.sistemaescola.controller.list.FaltaListController;
 import br.sistemaescola.object.Faltas;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;

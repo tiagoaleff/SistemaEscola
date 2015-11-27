@@ -1,7 +1,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.ProfessorController;
-import br.sistemaescola.controllerlist.ProfessorListController;
+import br.sistemaescola.controller.list.ProfessorListController;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Professor;
 import javax.swing.JComboBox;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.sistemaescola.controllerteclado;
+package br.sistemaescola.controller.teclado;
 
 /**
  * 

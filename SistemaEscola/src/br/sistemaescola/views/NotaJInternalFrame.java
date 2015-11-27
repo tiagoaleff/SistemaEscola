@@ -6,7 +6,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.NotasController;
-import br.sistemaescola.controllerlist.NotaListController;
+import br.sistemaescola.controller.list.NotaListController;
 import br.sistemaescola.object.Nota;
 import javax.swing.JList;
 import javax.swing.JTextField;

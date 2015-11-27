@@ -6,7 +6,7 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.DisciplinaController;
-import br.sistemaescola.controllerlist.DisciplinaListController;
+import br.sistemaescola.controller.list.DisciplinaListController;
 import br.sistemaescola.object.Disciplina;
 import javax.swing.JButton;
 import javax.swing.JList;

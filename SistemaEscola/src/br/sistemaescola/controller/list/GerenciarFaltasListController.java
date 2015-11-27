@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.sistemaescola.controllerlist;
+package br.sistemaescola.controller.list;
 
 import br.sistemaescola.object.Faltas;
 import br.sistemaescola.views.GerenciadorFaltasJInternalFrame;

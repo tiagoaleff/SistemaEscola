@@ -2,7 +2,7 @@ package br.sistemaescola.views;
 
 
 import br.sistemaescola.controller.AlunoController;
-import br.sistemaescola.controllerlist.AlunoListController;
+import br.sistemaescola.controller.list.AlunoListController;
 import javax.swing.JInternalFrame;
 import br.sistemaescola.object.Aluno;
 import javax.swing.JComboBox;
