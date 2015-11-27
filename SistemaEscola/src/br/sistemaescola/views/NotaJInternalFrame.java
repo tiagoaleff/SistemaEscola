@@ -55,6 +55,14 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
     public JTextField getProfessorJTextField() {
         return professorJTextField;
     }
+
+    public JTextField getNotaJTextField() {
+        return notaJTextField;
+    }
+
+    public JTextField getPesoJTextField() {
+        return pesoJTextField;
+    }
     
     
     

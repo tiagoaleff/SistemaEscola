@@ -1,14 +1,27 @@
 package br.sistemaescola.views;
 
 import br.sistemaescola.controller.ProfessorController;
+import br.sistemaescola.controllerlist.ProfessorListController;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Professor;
+import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JTextField;
 
 public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
     private ProfessorController professorController = new ProfessorController(this);
-        
+    private ProfessorListController actionList      = new ProfessorListController(this);
+    private String listAtual = null;
+    
+    public void setListAtual(String listAtual){
+        this.listAtual = listAtual;
+    }
+    
+    public String getListAtual() {
+        return listAtual;
+    }
+    
     public Professor getProfessor(){                
                 
         Professor professor = new Professor();
@@ -41,12 +54,63 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
         return resultadoJList;
     }
 
+    public JTextField getBairroJTextField() {
+        return bairroJTextField;
+    }
+
+    public JTextField getCelularJTextField() {
+        return celularJTextField;
+    }
+
+    public JTextField getCidadeJTextField() {
+        return cidadeJTextField;
+    }
+
+    public JTextField getCpfJTextField() {
+        return cpfJTextField;
+    }
+
+    public JTextField getEmailJTextField() {
+        return emailJTextField;
+    }
+
+    public JComboBox getEstadoJComboBox() {
+        return estadoJComboBox;
+    }
+
+    public JTextField getNascimentoJTextField1() {
+        return nascimentoJTextField1;
+    }
+
+    public JComboBox getNivelJComboBox() {
+        return nivelJComboBox;
+    }
+
+    public JTextField getNomeJTextField() {
+        return nomeJTextField;
+    }
+
+    public JTextField getNumeroJTextField() {
+        return numeroJTextField;
+    }
+
+    public JTextField getRgJTextField() {
+        return rgJTextField;
+    }
+
+    public JTextField getRuaJTextField() {
+        return ruaJTextField;
+    }
+
+    public JTextField getTelefoneJTextField() {
+        return telefoneJTextField;
+    }
+    
     public ProfessorJInternalFrame() {
         initComponents();
         this.setClosable(true);
         this.setIconifiable(true);
     }
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -318,6 +382,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Procurar"));
 
+        resultadoJList.addListSelectionListener(actionList);
         jScrollPane1.setViewportView(resultadoJList);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);

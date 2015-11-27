@@ -42,6 +42,7 @@ public class NotasController implements ActionListener{
             case "salvar":
                 try {
                     salvar();
+                    limpar();
                     br.sistemaescola.log.Log.gravarMessagem("Nota Salva com Sucesso");
                     JOptionPane.showMessageDialog(frame, "Nota Salva com Sucesso");
                 } catch (ExceptionEscola ex) {
@@ -143,8 +144,12 @@ public class NotasController implements ActionListener{
     
     private void limpar(){
         
-        JOptionPane.showMessageDialog(frame, "limpar os dados ainda não implementado");
-        
+      frame.getAlunoJTextField().setText("");
+      frame.getProfessorJTextField().setText("");
+      frame.getDisciplinaJTextField().setText("");
+      frame.getNotaJTextField().setText("");
+      frame.getPesoJTextField().setText("");
+      frame.getResultJList().setModel(new DefaultListModel());
     }
     
     private  void cancelar(){
