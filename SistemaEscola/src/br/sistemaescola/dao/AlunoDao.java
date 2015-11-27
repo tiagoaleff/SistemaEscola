@@ -115,7 +115,7 @@ public class AlunoDao {
                     + " cidade,"
                     + " estado,"
                     + " numero"                                                  
-                    + ") VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+                    + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, "
                                     + "?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
             
             ps = conn.prepareStatement(sql);
@@ -126,21 +126,21 @@ public class AlunoDao {
             ps.setString(4, aluno.getNascimentoAluno());
             ps.setString(5, aluno.getAlunoTelefone());   
             ps.setString(6, aluno.getAlunoCelular());   
-            ps.setString(5, aluno.getAlunoEmail());
-            ps.setString(6, aluno.getNomePai());            
-            ps.setString(7, aluno.getCpfPai());   
-            ps.setString(8, aluno.getRgPai());   
-            ps.setString(9, aluno.getNomeMae());
-            ps.setString(10, aluno.getCpfMae());   
-            ps.setString(11, aluno.getRgMae());   
-            ps.setString(12, aluno.getRua());   
-            ps.setString(13, aluno.getBairro());   
-            ps.setString(14, aluno.getCidade());   
-            ps.setString(15, aluno.getEstado());   
-            ps.setString(16, aluno.getNumero());   
+            ps.setString(7, aluno.getAlunoEmail());
+            ps.setString(8, aluno.getNomePai());            
+            ps.setString(9, aluno.getCpfPai());   
+            ps.setString(10, aluno.getRgPai());   
+            ps.setString(11, aluno.getNomeMae());
+            ps.setString(12, aluno.getCpfMae());   
+            ps.setString(13, aluno.getRgMae());   
+            ps.setString(14, aluno.getRua());   
+            ps.setString(15, aluno.getBairro());   
+            ps.setString(16, aluno.getCidade());   
+            ps.setString(17, aluno.getEstado());   
+            ps.setString(18, aluno.getNumero());   
             
             // executa o sql
-            ps.execute(sql);
+            ps.execute();
             conn.commit();
         }catch(SQLException ex){
             
@@ -151,7 +151,7 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }                
             }
-            throw new ExceptionEscola(ex.getMessage());
+             throw new ExceptionEscola(ex.getMessage());
         }finally{
             
             if(conn != null){
