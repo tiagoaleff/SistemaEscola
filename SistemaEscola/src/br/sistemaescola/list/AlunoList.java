@@ -33,8 +33,5 @@ public class AlunoList {
             // implementar gravar no arquivo log
         }
         return listAluno;
-    }
-    
-    
-    
+    }            
 }

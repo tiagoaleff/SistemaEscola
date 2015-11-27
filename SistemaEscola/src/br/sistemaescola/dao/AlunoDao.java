@@ -88,8 +88,84 @@ public class AlunoDao {
         return resultadoLista;
     }
     
-    public static void inserirAluno(){
+    public static void inserirAluno(Aluno aluno) throws ExceptionEscola{
         
         // inserção do aluno na base.
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = Conexao.getConexao();
+            String sql = "INSERT INTO alunos ("
+                    + "nome,"
+                    + " cpf,"
+                    + " rg,"
+                    + " nascimento,"
+                    + "telefone,"
+                    + " celular,"
+                    + " email,"
+                    + "pai,"
+                    + "cpf_pai,"
+                    + "rg_pai,"
+                    + "mae,"
+                    + "cpf_mae"
+                    + "rg_mae"                                                            
+                    + " rua,"
+                    + " bairro,"                    
+                    + " cidade,"
+                    + " estado,"
+                    + " numero"                                        
+                    + ") VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+                                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, aluno.getNomeAluno());
+            ps.setString(2, aluno.getCpfAluno());
+            ps.setString(3, aluno.getRgAluno());
+            ps.setString(4, aluno.getNascimentoAluno());
+            ps.setString(5, aluno.getAlunoTelefone());   
+            ps.setString(6, aluno.getAlunoCelular());   
+            ps.setString(5, aluno.getAlunoEmail());
+            ps.setString(6, aluno.getNomePai());            
+            ps.setString(7, aluno.getCpfPai());   
+            ps.setString(8, aluno.getRgPai());   
+            ps.setString(9, aluno.getNomeMae());
+            ps.setString(10, aluno.getCpfMae());   
+            ps.setString(11, aluno.getRgMae());   
+            ps.setString(12, aluno.getRua());   
+            ps.setString(13, aluno.getBairro());   
+            ps.setString(14, aluno.getCidade());   
+            ps.setString(15, aluno.getEstado());   
+            ps.setString(16, aluno.getNumero());   
+            
+            // executa o sql
+            ps.execute(sql);
+            conn.commit();
+        }catch(SQLException ex){
+            
+            if(conn != null){                
+                try{
+                    conn.rollback();    
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }                
+            }
+        }finally{
+            
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }
+            }
+            
+            if(ps != null){
+                try{
+                    ps.close();
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }
+            }
+        }
     }
-}
+ }
