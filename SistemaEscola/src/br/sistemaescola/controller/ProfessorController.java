@@ -54,16 +54,21 @@ public class ProfessorController implements ActionListener {
 
     public void limpar(){
                                    
-        Component[] comps = frame.getComponents();
-        
-        for(Component c : comps){
-            
-            if (c instanceof JTextField){                                
-               ((JTextField)c).setText("");
-            }                                        
-        }
-        
-        /* alterar o codigo abaixo para que funcione o acima*/                        
+            frame.getNomeJTextField().setText("");
+            frame.getCpfJTextField().setText("");
+            frame.getRgJTextField().setText("");
+            frame.getNascimentoJTextField1().setText("");
+            frame.getEmailJTextField().setText("");
+            frame.getCelularJTextField().setText("");
+            frame.getTelefoneJTextField().setText("");
+            frame.getRuaJTextField().setText("");
+            frame.getCidadeJTextField().setText("");
+            frame.getBairroJTextField().setText("");
+            frame.getNumeroJTextField().setText("");
+            frame.getEstadoJComboBox().getModel().setSelectedItem("Selecionar");
+            frame.getNivelJComboBox().getModel().setSelectedItem("Selecionar");
+            frame.getResultadoJList().setModel(new DefaultListModel());
+                                  
     }
         
     public void pesquisarProfessor(){
@@ -86,9 +91,49 @@ public class ProfessorController implements ActionListener {
         validarContato(professor);
         validarEndereco(professor);
         validacaoEspecializacao(professor);
-       
-        br.sistemaescola.list.ProfessorList.addProfessor(professor);
-    }    
+        
+        for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
+            if(p.getNomeProfessor().equals(professor.getNomeProfessor())){
+               
+                int confirma = JOptionPane.showConfirmDialog(frame, "Já existe um professor com esse nome você"
+                        + " deseja sobre escrever o professor?");
+                
+                switch(confirma){
+                    case 0:
+                        edit(p);
+                        limpar();
+                        throw new ExceptionEscola("O professor foi editado");
+                    default:
+                        throw new ExceptionEscola("já existe um professor com esse nome troque o nome do "
+                                + "professor ou sobreescreva o mesmo");         
+                }  
+            }
+        }
+        salvar(professor);
+    }   
+    
+    private void edit(Professor p) {
+        
+        p.setNomeProfessor(professor.getNomeProfessor());
+        p.setCPF(professor.getCPF());
+        p.setRG(professor.getRG());
+        p.setNascimento(professor.getNascimento());
+        p.setEmailContato(professor.getEmailContato());
+        p.setCelularContato(professor.getCelularContato());
+        p.setTelefoneContato(professor.getTelefoneContato());
+        p.setRuaEndereco(professor.getRuaEndereco());
+        p.setCidadeEndereco(professor.getCidadeEndereco());
+        p.setBairroEndereco(professor.getBairroEndereco());
+        p.setNumeroEndereco(professor.getNumeroEndereco());
+        p.setEstadoEndereco(professor.getEstadoEndereco());
+        p.setNivelDeEscolaridade(professor.getNivelDeEscolaridade());
+        
+    }
+    
+    
+    private void salvar(Professor p) {      
+        br.sistemaescola.list.ProfessorList.addProfessor(p);
+    }
      
     public void validarInformacoesPessoais(Professor professor) throws ExceptionEscola{
 
@@ -99,11 +144,7 @@ public class ProfessorController implements ActionListener {
         if(! validarTamanhoMinimo(professor.getNomeProfessor()) ){
             throw new ExceptionEscola("O nome do prodfessor é inválido, o nome deve ter ao menos 5 letras");            
         }        
-        
-        if(nomeProfessorJaExiste(professor.getNomeProfessor())){
-            throw new ExceptionEscola("Já existe um Professor com esse nome");
-        }
-        
+         
         if (professor.getCPF().trim().equals("")) {
              throw new ExceptionEscola("O CPF é obrigatório");
         }
@@ -231,14 +272,8 @@ public class ProfessorController implements ActionListener {
         return email.matches("\\w{5,}@\\w{5,}.\\w{3}");                        
     }
     
-    private boolean nomeProfessorJaExiste(String nome){       
-        for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
-            if(p.getNomeProfessor().equals(nome)){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    
+
+
+
+   
 }

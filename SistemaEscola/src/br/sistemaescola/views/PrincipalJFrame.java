@@ -19,9 +19,9 @@ public class PrincipalJFrame extends javax.swing.JFrame {
     public PrincipalJFrame() {
        initComponents();
             
-       Professor p = new Professor();
+       Professor p = new Professor("Gilberto Vieira", "12312312312", "123123123", "12/12/1212", "betoVieira@gmail.com", "12121212", "12121212", "java sum", "netbens", "eclipse", "1212", "Santa Catarina(SC)", "Graduação");
        p.setNomeProfessor("Gilberto Vieira");    
-       Professor p1 = new Professor();
+       Professor p1 = new Professor("Paracelsio", "66666666666", "66666666", "66/66/6666", "stop@celsio.com", "66666666", "66666666", "banco", "dados", "sql", "1212", "Santa Catarina(SC)", "Graduação");
        p1.setNomeProfessor("Paracelsio");
        br.sistemaescola.list.ProfessorList.addProfessor(p1);
        br.sistemaescola.list.ProfessorList.addProfessor(p); 
