@@ -69,9 +69,10 @@ public class AlunoController  implements ActionListener{
                 }catch(ExceptionEscola ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
                     br.sistemaescola.log.Log.gravarMessagem("Erro ao buscar alunos:" + ex.getMessage());
-                }
-                
+                }                
                 break;
+            case "deletar":
+                deletar();
         }    
     }
     
@@ -136,10 +137,20 @@ public class AlunoController  implements ActionListener{
         frame.getResultadoJList().setModel(dm);
     }
     
-    private void salvar() throws ExceptionEscola{
-        // br.sistemaescola.list.AlunoList.addAluno(aluno);
+    private void deleter() ExceptionEscola() throw ExceptionEscola{
+        
+        deletar();
+    }
+    
+    
+    private void salvar() throws ExceptionEscola{       
         alunoDao.inserirAluno(aluno);
         limpar();
+    }
+    
+    private void delete() throws ExceptionEscola{
+        
+        
     }
 
     private void edit(Aluno a) throws ExceptionEscola{

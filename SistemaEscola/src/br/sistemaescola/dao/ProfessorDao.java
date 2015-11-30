@@ -11,25 +11,81 @@ import java.util.ArrayList;
 
 public class ProfessorDao {
     
-    public void insert() throws ExceptionEscola{
+    public void inserirProfessor(Professor professor) throws ExceptionEscola{
         Connection conn = null;
         PreparedStatement ps = null;
         try{
             conn = Conexao.getConexao();            
-            String sql = "INSERT INT professores () VALUES("
-                    + "?,"
-                    + "?,"
-                    + "?,"
-                    + "?,"
-                    + ");";
+            String sql = "INSERT INT professores ("
+                    + "nome,"
+                    + "cpf,"
+                    + "rg,"
+                    + "nascimento,"
+                    + "email,"
+                    + "celular,"
+                    + "telefone,"
+                    + "rua,"
+                    + "cidade,"
+                    + "bairro,"
+                    + "numero,"
+                    + "estado,"
+                    + "nivel"
+                    + ") VALUES"
+                        + "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          
             ps = conn.prepareStatement(sql);  
-            //setar respectivos valores da base de dados;
+            
+            // informacoes pessoais
+            ps.setString(1, professor.getNomeProfessor());
+            ps.setString(2, professor.getCPF());
+            ps.setString(3, professor.getRG());
+            ps.setString(4, professor.getNascimento());
+                    
+            // informacoes contato
+            ps.setString(5, professor.getEmailContato());
+            ps.setString(6, professor.getCelularContato());
+            ps.setString(7, professor.getTelefoneContato());
+            
+            // informacoes endereco
+            ps.setString(8, professor.getRuaEndereco());
+            ps.setString(9, professor.getCidadeEndereco());
+            ps.setString(10, professor.getBairroEndereco());
+            ps.setString(11, professor.getNumeroEndereco());
+            ps.setString(12,professor.getEstadoEndereco());
+            
+            // informação especializacao
+            ps.setString(13, professor.getNivelDeEscolaridade());
+            
             ps.execute();
             conn.commit();
+            
         }catch(SQLException ex){
+            try{
+                if(conn != null){
+                    conn.rollback();
+                }                
+            }catch(SQLException e){
+                throw new ExceptionEscola(e.getMessage());
+            }
             throw new ExceptionEscola(ex.getMessage());
-        }
-        
+        } finally{
+            
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException exc){
+                    throw new ExceptionEscola(exc.getMessage());        
+                }           
+            }
+            
+            if(ps != null){
+                try{
+                    ps.close();
+                }catch(SQLException exc){
+                    throw new ExceptionEscola(exc.getMessage());
+                }
+            }
+        }        
     }
     
     public ArrayList selectAll()throws ExceptionEscola{

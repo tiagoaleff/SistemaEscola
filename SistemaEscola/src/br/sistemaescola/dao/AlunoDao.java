@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class AlunoDao {
     
-    public static ArrayList selecionarTodos()throws ExceptionEscola{
+    protected static ArrayList selecionarTodos()throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -89,7 +89,7 @@ public class AlunoDao {
         return resultadoLista;
     }
     
-    public void atualizarAluno(Aluno aluno) throws ExceptionEscola{
+    protected void atualizarAluno(Aluno aluno) throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -169,7 +169,7 @@ public class AlunoDao {
         }
     }
     
-    public void inserirAluno(Aluno aluno) throws ExceptionEscola{
+    protected void inserirAluno(Aluno aluno) throws ExceptionEscola{
         
         // inserção do aluno na base.
         Connection conn = null;
@@ -251,4 +251,18 @@ public class AlunoDao {
             }
         }
     }        
+    
+    protected void deletar(Aluno aluno)throws ExceptionEscola{
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = Conexao.getConexao();
+            String sql = "";
+            //GOTO criar o sql -> e ligar com o botao
+        }catch(SLQException ex){
+            
+        }
+        
+    }            
  }

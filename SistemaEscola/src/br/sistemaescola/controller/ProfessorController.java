@@ -87,10 +87,10 @@ public class ProfessorController implements ActionListener {
     
     public void verificar() throws ExceptionEscola{
         
-        validarInformacoesPessoais(professor);            
-        validarContato(professor);
-        validarEndereco(professor);
-        validacaoEspecializacao(professor);
+        // validarInformacoesPessoais(professor);            
+        // validarContato(professor);
+        // validarEndereco(professor);
+         validacaoEspecializacao(professor);
         
         for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
             if(p.getNomeProfessor().equals(professor.getNomeProfessor())){
