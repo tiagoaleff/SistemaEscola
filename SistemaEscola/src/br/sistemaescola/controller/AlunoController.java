@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import br.sistemaescola.object.Aluno;
 
 import br.sistemaescola.views.AlunoJInternalFrame;
+import java.awt.Component;
 import javax.swing.DefaultListModel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -55,7 +57,7 @@ public class AlunoController  implements ActionListener{
                 }
                 
                 break;
-            case "limparJButton":
+            case "limpar":
                 limpar();
                 break;
             case "cancelar":
@@ -75,17 +77,15 @@ public class AlunoController  implements ActionListener{
     
     private void verificar() throws ExceptionEscola{       
                        
-       /*validarCamposAluno();
+        validarCamposAluno();
         validarCamposContato();
         validarCamposFiliacao();
-        validarCamposEndereco();
-        */
-        nomeDoAlunoJaExiste();
-        
+        validarCamposEndereco();       
+        nomeDoAlunoJaExiste();        
     }
     
     private void limpar(){
-        
+              
         frame.getNomealunoTextField().setText("");
         frame.getCpfTextField().setText("");
         frame.getRgalunoTextField().setText("");
@@ -105,6 +105,17 @@ public class AlunoController  implements ActionListener{
         frame.getRuaTextField().setText("");
         frame.getNumeroCasaJTextField().setText(""); 
         frame.getResultadoJList().setModel(new DefaultListModel());
+        
+        /*for(int i = 0; i < frame.getContentPane().getComponentCount(); i++){           
+            
+            Component c =  frame.getContentPane().getComponent(i);                        
+                
+            if(c instanceof JTextField){
+                System.out.println("c é um campo");
+                JTextField field = (JTextField) c;                             
+                field.setText("");
+            }
+        } */        
     }
     
     private void cancelar(){
@@ -131,7 +142,7 @@ public class AlunoController  implements ActionListener{
         limpar();
     }
 
-    private void edit(Aluno a) {
+    private void edit(Aluno a) throws ExceptionEscola{
         a.setNomeAluno(aluno.getNomeAluno());
         a.setCpfAluno(aluno.getCpfAluno());
         a.setRgAluno(aluno.getRgAluno());

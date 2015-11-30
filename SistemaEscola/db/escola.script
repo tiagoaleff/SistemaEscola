@@ -11,5 +11,5 @@ INSERT INTO PROFESSORES VALUES(0,'TIAGO ALEFF','123456788','1234567','02/03/1994
 INSERT INTO PROFESSORES VALUES(1,'LEANDRO JUSTIN','98765432','7654321','28/8/1996','leandrojv83@gmail.com','4898780287','4898780286','bartolo pavan','Criciuma','universitario','443','Santa Catarina','Mestre')
 INSERT INTO ALUNOS VALUES(0,'TIAGO ALEFF','123456789','1234567','02/03/1994','4891865723','4891865723','tiago.aleff@gmail.com','Marcio Silva da Rosa','123456789','1234567','Rosani Da Silva','123456789','1234567','Bartolo Pavan','Universitario','Criciuma','Santa Catarina','443')
 INSERT INTO ALUNOS VALUES(1,'LEANDRO JUSTIN','987654321','7654321','02/03/1994','4891865723','4891865723','leandrojv83@gmail.com','Edori Justin','123456789','1234567','Neliete Justin','123456789','1234567','Bartolo Pavan','Universitario','Criciuma','Santa Catarina','443')
-INSERT INTO ALUNOS VALUES(2,'123123','1231','123','123','123','123','123','123123','123','123','213','213','123','123','123','123','Acre (AC)','123')
+INSERT INTO ALUNOS VALUES(2,'joao','1231','123','123','123','123','123','123123','123','123','213','213','123','123','123','123','Acre (AC)','123')
 INSERT INTO ALUNOS VALUES(3,'tiago','1231','123','123','123','123','123','123123','123','123','213','213','123','Acre (AC)','123','123','123','123')

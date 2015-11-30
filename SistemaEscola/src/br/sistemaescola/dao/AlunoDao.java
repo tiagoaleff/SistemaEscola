@@ -89,35 +89,87 @@ public class AlunoDao {
         return resultadoLista;
     }
     
-    public void atualizarAluno(Aluno aluno){
+    public void atualizarAluno(Aluno aluno) throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
         try{
             conn = Conexao.getConexao();
             String sql = "UPDATE alunos SET "
-                    + "nome,"
-                    + "cpf,"
-                    + "rg,"
-                    + "nascimento,"
-                    + "telefone,"
-                    + "celular,"
-                    + "email,"
-                    + "pai,"
-                    + "cpf_pai,"
-                    + "rg_pai,"
-                    + "mae,"
-                    + "cpf_mae,"
-                    + "rg_mae,"
-                    + "rua,"
-                    + "bairro,"
-                    + "cidade,"
-                    + "estado,"
-                    + "numero";
+                    + "nome = ?,"
+                    + "cpf = ?,"
+                    + "rg = ?,"
+                    + "nascimento = ?,"
+                    + "telefone = ?,"
+                    + "celular = ?,"
+                    + "email = ?,"
+                    + "pai = ?,"
+                    + "cpf_pai = ?,"
+                    + "rg_pai = ?,"
+                    + "mae = ?,"
+                    + "cpf_mae = ?,"
+                    + "rg_mae = ?,"
+                    + "rua = ?,"
+                    + "bairro = ?,"
+                    + "cidade = ?,"
+                    + "estado = ?,"
+                    + "numero = ? "
+                    + "WHERE nome = ?" ;
+                        
+            ps = conn.prepareStatement(sql);            
+            ps.setString(1, aluno.getNomeAluno());
+            ps.setString(2, aluno.getCpfAluno());
+            ps.setString(3, aluno.getRgAluno());
+            ps.setString(4, aluno.getNascimentoAluno());
+            ps.setString(5, aluno.getAlunoTelefone());   
+            ps.setString(6, aluno.getAlunoCelular());   
+            ps.setString(7, aluno.getAlunoEmail());
+            ps.setString(8, aluno.getNomePai());            
+            ps.setString(9, aluno.getCpfPai());   
+            ps.setString(10, aluno.getRgPai());   
+            ps.setString(11, aluno.getNomeMae());
+            ps.setString(12, aluno.getCpfMae());   
+            ps.setString(13, aluno.getRgMae());   
+            ps.setString(14, aluno.getRua());   
+            ps.setString(15, aluno.getBairro());   
+            ps.setString(16, aluno.getCidade());   
+            ps.setString(17, aluno.getEstado());   
+            ps.setString(18, aluno.getNumero());   
+            ps.setString(19, aluno.getNomeAluno());
+            ps.execute();
+            conn.commit();            
+            
+        } catch(SQLException ex){
+            
+            if(conn != null){
+                
+                try{
+                    conn.rollback();
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }               
+            }
+            throw new ExceptionEscola(ex.getMessage());
+        }finally{
+            
+            if(conn != null){
+                try{
+                    conn.close();    
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }                
+            }            
+            if(ps != null){
+                try{
+                    ps.close();                    
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }
+            }
         }
     }
     
-    public static void inserirAluno(Aluno aluno) throws ExceptionEscola{
+    public void inserirAluno(Aluno aluno) throws ExceptionEscola{
         
         // inserção do aluno na base.
         Connection conn = null;
