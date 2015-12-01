@@ -6,8 +6,12 @@
 
 package br.sistemaescola.list;
 
+import br.sistemaescola.dao.ProfessorDao;
+import br.sistemaescola.exception.ExceptionEscola;
 import br.sistemaescola.object.Professor;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -15,13 +19,20 @@ import java.util.ArrayList;
  */
 public class ProfessorList {
 
-    private static final ArrayList<Professor> listProfessor = new ArrayList<>();
+    private static ArrayList<Professor> listProfessor = new ArrayList<>();
    
     public static void addProfessor(Professor professor){ 
        listProfessor.add(professor);
     }
     
-    public static ArrayList<Professor> getListProfessor() {
+    public static ArrayList<Professor> getListProfessor(){        
+                
+        try {
+            listProfessor = ProfessorDao.selecionarTodos();
+        } catch (ExceptionEscola ex) {
+            Logger.getLogger(ProfessorList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
         return listProfessor;
     }
 }

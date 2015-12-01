@@ -31,7 +31,7 @@ public class ProfessorDao {
                     + "estado,"
                     + "nivel"
                     + ") VALUES"
-                        + "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                        + "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           
             ps = conn.prepareStatement(sql);  
             
@@ -88,7 +88,7 @@ public class ProfessorDao {
         }        
     }
     
-    public ArrayList selectAll()throws ExceptionEscola{
+    public static ArrayList selecionarTodos()throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -102,29 +102,31 @@ public class ProfessorDao {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
+                professor = new Professor();
                 // informações pessoais
-                professor.setNomeProfessor(rs.getString(1));
-                professor.setCPF(rs.getString(2));
-                professor.setRG(rs.getString(3));
-                professor.setNascimento(rs.getString(4));
+                professor.setIdProfessor(rs.getInt(1));                
+                professor.setNomeProfessor(rs.getString(2));                
+                professor.setCPF(rs.getString(3));
+                professor.setRG(rs.getString(4));
+                professor.setNascimento(rs.getString(5));
                 
                 // infornações de contato
-                professor.setEmailContato(rs.getString(5));
-                professor.setCelularContato(rs.getString(6));
-                professor.setTelefoneContato(rs.getString(7));
+                professor.setEmailContato(rs.getString(6));
+                professor.setCelularContato(rs.getString(7));
+                professor.setTelefoneContato(rs.getString(8));
                 
                 // informações de endereço
-                professor.setRuaEndereco(rs.getString(8));
-                professor.setCidadeEndereco(rs.getString(9));
-                professor.setBairroEndereco(rs.getString(10));
+                professor.setRuaEndereco(rs.getString(9));
+                professor.setCidadeEndereco(rs.getString(10));
+                professor.setBairroEndereco(rs.getString(11));
                 professor.setNumeroEndereco(rs.getString(12));
                 professor.setEstadoEndereco(rs.getString(13));
                 
                 // informação de especialização
-                professor.setNivelDeEscolaridade(rs.getString(13));                
+                professor.setNivelDeEscolaridade(rs.getString(14));                
                 
                 // configura um novo valor a lista
-                resultadoLista.add(professor);
+                resultadoLista.add(professor);                
             }
             
         }catch(SQLException ex){
@@ -136,6 +138,7 @@ public class ProfessorDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }
+            throw new ExceptionEscola(ex.getMessage());
         }finally{
             if(conn != null){
                 try{
@@ -151,8 +154,7 @@ public class ProfessorDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }       
-        }
-        
+        }        
         return resultadoLista;
     }
     
@@ -194,6 +196,5 @@ public class ProfessorDao {
             }
         }
         
-        //throw new EscolaException();
     }        
 }

@@ -13,5 +13,3 @@ INSERT INTO ALUNOS VALUES(0,'TIAGO ALEFF','123456789','1234567','02/03/1994','48
 INSERT INTO ALUNOS VALUES(1,'LEANDRO JUSTIN','987654321','7654321','02/03/1994','4891865723','4891865723','leandrojv83@gmail.com','Edori Justin','123456789','1234567','Neliete Justin','123456789','1234567','Bartolo Pavan','Universitario','Criciuma','Santa Catarina','443')
 INSERT INTO ALUNOS VALUES(7,'kasdhf','','','','','','','','','','','','','','','','Selecionar','')
 INSERT INTO ALUNOS VALUES(8,'sadfasdf','','','','','','','','','','','','','','','','Selecionar','')
-INSERT INTO ALUNOS VALUES(9,'sdfasdfasdf','','','','','','','','','','','','','','','','Selecionar','')
-INSERT INTO ALUNOS VALUES(10,'asdfasdfasdf','','','','','','','','','','','','','','','','Selecionar','')

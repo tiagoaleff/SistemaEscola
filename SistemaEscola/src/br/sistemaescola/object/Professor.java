@@ -27,6 +27,10 @@ public class Professor {
     
     /*informações de especialização*/
     private String nivelDeEscolaridade;
+    
+    // identificacao do professor no banco de dados
+    private int idProfessor;
+    
 
 
     
@@ -48,6 +52,14 @@ public class Professor {
         this.nivelDeEscolaridade = nivelDeEscolaridade;
     }
 
+    public int getIdProfessor() {
+        return idProfessor;
+    }
+
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
+    }
+    
     public String getNivelDeEscolaridade() {
         return nivelDeEscolaridade;
     }
