@@ -31,6 +31,7 @@ public class Aluno {
     private String cidade;
     private String rua;
     private String numero;
+    private int idAluno;    
 
     public Aluno(){}
     
@@ -55,6 +56,13 @@ public class Aluno {
         this.numero = numero;
     }
 
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
     public String getNomeAluno() {
         return nomeAluno;
     }

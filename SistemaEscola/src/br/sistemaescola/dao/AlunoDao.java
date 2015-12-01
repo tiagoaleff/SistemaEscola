@@ -30,6 +30,10 @@ public class AlunoDao {
             
             while(rs.next()){
                 aluno = new Aluno();
+                
+                // obtem o ID do aluno
+                aluno.setIdAluno(rs.getInt(1));
+                
                 // informações pessoais
                 aluno.setNomeAluno(rs.getString(2));
                 aluno.setCpfAluno(rs.getString(3));

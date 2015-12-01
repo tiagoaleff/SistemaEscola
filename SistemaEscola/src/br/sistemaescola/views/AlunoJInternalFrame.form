@@ -616,9 +616,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="salvarJButton" min="-2" pref="60" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cancelarJButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="deletarJButton1" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cancelarJButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -629,9 +629,9 @@
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="deletarJButton1" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="cancelarJButton" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="salvarJButton" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="limparJButton" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="cancelarJButton" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -643,23 +643,9 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/img/deletar.png"/>
             </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[65, 41]"/>
-            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="deletarJButton1.addActionListener(action);&#xa;deletarJButton1.setActionCommand(&quot;deletar&quot;);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="cancelarJButton">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/cancelar.png"/>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" value="click aqui para fechar e cancelar o formul&#xe1;rio"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarJButton.addActionListener(action);&#xa;cancelarJButton.setActionCommand(&quot;cancelar&quot;);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="salvarJButton">
@@ -683,6 +669,17 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="limparJButton.addActionListener(action);&#xa;limparJButton.setActionCommand(&quot;limpar&quot;);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="cancelarJButton">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/cancelar.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="click aqui para fechar e cancelar o formul&#xe1;rio"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="cancelarJButton.addActionListener(action);&#xa;cancelarJButton.setActionCommand(&quot;cancelar&quot;);"/>
           </AuxValues>
         </Component>
       </SubComponents>

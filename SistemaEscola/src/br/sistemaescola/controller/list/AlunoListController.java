@@ -48,6 +48,7 @@ public class AlunoListController implements ListSelectionListener{
         }
     
         if(alunoEncontrado){
+            frame.getIdTextField().setText(String.valueOf(aluno.getIdAluno()));
             frame.getNomealunoTextField().setText(aluno.getNomeAluno());
             frame.getCpfTextField().setText(aluno.getCpfAluno());
             frame.getRgalunoTextField().setText(aluno.getRgAluno());

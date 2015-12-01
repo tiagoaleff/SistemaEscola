@@ -38,8 +38,7 @@ public class AlunoController  implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         
-        aluno = frame.getAluno(); 
-        
+        aluno = frame.getAluno();         
         String action = e.getActionCommand();
         
         switch(e.getActionCommand()){
