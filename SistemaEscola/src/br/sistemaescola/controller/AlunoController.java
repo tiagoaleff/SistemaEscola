@@ -52,8 +52,7 @@ public class AlunoController  implements ActionListener{
                     br.sistemaescola.log.Log.gravarMessagem("Aluno cadastrado com sucesso");
                 } catch(ExceptionEscola ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
-                    br.sistemaescola.log.Log.gravarMessagem("Erro ao salvar aluno :" + ex.getMessage());
-                    
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao salvar aluno :" + ex.getMessage());                    
                 }
                 
                 break;
@@ -72,7 +71,11 @@ public class AlunoController  implements ActionListener{
                 }                
                 break;
             case "deletar":
-                deletar();
+                try{
+                    deletar();
+                }catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+                }
         }    
     }
     
@@ -105,18 +108,7 @@ public class AlunoController  implements ActionListener{
         frame.getCidadeTextField().setText("");
         frame.getRuaTextField().setText("");
         frame.getNumeroCasaJTextField().setText(""); 
-        frame.getResultadoJList().setModel(new DefaultListModel());
-        
-        /*for(int i = 0; i < frame.getContentPane().getComponentCount(); i++){           
-            
-            Component c =  frame.getContentPane().getComponent(i);                        
-                
-            if(c instanceof JTextField){
-                System.out.println("c é um campo");
-                JTextField field = (JTextField) c;                             
-                field.setText("");
-            }
-        } */        
+        frame.getResultadoJList().setModel(new DefaultListModel());               
     }
     
     private void cancelar(){
@@ -137,21 +129,28 @@ public class AlunoController  implements ActionListener{
         frame.getResultadoJList().setModel(dm);
     }
     
-    private void deleter() ExceptionEscola() throw ExceptionEscola{
+    private void deletar() throws ExceptionEscola{    
         
-        deletar();
+        if(aluno.getNomeAluno().trim().length() > 0){
+            int condicao = JOptionPane.showConfirmDialog(frame, "Deseja excluir o Aluno?");
+        
+            if(condicao == 0){
+                alunoDao.deletar(aluno);
+                limpar();                  
+                throw new ExceptionEscola("Aluno excluido com sucesso!");
+            }
+                  
+        } else {
+            throw new ExceptionEscola("Nenhum aluno selecionado para ser excluído!");   
+        }
+        
     }
     
     
     private void salvar() throws ExceptionEscola{       
         alunoDao.inserirAluno(aluno);
         limpar();
-    }
-    
-    private void delete() throws ExceptionEscola{
-        
-        
-    }
+    }        
 
     private void edit(Aluno a) throws ExceptionEscola{
         a.setNomeAluno(aluno.getNomeAluno());

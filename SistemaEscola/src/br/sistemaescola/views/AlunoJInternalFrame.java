@@ -171,8 +171,10 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultadoJList = new javax.swing.JList();
-        salvarJButton = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        deletarJButton1 = new javax.swing.JButton();
         cancelarJButton = new javax.swing.JButton();
+        salvarJButton = new javax.swing.JButton();
         limparJButton = new javax.swing.JButton();
 
         setClosable(true);
@@ -475,6 +477,14 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         jPanel3.setBounds(580, 30, 310, 170);
         jPanel3.getAccessibleContext().setAccessibleName("Alunos já cadastrados");
 
+        deletarJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
+        deletarJButton1.setPreferredSize(new java.awt.Dimension(65, 41));
+
+        cancelarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        cancelarJButton.setToolTipText("click aqui para fechar e cancelar o formulário");
+        cancelarJButton.addActionListener(action);
+        cancelarJButton.setActionCommand("cancelar");
+
         salvarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
         /*
         salvarJButton.setToolTipText("click aqui para cadastrar ou salvar as alterações feitas em um aluno");
@@ -485,22 +495,43 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         /*
         */
-        getContentPane().add(salvarJButton);
-        salvarJButton.setBounds(440, 210, 60, 40);
-
-        cancelarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
-        cancelarJButton.setToolTipText("click aqui para fechar e cancelar o formulário");
-        cancelarJButton.addActionListener(action);
-        cancelarJButton.setActionCommand("cancelar");
-        getContentPane().add(cancelarJButton);
-        cancelarJButton.setBounds(510, 210, 65, 40);
 
         limparJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear.png"))); // NOI18N
         limparJButton.setToolTipText("click aqui para limpar todo o formulário");
         limparJButton.addActionListener(action);
         limparJButton.setActionCommand("limpar");
-        getContentPane().add(limparJButton);
-        limparJButton.setBounds(360, 210, 65, 40);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(limparJButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(salvarJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelarJButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deletarJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deletarJButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelarJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvarJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(limparJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        deletarJButton1.addActionListener(action);
+        deletarJButton1.setActionCommand("deletar");
+
+        getContentPane().add(jPanel6);
+        jPanel6.setBounds(250, 210, 330, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -550,6 +581,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cpfPaiTextField;
     private javax.swing.JTextField cpfTextField;
     private javax.swing.JTextField cpfmaeTextField;
+    private javax.swing.JButton deletarJButton1;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JComboBox estadoJComboBox;
     private javax.swing.JTextField idTextField;
@@ -578,6 +610,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton limparJButton;

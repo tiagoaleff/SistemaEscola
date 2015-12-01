@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class AlunoDao {
     
-    protected static ArrayList selecionarTodos()throws ExceptionEscola{
+    public static ArrayList selecionarTodos()throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -89,7 +89,7 @@ public class AlunoDao {
         return resultadoLista;
     }
     
-    protected void atualizarAluno(Aluno aluno) throws ExceptionEscola{
+    public void atualizarAluno(Aluno aluno) throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
@@ -169,7 +169,7 @@ public class AlunoDao {
         }
     }
     
-    protected void inserirAluno(Aluno aluno) throws ExceptionEscola{
+    public void inserirAluno(Aluno aluno) throws ExceptionEscola{
         
         // inserção do aluno na base.
         Connection conn = null;
@@ -252,17 +252,39 @@ public class AlunoDao {
         }
     }        
     
-    protected void deletar(Aluno aluno)throws ExceptionEscola{
+    public void deletar(Aluno aluno)throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
         try{
             conn = Conexao.getConexao();
-            String sql = "";
-            //GOTO criar o sql -> e ligar com o botao
-        }catch(SLQException ex){
-            
-        }
-        
+            String sql = "DELETE FROM alunos WHERE nome = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, aluno.getNomeAluno());
+            ps.execute();
+            conn.commit();    
+        }catch(SQLException ex){        
+            if(conn != null){
+                try{
+                    conn.rollback();
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }
+            }
+            throw new ExceptionEscola(ex.getMessage());
+        } finally{
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException ex){
+                    throw new ExceptionEscola(ex.getMessage());
+                }
+                try{
+                    ps.close();
+                }catch(SQLException ex){
+                    throw new ExceptionEscola(ex.getMessage());
+                }
+            }
+        }        
     }            
  }
