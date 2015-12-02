@@ -44,7 +44,7 @@ public class AlunoController  implements ActionListener{
         switch(e.getActionCommand()){
             case "buscarIdJButton":
                   break;
-            case "salvar":
+            case "salvar":                                
                 try{
                     verificar();
                     JOptionPane.showMessageDialog(frame, "Aluno cadastrado com sucesso");
@@ -62,9 +62,10 @@ public class AlunoController  implements ActionListener{
                 cancelar();
                 break;
             case "buscarNome":
+                // aqui não ira mostrar a msg, será chamada as msg de erro na classe list, arruamar
                 try{
-                    buscarNome();    
-                }catch(ExceptionEscola ex){
+                    buscarNome();                        
+                }catch(ExceptionEscola ex){                                
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
                     br.sistemaescola.log.Log.gravarMessagem("Erro ao buscar alunos:" + ex.getMessage());
                 }                
@@ -72,18 +73,20 @@ public class AlunoController  implements ActionListener{
             case "deletar":
                 try{
                     deletar();
+                    br.sistemaescola.log.Log.gravarMessagem("Aluno excluido com sucesso");
                 }catch(ExceptionEscola ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao excluir alunos " + ex.getMessage());
                 }
         }    
     }
     
     private void verificar() throws ExceptionEscola{       
                        
-        validarCamposAluno();
+        /*validarCamposAluno();
         validarCamposContato();
         validarCamposFiliacao();
-        validarCamposEndereco();       
+        validarCamposEndereco(); */      
         nomeDoAlunoJaExiste();        
     }
     
@@ -113,7 +116,11 @@ public class AlunoController  implements ActionListener{
     private void cancelar(){
         frame.dispose();
     }
-
+    
+    /**
+    * Nesta função é acessada o banco de dados em buscas dos registros dos elementos
+    * e também é setado os valores na lista da Internel Frame Alunos
+     **/
     private void buscarNome() throws ExceptionEscola{
     
         frame.setListaAtual("aluno");
@@ -130,13 +137,15 @@ public class AlunoController  implements ActionListener{
     
     private void deletar() throws ExceptionEscola{    
         
+       if((frame.getIdTextField().getText()) != null)
+            aluno.setIdAluno(Integer.parseInt(frame.getIdTextField().getText()));
+                                        
         if(aluno.getNomeAluno().trim().length() > 0){
             int condicao = JOptionPane.showConfirmDialog(frame, "Deseja excluir o Aluno?");
         
             if(condicao == 0){
                 alunoDao.deletar(aluno);
-                limpar();                  
-                throw new ExceptionEscola("Aluno excluido com sucesso!");
+                limpar();                                  
             }
                   
         } else {

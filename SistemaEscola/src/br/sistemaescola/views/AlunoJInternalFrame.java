@@ -567,7 +567,7 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         aluno.setCidade(cidadeTextField.getText());
         aluno.setRua(ruaTextField.getText());
         aluno.setNumero(numeroCasaJTextField.getText());
-        
+               
         return aluno;
     }
 

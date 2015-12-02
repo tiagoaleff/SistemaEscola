@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,13 +21,13 @@ public class AlunoDao {
         Connection conn = null;
         PreparedStatement ps = null;
         ArrayList<Aluno> resultadoLista = new ArrayList<Aluno>();
-        try{
-            Aluno aluno;
+        try{            
             conn = Conexao.getConexao();
             String sql = "SELECT * FROM alunos";        
             ps = conn.prepareStatement(sql);
             ps.executeQuery();
             ResultSet rs = ps.executeQuery();
+            Aluno aluno;
             
             while(rs.next()){
                 aluno = new Aluno();
@@ -55,7 +56,7 @@ public class AlunoDao {
                 
                 // informação endereço
                 aluno.setEstado(rs.getString(15));
-                aluno.setBairro(rs.getString(16));
+                 aluno.setBairro(rs.getString(16));
                 aluno.setCidade(rs.getString(17));
                 aluno.setRua(rs.getString(18));
                 aluno.setNumero(rs.getString(19));
@@ -73,6 +74,7 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }
+            JOptionPane.showMessageDialog(null, ex.getMessage());
             throw new ExceptionEscola(ex.getMessage());
         }finally{
             if(conn != null){
@@ -89,7 +91,7 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }       
-        }                
+        }                       
         return resultadoLista;
     }
     
@@ -174,8 +176,7 @@ public class AlunoDao {
     }
     
     public void inserirAluno(Aluno aluno) throws ExceptionEscola{
-        
-        // inserção do aluno na base.
+                
         Connection conn = null;
         PreparedStatement ps = null;
         try{
@@ -225,7 +226,7 @@ public class AlunoDao {
             
             // executa o sql
             ps.execute();
-            conn.commit();
+            conn.commit();            
         }catch(SQLException ex){
             
             if(conn != null){                
@@ -235,7 +236,7 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }                
             }
-             throw new ExceptionEscola(ex.getMessage());
+            throw new ExceptionEscola(ex.getMessage());
         }finally{
             
             if(conn != null){
@@ -257,21 +258,24 @@ public class AlunoDao {
     }        
     
     public void deletar(Aluno aluno)throws ExceptionEscola{
-        
+       
+        // #GOTO: ID QUE NÃO ESTÁ PEGANDO
         Connection conn = null;
         PreparedStatement ps = null;
         try{
             conn = Conexao.getConexao();
-            String sql = "DELETE FROM alunos WHERE nome = ?";
+            String sql = "DELETE FROM alunos WHERE id = ?";
             ps = conn.prepareStatement(sql);
-            ps.setString(1, aluno.getNomeAluno());
+            ps.setInt(1, aluno.getIdAluno());
             ps.execute();
             conn.commit();    
+            JOptionPane.showMessageDialog(null, aluno.getIdAluno());
         }catch(SQLException ex){        
             if(conn != null){
                 try{
                     conn.rollback();
                 }catch(SQLException e){
+                    br.sistemaescola.log.Log.gravarMessagem(e.getMessage());
                     throw new ExceptionEscola(e.getMessage());
                 }
             }
@@ -283,6 +287,8 @@ public class AlunoDao {
                 }catch(SQLException ex){
                     throw new ExceptionEscola(ex.getMessage());
                 }
+            }
+            if(ps != null){                
                 try{
                     ps.close();
                 }catch(SQLException ex){

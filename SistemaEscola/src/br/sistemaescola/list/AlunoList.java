@@ -12,6 +12,7 @@ import br.sistemaescola.object.Aluno;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -29,8 +30,8 @@ public class AlunoList {
         try {
             listAluno = AlunoDao.selecionarTodos();
         } catch (ExceptionEscola ex) {
-            Logger.getLogger(AlunoList.class.getName()).log(Level.SEVERE, null, ex);
-            // implementar gravar no arquivo log
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            br.sistemaescola.log.Log.gravarMessagem("Erro ao buscar alunos :" + ex.getMessage());                    
         }
         return listAluno;
     }            

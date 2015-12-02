@@ -5,6 +5,8 @@
  */
 package br.sistemaescola.exception;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tiago Aleff
@@ -15,7 +17,7 @@ public class ExceptionEscola extends Exception{
         super("Erro desconhecido");
     }
     
-    public ExceptionEscola(String mensagem){
-        super(mensagem);
+    public ExceptionEscola(String mensagem){        
+        super(mensagem);                  
     }
 }
