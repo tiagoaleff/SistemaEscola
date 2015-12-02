@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class ProfessorDao {
     
@@ -157,13 +156,13 @@ public class ProfessorDao {
         return resultadoLista;
     }
     
-    public void deleteElement(int codigo) throws ExceptionEscola{
+    public void deletar(int codigo) throws ExceptionEscola{
         
         Connection conn = null;
         PreparedStatement ps = null;
         try{
             conn = Conexao.getConexao();
-            String sql = "DELETE FROM professores WHERE = ?";
+            String sql = "DELETE FROM professores WHERE id = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);
             ps.execute();
@@ -172,28 +171,96 @@ public class ProfessorDao {
             if(conn != null){
                 try{
                     conn.rollback();     
-                }catch(SQLException e){
-                    throw new ExceptionEscola(e.getMessage());            
+                }catch(SQLException exec){
+                    throw new ExceptionEscola(exec.getMessage());            
                 }               
             }
-            // throw new ExceptionEscola(ex.getMessage());            
+            throw new ExceptionEscola(ex.getMessage());            
         }finally{
             if(conn != null){
                 try{
                     conn.close();    
-                }catch(SQLException e){
-                    throw new ExceptionEscola(e.getMessage());
+                }catch(SQLException exec){
+                    throw new ExceptionEscola(exec.getMessage());
                 }                
             }
             
             if(ps != null){
                 try{
                     ps.close();    
-                }catch(SQLException e){
-                    throw new ExceptionEscola(e.getMessage());
+                }catch(SQLException exec){
+                    throw new ExceptionEscola(exec.getMessage());
                 }                
             }
         }
-        
     }        
+    
+    public void atualizarTodos(Professor professor) throws ExceptionEscola{
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = Conexao.getConexao();
+            String sql = "UPDATE professores SET "
+                    + "nome = ?,"
+                    + "cpf = ?,"
+                    + "rg = ?,"
+                    + "nascimento = ?,"
+                    + "email = ?,"
+                    + "celular = ?,"
+                    + "telefone = ?, "
+                    + "rua = ?,"
+                    + "cidade = ?,"
+                    + "bairro = ?,"
+                    + "numero = ?,"
+                    + "estado = ?,"
+                    + "nivel = ?"
+                    // + "WHERE id = ?";
+                    + "WHERE nome = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, professor.getNomeProfessor());
+            ps.setString(2, professor.getCPF());
+            ps.setString(3, professor.getRG());
+            ps.setString(4, professor.getNascimento());
+            ps.setString(5, professor.getEmailContato());
+            ps.setString(6, professor.getCelularContato());
+            ps.setString(7, professor.getTelefoneContato());
+            ps.setString(8, professor.getRuaEndereco());
+            ps.setString(9, professor.getRuaEndereco());
+            ps.setString(10, professor.getBairroEndereco());
+            ps.setString(11, professor.getNumeroEndereco());
+            ps.setString(12, professor.getEstadoEndereco());
+            ps.setString(13, professor.getNivelDeEscolaridade());
+            // ps.setInt(14, professor.getIdProfessor());
+            ps.setString(14, professor.getNomeProfessor());
+            ps.execute();
+            conn.commit();
+        }catch(SQLException ex){
+            if(conn != null){
+                try{
+                    conn.rollback();
+                }catch(SQLException exec){
+                    throw new ExceptionEscola(exec.getMessage());
+                }
+            }
+            throw new ExceptionEscola(ex.getMessage());
+        }finally{
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException exec){
+                    throw new ExceptionEscola(exec.getMessage());
+                }
+            }
+            
+            if(ps != null){
+                try{
+                    ps.close();
+                }catch(SQLException exec){
+                    throw new ExceptionEscola(exec.getMessage());
+                }
+            }
+        }
+    }
 }

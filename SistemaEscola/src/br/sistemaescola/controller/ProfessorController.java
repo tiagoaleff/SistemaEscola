@@ -48,6 +48,15 @@ public class ProfessorController implements ActionListener {
             case "cancelar":
                 frame.dispose();
                 break;
+            case "deletar":
+                try{
+                    deletar();    
+                    br.sistemaescola.log.Log.gravarMessagem("Professor Deletado com Sucesso.");
+                }catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao deletar professor: " + ex.getMessage());
+                }
+                
             case "clear":
                 limpar();
                 break;
@@ -71,6 +80,14 @@ public class ProfessorController implements ActionListener {
             frame.getNivelJComboBox().getModel().setSelectedItem("Selecionar");
             frame.getResultadoJList().setModel(new DefaultListModel());
                                   
+    }
+    
+    private void deletar() throws ExceptionEscola{
+        
+        if((frame.getIdProfessor().getText()) != null)
+            professor.setIdProfessor(Integer.parseInt(frame.getIdProfessor().getText()));
+        
+        dao.deletar(professor.getIdProfessor());
     }
         
     public void pesquisarProfessor(){
@@ -114,21 +131,12 @@ public class ProfessorController implements ActionListener {
         salvar(professor);
     }   
     
-    private void edit(Professor p) {
+    private void edit(Professor p) throws ExceptionEscola{
         
-        p.setNomeProfessor(professor.getNomeProfessor());
-        p.setCPF(professor.getCPF());
-        p.setRG(professor.getRG());
-        p.setNascimento(professor.getNascimento());
-        p.setEmailContato(professor.getEmailContato());
-        p.setCelularContato(professor.getCelularContato());
-        p.setTelefoneContato(professor.getTelefoneContato());
-        p.setRuaEndereco(professor.getRuaEndereco());
-        p.setCidadeEndereco(professor.getCidadeEndereco());
-        p.setBairroEndereco(professor.getBairroEndereco());
-        p.setNumeroEndereco(professor.getNumeroEndereco());
-        p.setEstadoEndereco(professor.getEstadoEndereco());
-        p.setNivelDeEscolaridade(professor.getNivelDeEscolaridade());
+        if((frame.getIdProfessor().getText()) != null)
+            professor.setIdProfessor(Integer.parseInt(frame.getIdProfessor().getText()));
+        
+        dao.atualizarTodos(professor);
         
     }
     

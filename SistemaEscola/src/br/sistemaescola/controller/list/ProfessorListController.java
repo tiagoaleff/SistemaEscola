@@ -40,6 +40,9 @@ public class ProfessorListController implements ListSelectionListener {
         }
         
         if(professorEncontrado){
+            // configurando o valor do id            
+            frame.setIdProfessor(String.valueOf(professor.getIdProfessor()));
+            
             frame.getNomeJTextField().setText(professor.getNomeProfessor());
             frame.getCpfJTextField().setText(professor.getCPF());
             frame.getRgJTextField().setText(professor.getRG());
