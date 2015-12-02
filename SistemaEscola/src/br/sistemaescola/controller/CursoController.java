@@ -6,6 +6,7 @@
 
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.CursoDao;
 import br.sistemaescola.exception.ExceptionEscola;
 import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Professor;
@@ -24,9 +25,11 @@ public class CursoController implements ActionListener{
 
     private CursoJInternalFrame frame;
     private Curso curso;
+    private CursoDao dao;
 
     public CursoController(CursoJInternalFrame frame) {
         this.frame = frame;
+        dao = new CursoDao();
     }
 
     @Override
@@ -73,7 +76,8 @@ public class CursoController implements ActionListener{
         }                
         
         /* verificar Professor Responsavel*/
-        boolean professorValido = false;
+        //boolean professorValido = false;
+        boolean professorValido = true;
         for( Professor professor : br.sistemaescola.list.ProfessorList.getListProfessor()){
             if(professor.getNomeProfessor().equals(curso.getProfessorResponsavel())){
                 professorValido = true;
@@ -164,8 +168,9 @@ public class CursoController implements ActionListener{
         frame.setListaAtual("professor");
     }
 
-    private void salvar(Curso curso) {
-        br.sistemaescola.list.CursoList.addCurso(curso);
+    private void salvar(Curso curso) throws ExceptionEscola{
+        // br.sistemaescola.list.CursoList.addCurso(curso);
+        dao.inserirCurso(curso);
     }  
     
     private void edit(Curso c) {

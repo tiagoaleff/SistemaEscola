@@ -30,6 +30,8 @@ public class Curso {
         this.vespertino = vespertino;
         this.matutino = matutino;
     }
+    
+    public Curso(){}
 
     public int getId() {
         return id;
