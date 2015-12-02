@@ -269,7 +269,6 @@ public class AlunoDao {
             ps.setInt(1, aluno.getIdAluno());
             ps.execute();
             conn.commit();    
-            JOptionPane.showMessageDialog(null, aluno.getIdAluno());
         }catch(SQLException ex){        
             if(conn != null){
                 try{

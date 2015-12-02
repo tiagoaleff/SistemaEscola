@@ -1,14 +1,13 @@
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.ProfessorDao;
 import br.sistemaescola.exception.ExceptionEscola;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.ProfessorJInternalFrame;
-import java.awt.Component;
 import javax.swing.DefaultListModel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -18,10 +17,12 @@ public class ProfessorController implements ActionListener {
 
     private ProfessorJInternalFrame frame;
     private Professor professor;
+    private ProfessorDao dao;
 
     public ProfessorController(ProfessorJInternalFrame frame) {
 
         this.frame = frame;
+        dao = new ProfessorDao();
     }
 
     @Override
@@ -41,6 +42,7 @@ public class ProfessorController implements ActionListener {
                     br.sistemaescola.log.Log.gravarMessagem("Professor cadastrado com sucesso");
                 }catch(ExceptionEscola ex){
                     JOptionPane.showMessageDialog(frame, ex.getMessage());
+                    br.sistemaescola.log.Log.gravarMessagem("Erro ao salvar professor: " + ex.getMessage());
                 }                                            
                 break;
             case "cancelar":
@@ -131,8 +133,9 @@ public class ProfessorController implements ActionListener {
     }
     
     
-    private void salvar(Professor p) {      
-        br.sistemaescola.list.ProfessorList.addProfessor(p);
+    private void salvar(Professor p) throws ExceptionEscola{ 
+        
+        dao.inserirProfessor(professor);
     }
      
     public void validarInformacoesPessoais(Professor professor) throws ExceptionEscola{
@@ -270,10 +273,5 @@ public class ProfessorController implements ActionListener {
     
     private boolean validarEmail(String email){
         return email.matches("\\w{5,}@\\w{5,}.\\w{3}");                        
-    }
-    
-
-
-
-   
+    }   
 }
