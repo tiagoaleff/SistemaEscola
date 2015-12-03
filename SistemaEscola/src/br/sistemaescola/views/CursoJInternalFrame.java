@@ -20,9 +20,10 @@ import javax.swing.JTextField;
 public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     
     
-    CursoListController cursoListSelectionListener = new CursoListController(this);    
-    CursoController action = new CursoController(this);    
+    private CursoListController cursoListSelectionListener = new CursoListController(this);    
+    private CursoController action = new CursoController(this);    
     private String listaAtual;
+    private int idResponsavel;
     
     public CursoJInternalFrame() {
         initComponents();        
@@ -46,10 +47,16 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
                                     descricao,
                                     noturno,
                                     vespertino,
-                                    matutino);
-        
-        return dados;
-        
+                                    matutino);     
+        return dados;        
+    }
+    
+    public int getIdResponsavel(){
+        return idResponsavel;
+    }
+    
+    public int setIdResponsavel(int id){
+        idResponsavel = id;
     }
     
     public JList getJListResultado() {
@@ -63,17 +70,10 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     public String getListaAtual() {
         return listaAtual;
     }
-
     
     public void setListaAtual(String listaAtual) {
         this.listaAtual = listaAtual;
     }
-
-    
-    
-    
-    
-    
     
     public JTextArea getDescricaoJTextArea() {
         return descricaoJTextArea;

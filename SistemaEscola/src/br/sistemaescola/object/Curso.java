@@ -13,6 +13,7 @@ package br.sistemaescola.object;
 public class Curso {
 
     private int id;
+    private int idResponsavel;
     private String nome;
     private String professorResponsavel;
     private String duracao;
@@ -33,6 +34,14 @@ public class Curso {
     
     public Curso(){}
 
+    public int getIdResponsavel() {
+        return idResponsavel;
+    }
+
+    public void setIdResponsavel(int idResponsavel) {
+        this.idResponsavel = idResponsavel;
+    }
+    
     public int getId() {
         return id;
     }

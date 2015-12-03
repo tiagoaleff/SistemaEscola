@@ -28,13 +28,13 @@ public class CursoDao {
             
             while(r.next()){
                curso = new Curso();
-               curso.setId(r.getInt(0));               
-               curso.setProfessorResponsavel(r.getString(1));
-               curso.setNome(r.getString(2));
-               curso.setDuracao(r.getString(3));
-               curso.setMatutino(r.getBoolean(4));
-               curso.setVespertino(r.getBoolean(5));
-               curso.setNoturno(r.getBoolean(6));
+               curso.setId(r.getInt(1));               
+               curso.setProfessorResponsavel(r.getString(2));
+               curso.setNome(r.getString(3));
+               curso.setDuracao(r.getString(4));
+               curso.setMatutino(r.getBoolean(5));
+               curso.setVespertino(r.getBoolean(6));
+               curso.setNoturno(r.getBoolean(7));
                
                cursoList.add(curso);               
             }
@@ -66,14 +66,20 @@ public class CursoDao {
         try{
             conn = Conexao.getConexao();
             String sql = "INSET INTO cursos ("                      
-                    + "responsavel,"
-                    + "nomueCurso,"
-                    + "duracao,"
-                    + "turno"
-                    + ")";   
+                            + "responsavel,"
+                            + "nomueCurso,"
+                            + "duracao,"
+                            + "matutino,"
+                            + "vespertino,"
+                            + "noturno"
+                        + ")";   
             ps = conn.prepareStatement(sql);
-            // ps.setInt(1, curso.get);
-            // ps.setString(parameterIndex, sql);
+            ps.setInt(1, curso.getId());
+            ps.setString(2, curso.getNome());
+            ps.setInt(3, Integer.parseInt((curso.getDuracao())));
+            ps.setBoolean(4, curso.isMatutino());
+            ps.setBoolean(5, curso.isVespertino());
+            ps.setBoolean(6, curso.isNoturno());
             ps.execute();
             conn.commit();
         }catch(SQLException ex){

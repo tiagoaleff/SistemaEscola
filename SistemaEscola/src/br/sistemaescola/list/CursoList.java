@@ -22,7 +22,7 @@ public class CursoList {
     private static ArrayList<Curso> listCurso = new ArrayList<>();
    
     public static void addCurso(Curso curso){ 
-       listCurso.add(curso);
+       // listCurso.add(curso);
     }
     
     public static ArrayList<Curso> getListCurso() {

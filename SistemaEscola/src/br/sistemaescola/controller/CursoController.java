@@ -144,13 +144,13 @@ public class CursoController implements ActionListener{
     private void pesquisaNome() {
         
         String nomeCursoPesquisa = frame.getCursoPesquisa();
-            DefaultListModel dm = new DefaultListModel();
+        DefaultListModel dm = new DefaultListModel();
 
-            for( Curso curso :  br.sistemaescola.list.CursoList.getListCurso()){
-                   if(curso.getNome().matches(".*" + nomeCursoPesquisa + ".*")){
-                       dm.addElement(curso.getNome());     
-                   }
-            }       
+        for( Curso curso :  br.sistemaescola.list.CursoList.getListCurso()){
+               if(curso.getNome().matches(".*" + nomeCursoPesquisa + ".*")){
+                   dm.addElement(curso.getNome());     
+               }
+        }       
         frame.getJListResultado().setModel(dm);
         frame.setListaAtual("curso");
         
@@ -161,11 +161,13 @@ public class CursoController implements ActionListener{
    
         for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
                if(professor.getNomeProfessor().matches(".*" + curso.getProfessorResponsavel() + ".*")){
-                   dm.addElement(professor.getNomeProfessor());     
+                   dm.addElement(professor.getNomeProfessor());                        
                }
         }       
         frame.getJListResultado().setModel(dm);
         frame.setListaAtual("professor");
+        //if(curso.getIdResponsavel() != null)
+            // JOptionPane.showMessageDialog(null, curso.getIdResponsavel());
     }
 
     private void salvar(Curso curso) throws ExceptionEscola{

@@ -72,6 +72,8 @@ public class CursoListController implements ListSelectionListener{
         
         if(cursoEncontrado){
             frame.getIdJTextField().setText(String.valueOf(curso.getId()));
+            frame.getId
+            
             frame.getNomeJTextField().setText(curso.getNome());
             frame.getProfessorJTextField().setText(curso.getProfessorResponsavel());
             frame.getDuracaoJTextField().setText(curso.getDuracao());
