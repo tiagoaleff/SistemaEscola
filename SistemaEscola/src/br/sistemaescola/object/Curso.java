@@ -106,7 +106,10 @@ public class Curso {
         this.matutino = matutino;
     }
     
-    
-    
-    
+    @Override
+    public String toString(){
+        return String.format("Id: " + getId() + " Nome: " + getNome() + " Responsavel: " + getIdResponsavel() + ""
+                + " Descricao: " + getDescricao() + " Matutino: " + isMatutino() + " Vespertino: " + isVespertino()
+                + " Noturno: " + isNoturno());
+    }        
 }

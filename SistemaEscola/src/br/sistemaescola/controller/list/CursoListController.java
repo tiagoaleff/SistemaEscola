@@ -5,9 +5,11 @@
  */
 
 package br.sistemaescola.controller.list;
+import br.sistemaescola.list.ProfessorList;
 import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Professor;
 import br.sistemaescola.views.CursoJInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -17,7 +19,7 @@ import javax.swing.event.ListSelectionListener;
  */
 public class CursoListController implements ListSelectionListener{
 
-    private CursoJInternalFrame frame;    
+    private CursoJInternalFrame frame;        
 
     public CursoListController(CursoJInternalFrame frame) {
         this.frame = frame;
@@ -41,8 +43,9 @@ public class CursoListController implements ListSelectionListener{
 
     private void buscaProfessor(String nome) {
         
+        
         boolean professorEncontrado = false;
-        Professor professor = null;
+        Professor professor = null;        
         
         for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
             if(p.getNomeProfessor().equals(nome)){
@@ -50,18 +53,23 @@ public class CursoListController implements ListSelectionListener{
                 professor = p;
                 break;
             }
-        }
+        }                
         
         if(professorEncontrado){
-            frame.getProfessorJTextField().setText(professor.getNomeProfessor());
+            frame.getProfessorJTextField().setText(professor.getNomeProfessor());            
+            frame.setIdResponsavel(professor.getIdProfessor());            
         }  
     }
 
+    /**
+     * 
+     * Esta função atribui os valores no frame CursoInternalFrame
+     */
     private void buscaCurso(String nomeSelecionado) {
        
         boolean cursoEncontrado = false;
         Curso curso = null;
-        
+
         for(Curso c : br.sistemaescola.list.CursoList.getListCurso()){
             if(c.getNome().equals(nomeSelecionado)){
                 cursoEncontrado = true;
@@ -71,11 +79,12 @@ public class CursoListController implements ListSelectionListener{
         }
         
         if(cursoEncontrado){
-            frame.getIdJTextField().setText(String.valueOf(curso.getId()));
-            frame.getId
             
-            frame.getNomeJTextField().setText(curso.getNome());
-            frame.getProfessorJTextField().setText(curso.getProfessorResponsavel());
+            buscaProfessor(Integer.parseInt(curso.getProfessorResponsavel()));
+
+            frame.getIdJTextField().setText(String.valueOf(curso.getId()));                         
+            frame.getDescricaoJTextArea().setText(curso.getDescricao());
+            frame.getNomeJTextField().setText(curso.getNome());            
             frame.getDuracaoJTextField().setText(curso.getDuracao());
             frame.getDescricaoJTextArea().setText(curso.getDescricao());
             frame.getNoturnoJCheckBox().setSelected(curso.isNoturno());
@@ -84,4 +93,22 @@ public class CursoListController implements ListSelectionListener{
         }
     }
 
+    private void buscaProfessor(int idResponsavel) {
+                
+        boolean professorEncontrado = false;
+        Professor professor = null;        
+        
+        for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
+            if(p.getIdProfessor() == idResponsavel){
+                professorEncontrado = true;
+                professor = p;
+                break;
+            }
+        }
+
+        if(professorEncontrado){
+            frame.getProfessorJTextField().setText(professor.getNomeProfessor());                        
+        }  
+    }
+    
 }

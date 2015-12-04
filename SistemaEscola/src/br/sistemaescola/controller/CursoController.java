@@ -8,6 +8,7 @@ package br.sistemaescola.controller;
 
 import br.sistemaescola.dao.CursoDao;
 import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Professor;
 import java.awt.event.ActionEvent;
@@ -59,14 +60,29 @@ public class CursoController implements ActionListener{
                 limparFormulario();
                 break;
             case "pesquisarNome":
-                pesquisaNome();
+                pesquisaNomeCurso();
                 break;
             case "pesquisarProfessor":
                 pesquisarProfessor();
                 break;
+            case "deletar":
+                try{
+                    deletar();    
+                    Log.gravarMessagem("Curso Excluido com sucesso!");
+                }catch(ExceptionEscola ex){
+                    JOptionPane.showMessageDialog(frame, "Erro ao Deletar: " + ex.getMessage());
+                    Log.gravarMessagem("Erro ao Deletar: " + ex.getMessage());
+                }
+                break;
         } 
     }
 
+    private void deletar() throws ExceptionEscola{
+        
+        curso.setId(Integer.parseInt(frame.getIdJTextField().getText()));
+        dao.deletar(curso);
+        limparFormulario();
+    }
     private void verificarDados() throws ExceptionEscola{
         
         
@@ -141,7 +157,10 @@ public class CursoController implements ActionListener{
        frame.getJListResultado().setModel(new DefaultListModel());
     }   
        
-    private void pesquisaNome() {
+    /**
+     * Pesquisa o nome do Curso na Base de Dados
+     */
+    private void pesquisaNomeCurso() {
         
         String nomeCursoPesquisa = frame.getCursoPesquisa();
         DefaultListModel dm = new DefaultListModel();
@@ -166,23 +185,18 @@ public class CursoController implements ActionListener{
         }       
         frame.getJListResultado().setModel(dm);
         frame.setListaAtual("professor");
-        //if(curso.getIdResponsavel() != null)
-            // JOptionPane.showMessageDialog(null, curso.getIdResponsavel());
     }
 
-    private void salvar(Curso curso) throws ExceptionEscola{
-        // br.sistemaescola.list.CursoList.addCurso(curso);
+    private void salvar(Curso curso) throws ExceptionEscola{                       
+            
+        curso.setIdResponsavel(frame.getIdResponsavel());                        
         dao.inserirCurso(curso);
     }  
     
-    private void edit(Curso c) {
-       c.setDescricao(curso.getDescricao());
-       c.setDuracao(curso.getDuracao());
-       c.setMatutino(curso.isMatutino());
-       c.setNome(curso.getNome());
-       c.setNoturno(curso.isNoturno());
-       c.setProfessorResponsavel(curso.getProfessorResponsavel());
-       c.setVespertino(curso.isVespertino());
+    private void edit(Curso c) throws ExceptionEscola{
+        curso = frame.atualizarDados();
+        JOptionPane.showMessageDialog(null, curso.toString());
+        dao.atualizarTodos(curso);
     }
    
 }

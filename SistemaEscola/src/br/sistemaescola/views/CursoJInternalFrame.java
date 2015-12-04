@@ -31,6 +31,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
     }
   
     public Curso atualizarDados (){
+                    
         
         String nome = nomeJTextField.getText();
         String professorResponsavel = professorJTextField.getText();
@@ -48,14 +49,25 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
                                     noturno,
                                     vespertino,
                                     matutino);     
+     
+        /*if(getIdJTextField().getText() != null)
+             dados.setId(Integer.parseInt(getIdJTextField().getText().trim()));
+        */
+        
+        dados.setIdResponsavel(idResponsavel);                
         return dados;        
     }
+        
     
     public int getIdResponsavel(){
         return idResponsavel;
     }
     
-    public int setIdResponsavel(int id){
+    /**
+     * 
+     * Esta Função apenas configura o professor responsavel da materia
+     */
+    public void setIdResponsavel(int id){
         idResponsavel = id;
     }
     
@@ -300,7 +312,8 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
         limparJButton.setActionCommand("limpar");
 
         deletarJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
-        deletarJButton1.setPreferredSize(new java.awt.Dimension(65, 41));
+        deletarJButton1.addActionListener(action);
+        deletarJButton1.setActionCommand("deletar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -312,7 +325,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(salvarJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deletarJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deletarJButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelarJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(82, Short.MAX_VALUE))
@@ -325,7 +338,7 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(limparJButton)
                     .addComponent(salvarJButton)
                     .addComponent(cancelarJButton)
-                    .addComponent(deletarJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(deletarJButton1))
                 .addContainerGap())
         );
 

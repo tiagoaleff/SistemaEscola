@@ -435,6 +435,9 @@
               <Image iconType="3" name="/img/deletar.png"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="deletarJButton1.addActionListener(action);&#xa;deletarJButton1.setActionCommand(&quot;deletar&quot;);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
