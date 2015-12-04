@@ -6,13 +6,15 @@
 
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.FaltasDao;
+import br.sistemaescola.exception.ExceptionEscola;
 import br.sistemaescola.object.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.GerenciadorFaltasJInternalFrame;
 import javax.swing.DefaultListModel;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.JTable;
 
 /**
  * 
@@ -21,15 +23,17 @@ import javax.swing.event.ListSelectionListener;
 public class GerenciarFaltasController implements ActionListener {
 
     private GerenciadorFaltasJInternalFrame frame;
+    private FaltasDao dao;
 
     public GerenciarFaltasController(GerenciadorFaltasJInternalFrame frame) {
         this.frame = frame;
+        dao = new FaltasDao();
     }
     
     
     @Override
     public void actionPerformed(ActionEvent e) {
-    
+            
         String action = e.getActionCommand();
         
         switch(action){
@@ -40,9 +44,32 @@ public class GerenciarFaltasController implements ActionListener {
             case "buscar_nome":
                 buscar_nome();
                 break;
+            case "limpar":
+                limpar();                
+                break;
+            case "deletar:":
+                deletar();
         }
            
         }
+    
+    private void deletar(){
+        String nome = frame.getNomeAluno();
+          try {
+            dao.deletar(nome);
+        } catch (ExceptionEscola ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+    }
+    private void limpar(){
+        
+        frame.getIdAlunoTextField().setText("");
+        frame.getNomeAlunoJTextField().setText("");
+        frame.getAlunoJList().setModel(new DefaultListModel());               
+        
+        frame.setTabelaJTable(new JTable());
+    }
      private void buscar_id(){
             JOptionPane.showMessageDialog(frame, "buscar_id");
      }

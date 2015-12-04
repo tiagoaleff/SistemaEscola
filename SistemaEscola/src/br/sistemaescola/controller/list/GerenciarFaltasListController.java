@@ -6,10 +6,17 @@
 
 package br.sistemaescola.controller.list;
 
+import br.sistemaescola.dao.AlunoDao;
+import br.sistemaescola.dao.DisciplinaDao;
+import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
+import br.sistemaescola.object.Aluno;
+import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Faltas;
 import br.sistemaescola.views.GerenciadorFaltasJInternalFrame;
 import java.util.ArrayList;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GerenciarFaltasListController implements ListSelectionListener{
 
-    private final GerenciadorFaltasJInternalFrame frame;
+    private  GerenciadorFaltasJInternalFrame frame;
     
     public GerenciarFaltasListController(GerenciadorFaltasJInternalFrame frame) {
         this.frame = frame;        
@@ -28,20 +35,58 @@ public class GerenciarFaltasListController implements ListSelectionListener{
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
-         
+                
         JList jList = frame.getAlunoJList();
         String nomeSelecionado = (String) jList.getSelectedValue();
-        
+        JOptionPane.showMessageDialog(frame, nomeSelecionado);
         ArrayList<Faltas> faltasAluno = new ArrayList<>();
+        ArrayList<Aluno> listaAlunos = new ArrayList<>();
         
+        // chamar metodo
+        listaAlunos = buscarAlunos();
+        //String nomeAluno = buscarAlunos();
+        
+        // for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){       
+           //  for(Aluno a : listaAlunos){                
         for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
-            if(falta.getAluno().equals(nomeSelecionado)){
-               faltasAluno.add(falta);
-            }
+                         
+                         
+            System.out.println("falta id aluno: " + falta.getIdAluno());
+            
+              if(buscarAlunoId(falta.getIdAluno())){
+                         // falta.setAluno(fal.getNomeAluno());
+                         faltasAluno.add(falta);
+              }
+        //     }
         }
         alimentarTable(faltasAluno);        
     }
-    
+    private boolean buscarAlunoId(int  idAluno){
+        ArrayList<Aluno> listaAlunos = new ArrayList<>();
+        listaAlunos = buscarAlunos();
+        boolean teste = false;
+        
+        for(Aluno a : listaAlunos){
+            System.out.println("aluno id aluno: " + a.getIdAluno());
+            if(a.getIdAluno() == idAluno){
+                teste = true;
+            }
+        }
+                
+        return teste;
+    }    
+    private ArrayList<Aluno> buscarAlunos(){
+        
+        ArrayList<Aluno> listaAlunos = new ArrayList<>();
+       
+        try{
+            listaAlunos = AlunoDao.selecionarTodos();
+        }catch(ExceptionEscola ex){
+            JOptionPane.showMessageDialog(frame, "Erro ao buscar alunos:  " + ex.getMessage());
+            Log.gravarMessagem("Erro ao buscar alunos:  " + ex.getMessage());
+        }
+        return listaAlunos;
+    }
     private void alimentarTable(ArrayList<Faltas> faltasAluno){
         
         DefaultTableModel dtm   = (DefaultTableModel) frame.getTabelaJTable().getModel();
@@ -52,7 +97,7 @@ public class GerenciarFaltasListController implements ListSelectionListener{
  
        for(Faltas falta : faltasAluno){
        
-            String primeiro = "não";
+            /*String primeiro = "não";
             String segundo  = "não";
             String terceiro = "não";
             String quarto   = "não";
@@ -69,8 +114,24 @@ public class GerenciarFaltasListController implements ListSelectionListener{
             if(falta.isQuartoPeriodo()){
                 quarto = "sim";
             }    
-            dtm.addRow(new Object[]{falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),primeiro,segundo,terceiro,quarto}); 
+            */
+            dtm.addRow(new Object[]{falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),falta.isPrimeiroPeriodo(),falta.isSecundoPeriodo(), falta.isTerceiroPeriodo(), falta.isQuartoPeriodo()}); 
        } 
     }
+
+       public void buscarNomeDisciplina(int idDisciplina, Faltas falta) throws ExceptionEscola{
+           
+           ArrayList<Disciplina> listDisciplina;
+           listDisciplina = DisciplinaDao.selecionarTodos();
+           
+           for(Disciplina d : listDisciplina){
+               System.out.println();
+               if(d.getIdDisciplina() == falta.getIdDisciplina()){
+                   falta.setAluno(d.getNomeDisciplina());
+                   break;
+               }
+           }
+       }
+    
         
 }
