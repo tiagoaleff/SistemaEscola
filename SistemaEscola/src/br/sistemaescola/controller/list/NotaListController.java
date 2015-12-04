@@ -22,6 +22,9 @@ import javax.swing.event.ListSelectionListener;
 public class NotaListController implements ListSelectionListener{
 
     private NotaJInternalFrame frame;
+    private String nomeProfessor;
+    private String nomeDisciplina;
+            
 
     public NotaListController(NotaJInternalFrame frame) {
         this.frame = frame;
@@ -53,6 +56,7 @@ public class NotaListController implements ListSelectionListener{
        for (Aluno a : br.sistemaescola.list.AlunoList.getListAluno()){
            if(a.getNomeAluno().equals(nomeSelecionado)){
                frame.getAlunoJTextField().setText(nomeSelecionado);
+               frame.setIdAluno(a.getIdAluno());
                break;
             }
         }    
@@ -62,6 +66,8 @@ public class NotaListController implements ListSelectionListener{
         for(Professor f : br.sistemaescola.list.ProfessorList.getListProfessor()){
             if(f.getNomeProfessor().equals(nomeSelecionado)){
                 frame.getProfessorJTextField().setText(nomeSelecionado);
+                frame.setIdProfessor(f.getIdProfessor());
+                // nomeProfessor = 
                 break;
             }
         }    
@@ -71,6 +77,7 @@ public class NotaListController implements ListSelectionListener{
         for(Disciplina d : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
             if(d.getNomeDisciplina().equals(nomeSelecionado)){
                 frame.getDisciplinaJTextField().setText(nomeSelecionado);
+                frame.setIdDisciplina(d.getIdDisciplina());
                 break;
             }
         }

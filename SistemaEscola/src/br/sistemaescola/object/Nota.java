@@ -17,15 +17,60 @@ public class Nota {
     private String disciplicina;
     private String peso;
     private String nota;
+    
+    // variaveis referente ao banco de dados 
+    private int idAluno;
+    private int idProfessor;
+    private int idDisciplina;
+    
 
-    public Nota(String nome, String professor, String disciplicina, String peso, String nota) {
+    public Nota(String nome, String professor, String disciplicina, String peso, String nota,
+                                int idAluno, int idProfessor, int idDisciplina) {
         this.nome = nome;
         this.professor = professor;
         this.disciplicina = disciplicina;
         this.peso = peso;
         this.nota = nota;
+        // insiridas 
+        this.idAluno = idAluno;
+        this.idProfessor = idProfessor;
+        this.idDisciplina = idDisciplina;
+    }
+    
+    /* public Nota(String nome,String peso, String nota, int idAluno, int idProfessor, int idDisciplina){
+        this.nome = nome;
+        this.idAluno = idAluno;
+        this.idProfessor = idProfessor;
+        this.idDisciplina = idDisciplina;
+        this.peso = peso;
+        this.nota = nota;
+    }
+    */
+
+    public int getIdAluno() {
+        return idAluno;
     }
 
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public int getIdProfessor() {
+        return idProfessor;
+    }
+
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -67,4 +112,8 @@ public class Nota {
         this.nota = nota;
     }
 
+    @Override
+    public String toString() {
+        return "Nota{" + "nome=" + nome + ", professor=" + professor + ", disciplicina=" + disciplicina + ", peso=" + peso + ", nota=" + nota + ", idAluno=" + idAluno + ", idProfessor=" + idProfessor + ", idDisciplina=" + idDisciplina + '}';
+    }        
 }

@@ -8,8 +8,10 @@ package br.sistemaescola.views;
 import br.sistemaescola.controller.DisciplinaController;
 import br.sistemaescola.controller.list.DisciplinaListController;
 import br.sistemaescola.object.Disciplina;
+import javax.print.event.PrintJobEvent;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -30,7 +32,11 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     
     public Disciplina atualizar(){
         
+        
+            
+        
         Disciplina disciplina = new Disciplina();
+        
         
         /* setando informações sobre a DISCIPLINA */
         disciplina.setNomeDisciplina(nomeJTextField.getText());
@@ -46,9 +52,17 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         // atualizar os dados dos ids       
         disciplina.setIdCurso(getIdCursoDaDisciplina());
         disciplina.setIdProfessor(getIdProfessorDaDisciplina());        
+        
+        
+        /*if(disciplina.getNomeProfessor() != null)
+             JOptionPane.showMessageDialog(null, disciplina.toString());
+        else 
+             JOptionPane.showMessageDialog(null, disciplina.toString());
+        */
+        
         return disciplina;        
+    
     }
-
     public int getIdProfessorDaDisciplina() {
         return idProfessorDaDisciplina;
     }

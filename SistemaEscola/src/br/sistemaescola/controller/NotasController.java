@@ -6,9 +6,9 @@
 
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.NotaDao;
 import br.sistemaescola.exception.ExceptionEscola;
 import br.sistemaescola.object.Aluno;
-import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Nota;
 import br.sistemaescola.object.Professor;
@@ -26,9 +26,11 @@ public class NotasController implements ActionListener{
 
     private NotaJInternalFrame frame;
     private Nota nota = null;
+    private NotaDao dao;
 
     public NotasController(NotaJInternalFrame frame) {
         this.frame = frame;
+        dao = new NotaDao();
     }
     
     @Override
@@ -41,7 +43,7 @@ public class NotasController implements ActionListener{
         switch(action){
             case "salvar":
                 try {
-                    salvar();
+                    verificar();
                     limpar();
                     br.sistemaescola.log.Log.gravarMessagem("Nota Salva com Sucesso");
                     JOptionPane.showMessageDialog(frame, "Nota Salva com Sucesso");
@@ -69,7 +71,7 @@ public class NotasController implements ActionListener{
         
     }
     
-    private void salvar() throws ExceptionEscola{
+    private void verificar() throws ExceptionEscola{
         
         
         
@@ -106,6 +108,8 @@ public class NotasController implements ActionListener{
                
                /*Verificar se o professor é lecionada pelo professor*/
                if(!nota.getProfessor().equals(disciplina.getNomeProfessor())){
+                   JOptionPane.showMessageDialog(frame, nota.toString()+ "\n" + disciplina.toString());
+                   
                    throw new ExceptionEscola("O professor selecionado não leciona essa disciplina");
                }
                
@@ -137,11 +141,13 @@ public class NotasController implements ActionListener{
         }else{
             throw new ExceptionEscola("A nota informado é invalido tente novamente");
         }
-        
-        br.sistemaescola.list.NotaList.addNota(nota);
-        
+                
+         dao.inserirNota(nota);        
     }
     
+    public void salvar() throws ExceptionEscola{
+         dao.inserirNota(nota);        
+    }
     private void limpar(){
         
       frame.getAlunoJTextField().setText("");

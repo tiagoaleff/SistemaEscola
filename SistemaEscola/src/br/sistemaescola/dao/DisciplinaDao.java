@@ -76,6 +76,7 @@ public class DisciplinaDao {
                disciplina.setTotalHorasDisciplina(String.valueOf(r.getInt(5)));
                disciplina.setTotalAlunosDisciplina(String.valueOf(r.getInt(6)));
                disciplina.setIdProfessor(r.getInt(7));
+               disciplina.setNomeProfessor(r.getString(8));
                
                disciplinaList.add(disciplina);               
             }
@@ -112,8 +113,9 @@ public class DisciplinaDao {
                     + "credito,"
                     + "totalHoras,"
                     + "totalAlunos,"
-                    + "idProfessor"                            
-                    + ") VALUES(?, ?, ?, ?, ?, ?) ";
+                    + "idProfessor,"
+                    + "nomeProfessor"                            
+                    + ") VALUES(?, ?, ?, ?, ?, ?, ?) ";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, disciplina.getNomeDisciplina());
@@ -122,6 +124,8 @@ public class DisciplinaDao {
             ps.setInt(4, Integer.parseInt(disciplina.getTotalHorasDisciplina()));
             ps.setInt(5, Integer.parseInt(disciplina.getTotalAlunosDisciplina()));
             ps.setInt(6, disciplina.getIdProfessor());
+            ps.setString(7, disciplina.getNomeProfessor());
+            System.out.println(disciplina.getNomeProfessor());
                         
             // executa o sql
             ps.execute();
@@ -162,7 +166,7 @@ public class DisciplinaDao {
         PreparedStatement ps = null;
         try{
             conn = Conexao.getConexao();
-            String sql = "U,PDATE disciplinas SET "
+            String sql = "UPDATE disciplinas SET "
                     + "nomeDisciplina = ?,"
                     + "idCurso = ?,"
                     + "credito = ?,"

@@ -20,6 +20,10 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
     NotasController action = new  NotasController(this);
     NotaListController actionList = new NotaListController(this);
     private String listAtual = null;
+    private int idAluno;
+    private int idProfessor;
+    private int idDisciplina;
+            
 
     public String getListAtual() {
         return listAtual;
@@ -31,13 +35,40 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
     
     public Nota atualizar(){
         
-        Nota  n = new Nota(alunoJTextField.getText(),
+        Nota  nota = new Nota(alunoJTextField.getText(),
                             professorJTextField.getText(),
                             disciplinaJTextField.getText(),
                             pesoJTextField.getText(),
-                            notaJTextField.getText());
-        
-        return n;
+                            notaJTextField.getText(),
+                            getIdAluno(), 
+                            getIdProfessor(),
+                            getIdDisciplina()
+                            );                
+        return nota;
+    }
+
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public int getIdProfessor() {
+        return idProfessor;
+    }
+
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
     }
     
     public JTextField getDisciplinaJTextField() {    
