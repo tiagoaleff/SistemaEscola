@@ -7,6 +7,7 @@ package br.sistemaescola.views;
 
 import br.sistemaescola.controller.GerenciarFaltasController;
 import br.sistemaescola.controller.list.GerenciarFaltasListController;
+import br.sistemaescola.object.Faltas;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -21,7 +22,28 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
     private GerenciarFaltasController action = new GerenciarFaltasController(this);
     private GerenciarFaltasListController listAction = new GerenciarFaltasListController(this);
     private int idAluno;
+    private int idFalta;    
 
+    public Faltas getFaltas(){
+        Faltas faltas = new Faltas();
+        
+        faltas.getIdFaltas();
+        faltas.getIdAluno();
+        faltas.getIdCurso();
+        faltas.getIdDisciplina();
+        // faltas.isPrimeiroPeriodo(get);
+                
+        return faltas;
+    }
+
+    public int getIdFalta() {
+        return idFalta;
+    }
+
+    public void setIdFalta(int idFalta) {
+        this.idFalta = idFalta;
+    }
+               
     public int getIdAlunoFrame() {
         return idAluno;
     }

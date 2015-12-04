@@ -100,7 +100,7 @@ public class DisciplinaListController implements ListSelectionListener{
     }
 
     private void buscarProfessor(String nomeSelecionado) {
-        JOptionPane.showMessageDialog(frame, "teste");
+        
         boolean professorEncontrado = false;
         Professor professor = null;
         

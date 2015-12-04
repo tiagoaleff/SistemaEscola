@@ -79,12 +79,10 @@ public class GerenciarFaltasController implements ActionListener {
          DefaultListModel dm = new DefaultListModel();
          
             for(Aluno aluno : br.sistemaescola.list.AlunoList.getListAluno()){
-                if (aluno.getNomeAluno().matches(".*"+nome+".*")) {
+                if (aluno.getNomeAluno().matches(".*" + nome + ".*")) {
                     dm.addElement(aluno.getNomeAluno());
                 }
             }
         frame.getAlunoJList().setModel(dm);
-    }
-    
-
+    }    
 }

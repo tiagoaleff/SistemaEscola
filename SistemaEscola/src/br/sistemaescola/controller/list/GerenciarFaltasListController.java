@@ -36,38 +36,43 @@ public class GerenciarFaltasListController implements ListSelectionListener{
     @Override
     public void valueChanged(ListSelectionEvent e) {
                 
+        
         JList jList = frame.getAlunoJList();
         String nomeSelecionado = (String) jList.getSelectedValue();
         JOptionPane.showMessageDialog(frame, nomeSelecionado);
         ArrayList<Faltas> faltasAluno = new ArrayList<>();
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
+                
+        listaAlunos = buscarListAlunos();
         
-        // chamar metodo
-        listaAlunos = buscarAlunos();
-        //String nomeAluno = buscarAlunos();
-        
-        // for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){       
-           //  for(Aluno a : listaAlunos){                
+        // metodo alterado pois nao possuo o nome do aulo, mas sim o id
         for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
-                         
-                         
-            System.out.println("falta id aluno: " + falta.getIdAluno());
+                                                  
+            System.out.println("falta: " + falta.getIdAluno());
             
               if(buscarAlunoId(falta.getIdAluno())){
-                         // falta.setAluno(fal.getNomeAluno());
                          faltasAluno.add(falta);
               }
-        //     }
         }
+        // fim da alteracao
+        
+        // abaixo comentado o codigo original
+        /*
+        for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
+            if(falta.getAluno().equals(nomeSelecionado)){
+               faltasAluno.add(falta);
+            }
+        }
+        */
         alimentarTable(faltasAluno);        
     }
     private boolean buscarAlunoId(int  idAluno){
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
-        listaAlunos = buscarAlunos();
+        listaAlunos = buscarListAlunos();
         boolean teste = false;
         
         for(Aluno a : listaAlunos){
-            System.out.println("aluno id aluno: " + a.getIdAluno());
+            System.out.println("aluno: " + a.getIdAluno());
             if(a.getIdAluno() == idAluno){
                 teste = true;
             }
@@ -75,7 +80,7 @@ public class GerenciarFaltasListController implements ListSelectionListener{
                 
         return teste;
     }    
-    private ArrayList<Aluno> buscarAlunos(){
+    private ArrayList<Aluno> buscarListAlunos(){
         
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
        
