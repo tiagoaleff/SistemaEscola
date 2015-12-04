@@ -6,8 +6,12 @@
 
 package br.sistemaescola.list;
 
+import br.sistemaescola.dao.FaltasDao;
+import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Faltas;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -15,14 +19,20 @@ import java.util.ArrayList;
  */
 public class FaltasList {
 
-    private static final ArrayList<Faltas> listFaltas = new ArrayList<>();
+    private static ArrayList<Faltas> listFaltas = new ArrayList<>();
    
     public static void addFaltas(Faltas falta){ 
        listFaltas.add(falta);
     }
     
     public static ArrayList<Faltas> getListFaltas() {
-        return listFaltas;
+        try{
+            listFaltas = FaltasDao.selecionarTodos();                
+        }catch(ExceptionEscola ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            Log.gravarMessagem(ex.getMessage());
+        }
+        return  listFaltas;
     }    
     
 }

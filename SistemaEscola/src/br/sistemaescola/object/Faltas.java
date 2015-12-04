@@ -7,15 +7,21 @@ import java.util.ArrayList;
  * @author Tiago Aleff
  */
 public class Faltas {
+       
+    // variaveis para a base de dados
+    private int idFaltas;
+    private int idAluno;
+    private int idCurso;
+    private int idDisciplina;    
     
-    
+    private String dia = "1";
+    private String mes = "1";
+    private String ano = "2001";
     
     private String curso;
     private String disciplina;
     private String aluno;
-    private String dia;
-    private String mes;
-    private String ano;
+            
     private boolean primeiroPeriodo;
     private boolean secundoPeriodo;
     private boolean terceiroPeriodo;
@@ -33,7 +39,43 @@ public class Faltas {
         this.terceiroPeriodo = terceiroPeriodo;
         this.quartoPeriodo = quartoPeriodo;
     }
+    
+    public Faltas(){        
+    }
 
+    public int getIdFaltas() {
+        return idFaltas;
+    }
+
+    public void setIdFaltas(int idFaltas) {
+        this.idFaltas = idFaltas;
+    }
+
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+
+    
     public String getCurso() {
         return curso;
     }
@@ -113,9 +155,13 @@ public class Faltas {
     public void setQuartoPeriodo(boolean quartoPeriodo) {
         this.quartoPeriodo = quartoPeriodo;
     }
+
+    @Override
+    public String toString() {
+        return "Faltas{" + "idFaltas=" + idFaltas + ", idAluno=" + idAluno + ", idCurso=" + idCurso + ", idDisciplina=" + idDisciplina + ", dia=" + dia + ", mes=" + mes + ", ano=" + ano + ", curso=" + curso + ", disciplina=" + disciplina + ", aluno=" + aluno + ", primeiroPeriodo=" + primeiroPeriodo + ", secundoPeriodo=" + secundoPeriodo + ", terceiroPeriodo=" + terceiroPeriodo + ", quartoPeriodo=" + quartoPeriodo + '}';
+    }
     
-
-
+    
 }
 
    

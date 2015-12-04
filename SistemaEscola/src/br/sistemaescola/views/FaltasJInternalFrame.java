@@ -25,6 +25,9 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
     private FaltasController faltas = new FaltasController(this);
     private FaltaListController actionList = new FaltaListController(this);
     private String listaAtual;
+    private int idAluno;
+    private int idCurso;
+    private int idDisciplina;
     
     public Faltas atualizar(){
     
@@ -39,9 +42,37 @@ public class FaltasJInternalFrame extends javax.swing.JInternalFrame {
                                    terceiraAulajCheckBox.isSelected(),
                                    quartaAulaJCheckBox.isSelected());  
         
+        falta.setIdAluno(getIdAluno());
+        falta.setIdCurso(getIdCurso());
+        falta.setIdDisciplina(getIdDisciplina());
+                
         return falta;        
     }
 
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+    
     public JList getResultadoJList() {
         return resultadoJList;
     }

@@ -1,6 +1,8 @@
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.FaltasDao;
 import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Aluno;
 import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
@@ -14,15 +16,16 @@ import javax.swing.DefaultListModel;
 public class FaltasController implements ActionListener {
 
     private final FaltasJInternalFrame frame;
-    Faltas falta = null;
+    private Faltas falta = null;
+    private FaltasDao dao;
 
     public FaltasController(FaltasJInternalFrame frame) {
         this.frame = frame;
+        dao = new FaltasDao();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         
         falta = frame.atualizar();
         
@@ -143,9 +146,13 @@ public class FaltasController implements ActionListener {
         
         /*Verificar se a disciplina pertence ao curso informado*/
         boolean DisciplinaPertenceCurso = false;
-        for(Disciplina disciplina : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
-            if(disciplina.getNomeDisciplina().equals(falta.getDisciplina()) &&
-                    (disciplina.getNomeCurso().equals(falta.getCurso()))){
+        for(Disciplina disciplina : br.sistemaescola.list.DisciplinaList.getListDisciplina()){            
+            
+            System.out.println("disciplina: " + disciplina.getIdCurso());
+            System.out.println("curso " + frame.getIdCurso());
+            
+            if(disciplina.getIdCurso() ==  frame.getIdCurso()){ 
+                    
                DisciplinaPertenceCurso = true; 
             }
         }
@@ -171,8 +178,12 @@ public class FaltasController implements ActionListener {
         }
         
         for(Faltas f : br.sistemaescola.list.FaltasList.getListFaltas()){
-            if(f.getAluno().equals(falta.getAluno())){
-                if(f.getDisciplina().equals(falta.getDisciplina())){
+            
+            
+            JOptionPane.showMessageDialog(frame, falta.toString());
+            
+             if(f.getIdAluno() == frame.getIdAluno()){
+                 if(f.getIdDisciplina() == frame.getIdDisciplina()){
                     if(f.getDia().equals(falta.getDia())){
                         if(f.getMes().equals(falta.getMes())){
                             if(f.getAno().equals(falta.getAno())){
@@ -232,8 +243,15 @@ public class FaltasController implements ActionListener {
         f.setQuartoPeriodo(falta.isQuartoPeriodo()); 
     }
 
-    private void salvar() {
-        br.sistemaescola.list.FaltasList.addFaltas(falta);
+    private void salvar() throws ExceptionEscola{
+        try{
+            falta.toString();
+            dao.inserirFaltas(falta);
+            
+        }catch(ExceptionEscola ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            Log.gravarMessagem(ex.getMessage());
+        }
     }
 
 }

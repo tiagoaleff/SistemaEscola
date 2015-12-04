@@ -51,6 +51,7 @@ public class FaltaListController implements ListSelectionListener{
         for(Aluno a : br.sistemaescola.list.AlunoList.getListAluno()){
             if(a.getNomeAluno().equals(nomeSelecionado)){
                 frame.getAlunoJTextField().setText(nomeSelecionado);
+                frame.setIdAluno(a.getIdAluno());
             }
         }      
     }
@@ -58,7 +59,9 @@ public class FaltaListController implements ListSelectionListener{
     private void buscarCurso(String nomeSelecionado) {
         for(Curso c : br.sistemaescola.list.CursoList.getListCurso()){
             if(c.getNome().equals(nomeSelecionado)){
-                       frame.getCursoJTextField().setText(nomeSelecionado); 
+                frame.getCursoJTextField().setText(nomeSelecionado);                 
+                frame.setIdCurso(c.getId());
+                JOptionPane.showMessageDialog(frame, c.getId());
             }
         }
     }
@@ -67,6 +70,8 @@ public class FaltaListController implements ListSelectionListener{
        for(Disciplina d : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
            if(d.getNomeDisciplina().equals(nomeSelecionado)){
                frame.getDisciplinaJTextField().setText(nomeSelecionado);
+               frame.setIdDisciplina(d.getIdDisciplina());
+               JOptionPane.showMessageDialog(frame, d.getIdCurso());
            }
        }
     }
