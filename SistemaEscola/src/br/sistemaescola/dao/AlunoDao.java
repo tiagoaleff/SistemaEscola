@@ -258,8 +258,7 @@ public class AlunoDao {
     }        
     
     public void deletar(Aluno aluno)throws ExceptionEscola{
-       
-        // #GOTO: ID QUE NÃO ESTÁ PEGANDO
+              
         Connection conn = null;
         PreparedStatement ps = null;
         try{

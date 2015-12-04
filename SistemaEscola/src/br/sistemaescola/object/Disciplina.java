@@ -12,8 +12,10 @@ public class Disciplina {
     private String creditoDisciplina;
     private String totalAlunosDisciplina;
     private String totalHorasDisciplina;
-    private String nomeCurso;
-    
+    private String nomeCurso;    
+    private int idDisciplina;
+    private int idCurso;
+    private int idProfessor;
     /*dados do professor que irá lecionar a disciplina*/
     private String nomeProfessor;    
 
@@ -28,7 +30,31 @@ public class Disciplina {
         this.nomeCurso = nomeCurso;
         this.nomeProfessor = nomeProfessor;
     }
-    
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+
+    public int getIdProfessor() {
+        return idProfessor;
+    }
+
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
+    }
+            
     public String getNomeDisciplina() {
         return nomeDisciplina;
     }
@@ -83,5 +109,12 @@ public class Disciplina {
 
     public void setNomeProfessor(String nomeProfessor) {
         this.nomeProfessor = nomeProfessor;
+    }    
+
+    @Override
+    public String toString() {
+        return "Disciplina{" + "nomeDisciplina=" + nomeDisciplina + ", codigoDisciplina=" + codigoDisciplina + ", creditoDisciplina=" + creditoDisciplina + ", totalAlunosDisciplina=" + totalAlunosDisciplina + ", totalHorasDisciplina=" + totalHorasDisciplina + ", nomeCurso=" + nomeCurso + ", idDisciplina=" + idDisciplina + ", idCurso=" + idCurso + ", idProfessor=" + idProfessor + ", nomeProfessor=" + nomeProfessor + '}';
     }
+    
+    
 }

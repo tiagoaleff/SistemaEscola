@@ -25,6 +25,8 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     private String listAtual = "";
     private DisciplinaController disciplinas = new DisciplinaController(this);
     private DisciplinaListController actionList = new DisciplinaListController(this);
+    private int idCursoDaDisciplina;
+    private int idProfessorDaDisciplina;
     
     public Disciplina atualizar(){
         
@@ -41,10 +43,28 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         /* setando informações sobre o PROFESSOR DA DISCIPLINA*/
         disciplina.setNomeProfessor(nomeProfessorJTextField.getText());               
         
+        // atualizar os dados dos ids       
+        disciplina.setIdCurso(getIdCursoDaDisciplina());
+        disciplina.setIdProfessor(getIdProfessorDaDisciplina());        
         return disciplina;        
     }
 
+    public int getIdProfessorDaDisciplina() {
+        return idProfessorDaDisciplina;
+    }
 
+    public void setIdProfessorDaDisciplina(int idProfessorDaDisciplina) {
+        this.idProfessorDaDisciplina = idProfessorDaDisciplina;
+    }
+        
+    public int getIdCursoDaDisciplina() {
+        return idCursoDaDisciplina;
+    }
+
+    public void setIdCursoDaDisciplina(int idCursoDaDisciplina) {
+        this.idCursoDaDisciplina = idCursoDaDisciplina;
+    }
+    
     public JList getListaResultadoJList() {
         return listaResultadoJList;
     }
@@ -128,11 +148,13 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaResultadoJList = new javax.swing.JList();
-        salvarJToggleButton = new javax.swing.JToggleButton();
-        cancelarJToggleButton = new javax.swing.JToggleButton();
-        clearJButton1 = new javax.swing.JButton();
         codigoJTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        cancelarJToggleButton = new javax.swing.JToggleButton();
+        clearJButton1 = new javax.swing.JButton();
+        salvarJToggleButton = new javax.swing.JToggleButton();
+        deletarjButton2 = new javax.swing.JButton();
 
         setTitle("Disciplina");
 
@@ -256,6 +278,9 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         jLabel7.setText("Nome");
 
         professorPesquisaJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_black.png"))); // NOI18N
+        //professorPesquisaJToggleButton.addActionListener(action);
+        //professorPesquisaJToggleButton.setActionCommand("professorPesquisar");
+
         professorPesquisaJToggleButton.addActionListener(disciplinas);
         professorPesquisaJToggleButton.setActionCommand("professorPesquisar");
         /*
@@ -314,14 +339,14 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29))
         );
 
-        salvarJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
-        salvarJToggleButton.addActionListener(disciplinas);
-        salvarJToggleButton.setActionCommand("salvar");
-        salvarJToggleButton.addActionListener(new java.awt.event.ActionListener() {
+        codigoJTextField1.setEditable(false);
+        codigoJTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarJToggleButtonActionPerformed(evt);
+                codigoJTextField1ActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("Id");
 
         cancelarJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         cancelarJToggleButton.setPreferredSize(new java.awt.Dimension(52, 32));
@@ -338,15 +363,51 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         clearJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear.png"))); // NOI18N
         clearJButton1.addActionListener(disciplinas);
         clearJButton1.setActionCommand("clear");
-
-        codigoJTextField1.setEditable(false);
-        codigoJTextField1.addActionListener(new java.awt.event.ActionListener() {
+        clearJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoJTextField1ActionPerformed(evt);
+                clearJButton1ActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Id");
+        salvarJToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
+        salvarJToggleButton.addActionListener(disciplinas);
+        salvarJToggleButton.setActionCommand("salvar");
+        salvarJToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarJToggleButtonActionPerformed(evt);
+            }
+        });
+
+        deletarjButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deletar.png"))); // NOI18N
+        deletarjButton2.addActionListener(disciplinas);
+        deletarjButton2.setActionCommand("deletar");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(salvarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(clearJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deletarjButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(deletarjButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -356,25 +417,21 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(salvarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(clearJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(codigoJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(63, 63, 63))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addComponent(codigoJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,16 +444,13 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cancelarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clearJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salvarJToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -438,6 +492,10 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeJTextFieldActionPerformed
 
+    private void clearJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearJButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton cancelarJToggleButton;
@@ -446,6 +504,7 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField creditosJTextField;
     private javax.swing.JButton cursoJButton;
     private javax.swing.JTextField cursoJTextField;
+    private javax.swing.JButton deletarjButton2;
     private javax.swing.JToggleButton disciplinaPesquisaJToggleButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -457,6 +516,7 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listaResultadoJList;

@@ -12,6 +12,7 @@ import br.sistemaescola.object.Professor;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -30,7 +31,7 @@ public class ProfessorList {
         try {
             listProfessor = ProfessorDao.selecionarTodos();
         } catch (ExceptionEscola ex) {
-            Logger.getLogger(ProfessorList.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
                 
         return listProfessor;

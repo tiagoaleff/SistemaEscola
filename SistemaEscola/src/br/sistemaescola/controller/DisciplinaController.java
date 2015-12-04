@@ -1,6 +1,8 @@
 package br.sistemaescola.controller;
 
+import br.sistemaescola.dao.DisciplinaDao;
 import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Curso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,9 +20,11 @@ public class DisciplinaController implements ActionListener {
 
     private DisciplinasJInternalFrame frame;
     private Disciplina disciplina;
-
+    private DisciplinaDao dao;
     public DisciplinaController(DisciplinasJInternalFrame frame) {
         this.frame = frame;
+        dao = new DisciplinaDao();
+        
     }
 
     @Override
@@ -33,6 +37,7 @@ public class DisciplinaController implements ActionListener {
                 pesquisarDisciplinas();
                 break;
             case "professorPesquisar":
+                
                 pesquisarProfessor();
                 break;
             case "cursoPesquisar":
@@ -55,13 +60,29 @@ public class DisciplinaController implements ActionListener {
             case "clear":
                 clear();
                 break;
+            case "deletar":     
+                try{
+                    deletar();    
+                    Log.gravarMessagem("Disciplina Deletado com sucesso!");
+                }catch(ExceptionEscola ex){
+                    Log.gravarMessagem("Erro ao deletar diciplina: " + ex.getMessage());
+                }                
+                break;
 
         }
     }
 
-    public void salvar(){
+    private void deletar() throws ExceptionEscola{
+        JOptionPane.showMessageDialog(frame, disciplina.toString());
+        dao.deletar(disciplina);
+        clear();
+    }
+    public void salvar() throws ExceptionEscola{
               
-        br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);
+        // br.sistemaescola.list.DisciplinaList.addDisciplina(disciplina);                        
+        disciplina = frame.atualizar();      
+        dao.inserirDisciplina(disciplina);
+        
     }
     
     public boolean validarNomeCurso(){
@@ -147,7 +168,7 @@ public class DisciplinaController implements ActionListener {
     public void validarCamposDeDisciplina() throws ExceptionEscola {               
         
         // validando o campo nome disciplina
-        if (disciplina.getNomeDisciplina().trim().equals("") || disciplina.getNomeDisciplina() == null) {
+       /* if (disciplina.getNomeDisciplina().trim().equals("") || disciplina.getNomeDisciplina() == null) {
             
             throw new ExceptionEscola("O campo Nome não pode estar vazio.");
         }
@@ -186,7 +207,7 @@ public class DisciplinaController implements ActionListener {
         if(!validarCamposProfessor()){
             throw new ExceptionEscola("O professor não existe deve-se informar um professor existente");
         }
-        
+        */
         //verifica se o cruso não existe
         for (Disciplina d : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
             if(disciplina.getNomeDisciplina().equals(d.getNomeDisciplina())){
@@ -203,7 +224,8 @@ public class DisciplinaController implements ActionListener {
                                 + "curso ou sobreescreva o mesmo");         
                 }     
             }
-        }    
+        }
+        
         salvar();
         
        
@@ -225,14 +247,15 @@ public class DisciplinaController implements ActionListener {
         frame.getListaResultadoJList().setModel( new DefaultListModel());
     }
 
-    private void edit(Disciplina d) {
+    private void edit(Disciplina d) throws ExceptionEscola{
        
-        d.setNomeCurso(disciplina.getNomeCurso());
+        /*d.setNomeCurso(disciplina.getNomeCurso());
         d.setNomeDisciplina(disciplina.getNomeDisciplina());
         d.setNomeProfessor(disciplina.getNomeProfessor());
         d.setCreditoDisciplina(disciplina.getCreditoDisciplina());
         d.setTotalAlunosDisciplina(disciplina.getTotalAlunosDisciplina());
-        d.setTotalHorasDisciplina(disciplina.getTotalHorasDisciplina());
+        d.setTotalHorasDisciplina(disciplina.getTotalHorasDisciplina());*/
+        dao.atualizarDisciplina(disciplina);
         
     }
     
@@ -256,9 +279,11 @@ public class DisciplinaController implements ActionListener {
 
         for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
                if(professor.getNomeProfessor().matches(".*" + disciplina.getNomeDisciplina() + ".*")){
-                   dm.addElement(professor.getNomeProfessor());     
+                   dm.addElement(professor.getNomeProfessor());                        
                }
         }       
+        
+        
         frame.getListaResultadoJList().setModel(dm);
         frame.setListAtual("professor");
     }

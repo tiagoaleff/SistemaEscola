@@ -166,5 +166,11 @@ public class Professor {
     public void setEstadoEndereco(String estadoEndereco) {
         this.estadoEndereco = estadoEndereco;
     }
-           
+
+    @Override
+    public String toString() {
+        return "Professor{" + "nomeProfessor=" + nomeProfessor + ", CPF=" + CPF + ", RG=" + RG + ", nascimento=" + nascimento + ", emailContato=" + emailContato + ", celularContato=" + celularContato + ", telefoneContato=" + telefoneContato + ", ruaEndereco=" + ruaEndereco + ", cidadeEndereco=" + cidadeEndereco + ", bairroEndereco=" + bairroEndereco + ", numeroEndereco=" + numeroEndereco + ", estadoEndereco=" + estadoEndereco + ", nivelDeEscolaridade=" + nivelDeEscolaridade + ", idProfessor=" + idProfessor + '}';
+    }
+ 
+    
 }
