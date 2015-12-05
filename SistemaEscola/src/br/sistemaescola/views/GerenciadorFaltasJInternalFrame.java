@@ -23,6 +23,7 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
     private GerenciarFaltasListController listAction = new GerenciarFaltasListController(this);
     private int idAluno;
     private int idFalta;    
+    private int selectionadaLinhaColuna;
 
     public Faltas getFaltas(){
         Faltas faltas = new Faltas();
@@ -36,6 +37,14 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
         return faltas;
     }
 
+    public int getSelectionadaLinhaColuna() {
+        return selectionadaLinhaColuna;
+    }
+
+    public void setSelectionadaLinhaColuna(int selectionadaLinhaColuna) {
+        this.selectionadaLinhaColuna = selectionadaLinhaColuna;
+    }
+    
     public int getIdFalta() {
         return idFalta;
     }
@@ -118,7 +127,6 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
         idJTextField = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         cancelarJButton = new javax.swing.JButton();
-        salvarJButton = new javax.swing.JButton();
         limparJButton = new javax.swing.JButton();
         deletarJButton1 = new javax.swing.JButton();
 
@@ -156,6 +164,7 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
                 return canEdit [columnIndex];
             }
         });
+        selectionadaLinhaColuna = tabelaJTable.getSelectedRow();
         jScrollPane3.setViewportView(tabelaJTable);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -235,11 +244,6 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
         cancelarJButton.addActionListener(action);
         cancelarJButton.setActionCommand("cancelar");
 
-        salvarJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save_blue.png"))); // NOI18N
-        salvarJButton.setToolTipText("Click aqui para salvar as informações do formulário");
-        salvarJButton.addActionListener(action);
-        salvarJButton.setActionCommand("salvar");
-
         limparJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear.png"))); // NOI18N
         limparJButton.setToolTipText("Click aqui para limpar todos os campos do cadastro");
         limparJButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -258,12 +262,10 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
                 .addContainerGap()
                 .addComponent(limparJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(salvarJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deletarJButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelarJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +273,6 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(limparJButton)
-                    .addComponent(salvarJButton)
                     .addComponent(cancelarJButton)
                     .addComponent(deletarJButton1))
                 .addContainerGap())
@@ -281,15 +282,6 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,10 +303,18 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,9 +344,9 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
                                 .addComponent(nomeJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -380,7 +380,6 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
     private javax.swing.JButton limparJButton;
     private javax.swing.JButton nomeJButton;
     private javax.swing.JTextField nomeJTextField;
-    private javax.swing.JButton salvarJButton;
     private javax.swing.JTable tabelaJTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,44 +36,40 @@ public class GerenciarFaltasListController implements ListSelectionListener{
     @Override
     public void valueChanged(ListSelectionEvent e) {
                 
-        
         JList jList = frame.getAlunoJList();
         String nomeSelecionado = (String) jList.getSelectedValue();
-        JOptionPane.showMessageDialog(frame, nomeSelecionado);
         ArrayList<Faltas> faltasAluno = new ArrayList<>();
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
                 
         listaAlunos = buscarListAlunos();
         
-        // metodo alterado pois nao possuo o nome do aulo, mas sim o id
-        for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
-                                                  
-            System.out.println("falta: " + falta.getIdAluno());
-            
-              if(buscarAlunoId(falta.getIdAluno())){
+       //metodo alterado pois nao possuo o nome do aulo na tabela, mas sim o id
+       for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
+                                                             
+              if(buscarAlunoId(falta.getIdAluno(), nomeSelecionado)){                  
                          faltasAluno.add(falta);
               }
         }
-        // fim da alteracao
+        //fim da alteracao
         
         // abaixo comentado o codigo original
-        /*
-        for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
+        
+        /*for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
             if(falta.getAluno().equals(nomeSelecionado)){
                faltasAluno.add(falta);
             }
-        }
-        */
-        alimentarTable(faltasAluno);        
+        }*/
+        
+         alimentarTable(faltasAluno);        
     }
-    private boolean buscarAlunoId(int  idAluno){
+    
+    private boolean buscarAlunoId(int  idAluno, String nomeSelecionado){
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
         listaAlunos = buscarListAlunos();
         boolean teste = false;
         
         for(Aluno a : listaAlunos){
-            System.out.println("aluno: " + a.getIdAluno());
-            if(a.getIdAluno() == idAluno){
+            if(a.getIdAluno() == idAluno && nomeSelecionado == a.getNomeAluno()){
                 teste = true;
             }
         }

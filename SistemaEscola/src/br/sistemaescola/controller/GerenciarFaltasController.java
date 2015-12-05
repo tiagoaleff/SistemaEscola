@@ -47,19 +47,27 @@ public class GerenciarFaltasController implements ActionListener {
             case "limpar":
                 limpar();                
                 break;
-            case "deletar:":
+            case "deletar":
                 deletar();
+                break;
+            case "cancelar":
+                frame.dispose();
+                break;
         }
            
         }
     
     private void deletar(){
-        String nome = frame.getNomeAluno();
-          try {
-            dao.deletar(nome);
+        //String nome = frame.getNomeAluno();
+        
+        int posicao = frame.getTabelaJTable().getSelectedRow();
+        
+        
+          /*try {
+            dao.deletar(posica);
         } catch (ExceptionEscola ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
+        }*/
         
     }
     private void limpar(){
@@ -68,11 +76,26 @@ public class GerenciarFaltasController implements ActionListener {
         frame.getNomeAlunoJTextField().setText("");
         frame.getAlunoJList().setModel(new DefaultListModel());               
         
-        frame.setTabelaJTable(new JTable());
+        // frame.setTabelaJTable(new JTable());
     }
      private void buscar_id(){
-            JOptionPane.showMessageDialog(frame, "buscar_id");
-     }
+         
+        int id = 0;
+         
+        if(frame.getIdAluno() != null && !frame.getIdAluno().equals(""))                    
+            id = Integer.parseInt(frame.getIdAluno());
+        
+        DefaultListModel dm = new DefaultListModel();
+         
+        for(Aluno aluno : br.sistemaescola.list.AlunoList.getListAluno()){
+            if (aluno.getIdAluno() == id) {
+                dm.addElement(aluno.getNomeAluno());
+            } else if(id == 0){
+                dm.addElement(aluno.getNomeAluno());
+            }
+        }
+        frame.getAlunoJList().setModel(dm);
+    }    
      private void buscar_nome(){
          
          String nome = frame.getNomeAluno();
