@@ -46,8 +46,10 @@ public class GerenciarFaltasListController implements ListSelectionListener{
        //metodo alterado pois nao possuo o nome do aulo na tabela, mas sim o id
        for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
                                                              
-              if(buscarAlunoId(falta.getIdAluno(), nomeSelecionado)){                  
-                         faltasAluno.add(falta);
+              if(buscarAlunoId(falta.getIdAluno(), nomeSelecionado)){     
+                        
+                    falta.setDisciplina(buscarNomeDisciplina(falta.getIdDisciplina()));
+                    faltasAluno.add(falta);                         
               }
         }
         //fim da alteracao
@@ -70,12 +72,33 @@ public class GerenciarFaltasListController implements ListSelectionListener{
         
         for(Aluno a : listaAlunos){
             if(a.getIdAluno() == idAluno && nomeSelecionado == a.getNomeAluno()){
-                teste = true;
+                teste = true;                
             }
         }
                 
         return teste;
     }    
+    
+    private String buscarNomeDisciplina(int idDisciplina){
+        ArrayList<Disciplina>listaDisciplina = new ArrayList<Disciplina>();
+        String nomeDisciplina = "Não encontrado";
+        try{
+            listaDisciplina = DisciplinaDao.selecionarTodos();
+        }catch(ExceptionEscola ex){
+            JOptionPane.showMessageDialog(frame, "Erro ao buscar alunos:  " + ex.getMessage());
+            Log.gravarMessagem("Erro ao buscar alunos:  " + ex.getMessage());
+        }
+        
+        for(Disciplina d : listaDisciplina){
+            if(d.getIdDisciplina() == idDisciplina){
+                nomeDisciplina = d.getNomeDisciplina();
+                break;
+            }
+        }
+        
+        return nomeDisciplina;
+    }
+    
     private ArrayList<Aluno> buscarListAlunos(){
         
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
@@ -91,32 +114,30 @@ public class GerenciarFaltasListController implements ListSelectionListener{
     private void alimentarTable(ArrayList<Faltas> faltasAluno){
         
         DefaultTableModel dtm   = (DefaultTableModel) frame.getTabelaJTable().getModel();
+        String primerio = "Falta";
+        String segundo = "Falta";
+        String terceiro = "Falta";
+        String quarta = "Falta";
         
         while(dtm.getRowCount() >= 1){
             dtm.removeRow(dtm.getRowCount() - 1);    
         }
  
        for(Faltas falta : faltasAluno){
-       
-            /*String primeiro = "não";
-            String segundo  = "não";
-            String terceiro = "não";
-            String quarto   = "não";
-
-            if(falta.isPrimeiroPeriodo()){
-                primeiro = "sim";
-            }
-            if(falta.isSecundoPeriodo()){
-                segundo = "sim";
-            }
-            if(falta.isTerceiroPeriodo()){
-                terceiro = "sim";
-            }
-            if(falta.isQuartoPeriodo()){
-                quarto = "sim";
-            }    
-            */
-            dtm.addRow(new Object[]{falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),falta.isPrimeiroPeriodo(),falta.isSecundoPeriodo(), falta.isTerceiroPeriodo(), falta.isQuartoPeriodo()}); 
+            
+           if(falta.isPrimeiroPeriodo())
+               primerio = "Presença";
+           
+           if(falta.isSecundoPeriodo())
+               segundo = "Presença";
+           
+           if(falta.isTerceiroPeriodo())
+               terceiro = "Presença";
+           
+           if(falta.isQuartoPeriodo())
+               quarta = "Presença";
+                   
+            dtm.addRow(new Object[]{falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),primerio ,segundo , terceiro, quarta}); 
        } 
     }
 

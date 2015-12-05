@@ -141,43 +141,46 @@ public class FaltasDao {
         }                       
         return resultadoLista;
     }
-        
-     public void deletar(String nome)throws ExceptionEscola{
-              
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try{
-            conn = Conexao.getConexao();
-            String sql = "DELETE FROM faltas WHERE nome = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, nome);
-            ps.execute();
-            conn.commit();    
-        }catch(SQLException ex){        
-            if(conn != null){
-                try{
-                    conn.rollback();
-                }catch(SQLException e){
-                    br.sistemaescola.log.Log.gravarMessagem(e.getMessage());
-                    throw new ExceptionEscola(e.getMessage());
-                }
-            }
-            throw new ExceptionEscola(ex.getMessage());
-        } finally{
-            if(conn != null){
-                try{
-                    conn.close();
-                }catch(SQLException ex){
-                    throw new ExceptionEscola(ex.getMessage());
-                }
-            }
-            if(ps != null){                
-                try{
-                    ps.close();
-                }catch(SQLException ex){
-                    throw new ExceptionEscola(ex.getMessage());
-                }
-            }
-        }        
-    }               
+    
+    /**
+     * Este metodo deleta o campo atraves do nome que ele recebe.
+     */
+    public void deletar(String nome)throws ExceptionEscola{
+
+       Connection conn = null;
+       PreparedStatement ps = null;
+       try{
+           conn = Conexao.getConexao();
+           String sql = "DELETE FROM faltas WHERE nome = ?";
+           ps = conn.prepareStatement(sql);
+           ps.setString(1, nome);
+           ps.execute();
+           conn.commit();    
+       }catch(SQLException ex){        
+           if(conn != null){
+               try{
+                   conn.rollback();
+               }catch(SQLException e){
+                   br.sistemaescola.log.Log.gravarMessagem(e.getMessage());
+                   throw new ExceptionEscola(e.getMessage());
+               }
+           }
+           throw new ExceptionEscola(ex.getMessage());
+       } finally{
+           if(conn != null){
+               try{
+                   conn.close();
+               }catch(SQLException ex){
+                   throw new ExceptionEscola(ex.getMessage());
+               }
+           }
+           if(ps != null){                
+               try{
+                   ps.close();
+               }catch(SQLException ex){
+                   throw new ExceptionEscola(ex.getMessage());
+               }
+           }
+       }        
+   }               
 }
