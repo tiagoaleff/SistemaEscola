@@ -41,19 +41,25 @@ public class LoginController implements ActionListener {
        }
     }
     
-    private void verificarConexao(Login result){
+    public void verificarConexao(Login result){
         
         ConfigUser config = new ConfigUser();
                                
         if(!result.getUser().equals(config.getUser())){
             JOptionPane.showMessageDialog(loginFrame, "usuário ou senha incorreta");
             br.sistemaescola.log.Log.gravarMessagem("Falha ao fazer login na Aplicacao, usuario ou senha incorreta");
+            loginFrame.getUserJTextField().setText("");
+            loginFrame.getPasswordJField().setText("");
+            loginFrame.getUserJTextField().requestFocus();
             return;
         }
         
         if(!result.getPassword().equals(config.getPassword())){
             JOptionPane.showMessageDialog(loginFrame, "usuário ou senha incorreta");
             br.sistemaescola.log.Log.gravarMessagem("Falha ao fazer login na Aplicacao, usuario ou senha incorreta");
+            loginFrame.getUserJTextField().setText("");
+            loginFrame.getPasswordJField().setText("");
+            loginFrame.getUserJTextField().requestFocus();
             return;
         }        
         

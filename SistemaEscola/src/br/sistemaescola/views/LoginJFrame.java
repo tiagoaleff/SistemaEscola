@@ -11,7 +11,10 @@ package br.sistemaescola.views;
 
 import br.sistemaescola.config.CarregarLogin;
 import br.sistemaescola.controller.LoginController;
+import br.sistemaescola.controller.teclado.LoginTecladoController;
 import br.sistemaescola.object.Login;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 /**
  *
  * @author Leandro Justin Vieira
@@ -19,6 +22,7 @@ import br.sistemaescola.object.Login;
 public class LoginJFrame extends javax.swing.JFrame {
     
     
+    LoginTecladoController actionTeclado = new LoginTecladoController(this);
     LoginController action = new LoginController(this);
     CarregarLogin lastlogin;
     
@@ -47,6 +51,14 @@ public class LoginJFrame extends javax.swing.JFrame {
     public CarregarLogin getLastlogin() {
         return lastlogin;
     }
+
+    public JPasswordField getPasswordJField() {
+        return passwordJField;
+    }
+
+    public JTextField getUserJTextField() {
+        return userJTextField;
+    }
       
     
     
@@ -71,6 +83,8 @@ public class LoginJFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
+        userJTextField.addKeyListener(actionTeclado);
+
         userJLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         userJLabel.setText("Usuário:");
 
@@ -80,6 +94,8 @@ public class LoginJFrame extends javax.swing.JFrame {
         loginJButton.setText("Entrar");
         loginJButton.addActionListener(action);
         loginJButton.setActionCommand("entrar");
+
+        passwordJField.addKeyListener(actionTeclado);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo sistema escola- transparente.png"))); // NOI18N
 
