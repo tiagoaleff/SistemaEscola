@@ -36,7 +36,7 @@ public class DisciplinaController implements ActionListener {
             case "disciplinaPesquisar":
                 pesquisarDisciplinas();
                 break;
-            case "professorPesquisar":                
+            case "professorPesquisar":                                
                 pesquisarProfessor();
                 break;
             case "cursoPesquisar":
@@ -275,9 +275,11 @@ public class DisciplinaController implements ActionListener {
     private void pesquisarProfessor() {
         
         DefaultListModel dm = new DefaultListModel();
-
+        
         for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
-               if(professor.getNomeProfessor().matches(".*" + disciplina.getNomeDisciplina() + ".*")){
+                
+            // JOptionPane.showMessageDialog(null, disciplina.getNomeDisciplina());
+               if(professor.getNomeProfessor().matches(".*" + disciplina.getNomeProfessor()+ ".*")){                   
                    dm.addElement(professor.getNomeProfessor());                        
                }
         }       
@@ -285,6 +287,8 @@ public class DisciplinaController implements ActionListener {
         
         frame.getListaResultadoJList().setModel(dm);
         frame.setListAtual("professor");
+        
+        JOptionPane.showMessageDialog(frame, "entrou para pesquisar professor");
     }
 
     private void pesquisarCursos() {
