@@ -6,6 +6,7 @@
 
 package br.sistemaescola.controller;
 
+import br.sistemaescola.exception.ExceptionEscola;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import br.sistemaescola.views.AlunoJInternalFrame;
@@ -17,6 +18,9 @@ import br.sistemaescola.views.GerenciarNotasJInternalFrame;
 import br.sistemaescola.views.NotaJInternalFrame;
 import br.sistemaescola.views.ProfessorJInternalFrame;
 import br.sistemaescola.views.PrincipalJFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -38,7 +42,14 @@ public class PrincipalController implements ActionListener{
         switch(action){
             
             case "aluno":
+        {
+            try {
                 criarFrameAluno();
+            } catch (ExceptionEscola ex) {
+                JOptionPane.showMessageDialog(frame, ex.getMessage());
+                br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+            }
+        }
                 br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Alunos");
                 break;
             case "professor":
@@ -101,7 +112,15 @@ public class PrincipalController implements ActionListener{
         frame.getPrincipalFrame().add(new ProfessorJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameAluno() {
+    private void criarFrameAluno() throws ExceptionEscola{
+        
+        if(PrincipalJFrame.getJanela()[0]) {
+            throw new ExceptionEscola("já existe um frama aluno");   
+        }
+        PrincipalJFrame.getJanela()[0] = true;
+        
         frame.getPrincipalFrame().add(new AlunoJInternalFrame()).setVisible(true);
-    }   
+        
+    }
+    
 }

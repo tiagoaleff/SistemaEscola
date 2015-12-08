@@ -7,6 +7,7 @@ import javax.swing.JInternalFrame;
 import br.sistemaescola.object.Aluno;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -183,6 +184,23 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
         setToolTipText("");
         setMinimumSize(new java.awt.Dimension(925, 298));
         setPreferredSize(new java.awt.Dimension(925, 298));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(null);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(383, 512, 0, 0);
@@ -534,6 +552,11 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+
+        PrincipalJFrame.getJanela()[0] = false;
+    }//GEN-LAST:event_formInternalFrameClosed
        
     public Aluno getAluno(){
         

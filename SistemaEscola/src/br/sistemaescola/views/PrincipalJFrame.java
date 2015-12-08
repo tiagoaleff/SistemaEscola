@@ -6,6 +6,7 @@ import br.sistemaescola.object.Curso;
 import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Faltas;
 import br.sistemaescola.object.Professor;
+import java.util.ArrayList;
 import javax.swing.JDesktopPane;
 
 /**
@@ -14,10 +15,26 @@ import javax.swing.JDesktopPane;
  */
 public class PrincipalJFrame extends javax.swing.JFrame {
 
-    PrincipalController action = new PrincipalController(this); 
+    PrincipalController action = new PrincipalController(this);
+    
+    public static boolean janela[] = new boolean[8];
+
+    public static boolean[] getJanela() {
+        return janela;
+    }
+   
     
     public PrincipalJFrame() {
        initComponents();
+     
+       janela[0] = false;
+       janela[1] = false;
+       janela[2] = false;
+       janela[3] = false;
+       janela[4] = false;
+       janela[5] = false;
+       janela[6] = false;
+       janela[7] = false;
             
        Professor p = new Professor("Gilberto Vieira", "12312312312", "123123123", "12/12/1212", "betoVieira@gmail.com", "12121212", "12121212", "java sum", "netbens", "eclipse", "1212", "Santa Catarina(SC)", "Graduação");
        p.setNomeProfessor("Gilberto Vieira");    
