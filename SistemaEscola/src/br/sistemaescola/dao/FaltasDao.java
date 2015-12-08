@@ -146,15 +146,15 @@ public class FaltasDao {
     /**
      * Este metodo deleta o campo atraves do nome que ele recebe.
      */
-    public void deletar(String nome)throws ExceptionEscola{
+    public void deletar(int id)throws ExceptionEscola{
 
        Connection conn = null;
        PreparedStatement ps = null;
        try{
            conn = Conexao.getConexao();
-           String sql = "DELETE FROM faltas WHERE nome = ?";
+           String sql = "DELETE FROM faltas WHERE id = ?";
            ps = conn.prepareStatement(sql);
-           ps.setString(1, nome);
+           ps.setInt(1, id);
            ps.execute();
            conn.commit();    
        }catch(SQLException ex){        

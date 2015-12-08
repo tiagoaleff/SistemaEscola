@@ -8,6 +8,7 @@ package br.sistemaescola.controller;
 
 import br.sistemaescola.dao.FaltasDao;
 import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,20 +60,19 @@ public class GerenciarFaltasController implements ActionListener {
     
     private void deletar(){
         
-        int linha = frame.getTabelaJTable().getSelectedRow();          
-        //frame.getTabelaJTable().getValueAt(linha, 0);
-        
-        //JOptionPane.showMessageDialog(frame, name);
-        
-        
-        
-        
-          /*try {
-            dao.deletar(posica);
+        try {
+            int linha = frame.getTabelaJTable().getSelectedRow();          
+            Object valorCelularObeject = frame.getTabelaJTable().getValueAt(linha, 0);
+            int valorCelula = Integer.parseInt(valorCelularObeject.toString());        
+            dao.deletar(valorCelula);            
         } catch (ExceptionEscola ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }*/
-        
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Falta: " + ex.getMessage());
+            Log.gravarMessagem("Erro ao excluir Falta: " + ex.getMessage());
+        } catch(IndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(null, "Selecione uma falta para excluir!");
+            Log.gravarMessagem("Erro ao excluir Falta: " + ex.getMessage());
+        }
+        limpar();
     }
     private void limpar(){
         
