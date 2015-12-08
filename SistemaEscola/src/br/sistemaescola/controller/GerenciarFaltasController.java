@@ -8,13 +8,13 @@ package br.sistemaescola.controller;
 
 import br.sistemaescola.dao.FaltasDao;
 import br.sistemaescola.exception.ExceptionEscola;
-import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.GerenciadorFaltasJInternalFrame;
 import javax.swing.DefaultListModel;
+import javax.swing.JTable;
 
 /**
  * 
@@ -25,7 +25,7 @@ public class GerenciarFaltasController implements ActionListener {
     private GerenciadorFaltasJInternalFrame frame;
     private FaltasDao dao;
 
-    public GerenciarFaltasController(GerenciadorFaltasJInternalFrame frame) {   
+    public GerenciarFaltasController(GerenciadorFaltasJInternalFrame frame) {
         this.frame = frame;
         dao = new FaltasDao();
     }
@@ -45,7 +45,7 @@ public class GerenciarFaltasController implements ActionListener {
                 buscar_nome();
                 break;
             case "limpar":
-                limparTudo();                
+                limpar();                
                 break;
             case "deletar":
                 deletar();
@@ -58,31 +58,30 @@ public class GerenciarFaltasController implements ActionListener {
         }
     
     private void deletar(){
-
-        try {
-             int linha = frame.getTabelaJTable().getSelectedRow();          
-            frame.getTabelaJTable().getValueAt(linha, 0);        
-            Object valorCelulaObject  = frame.getTabelaJTable().getValueAt(linha, 0);
-            int valorCelula = Integer.parseInt(valorCelulaObject.toString());    
-            dao.deletar(valorCelula);
-            limparTudo();
+        
+        int linha = frame.getTabelaJTable().getSelectedRow();          
+        //frame.getTabelaJTable().getValueAt(linha, 0);
+        
+        //JOptionPane.showMessageDialog(frame, name);
+        
+        
+        
+        
+          /*try {
+            dao.deletar(posica);
         } catch (ExceptionEscola ex) {
-            JOptionPane.showMessageDialog(frame, ex.getMessage());
-            Log.gravarMessagem("Erro ao excluir falta: " + ex.getMessage());
-        } catch(IndexOutOfBoundsException ex){
-            JOptionPane.showMessageDialog(frame, "Selecione uma falta para excluir!");
-            Log.gravarMessagem("Erro ao excluir falta: " + ex.getMessage());
-        }
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }*/
         
     }
-    private void limparTudo(){
+    private void limpar(){
         
         frame.getIdAlunoTextField().setText("");
         frame.getNomeAlunoJTextField().setText("");
-        frame.getAlunoJList().setModel(new DefaultListModel());
+        frame.getAlunoJList().setModel(new DefaultListModel());               
         
         // frame.setTabelaJTable(new JTable());
-    }    
+    }
      private void buscar_id(){
          
         int id = 0;
