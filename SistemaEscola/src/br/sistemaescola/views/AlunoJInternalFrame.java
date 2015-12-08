@@ -554,8 +554,8 @@ public class AlunoJInternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-
         PrincipalJFrame.getJanela()[0] = false;
+        br.sistemaescola.log.Log.gravarMessagem("Janela Aluno fechada");
     }//GEN-LAST:event_formInternalFrameClosed
        
     public Aluno getAluno(){

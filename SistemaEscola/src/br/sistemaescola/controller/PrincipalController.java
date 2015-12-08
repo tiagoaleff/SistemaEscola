@@ -115,7 +115,7 @@ public class PrincipalController implements ActionListener{
     private void criarFrameAluno() throws ExceptionEscola{
         
         if(PrincipalJFrame.getJanela()[0]) {
-            throw new ExceptionEscola("já existe um frama aluno");   
+            throw new ExceptionEscola("já existe uma janela aluno aberta");   
         }
         PrincipalJFrame.getJanela()[0] = true;
         
