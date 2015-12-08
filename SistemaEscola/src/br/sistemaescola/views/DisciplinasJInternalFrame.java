@@ -171,6 +171,23 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
         deletarjButton2 = new javax.swing.JButton();
 
         setTitle("Disciplina");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações da disciplinas"));
 
@@ -509,6 +526,11 @@ public class DisciplinasJInternalFrame extends javax.swing.JInternalFrame {
     private void clearJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_clearJButton1ActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        PrincipalJFrame.getJanela()[2] = false;
+        br.sistemaescola.log.Log.gravarMessagem("A janela disciplina foi fechada");
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -65,20 +65,48 @@ public class PrincipalController implements ActionListener{
                 
                 break;
             case "disciplina":
-                criarFrameDisciplina();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Disciplinas");
+                {
+                    try {
+                        criarFrameDisciplina();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Disciplinas");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
                 break;
             case "curso":
-                criarFrameCurso();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Cursos");
+                {
+                    try {
+                        criarFrameCurso();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Cursos");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
                 break;
             case "nota":
-                criarFrameNotas();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Notas");
+                {
+                    try {
+                        criarFrameNotas();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Notas");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                       br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
                 break;
             case "falta":
-                criarFrameFaltas();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Faltas");
+                {
+                    try {
+                        criarFrameFaltas();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Faltas");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
                 break;
             case "gerenciar notas":
                 criarFrameGerenciarNotas();
@@ -91,8 +119,11 @@ public class PrincipalController implements ActionListener{
         } 
     }
        
-    public void criarFrameCurso(){
-        
+    public void criarFrameCurso() throws ExceptionEscola{
+        if(PrincipalJFrame.getJanela()[3]){
+            throw new ExceptionEscola("Já existe uma janela curso aberta");
+        }
+        PrincipalJFrame.getJanela()[3] = true;
         frame.getPrincipalFrame().add(new CursoJInternalFrame()).setVisible(true);
     }
 
@@ -104,28 +135,41 @@ public class PrincipalController implements ActionListener{
         frame.getPrincipalFrame().add(new GerenciadorFaltasJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameFaltas() {
+    private void criarFrameFaltas() throws ExceptionEscola {
+        if(PrincipalJFrame.getJanela()[5]) {
+            throw new ExceptionEscola("Já existe uma janela faltas aberta");
+        }
+       PrincipalJFrame.getJanela()[5] = true;
        frame.getPrincipalFrame().add(new FaltasJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameNotas() {
+    private void criarFrameNotas() throws ExceptionEscola {
+        if(PrincipalJFrame.getJanela()[4]) {
+            throw new ExceptionEscola("Já existe uma janela notas aberta");
+        }
+       PrincipalJFrame.getJanela()[4] = true;
        frame.getPrincipalFrame().add(new NotaJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameDisciplina() {
+    private void criarFrameDisciplina() throws ExceptionEscola {
+        
+        if(PrincipalJFrame.getJanela()[2]) {
+            throw new ExceptionEscola("Já existe um janela disciplina aberta");
+        }
+        PrincipalJFrame.getJanela()[2] = true;
         frame.getPrincipalFrame().add(new DisciplinasJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameProfessor() throws ExceptionEscola{
+    private void criarFrameProfessor() throws ExceptionEscola {
         
-        if(PrincipalJFrame.getJanela()[2]){
-            throw new ExceptionEscola("Já existe uma janela professor"); 
+        if(PrincipalJFrame.getJanela()[1]){
+            throw new ExceptionEscola("Já existe uma janela professor aberta"); 
         }
-        PrincipalJFrame.getJanela()[2] = true;
+        PrincipalJFrame.getJanela()[1] = true;
         frame.getPrincipalFrame().add(new ProfessorJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameAluno() throws ExceptionEscola{
+    private void criarFrameAluno() throws ExceptionEscola {
         
         if(PrincipalJFrame.getJanela()[0]) {
             throw new ExceptionEscola("já existe uma janela aluno aberta");   

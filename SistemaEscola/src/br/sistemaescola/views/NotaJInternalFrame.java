@@ -164,6 +164,23 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Nota Adicionar");
         setPreferredSize(new java.awt.Dimension(577, 385));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Inserir Notas"));
 
@@ -372,6 +389,11 @@ public class NotaJInternalFrame extends javax.swing.JInternalFrame {
     private void pesoJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoJTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pesoJTextFieldActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        PrincipalJFrame.getJanela()[4] = false;
+        br.sistemaescola.log.Log.gravarMessagem("A janela Notas foi fechada");
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

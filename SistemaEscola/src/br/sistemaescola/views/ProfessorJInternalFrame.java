@@ -527,7 +527,7 @@ public class ProfessorJInternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        PrincipalJFrame.getJanela()[2] = false;
+        PrincipalJFrame.getJanela()[1] = false;
         br.sistemaescola.log.Log.gravarMessagem("A janela Professor foi fechada");
     }//GEN-LAST:event_formInternalFrameClosed
 
