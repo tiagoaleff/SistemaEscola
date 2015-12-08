@@ -42,19 +42,27 @@ public class PrincipalController implements ActionListener{
         switch(action){
             
             case "aluno":
-        {
-            try {
-                criarFrameAluno();
-            } catch (ExceptionEscola ex) {
-                JOptionPane.showMessageDialog(frame, ex.getMessage());
-                br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
-            }
-        }
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Alunos");
+                {
+                    try {
+                        criarFrameAluno();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Alunos");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
                 break;
             case "professor":
-                criarFrameProfessor();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Professores");
+                {
+                    try {
+                        criarFrameProfessor();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Cadastrar e Editar Professores");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
+                
                 break;
             case "disciplina":
                 criarFrameDisciplina();
@@ -108,7 +116,12 @@ public class PrincipalController implements ActionListener{
         frame.getPrincipalFrame().add(new DisciplinasJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameProfessor() {
+    private void criarFrameProfessor() throws ExceptionEscola{
+        
+        if(PrincipalJFrame.getJanela()[2]){
+            throw new ExceptionEscola("Já existe uma janela professor"); 
+        }
+        PrincipalJFrame.getJanela()[2] = true;
         frame.getPrincipalFrame().add(new ProfessorJInternalFrame()).setVisible(true);
     }
 
@@ -118,7 +131,6 @@ public class PrincipalController implements ActionListener{
             throw new ExceptionEscola("já existe uma janela aluno aberta");   
         }
         PrincipalJFrame.getJanela()[0] = true;
-        
         frame.getPrincipalFrame().add(new AlunoJInternalFrame()).setVisible(true);
         
     }
