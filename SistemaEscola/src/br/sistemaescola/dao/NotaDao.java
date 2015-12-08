@@ -26,7 +26,7 @@ public class NotaDao {
             ps = conn.prepareStatement(sql);
             ResultSet r = ps.executeQuery();
             Nota nota;
-            while(r.next()){
+            while(r.next()){                               
                nota = new Nota();
                nota.setIdNota(r.getInt(1));
                nota.setIdAluno(r.getInt(2));
@@ -64,7 +64,7 @@ public class NotaDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }
-        }
+        }      
         return listaNotas;
     }
     
@@ -122,5 +122,45 @@ public class NotaDao {
             }
         }
     }                   
+    
+    public void deletar(int id) throws ExceptionEscola{
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try{
+           conn = Conexao.getConexao();
+           String sql = "DELETE FROM notas WHERE id = ?";
+           ps = conn.prepareStatement(sql);
+           ps.setInt(1, id);
+           ps.execute();
+           conn.commit();    
+       }catch(SQLException ex){        
+           if(conn != null){
+               try{
+                   conn.rollback();
+               }catch(SQLException e){
+                   br.sistemaescola.log.Log.gravarMessagem(e.getMessage());
+                   throw new ExceptionEscola(e.getMessage());
+               }
+           }
+           throw new ExceptionEscola(ex.getMessage());
+       } finally{
+           if(conn != null){
+               try{
+                   conn.close();
+               }catch(SQLException ex){
+                   throw new ExceptionEscola(ex.getMessage());
+               }
+           }
+           if(ps != null){                
+               try{
+                   ps.close();
+               }catch(SQLException ex){
+                   throw new ExceptionEscola(ex.getMessage());
+               }
+           }
+       }        
+    }
 }
 

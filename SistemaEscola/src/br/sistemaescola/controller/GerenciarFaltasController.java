@@ -40,10 +40,10 @@ public class GerenciarFaltasController implements ActionListener {
         switch(action){
             
             case "buscar_id":
-                buscar_id();
+                buscarId();
                 break;
             case "buscar_nome":
-                buscar_nome();
+                buscarNome();
                 break;
             case "limpar":
                 limpar();                
@@ -82,7 +82,7 @@ public class GerenciarFaltasController implements ActionListener {
         
         // frame.setTabelaJTable(new JTable());
     }
-     private void buscar_id(){
+     private void buscarId(){
          
         int id = 0;
          
@@ -100,14 +100,14 @@ public class GerenciarFaltasController implements ActionListener {
         }
         frame.getAlunoJList().setModel(dm);
     }    
-     private void buscar_nome(){
+     private void buscarNome(){
          
          String nome = frame.getNomeAluno();
          DefaultListModel dm = new DefaultListModel();
          
             for(Aluno aluno : br.sistemaescola.list.AlunoList.getListAluno()){
                 if (aluno.getNomeAluno().matches(".*" + nome + ".*")) {
-                    dm.addElement(aluno.getNomeAluno());
+                    dm.addElement(aluno.getNomeAluno());                    
                 }
             }
         frame.getAlunoJList().setModel(dm);

@@ -26,6 +26,7 @@ public class FaltasList {
     }
     
     public static ArrayList<Faltas> getListFaltas() {
+    
         try{
             listFaltas = FaltasDao.selecionarTodos();                
         }catch(ExceptionEscola ex){

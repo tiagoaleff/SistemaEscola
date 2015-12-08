@@ -36,8 +36,7 @@ public class DisciplinaController implements ActionListener {
             case "disciplinaPesquisar":
                 pesquisarDisciplinas();
                 break;
-            case "professorPesquisar":
-                
+            case "professorPesquisar":                
                 pesquisarProfessor();
                 break;
             case "cursoPesquisar":
