@@ -6,12 +6,11 @@
 
 package br.sistemaescola.controller;
 
-import java.awt.JobAttributes;
+import br.sistemaescola.dao.NotaDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import br.sistemaescola.views.GerenciarNotasJInternalFrame;
-import br.sistemaescola.views.NotaJInternalFrame;
 
 /**
  * 
@@ -46,8 +45,10 @@ public class GerenciarNotasController implements ActionListener{
             JOptionPane.showMessageDialog(frame, "buscar_id");
      }
      private void buscar_nome(){
-            JOptionPane.showMessageDialog(frame, "buscar_nome");
-        
+            
+         for(Nota.){
+             
+         }
     }
     
     
