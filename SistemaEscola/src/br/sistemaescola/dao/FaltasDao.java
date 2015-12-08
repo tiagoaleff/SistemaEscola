@@ -27,13 +27,14 @@ public class FaltasDao {
                     + "idAluno,"
                     + "idCurso,"
                     + "idDisciplina,"
-                    + "	primeiraAula,"
+                    + "primeiraAula,"
                     + "segundoAula,"
                     + "terceiraAula,"
                     + "dia,"
                     + "mes,"
-                    + "ano"                                        
-                    + ") VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+                    + "ano,"
+                    + "quartaAula"                                        
+                    + ") VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
             
             ps = conn.prepareStatement(sql);
                         

@@ -58,9 +58,13 @@ public class GerenciarFaltasController implements ActionListener {
         }
     
     private void deletar(){
-        //String nome = frame.getNomeAluno();
         
-        int posicao = frame.getTabelaJTable().getSelectedRow();
+        int linha = frame.getTabelaJTable().getSelectedRow();          
+        //frame.getTabelaJTable().getValueAt(linha, 0);
+        
+        //JOptionPane.showMessageDialog(frame, name);
+        
+        
         
         
           /*try {
