@@ -72,7 +72,6 @@ public class DisciplinaController implements ActionListener {
     }
 
     private void deletar() throws ExceptionEscola{
-        JOptionPane.showMessageDialog(frame, disciplina.toString());
         dao.deletar(disciplina);
         clear();
     }
@@ -286,9 +285,7 @@ public class DisciplinaController implements ActionListener {
         
         
         frame.getListaResultadoJList().setModel(dm);
-        frame.setListAtual("professor");
-        
-        JOptionPane.showMessageDialog(frame, "entrou para pesquisar professor");
+        frame.setListAtual("professor");       
     }
 
     private void pesquisarCursos() {
