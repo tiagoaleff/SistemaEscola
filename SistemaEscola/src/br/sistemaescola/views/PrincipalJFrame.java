@@ -8,6 +8,7 @@ import br.sistemaescola.object.Faltas;
 import br.sistemaescola.object.Professor;
 import java.util.ArrayList;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -103,6 +104,11 @@ public class PrincipalJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Escola");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         JDesktopPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         JDesktopPane.setForeground(new java.awt.Color(204, 204, 204));
@@ -227,6 +233,10 @@ public class PrincipalJFrame extends javax.swing.JFrame {
     private void professorJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorJMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_professorJMenuItemActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+            br.sistemaescola.log.Log.gravarMessagem("O programa foi fechado");
+    }//GEN-LAST:event_formWindowClosing
 
 
 
