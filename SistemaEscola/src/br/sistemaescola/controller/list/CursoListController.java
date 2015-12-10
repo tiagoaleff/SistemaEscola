@@ -95,6 +95,7 @@ public class CursoListController implements ListSelectionListener{
 
     private void buscaProfessor(int idResponsavel) {
                 
+        
         boolean professorEncontrado = false;
         Professor professor = null;        
         

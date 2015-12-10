@@ -83,15 +83,16 @@ public class AlunoController  implements ActionListener{
     
     private void verificar() throws ExceptionEscola{       
                        
-        /*validarCamposAluno();
+        validarCamposAluno();
         validarCamposContato();
         validarCamposFiliacao();
-        validarCamposEndereco(); */      
+        validarCamposEndereco();
         nomeDoAlunoJaExiste();        
     }
     
     private void limpar(){
               
+        frame.getIdTextField().setText("");
         frame.getNomealunoTextField().setText("");
         frame.getCpfTextField().setText("");
         frame.getRgalunoTextField().setText("");
@@ -219,7 +220,7 @@ public class AlunoController  implements ActionListener{
             throw new ExceptionEscola("O RG é obrigatório.");
         }
         if(!validarRG(aluno.getRgAluno())){
-            throw new ExceptionEscola("O formato do RG é inválido, deve ser informado um RG com 9 digítos. EX: 000000000 ");
+            throw new ExceptionEscola("O formato do RG é inválido, deve ser informado um RG com 7 digítos. ");
         }
         
         /** Validação da data de nascimento do aluno
@@ -428,7 +429,7 @@ public class AlunoController  implements ActionListener{
     }
     
     private boolean validarCPF(String cpf){
-        return cpf.matches("^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}");                                              
+        return cpf.matches("^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}");                                              
     }
     
     private boolean validarRG(String rg){

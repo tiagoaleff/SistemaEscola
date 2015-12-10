@@ -166,7 +166,7 @@ public class DisciplinaController implements ActionListener {
     public void validarCamposDeDisciplina() throws ExceptionEscola {               
         
         // validando o campo nome disciplina
-       /* if (disciplina.getNomeDisciplina().trim().equals("") || disciplina.getNomeDisciplina() == null) {
+        if (disciplina.getNomeDisciplina().trim().equals("") || disciplina.getNomeDisciplina() == null) {
             
             throw new ExceptionEscola("O campo Nome não pode estar vazio.");
         }
@@ -205,7 +205,7 @@ public class DisciplinaController implements ActionListener {
         if(!validarCamposProfessor()){
             throw new ExceptionEscola("O professor não existe deve-se informar um professor existente");
         }
-        */
+       
         //verifica se o cruso não existe
         for (Disciplina d : br.sistemaescola.list.DisciplinaList.getListDisciplina()){
             if(disciplina.getNomeDisciplina().equals(d.getNomeDisciplina())){
@@ -225,7 +225,7 @@ public class DisciplinaController implements ActionListener {
         }
         
         salvar();
-        
+        clear();
        
     }
     
@@ -236,6 +236,7 @@ public class DisciplinaController implements ActionListener {
     }
 
     private void clear() {
+        frame.getCodigoJTextField1().setText("");
         frame.getnomeJTextField().setText("");
         frame.getCursoJTextField().setText("");
         frame.getProfessorJTextField().setText("");

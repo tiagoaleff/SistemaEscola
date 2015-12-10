@@ -64,7 +64,8 @@ public class ProfessorController implements ActionListener {
     }
 
     public void limpar(){
-                                   
+                            
+            frame.getIdProfessor().setText("");
             frame.getNomeJTextField().setText("");
             frame.getCpfJTextField().setText("");
             frame.getRgJTextField().setText("");
@@ -84,10 +85,17 @@ public class ProfessorController implements ActionListener {
     
     private void deletar() throws ExceptionEscola{
         
+        
         if((frame.getIdProfessor().getText()) != null)
             professor.setIdProfessor(Integer.parseInt(frame.getIdProfessor().getText()));
         
-        dao.deletar(professor.getIdProfessor());
+        int opcao = JOptionPane.showConfirmDialog(frame, "Deseja realmente excluir o professor: " + professor.getNomeProfessor() + " dos seus dados?");
+        
+        if(opcao == 0){
+            dao.deletar(professor.getIdProfessor());
+        }
+        
+        
     }
         
     public void pesquisarProfessor(){
@@ -106,10 +114,11 @@ public class ProfessorController implements ActionListener {
     
     public void verificar() throws ExceptionEscola{
         
-        // validarInformacoesPessoais(professor);            
-        // validarContato(professor);
-        // validarEndereco(professor);
-         validacaoEspecializacao(professor);
+        validarInformacoesPessoais(professor);  
+        validacaoEspecializacao(professor);
+        validarContato(professor);
+        validarEndereco(professor);
+        
         
         for(Professor p : br.sistemaescola.list.ProfessorList.getListProfessor()){
             if(p.getNomeProfessor().equals(professor.getNomeProfessor())){
@@ -129,6 +138,7 @@ public class ProfessorController implements ActionListener {
             }
         }
         salvar(professor);
+        limpar();
     }   
     
     private void edit(Professor p) throws ExceptionEscola{
@@ -215,6 +225,11 @@ public class ProfessorController implements ActionListener {
     public void validarEndereco(Professor professor) throws ExceptionEscola{
 
         // validar campo ENDERECO
+        
+        if(professor.getEstadoEndereco().equals("Selecionar")){
+            throw new ExceptionEscola("Deve ser selecionado um estado");
+        }
+  
         if (professor.getRuaEndereco().trim().equals("")) {
             throw new ExceptionEscola("A rua é obrigatória");
         }
@@ -260,7 +275,7 @@ public class ProfessorController implements ActionListener {
     }
     
     private boolean validarCPF(String cpf){                
-        return cpf.matches("^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}");                                                
+        return cpf.matches("^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}");                                                
     }
         
     private boolean validarNumeroCasa(String rua){        

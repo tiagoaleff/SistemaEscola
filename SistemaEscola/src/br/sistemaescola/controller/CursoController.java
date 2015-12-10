@@ -86,6 +86,7 @@ public class CursoController implements ActionListener{
     private void verificarDados() throws ExceptionEscola{
         
         
+        JOptionPane.showMessageDialog(frame, curso.toString());
         /* Verificação do nome do aluno */
         if(curso.getNome().trim().equals("")){
             throw new ExceptionEscola("O nome do curso deve ser informado"); 
@@ -147,6 +148,7 @@ public class CursoController implements ActionListener{
     }
 
     private void limparFormulario() {  
+        frame.getIdJTextField().setText("");
        frame.getNomeJTextField().setText("");
        frame.getProfessorJTextField().setText("");
        frame.getDescricaoJTextArea().setText("");
@@ -176,6 +178,7 @@ public class CursoController implements ActionListener{
     }
     
     private void pesquisarProfessor() {
+        
         DefaultListModel dm = new DefaultListModel();
    
         for( Professor professor :  br.sistemaescola.list.ProfessorList.getListProfessor()){
@@ -187,8 +190,7 @@ public class CursoController implements ActionListener{
         frame.setListaAtual("professor");
     }
 
-    private void salvar(Curso curso) throws ExceptionEscola{                       
-            
+    private void salvar(Curso curso) throws ExceptionEscola{                                           
         curso.setIdResponsavel(frame.getIdResponsavel());                        
         dao.inserirCurso(curso);
     }  

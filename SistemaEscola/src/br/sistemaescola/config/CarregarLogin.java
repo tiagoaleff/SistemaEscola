@@ -30,7 +30,6 @@ public class CarregarLogin {
         
         try {
             login = ler();
-            JOptionPane.showMessageDialog(null, "Ultimo login carregado com sucesso");
             br.sistemaescola.log.Log.gravarMessagem("Ultimo login carregado com sucesso");
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao ler último login!");
