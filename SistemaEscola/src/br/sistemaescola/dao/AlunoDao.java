@@ -55,10 +55,10 @@ public class AlunoDao {
                 aluno.setRgMae(rs.getString(14));
                 
                 // informação endereço
-                aluno.setEstado(rs.getString(15));
-                 aluno.setBairro(rs.getString(16));
+                aluno.setRua(rs.getString(15));
+                aluno.setEstado(rs.getString(18));
+                aluno.setBairro(rs.getString(16));
                 aluno.setCidade(rs.getString(17));
-                aluno.setRua(rs.getString(18));
                 aluno.setNumero(rs.getString(19));
                                 
                 // configura um novo valor a lista
