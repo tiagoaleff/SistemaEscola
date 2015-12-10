@@ -19,6 +19,7 @@ public class Nota {
     private String nota;
     
     // variaveis referente ao banco de dados 
+    private int idNota;
     private int idAluno;
     private int idProfessor;
     private int idDisciplina;
@@ -31,22 +32,22 @@ public class Nota {
         this.disciplicina = disciplicina;
         this.peso = peso;
         this.nota = nota;
-        // insiridas 
+        // insiridas         
         this.idAluno = idAluno;
         this.idProfessor = idProfessor;
         this.idDisciplina = idDisciplina;
     }
     
-    /* public Nota(String nome,String peso, String nota, int idAluno, int idProfessor, int idDisciplina){
-        this.nome = nome;
-        this.idAluno = idAluno;
-        this.idProfessor = idProfessor;
-        this.idDisciplina = idDisciplina;
-        this.peso = peso;
-        this.nota = nota;
-    }
-    */
+    public Nota(){}
 
+    public int getIdNota() {
+        return idNota;
+    }
+
+    public void setIdNota(int idNota) {
+        this.idNota = idNota;
+    }
+    
     public int getIdAluno() {
         return idAluno;
     }

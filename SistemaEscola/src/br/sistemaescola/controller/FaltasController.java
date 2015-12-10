@@ -177,10 +177,7 @@ public class FaltasController implements ActionListener {
             throw new ExceptionEscola("O aluno deve ter faltado ao menos um periodo de aula");
         }
         
-        for(Faltas f : br.sistemaescola.list.FaltasList.getListFaltas()){
-            
-            
-            JOptionPane.showMessageDialog(frame, falta.toString());
+        for(Faltas f : br.sistemaescola.list.FaltasList.getListFaltas()){                      
             
              if(f.getIdAluno() == frame.getIdAluno()){
                  if(f.getIdDisciplina() == frame.getIdDisciplina()){
@@ -244,14 +241,9 @@ public class FaltasController implements ActionListener {
     }
 
     private void salvar() throws ExceptionEscola{
-        try{
-            falta.toString();
-            dao.inserirFaltas(falta);
-            
-        }catch(ExceptionEscola ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-            Log.gravarMessagem(ex.getMessage());
-        }
+    
+        dao.inserirFaltas(falta);
+        
     }
 
 }

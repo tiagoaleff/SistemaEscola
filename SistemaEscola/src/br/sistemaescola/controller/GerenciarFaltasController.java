@@ -8,6 +8,7 @@ package br.sistemaescola.controller;
 
 import br.sistemaescola.dao.FaltasDao;
 import br.sistemaescola.exception.ExceptionEscola;
+import br.sistemaescola.log.Log;
 import br.sistemaescola.object.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,10 +40,10 @@ public class GerenciarFaltasController implements ActionListener {
         switch(action){
             
             case "buscar_id":
-                buscar_id();
+                buscarId();
                 break;
             case "buscar_nome":
-                buscar_nome();
+                buscarNome();
                 break;
             case "limpar":
                 limpar();                
@@ -58,17 +59,20 @@ public class GerenciarFaltasController implements ActionListener {
         }
     
     private void deletar(){
-        //String nome = frame.getNomeAluno();
         
-        int posicao = frame.getTabelaJTable().getSelectedRow();
-        
-        
-          /*try {
-            dao.deletar(posica);
+        try {
+            int linha = frame.getTabelaJTable().getSelectedRow();          
+            Object valorCelularObeject = frame.getTabelaJTable().getValueAt(linha, 0);
+            int valorCelula = Integer.parseInt(valorCelularObeject.toString());        
+            dao.deletar(valorCelula);            
         } catch (ExceptionEscola ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }*/
-        
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Falta: " + ex.getMessage());
+            Log.gravarMessagem("Erro ao excluir Falta: " + ex.getMessage());
+        } catch(IndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(null, "Selecione uma falta para excluir!");
+            Log.gravarMessagem("Erro ao excluir Falta: " + ex.getMessage());
+        }
+        limpar();
     }
     private void limpar(){
         
@@ -78,7 +82,7 @@ public class GerenciarFaltasController implements ActionListener {
         
         // frame.setTabelaJTable(new JTable());
     }
-     private void buscar_id(){
+     private void buscarId(){
          
         int id = 0;
          
@@ -96,14 +100,14 @@ public class GerenciarFaltasController implements ActionListener {
         }
         frame.getAlunoJList().setModel(dm);
     }    
-     private void buscar_nome(){
+     private void buscarNome(){
          
          String nome = frame.getNomeAluno();
          DefaultListModel dm = new DefaultListModel();
          
             for(Aluno aluno : br.sistemaescola.list.AlunoList.getListAluno()){
                 if (aluno.getNomeAluno().matches(".*" + nome + ".*")) {
-                    dm.addElement(aluno.getNomeAluno());
+                    dm.addElement(aluno.getNomeAluno());                    
                 }
             }
         frame.getAlunoJList().setModel(dm);

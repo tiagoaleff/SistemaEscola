@@ -2,7 +2,6 @@ package br.sistemaescola.dao;
 
 import br.sistemaescola.conexao.Conexao;
 import br.sistemaescola.exception.ExceptionEscola;
-import br.sistemaescola.object.Disciplina;
 import br.sistemaescola.object.Nota;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +14,59 @@ import java.util.ArrayList;
  * @author Tiago Aleff
  */
 public class NotaDao {
+    
+    public static ArrayList selecionarTodasNotas() throws ExceptionEscola{
+        
+        ArrayList<Nota>listaNotas = new ArrayList<Nota>();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = Conexao.getConexao();
+            String sql = "SELECT * FROM notas";
+            ps = conn.prepareStatement(sql);
+            ResultSet r = ps.executeQuery();
+            Nota nota;
+            while(r.next()){                               
+               nota = new Nota();
+               nota.setIdNota(r.getInt(1));
+               nota.setIdAluno(r.getInt(2));
+               nota.setIdProfessor(r.getInt(3));
+               nota.setIdDisciplina(r.getInt(4));
+               nota.setPeso(String.valueOf(r.getInt(5)));
+               nota.setNota(String.valueOf(r.getDouble(6)));
+               
+               listaNotas.add(nota);
+            }
+        }catch(SQLException ex){
+            
+            if(conn != null){                
+                try{
+                    conn.rollback();    
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }                
+            }
+            throw new ExceptionEscola(ex.getMessage());
+        }finally{
+            
+            if(conn != null){
+                try{
+                    conn.close();
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }
+            }
+            
+            if(ps != null){
+                try{
+                    ps.close();
+                }catch(SQLException e){
+                    throw new ExceptionEscola(e.getMessage());
+                }
+            }
+        }      
+        return listaNotas;
+    }
     
     public void inserirNota(Nota nota) throws ExceptionEscola{
                 
@@ -69,7 +121,46 @@ public class NotaDao {
                 }
             }
         }
-    }        
+    }                   
+    
+    public void deletar(int id) throws ExceptionEscola{
         
+        Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try{
+           conn = Conexao.getConexao();
+           String sql = "DELETE FROM notas WHERE id = ?";
+           ps = conn.prepareStatement(sql);
+           ps.setInt(1, id);
+           ps.execute();
+           conn.commit();    
+       }catch(SQLException ex){        
+           if(conn != null){
+               try{
+                   conn.rollback();
+               }catch(SQLException e){
+                   br.sistemaescola.log.Log.gravarMessagem(e.getMessage());
+                   throw new ExceptionEscola(e.getMessage());
+               }
+           }
+           throw new ExceptionEscola(ex.getMessage());
+       } finally{
+           if(conn != null){
+               try{
+                   conn.close();
+               }catch(SQLException ex){
+                   throw new ExceptionEscola(ex.getMessage());
+               }
+           }
+           if(ps != null){                
+               try{
+                   ps.close();
+               }catch(SQLException ex){
+                   throw new ExceptionEscola(ex.getMessage());
+               }
+           }
+       }        
+    }
 }
 

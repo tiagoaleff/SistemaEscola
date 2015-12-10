@@ -51,17 +51,7 @@ public class GerenciarFaltasListController implements ListSelectionListener{
                     falta.setDisciplina(buscarNomeDisciplina(falta.getIdDisciplina()));
                     faltasAluno.add(falta);                         
               }
-        }
-        //fim da alteracao
-        
-        // abaixo comentado o codigo original
-        
-        /*for (Faltas falta : br.sistemaescola.list.FaltasList.getListFaltas()){
-            if(falta.getAluno().equals(nomeSelecionado)){
-               faltasAluno.add(falta);
-            }
-        }*/
-        
+        }        
          alimentarTable(faltasAluno);        
     }
     
@@ -125,20 +115,26 @@ public class GerenciarFaltasListController implements ListSelectionListener{
  
        for(Faltas falta : faltasAluno){
             
-           if(falta.isPrimeiroPeriodo())
+            if(falta.isPrimeiroPeriodo())
                primerio = "Presença";
            
-           if(falta.isSecundoPeriodo())
+            if(falta.isSecundoPeriodo())
                segundo = "Presença";
            
-           if(falta.isTerceiroPeriodo())
+            if(falta.isTerceiroPeriodo())
                terceiro = "Presença";
            
-           if(falta.isQuartoPeriodo())
+            if(falta.isQuartoPeriodo())
                quarta = "Presença";
                    
-            dtm.addRow(new Object[]{falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),primerio ,segundo , terceiro, quarta}); 
+            dtm.addRow(new Object[]{falta.getIdFaltas(),falta.getDisciplina(),falta.getDia(),falta.getMes(),falta.getAno(),primerio ,segundo , terceiro, quarta}); 
+            
+            primerio = "Falta";
+            segundo = "Falta";
+            terceiro = "Falta";
+            quarta = "Falta";
        } 
+       
     }
 
        public void buscarNomeDisciplina(int idDisciplina, Faltas falta) throws ExceptionEscola{

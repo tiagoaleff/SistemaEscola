@@ -112,7 +112,6 @@ public class DisciplinaListController implements ListSelectionListener{
             }
         }
         if(professorEncontrado){
-            JOptionPane.showMessageDialog(null, professor.getNomeProfessor());
             frame.getProfessorJTextField().setText(professor.getNomeProfessor());                        
             frame.setIdProfessorDaDisciplina(professor.getIdProfessor());
         }
