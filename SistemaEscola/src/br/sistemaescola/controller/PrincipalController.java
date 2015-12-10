@@ -109,12 +109,27 @@ public class PrincipalController implements ActionListener{
                 }
                 break;
             case "gerenciar notas":
-                criarFrameGerenciarNotas();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Gerenciar Notas");
+                {
+                    try {
+                        criarFrameGerenciarNotas();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de gerenciar notas");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
                 break;
             case "gerenciar faltas":
-                criarFrameGerenciarFaltas();
-                br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Gerenciar Faltas");
+                {
+                    try {
+                        criarFrameGerenciarFaltas();
+                        br.sistemaescola.log.Log.gravarMessagem("Aberto a janela de Gerenciar Faltas");
+                    } catch (ExceptionEscola ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage());
+                        br.sistemaescola.log.Log.gravarMessagem(ex.getMessage());
+                    }
+                }
+                
                 break;
         } 
     }
@@ -127,11 +142,19 @@ public class PrincipalController implements ActionListener{
         frame.getPrincipalFrame().add(new CursoJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameGerenciarNotas() {
+    private void criarFrameGerenciarNotas() throws ExceptionEscola{
+        if(PrincipalJFrame.getJanela()[6]){
+            throw new ExceptionEscola("Já existe uma janela Gerenciar Notas");
+        }
+        PrincipalJFrame.getJanela()[6] = true;
         frame.getPrincipalFrame().add(new GerenciarNotasJInternalFrame()).setVisible(true);
     }
 
-    private void criarFrameGerenciarFaltas() {
+    private void criarFrameGerenciarFaltas() throws ExceptionEscola{
+        if(PrincipalJFrame.getJanela()[7]){
+            throw new ExceptionEscola("Já existe uma janela gerenciar Faltas");
+        }
+        PrincipalJFrame.getJanela()[7] = true;
         frame.getPrincipalFrame().add(new GerenciadorFaltasJInternalFrame()).setVisible(true);
     }
 

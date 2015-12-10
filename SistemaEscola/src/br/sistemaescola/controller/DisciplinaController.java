@@ -72,8 +72,13 @@ public class DisciplinaController implements ActionListener {
     }
 
     private void deletar() throws ExceptionEscola{
-        dao.deletar(disciplina);
-        clear();
+        
+        int opcao = JOptionPane.showConfirmDialog(frame, "Excluir a disciplina: " + disciplina.getNomeDisciplina());
+        
+        if(opcao == 0){
+            dao.deletar(disciplina);
+            clear();    
+        }        
     }
     public void salvar() throws ExceptionEscola{
               

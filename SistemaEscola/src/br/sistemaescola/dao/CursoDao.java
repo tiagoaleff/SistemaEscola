@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -145,7 +145,7 @@ public class CursoDao {
            
             ps.execute();
             conn.commit();   
-            JOptionPane.showMessageDialog(null, curso.toString());
+            
         }catch(SQLException ex){
             if(conn != null){
                 try{
@@ -184,7 +184,7 @@ public class CursoDao {
             ps.setInt(1, curso.getId());
             ps.execute();
             conn.commit();
-            JOptionPane.showMessageDialog(null, curso.toString());
+            
             
         }catch(SQLException ex){
             if(conn != null){

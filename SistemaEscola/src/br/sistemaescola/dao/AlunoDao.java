@@ -74,7 +74,6 @@ public class AlunoDao {
                     throw new ExceptionEscola(e.getMessage());
                 }
             }
-            JOptionPane.showMessageDialog(null, ex.getMessage());
             throw new ExceptionEscola(ex.getMessage());
         }finally{
             if(conn != null){

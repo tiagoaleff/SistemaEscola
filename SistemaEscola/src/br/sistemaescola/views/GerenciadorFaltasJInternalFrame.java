@@ -133,6 +133,23 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
         setClosable(true);
         setIconifiable(true);
         setTitle("Faltas gerenciador");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel4.setText("Insira a id ou o nome do aluno para pesquisar por um aluno, selecione o aluno na seção alunos para consultar suas Faltas:");
 
@@ -359,6 +376,10 @@ public class GerenciadorFaltasJInternalFrame extends javax.swing.JInternalFrame 
     private void idJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idJTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idJTextFieldActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        PrincipalJFrame.getJanela()[7] = false;
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

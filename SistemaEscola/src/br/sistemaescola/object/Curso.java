@@ -108,7 +108,7 @@ public class Curso {
     
     @Override
     public String toString(){
-        return String.format("Id: " + getId() + " Nome: " + getNome() + " Responsavel: " + getIdResponsavel() + ""
+        return String.format("IdCurso: " + getId() + " Nome: " + getNome() + " IdResponsavel: " + getIdResponsavel() + ""
                 + " Descricao: " + getDescricao() + " Matutino: " + isMatutino() + " Vespertino: " + isVespertino()
                 + " Noturno: " + isNoturno());
     }        

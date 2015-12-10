@@ -78,15 +78,17 @@ public class CursoController implements ActionListener{
     }
 
     private void deletar() throws ExceptionEscola{
+            
+        int opcao = JOptionPane.showConfirmDialog(frame, "Excluir o curso: " + curso.getNome() + "?");
         
-        curso.setId(Integer.parseInt(frame.getIdJTextField().getText()));
-        dao.deletar(curso);
-        limparFormulario();
+        if(opcao == 0){
+            curso.setId(Integer.parseInt(frame.getIdJTextField().getText()));
+            dao.deletar(curso);
+            limparFormulario();
+        }        
     }
     private void verificarDados() throws ExceptionEscola{
-        
-        
-        JOptionPane.showMessageDialog(frame, curso.toString());
+                        
         /* Verificação do nome do aluno */
         if(curso.getNome().trim().equals("")){
             throw new ExceptionEscola("O nome do curso deve ser informado"); 
@@ -196,8 +198,8 @@ public class CursoController implements ActionListener{
     }  
     
     private void edit(Curso c) throws ExceptionEscola{
-        curso = frame.atualizarDados();
-        JOptionPane.showMessageDialog(null, curso.toString());
+        curso.setId(Integer.parseInt(frame.getIdJTextField().getText()));
+        // curso = frame.atualizarDados();
         dao.atualizarTodos(curso);
     }
    

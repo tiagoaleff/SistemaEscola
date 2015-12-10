@@ -47,17 +47,12 @@ public class CursoJInternalFrame extends javax.swing.JInternalFrame {
                                     descricao,
                                     noturno,
                                     vespertino,
-                                    matutino);     
-     
-        /*if(getIdJTextField().getText() != null)
-             dados.setId(Integer.parseInt(getIdJTextField().getText().trim()));
-        */
+                                    matutino);                  
         
         dados.setIdResponsavel(idResponsavel);                
         return dados;        
     }
-        
-    
+            
     public int getIdResponsavel(){
         return idResponsavel;
     }

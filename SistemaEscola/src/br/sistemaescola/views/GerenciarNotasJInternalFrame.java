@@ -62,6 +62,23 @@ public class GerenciarNotasJInternalFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Notas Gerenciador");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Gerenciar Notas");
@@ -278,6 +295,10 @@ public class GerenciarNotasJInternalFrame extends javax.swing.JInternalFrame {
     private void IdJTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdJTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IdJTextField2ActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        PrincipalJFrame.getJanela()[6] = false;
+    }//GEN-LAST:event_formInternalFrameClosed
 
     public String getListaAtual() {
         return listaAtual;
